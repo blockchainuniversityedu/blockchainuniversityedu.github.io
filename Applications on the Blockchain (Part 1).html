@@ -1,0 +1,167 @@
+<!doctype html>
+<html>
+	<head>
+		<title> Workshop #1 </title>
+		<link rel="stylesheet" type="text/css" href="PageFormatting.css">
+	</head>
+	<body>
+		<header>
+			<a href="index.html"><img src="blockchaintmu (normal logo - no background).png" alt="Welcome!" style="float:left;width:400px;height:220px;"></a>
+            <div class="dropdown">
+                <div class="dropdown-content">
+                    <ul>
+					<li><a href="index.html">HOME</a></li>
+					<li><a href="Workshops.html">WORKSHOPS</a></li>
+                    <li><a href="FirstAccess.html">FIRST/ACCESS</a></li>
+                    </ul>
+                </div>         
+        </header>
+		<br><br><br><br><br><br><br><br><br>
+				<h1> Applications on the Blockchain (Part 1) </h1>
+				<h3> Non-fungible Tokens & The Metaverse </h3>
+				<center>
+					<h2> Video Explanation </h2>
+					<br><br>
+				<iframe width="1280" height="720" src="https://www.youtube.com/embed/Oj2MjwT8yw4?si=Ncaq822HSgZMiyXM" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+				</center>
+				<br><br><br>
+				<center>
+				<h2> In-Depth Explanation </h2>
+				</center>
+				<br><br><br>
+                <p>
+                Within the Web 3.0 space, next to the cryptocurrencies set in place that is discussed in 
+                the media, more opportunistic directions of the platform are showcased through the 
+                use of tokens. Specifically to this, they are called "non-fungible" tokens, which are assets
+                in the form of various digital or real-world assets, including artworks, GIFs, videos, 
+                virtual avatars, in-game currencies, music, ownership certificates, legal contracts, and 
+                more that cannot be copied, substituted, or subdivided. As they've gained popularity 
+                within the space, this new format of digital art creation has provided opportunities for 
+                artists to showcase their work without having to undergo the struggles of having to so-
+                to speak, create your own art show or video game in order to showcase them.
+				<br><br><br>
+				In order to ensure that the movement of these non-fungible tokens do not spur traffic
+                that may disrupt the creative process of these artists, the process of 'Token Standards' is 
+                set in place which involves the procedure of encoding metadata that can help to verify a 
+                particular asset to its appropriate owner. The setstone of these Token Standards largely 
+                rely on the mint function of an NFT, which is meant to check the specifications of an 
+                assets metadata which can involve hex values which can involve color codes, titles and 
+                descriptions stored into a particular storage system called 'off-chain storage'. A lot of 
+                these processes which are focused on ensuring the uniformities of the assets in a 
+                fashion that can be freely shared within the peer-to-peer network of the blockchain, 
+                depend largely on working within a 'decentralized' fashion, where unlike having your 
+                work looked over by a potential organization within a central server, is focused on 
+                making sure everything is shared across owners within the platform. With decentralized 
+                servers, an IPFS which stands for 'Interplanetary File System', are meant to assure that 
+                the assets are not interchangeable by transferring them from one system to another by 
+                combining metadata with links upon the Token Standards mentioned earlier, in order to 
+                establish an automatic encoding process which stores the information in an off-chain 
+                storage system at ease. These standards, specific to NFTs in common, go by the name 
+                ERC1155 and ERC721. To avoid complicating either of the two standards, we'll focus on 
+                explaining what the ERC1155 standard is meant to represent. As 'hex' values have been 
+                mentioned from before, this standard is essential in making use of fundamental 
+                functions such as a uint256 variable_id, which helps in defining fungible tokens by the 
+                ID of the owner for which it will be transferred from. Below is an algorithm that defines 
+                this standard, as well as the metadata that gets stored into an off-chain storage.
+				<br><br><br>
+					// Algorithm 2: NFT Standard 1155
+					interface IERC1155 
+					{
+					function balanceOf(address _owner, uint256 _id) external view returns (address);
+					function transferFrom(address _from, address _to, uint256 _id, uint256 quantity) external payable
+					}
+				<br><br><br>
+				This particular algorithm ensures that through functions such as 'transferFrom' and 
+				'balanceOf', assets are externally traded between systems through an unsigned integer
+				(uinit256) which is able to store non-negative integers. Second to this secure algorithm, 
+				ERC721 is notable as well but consists of scalability issues as processes such as 
+				compressing data in order to save off-chain file storage and uncompressing it to spare 
+				higher resolution of the particular asset struggles to be distinguished, hence why it is 
+				commonly replaced with the Flow-standard, a protocol developed by Dapper labs which 
+				is implemented in order to make this process as smooth as possible. Referring back to 
+				the sole structure of metadata, the hex values are commonly to be set in place through 
+				the algorithm seen below.
+				<br><br><br>
+					// Algorithm 3: Metadata file
+					{
+					"name": "Color",
+					"hex": "#F08080",
+					"link": "https://bit.ly/3mdRahT",
+					"owner": "0x6902702BB5678D7361C94441c71F600C255dd833"
+					}
+				<br><br><br>
+				Using the "name", "hex", "link", and "owner" ID, this ensures to verify the ownership of a 
+				particular asset to its rightful owner. Second to the standards mentioned, ERC721 is also 
+				built into a special type of blockchain set by the major cryptocurrency exchange 
+				company by the name of Binance, which goes by Binance Smart Chain (BSC). Similar in 
+				many ways, BRC721 allows content creators to tokenize the ownership of their assets 
+				and the data contained within it through a unique identifier, or DID (decentralized 
+				identifier) which applies a private key to a particular owner that can use it to prove or 
+				control their own identity. Similar to the algorithmic code behind ERC721, this one 
+				implements the code of totalSupply, which is defined by the 'total amount of coins or 
+				tokens of a specific cryptocurrency that have been created or mined, that are in 
+				circulation, including those that are locked or reserved.'
+				<br><br><br>
+				As the tokenization of digital assets within the web 3.0 space ensures that there is 
+				regulated circulation of transactions in order to manage the economy under a 
+				regulatory fashion, issues may arise regarding profits behind these rightful ownerships 
+				as verifying them through the process of minting may create major hikes or dips in its 
+				value, since the value behind the transactions apart from metadata are largely reliant on 
+				the general nature of the cryptocurrency it works behind. Though second to this, 
+				another opportunity to combine these digital works within a collaborative space are 
+				done so through the Metaverse, a decenetralized space where content creators or 
+				explorers may make use of virtual or augmented reality headsets in interacting with a 
+				three-dimensional streamline of world creations not limited by the space and time of 
+				physical reality.
+				<br><br><br>
+				With this world consisting of seven layers, the ones that should be kept in mind 
+				with understanding it are the human interface, infrastructure, and Internet of Things (IoT). 
+				Regarding the human interface, this layer is focused on sharing experiences between 
+				users of the world by helping to receive information useful in understanding the world 
+				through spatial computing, where the VR or AR headset can be used in visually 
+				understanding the digital space by associating it with the physical world. Adding onto 
+				human interface, other layers such as the infrastructure are essential in improving 
+				network connection technologies by using 5G and 6G, which can help with reducing the 
+				congestion of network bandwidth. In finality, the Internet of Things is identified as a 
+				layer in combining and constructing a 3D user interface that can help to associate the 
+				physical world with the digital one by providing minimal effort for the user in making 
+				data-driven judgements that can assist organizations in understanding utilizing the 
+				platform, with specific mentions being virtual offices within the Metaverse where 
+				companies may hold meetings. As these instances also require an actual environment 
+				that can be worked within using augmented reality technology, the Metaverse may 
+				collect important data such as biometric psychography in order to measure user data 
+				emotions that are key in identifying concerns for privacy and data security, especially 
+				when it's within an algorithmic bias that functions outside of the physical world and is 
+				capable of identifying unintentional behavioral assumptions.
+				<br><br><br>
+				When it comes to improvements that the Metaverse can make, especially when it makes 
+				use of NFTs, is to be able to provide an open-source space where users within a global 
+				community have an opportunity to suggest solutions that may allow others to move 
+				smoothly between various three-dimensional spaces in order to embody anything that 
+				involves an avatar that is capable of sharing intercommunication experiences with 
+				others. Though this is yet to be an improvement by large organizations, especially that 
+				of Facebook which has mentioned the name at a multitude of times on social media, 
+				industry partners and experts agree that such an ambitious concept requires a 
+				significant amount of work to be done in order to help with contemplating a future 
+				where numerous issues that make up for strongly establishing this new generation after 
+				the Web 2.0 era of the internet must be resolved.
+				<br><br><br><br><br><br>
+
+				</p>
+
+		<script type="text/javascript">
+			var lastScrollTop = 0;
+				navbar = document.getElementById("navbar");
+			window.addEventListener("scroll", function(){
+				var scrollTop = window.pageYOffset || document
+					.documentElement.scrollTop;
+				if (scrollTop > lastscrollTop) {
+					navbar.style.top="-80px";
+				} else {
+					navbar.style.top="0";
+				}
+				lastScrollTop = scrollTop;
+			})
+		</script>
+	</body>
+</html>
