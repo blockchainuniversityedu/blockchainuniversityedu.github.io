@@ -227,4 +227,29 @@ header.sticky ul li a
   color: rgb(253, 188, 7)000;
 }
 
-
+yt-chip-cloud-chip-renderer {
+  height: 32px;
+  min-width: 12px;
+  padding: 0 10px;
+  border-radius: 16px;
+  box-sizing: border-box;
+  outline: none;
+  overflow: hidden;
+  cursor: pointer;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  position: relative;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  display: inline-flex;
+  font-size: var(--ytd-user-comment-font-size);
+  font-weight: var(--ytd-user-comment-font-weight);
+  line-height: var(--ytd-user-comment-line-height);
+  letter-spacing: var(--ytd-user-comment-letter-spacing);
+  font-family: var(--ytd-user-comment-font-family);
+  color: var(--ytd-user-comment-color);
+}
+ 

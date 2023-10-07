@@ -24,7 +24,7 @@
   }
   
   #about {
-    top: 950px;
+    top: 700px;
     background-color: #000000;
   }
   
@@ -54,6 +54,7 @@ body
     min-height: 300vh;
     background: #ff9900;
 }
+
 header
 {
     position: fixed;

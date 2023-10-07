@@ -118,7 +118,8 @@ header.sticky ul li a
 {
     transform: translate (0px);
     opacity: 1;
-    background-image: url(webcard15.png);
+
+    background-image: url(webcard16.png);
     background-repeat: no-repeat;
     background-position: center;
     width: 400px;
@@ -199,7 +200,7 @@ header.sticky ul li a
 {
     transform: translate (0px);
     opacity: 1;
-    background-image: url(webcard.png);
+    background-image: url(webcard15.png);
     background-repeat: no-repeat;
     background-position: center;
     width: 400px;
@@ -280,7 +281,7 @@ header.sticky ul li a
 {
     transform: translate (0px);
     opacity: 1;
-    background-image: url('Workshop13Poster.png');
+    background-image: url(webcard.png);
     background-repeat: no-repeat;
     background-position: center;
     width: 400px;
@@ -361,7 +362,7 @@ header.sticky ul li a
 {
     transform: translate (0px);
     opacity: 1;
-    background-image: url('Poster.png');
+    background-image: url('Workshop13Poster.png');
     background-repeat: no-repeat;
     background-position: center;
     width: 400px;
