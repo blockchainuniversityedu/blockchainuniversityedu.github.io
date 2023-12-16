@@ -57,6 +57,8 @@
 <button onclick="myFunction8(); this.onclick=myFunction8">August</button>
 <button onclick="myFunction9(); this.onclick=myFunction9">September</button>
 <button onclick="myFunction10(); this.onclick=myFunction10">October</button>
+<button onclick="myFunction11(); this.onclick=myFunction10">November</button>
+<button onclick="myFunction12(); this.onclick=myFunction10">December</button>
 </div>
 <br>
 
@@ -303,20 +305,32 @@ Nothing here just yet.
 <script>
 
 function myFunction() {
-  var x = document.getElementById("myDIV");
-  if (x.style.display === "none") {
-    x.style.display = "block";
+  var div = document.getElementById("myDIV");
+  var div1 = document.getElementById("myDIV2");
+  if (div.style.display === "none") {
+    div.style.display = "block";
   } else {
-    x.style.display = "none";
+    div.style.display = "none";
+  }
+  if (div1.style.display === "none") {
+    div1.style.display = "none";
+  } else {
+    div1.style.display = "none";
   }
 }
 
 function myFunction1() {
-  var x = document.getElementById("myDIV2");
-  if (x.style.display === "none") {
-    x.style.display = "block";
+  var div = document.getElementById("myDIV");
+  var div1 = document.getElementById("myDIV2");
+  if (div.style.display === "none") {
+    div.style.display = "none";
   } else {
-    x.style.display = "none";
+    div.style.display = "none";
+  }
+  if (div1.style.display === "none") {
+    div1.style.display = "block";
+  } else {
+    div1.style.display = "none";
   }
 }
 
