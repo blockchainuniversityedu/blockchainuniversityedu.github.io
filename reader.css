@@ -149,10 +149,11 @@ h3 {
 
 p {
   text-align: left;
-  margin: 0 400px;
+  margin: 0 auto; /* Center the paragraphs horizontally */
   font-family: 'Poppins'; 
   color: rgb(0, 0, 0);
   min-height: 30vh;
+  max-width: 800px; /* Set a maximum width if needed */
 }
 
 div.center {
@@ -246,6 +247,9 @@ div.center {
   border-radius: 5px;
   box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
   z-index: 999;
+  /* Adjust top and left properties to position the tooltip-box within the container */
+  top: -30px; /* Adjust as needed */
+  right: 20px; /* Adjust as needed */
 }
 
 .video-container {
