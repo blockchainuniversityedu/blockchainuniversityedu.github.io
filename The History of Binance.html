@@ -13,7 +13,7 @@
 		<link rel="stylesheet" type="text/css" href="PageFormatting.css">
 	</head>
 	<body>
-		<header>
+		<header id="navbar">
 			<a href="index.html"><img src="blockchaintmu (normal logo - no background).png" alt="Welcome!" style="float:left;width:400px;height:220px;"></a>
             <div class="dropdown">
                 <div class="dropdown-content">
@@ -23,7 +23,10 @@
 						<li><a href="FirstAccess.html"><b>FIRST/ACCESS</a></li></b>
 						<li><a href="Columns.html"><b>ARTICLES</a></li></b>
                     </ul>
-                </div>         
+                </div>
+				<div id="mySidenav" class="sidenav">
+					<a href="The Historical Token of Binance.html" id="video">WATCH VIDEO</a>
+				</div>         
         </header>
 		<br><br><br><br><br><br><br><br><br><br><br><br>
 				<h1> The Historical Token Of: </h1>
@@ -144,6 +147,33 @@
 				}
 				lastScrollTop = scrollTop;
 			})
+
+			let prevScrollPos = window.pageYOffset;
+
+    window.onscroll = function() {
+      let currentScrollPos = window.pageYOffset;
+
+      if (prevScrollPos > currentScrollPos) {
+        document.getElementById("navbar").classList.remove("hidden");
+      } else {
+        document.getElementById("navbar").classList.add("hidden");
+      }
+
+      prevScrollPos = currentScrollPos;
+    };
+
+    // JavaScript to bring back solidity on hover
+    const navbar = document.getElementById('navbar');
+
+    navbar.addEventListener('mouseenter', function() {
+      navbar.classList.remove('hidden');
+    });
+
+    navbar.addEventListener('mouseleave', function() {
+      if (window.scrollY === 0) {
+        navbar.classList.add('hidden');
+      }
+    });
 		</script>
 	</body>
 </html>

@@ -93,8 +93,13 @@ body
     transition: 0.6s;
     padding: 40px 100px;
     z-index: 100000;
-    border-bottom: 2px solid rgb(255, 51, 0); /* White border at the bottom of the header */
-    background-color: #ff0000; /* Light gray background for the header */
+    border-bottom: 2px solid rgb(0, 0, 0); /* White border at the bottom of the header */
+    opacity: 1;
+    transition: opacity 0.6s;
+  }
+
+  header.hidden {
+    opacity: 0;
   }
   
   header ul {
@@ -159,3 +164,4 @@ div.center {
     text-align: center;
     
 }
+

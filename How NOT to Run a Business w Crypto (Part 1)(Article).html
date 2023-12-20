@@ -10,6 +10,7 @@
  	 	gtag('js', new Date());
  	 	gtag('config', 'G-9J1B2MTYSV');
 	</script>
+  <title> Workshop #2 - Article </title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <style>
 
@@ -17,7 +18,7 @@
 </head>
 <body>
 
-  <header>
+  <header id="navbar">
     <a href="index.html"><img src="blockchaintmu (normal logo - no background).png" alt="Welcome!" style="float:left;width:400px;height:220px;"></a>
           <div class="dropdown">
               <div class="dropdown-content">
@@ -27,21 +28,13 @@
           <li><a href="FirstAccess.html"><b>FIRST/ACCESS</a></li></b>
           <li><a href="Columns.html"><b>ARTICLES</a></li></b>
                   </ul>
+              </div>
+              <div id="mySidenav" class="sidenav">
+                <a href="How NOT to Run a Business w Crypto (Part 1).html" id="video">WATCH VIDEO</a>
               </div>        
       </header>
 
 <br><br><br><br><br><br><br><br><br><br><br><br><br>
-
-<p>
-  Welcome to the <i>'Articles'</i> page learner! Here, carefully ordered by months,
-  you will find all of the articles we've posted linked to their corresponding
-  workshops. 
-  <br><br>
-  To help you better navigate the most options, all catalogs will appear by order 
-  of your selection, at which each of them will include the date of the articles
-  published, as well a button to access them. Have fun learner!
-  <br><br>
-</p>
 
 <div class="button">
   <center><button class="paragraph-button" onclick="myFunction(); this.onclick=myFunction">Paragraph Mode</button></center>
@@ -52,7 +45,7 @@
 
 <div class="container">
 <div id="myDIV">
-    <br><br><br><br><br><br><br><br><br><br><br><br>
+    <br>
 				<h1> How NOT to Run a Business w/ Crypto (Part 1) </h1>
 				<h3> Silicon Valley Bank </h3>
 				<br>
@@ -164,7 +157,10 @@
 <div class="container">
 <div id="myDIV1">
     <div class="article" id="article">
-        <!-- Add organized text about DogeCoin to paragraphs -->
+      <br>
+      <h1> How NOT to Run a Business w/ Crypto (Part 1) </h1>
+      <h3> Silicon Valley Bank </h3>
+      <br>
         <p>As topics in further workshops such as <span class="tooltip" data-definition="asset management within blockchain technology: The management and oversight of assets within blockchain networks." data-link="#">asset management within blockchain technology</span> will be covered, a major part of this subject revolves around finance which will be discussed and analyzed within this article. In the past few months, the interconnection between <span class="tooltip" data-definition="blockchain applications: Software applications that utilize blockchain technology for various purposes." data-link="#">blockchain applications</span> and the management of financial tools has been strictly solidified by the media in order to inform audiences about incidents that involve the mismanagement of personal finances lying between people with the use of cryptocurrency.</p>
         <p>Up until now, if you are still trying to understand the general concept behind <span class="tooltip" data-definition="cryptocurrencies: Digital currencies that rely on cryptography for security and operate on decentralized networks." data-link="#">cryptocurrencies</span>, they are essentially a digital currency “like” the Euro or the dollar that is strongly affected by demand led by discussions around its general nature through social media platforms as well as the level of investment an average person makes as a result from hearing this information.</p>
         <p>The main incident that took place in this example, is the bankruptcy of <span class="tooltip" data-definition="Silicon Valley Bank: A financial institution in Silicon Valley, which faced bankruptcy due to investments in cryptocurrencies." data-link="#">Silicon Valley Bank</span>, that reached its downfall alongside its clients due to an investment into management firms that organized the finances of people’s money for a potential rate of return through various cryptocurrencies also managed by them. When it comes monetary transactions that take place anywhere from a cup of coffee bought at a mall to a subscription plan for a streaming service, these are supported by an asset called ‘cash’, something that your average bank strongly includes into a balance sheet to ensure that abnormalities in spending by yourself can be noticed at any given point.</p>
@@ -393,7 +389,32 @@ document.addEventListener('DOMContentLoaded', function() {
     displayParagraph(currentSlide);
 });
 
+let prevScrollPos = window.pageYOffset;
 
+    window.onscroll = function() {
+      let currentScrollPos = window.pageYOffset;
+
+      if (prevScrollPos > currentScrollPos) {
+        document.getElementById("navbar").classList.remove("hidden");
+      } else {
+        document.getElementById("navbar").classList.add("hidden");
+      }
+
+      prevScrollPos = currentScrollPos;
+    };
+
+    // JavaScript to bring back solidity on hover
+    const navbar = document.getElementById('navbar');
+
+    navbar.addEventListener('mouseenter', function() {
+      navbar.classList.remove('hidden');
+    });
+
+    navbar.addEventListener('mouseleave', function() {
+      if (window.scrollY === 0) {
+        navbar.classList.add('hidden');
+      }
+    });
 
 
 </script>

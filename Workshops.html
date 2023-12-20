@@ -17,7 +17,7 @@
         <link rel="stylesheet" href="Workshops.css">
     </head>
     <body>
-        <header>
+        <header id="navbar">
         </div> 
         <div class="logo">
             <a href="index.html"><img src="blockchaintmu (normal logo - no background).png" alt="Welcome!" style="float:right;width:400px;height:220px;"></a>
@@ -127,6 +127,33 @@
 		max: 25,
 		speed: 400
 	});
+
+    let prevScrollPos = window.pageYOffset;
+
+    window.onscroll = function() {
+      let currentScrollPos = window.pageYOffset;
+
+      if (prevScrollPos > currentScrollPos) {
+        document.getElementById("navbar").classList.remove("hidden");
+      } else {
+        document.getElementById("navbar").classList.add("hidden");
+      }
+
+      prevScrollPos = currentScrollPos;
+    };
+
+    // JavaScript to bring back solidity on hover
+    const navbar = document.getElementById('navbar');
+
+    navbar.addEventListener('mouseenter', function() {
+      navbar.classList.remove('hidden');
+    });
+
+    navbar.addEventListener('mouseleave', function() {
+      if (window.scrollY === 0) {
+        navbar.classList.add('hidden');
+      }
+    });
         </script>
     </body>
 </html>

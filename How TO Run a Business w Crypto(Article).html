@@ -10,6 +10,7 @@
  	 	gtag('js', new Date());
  	 	gtag('config', 'G-9J1B2MTYSV');
 	</script>
+  <title> Workshop #12 - Article </title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <style>
 
@@ -17,7 +18,7 @@
 </head>
 <body>
 
-  <header>
+  <header id="navbar">
     <a href="index.html"><img src="blockchaintmu (normal logo - no background).png" alt="Welcome!" style="float:left;width:400px;height:220px;"></a>
           <div class="dropdown">
               <div class="dropdown-content">
@@ -27,21 +28,13 @@
           <li><a href="FirstAccess.html"><b>FIRST/ACCESS</a></li></b>
           <li><a href="Columns.html"><b>ARTICLES</a></li></b>
                   </ul>
-              </div>        
+              </div>
+              <div id="mySidenav" class="sidenav">
+                <a href="How TO Run a Business w Crypto.html" id="video">WATCH VIDEO</a>
+              </div>      
       </header>
 
 <br><br><br><br><br><br><br><br><br><br><br><br><br>
-
-<p>
-  Welcome to the <i>'Articles'</i> page learner! Here, carefully ordered by months,
-  you will find all of the articles we've posted linked to their corresponding
-  workshops. 
-  <br><br>
-  To help you better navigate the most options, all catalogs will appear by order 
-  of your selection, at which each of them will include the date of the articles
-  published, as well a button to access them. Have fun learner!
-  <br><br>
-</p>
 
 <div class="button">
   <center><button class="paragraph-button" onclick="myFunction(); this.onclick=myFunction">Paragraph Mode</button></center>
@@ -52,7 +45,7 @@
 
 <div class="container">
 <div id="myDIV">
-    <br><br><br><br><br><br><br><br><br><br><br><br>
+    <br>
 				<h1> How TO Run a Business w/ Crypto </h1>
 				<h3> Capital Management </h3>
 				<br>
@@ -210,7 +203,10 @@
 <div class="container">
 <div id="myDIV1">
     <div class="article" id="article">
-        <!-- Add organized text about DogeCoin to paragraphs -->
+      <br>
+      <h1> How TO Run a Business w/ Crypto </h1>
+      <h3> Capital Management </h3>
+      <br>
         <p>
             Up until this very point, the various articles we’ve written were meant to signify a significant development in how <span class="tooltip" data-definition="Blockchain technology: A decentralized system that records transactions across multiple computers." data-videos="Video1, Video2, Video3">blockchain technology</span> interacts with the real-world, on a fundamental level. From diverse applications merging with physical hardware in order to develop an everlasting way for people to manage their finances, we’ve also learned thus far that the teams taking place in making this happen are looking to arrive towards an agenda with a different future of the merging technologies that will only advance through blockchain technology.
         </p>
@@ -403,6 +399,32 @@ document.addEventListener('DOMContentLoaded', function() {
     displayParagraph(currentSlide);
 });
 
+let prevScrollPos = window.pageYOffset;
+
+    window.onscroll = function() {
+      let currentScrollPos = window.pageYOffset;
+
+      if (prevScrollPos > currentScrollPos) {
+        document.getElementById("navbar").classList.remove("hidden");
+      } else {
+        document.getElementById("navbar").classList.add("hidden");
+      }
+
+      prevScrollPos = currentScrollPos;
+    };
+
+    // JavaScript to bring back solidity on hover
+    const navbar = document.getElementById('navbar');
+
+    navbar.addEventListener('mouseenter', function() {
+      navbar.classList.remove('hidden');
+    });
+
+    navbar.addEventListener('mouseleave', function() {
+      if (window.scrollY === 0) {
+        navbar.classList.add('hidden');
+      }
+    });
 
 
 

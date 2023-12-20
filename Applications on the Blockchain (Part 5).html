@@ -9,11 +9,11 @@
   gtag('js', new Date());
   gtag('config', 'G-9J1B2MTYSV');
 </script>
-		<title> Workshop #11 </title>
+		<title> Workshop #11 - Video </title>
 		<link rel="stylesheet" type="text/css" href="PageFormatting.css">
 	</head>
 	<body>
-		<header>
+		<header id="navbar">
             <a href="index.html" class="logo">blockchainuni</a>
             <div class="dropdown">
                 <div class="dropdown-content">
@@ -50,6 +50,33 @@
 				}
 				lastScrollTop = scrollTop;
 			})
+
+			let prevScrollPos = window.pageYOffset;
+
+    window.onscroll = function() {
+      let currentScrollPos = window.pageYOffset;
+
+      if (prevScrollPos > currentScrollPos) {
+        document.getElementById("navbar").classList.remove("hidden");
+      } else {
+        document.getElementById("navbar").classList.add("hidden");
+      }
+
+      prevScrollPos = currentScrollPos;
+    };
+
+    // JavaScript to bring back solidity on hover
+    const navbar = document.getElementById('navbar');
+
+    navbar.addEventListener('mouseenter', function() {
+      navbar.classList.remove('hidden');
+    });
+
+    navbar.addEventListener('mouseleave', function() {
+      if (window.scrollY === 0) {
+        navbar.classList.add('hidden');
+      }
+    });
 		</script>
 	</body>
 </html>

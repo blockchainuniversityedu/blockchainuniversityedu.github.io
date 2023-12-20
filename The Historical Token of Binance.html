@@ -13,7 +13,7 @@
 		<link rel="stylesheet" type="text/css" href="PageFormatting.css">
 	</head>
 	<body>
-		<header>
+		<header id="navbar">
 			<a href="index.html"><img src="blockchaintmu (normal logo - no background).png" alt="Welcome!" style="float:left;width:400px;height:220px;"></a>
             <div class="dropdown">
                 <div class="dropdown-content">
@@ -29,9 +29,11 @@
 				</div>
         </header>
 		<br><br><br><br><br><br><br><br><br><br><br><br>
+				<center><h3> Disclaimer: Due to recent events regarding Binance, a lot of the content covered in this series is in the past-tense, hence making it outdated. </h3></center>
 				<h1> The Historical Token Of: </h1>
 				<h3> Binance </h3>
 				<center>
+					
 					<h2> Video Explanation </h2>
 					<br><br>
 					<iframe width="1280" height="720" src="https://www.youtube.com/embed/anK9DBUUyF0?si=om8L7fiCEmuLyhqo" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>				<br><br><br>
@@ -48,6 +50,33 @@
 				}
 				lastScrollTop = scrollTop;
 			})
+
+			let prevScrollPos = window.pageYOffset;
+
+    window.onscroll = function() {
+      let currentScrollPos = window.pageYOffset;
+
+      if (prevScrollPos > currentScrollPos) {
+        document.getElementById("navbar").classList.remove("hidden");
+      } else {
+        document.getElementById("navbar").classList.add("hidden");
+      }
+
+      prevScrollPos = currentScrollPos;
+    };
+
+    // JavaScript to bring back solidity on hover
+    const navbar = document.getElementById('navbar');
+
+    navbar.addEventListener('mouseenter', function() {
+      navbar.classList.remove('hidden');
+    });
+
+    navbar.addEventListener('mouseleave', function() {
+      if (window.scrollY === 0) {
+        navbar.classList.add('hidden');
+      }
+    });
 		</script>
 	</body>
 </html>

@@ -10,14 +10,16 @@
  	 	gtag('js', new Date());
  	 	gtag('config', 'G-9J1B2MTYSV');
 	</script>
+  <title> Columns </title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<style>
-
-</style>
+  <style>
+    /* Add some basic styling */
+    
+  </style>
 </head>
 <body>
 
-  <header>
+  <header id="navbar">
     <a href="index.html"><img src="blockchaintmu (normal logo - no background).png" alt="Welcome!" style="float:left;width:400px;height:220px;"></a>
           <div class="dropdown">
               <div class="dropdown-content">
@@ -27,414 +29,278 @@
           <li><a href="FirstAccess.html"><b>FIRST/ACCESS</a></li></b>
           <li><a href="Columns.html"><b>ARTICLES</a></li></b>
                   </ul>
-              </div>        
+              </div>      
       </header>
+      <br><br><br><br><br><br><br>
+      
 
-<br><br><br><br><br><br><br><br><br><br><br><br><br>
-
-<p>
-  Welcome to the <i>'Articles'</i> page learner! Here, carefully ordered by months,
-  you will find all of the articles we've posted linked to their corresponding
-  workshops. 
-  <br><br>
-  To help you better navigate the most options, all catalogs will appear by order 
-  of your selection, at which each of them will include the date of the articles
-  published, as well a button to access them. Have fun learner!
-  <br><br>
-  <b>(Just as a quick side-note, to make a catalog appear under a specific
-  month of your choosing, please double-click the button, and click
-  once to make it disappear.)</b>
-</p>
-
-<div class = "button">
-<button onclick="myFunction(); this.onclick=myFunction">January</button>
-<button onclick="myFunction2(); this.onclick=myFunction2">February</button>
-<button onclick="myFunction3(); this.onclick=myFunction3">March</button>
-<button onclick="myFunction4(); this.onclick=myFunction4">April</button>
-<button onclick="myFunction5(); this.onclick=myFunction5">May</button>
-<button onclick="myFunction6(); this.onclick=myFunction6">June</button>
-<button onclick="myFunction7(); this.onclick=myFunction7">July</button>
-<button onclick="myFunction8(); this.onclick=myFunction8">August</button>
-<button onclick="myFunction9(); this.onclick=myFunction9">September</button>
-<button onclick="myFunction10(); this.onclick=myFunction10">October</button>
-<button onclick="myFunction11(); this.onclick=myFunction10">November</button>
-<button onclick="myFunction12(); this.onclick=myFunction10">December</button>
-</div>
-<br>
-
-<div class="container">
-<div id="myDIV">
-Nothing here just yet.
+<div id="months">
+  <button onclick="toggleButton('January')" id="JanuaryBtn">January</button>
+  <button onclick="toggleButton('February')" id="FebruaryBtn">February</button>
+  <button onclick="toggleButton('March')" id="MarchBtn">March</button>
+  <button onclick="toggleButton('April')" id="AprilBtn">April</button>
+  <button onclick="toggleButton('May')" id="MayBtn">May</button>
+  <button onclick="toggleButton('June')" id="JuneBtn">June</button>
+  <button onclick="toggleButton('July')" id="JulyBtn">July</button>
+  <button onclick="toggleButton('August')" id="AugustBtn">August</button>
+  <button onclick="toggleButton('September')" id="SeptemberBtn">September</button>
+  <button onclick="toggleButton('October')" id="OctoberBtn">October</button>
+  <button onclick="toggleButton('November')" id="NovemberBtn">November</button>
+  <button onclick="toggleButton('December')" id="DecemberBtn">December</button>
 </div>
 
-<div class="container">
-<div id="myDIV2">
-Nothing here just yet.
+<div id="January" class="article-list">
+  <ul>
+    <li>
+      <span>2024</span>
+    </li>
+    <li>
+      <span>Coming soon.</span>
+    </li> 
+  </ul>
 </div>
 
-<div class="container">
-<div id="myDIV3">
-Nothing here just yet.
-</div>
+<div id="February" class="article-list">
+    <ul>
+      <li>
+        <span>2024</span>
+      </li>
+      <li>
+        <span>Coming soon.</span>
+    </li> 
+    </ul>
+  </div>
 
-<div class="container">
-<div id="myDIV4">
-Nothing here just yet.
-</div>
+  <div id="March" class="article-list">
+    <ul>
+      <li>
+        <span>2024</span>
+      </li>
+      <li>
+        <span>Coming soon.</span>
+    </li> 
+    </ul>
+  </div>
 
-<div class="container">
-<div id="myDIV5">
-<h1> April </h1>
-<h2> 2023 </h2>
-<hr>
-<br>
-<h1>A Digital World of Blockchain</h1>
-<h2> Date Written: April 18th, 2023 </h2>
-<div class="container">
-  <div class="vertical-center">
-    <button><a href="Applications on the Blockchain (Part 1)(Article).html"><b>ACCESS HERE</button></a></b>
+<div id="April" class="article-list">
+    <ul>
+      <li>
+        <span>2023</span>
+      </li>
+      <li>
+        <span>A Digital World of Blockchain (Date Written: April 18th, 2023)</span>
+        <button onclick="accessArticle()"><a href="Applications on the Blockchain (Part 1)(Article).html">Access</button></a>
+      </li>
+      <li>
+        <span>How NOT to Run a Business w Crypto (Part 1) (Date Written: April 25th, 2023)</span>
+        <button onclick="accessArticle()"><a href="How NOT to Run a Business w Crypto (Part 1)(Article).html">Access</button></a>
+      </li>
+    </ul>
   </div>
-  <br><br>
-  <hr style="width:100%;text-align:left;margin-left:0">
-</div>
-<h1>How NOT to Run a Business w Crypto (Part 1)</h1>
-<h2> Date Written: April 25th, 2023 </h2>
-<div class="container">
-  <div class="vertical-center">
-    <button><a href="How NOT to Run a Business w Crypto (Part 1)(Article).html"><b>ACCESS HERE</button></a></b>
-  </div>
-  <br><br>
-  <hr style="width:100%;text-align:left;margin-left:0">
-</div>
-</div>
 
-<div class="container">
-<div id="myDIV6">
-<h1> May </h1>
-<h2> 2023 </h2>
-<hr>
-<br>
-<h1>How to Make Use of a Blockchain Wallet</h1>
-<h2> Date Written: May 2nd, 2023 </h2>
-<div class="container">
-  <div class="vertical-center">
-    <button><a href="How to Make Use of a Blockchain Wallet(Article).html"><b>ACCESS HERE</button></a></b>
+  <div id="May" class="article-list">
+    <ul>
+      <li>
+        <span>2023</span>
+      </li>
+      <li>
+        <span>How to Make Use of a Blockchain Wallet (Date Written: May 2nd, 2023)</span>
+        <button onclick="accessArticle()"><a href="How to Make Use of a Blockchain Wallet(Article).html">Access</button></a>
+      </li>
+      <li>
+        <span>The Difference of Eras (Web 2.0 & Web 3.0) (Date Written: May 9th, 2023)</span>
+        <button onclick="accessArticle()"><a href="Web 2.0 & Web 3.0(Article).html">Access</button></a>
+      </li>
+      <li>
+        <span>Applications on The Blockchain (Part 2) (Date Written: May 16th, 2023)</span>
+        <button onclick="accessArticle()"><a href="Applications on The Blockchain (Part 2)(Article).html">Access</button></a>
+      </li>
+      <li>
+        <span>Cybersecurity On The Blockchain (Date Written: May 23rd, 2023)</span>
+        <button onclick="accessArticle()"><a href="Cybersecurity & The Vulnerabiliites of Blockchain Technology(Article).html">Access</button></a>
+      </li>
+      <li>
+        <span>Applications On The Blockchain (Part 3) (Date Written: May 30th 2023)</span>
+        <button onclick="accessArticle()"><a href="Applications on The Blockchain (Part 3)(Article).html">Access</button></a>
+      </li>      
+    </ul>
   </div>
-  <br><br>
-  <hr style="width:100%;text-align:left;margin-left:0">
-</div>
-<h1>The Difference of Eras (Web 2.0 & Web 3.0)</h1>
-<h2> Date Written: May 9th, 2023 </h2>
-<div class="container">
-  <div class="vertical-center">
-    <button><a href="Web 2.0 & Web 3.0(Article).html"><b>ACCESS HERE</button></a></b>
-  </div>
-  <br><br>
-  <hr style="width:100%;text-align:left;margin-left:0">
-</div>
-<h1>Applications on The Blockchain (Part 2)</h1>
-<h2> Date Written: May 16th, 2023 </h2>
-<div class="container">
-  <div class="vertical-center">
-    <button><a href="Applications on The Blockchain (Part 2)(Article).html"><b>ACCESS HERE</button></a></b>
-  </div>
-  <br><br>
-  <hr style="width:100%;text-align:left;margin-left:0">
-</div>
-<h1>Cybersecurity On The Blockchain</h1>
-<h2> Date Written: May 23rd, 2023 </h2>
-<div class="container">
-  <div class="vertical-center">
-    <button><a href="Cybersecurity & The Vulnerabiliites of Blockchain Technology(Article).html"><b>ACCESS HERE</button></a></b>
-  </div>
-  <br><br>
-  <hr style="width:100%;text-align:left;margin-left:0">
-</div>
-<h1>Applications On The Blockchain (Part 3)</h1>
-<h2> Date Written: May 30th 2023 </h2>
-<div class="container">
-  <div class="vertical-center">
-    <button><a href="Applications on The Blockchain (Part 3)(Article).html"><b>ACCESS HERE</button></a></b>
-  </div>
-  <br><br>
-  <hr style="width:100%;text-align:left;margin-left:0">
-</div>
-</div>
 
-<div class="container">
-<div id="myDIV7">
-<h1> June </h1>
-<h2> 2023 </h2>
-<hr>
-<br>
-<h1>How <b>NOT</b> To Run A Business w Crypto (Part 2)</h1>
-<h2> Date Written: June 6th, 2023 </h2>
-<div class="container">
-  <div class="vertical-center">
-    <button><a href="How NOT to Run a Business w Crypto (Part 2)(Article).html"><b>ACCESS HERE</button></a></b>
+  <div id="June" class="article-list">
+    <ul>
+      <li>
+        <span>2023</span>
+      </li>
+      <li>
+        <span>How <b>NOT</b> To Run A Business w Crypto (Part 2) (Date Written: June 6th, 2023)</span>
+        <button onclick="accessArticle()"><a href="How NOT to Run a Business w Crypto (Part 2)(Article).html">Access</button></a>
+      </li>
+      <li>
+        <span>Applications on The Blockchain (Part 4) (Date Written: June 20th, 2023)</span>
+        <button onclick="accessArticle()"><a href="Applications on the Blockchain (Part 4)(Article).html">Access</button></a>
+      </li>
+      <li>
+        <span>How NOT To Run a Business w Crypto (Part 3) (Date Written: June 27th, 2023)</span>
+        <button onclick="accessArticle()"><a href="How NOT to Run a Business w Crypto (Part 3)(Article).html">Access</button></a>
+      </li>    
+    </ul>
   </div>
-  <br><br>
-  <hr style="width:100%;text-align:left;margin-left:0">
-</div>
-<h1>Applications on The Blockchain (Part 4)</h1>
-<h2> Date Written: June 20th, 2023 </h2>
-<div class="container">
-  <div class="vertical-center">
-    <button><a href="Applications on the Blockchain (Part 4)(Article).html"><b>ACCESS HERE</button></a></b>
-  </div>
-  <br><br>
-  <hr style="width:100%;text-align:left;margin-left:0">
-</div>
-<h1>How NOT To Run a Business w Crypto (Part 3)</h1>
-<h2> Date Written: June 27th, 2023 </h2>
-<div class="container">
-  <div class="vertical-center">
-    <button><a href="How NOT to Run a Business w Crypto (Part 3)(Article).html"><b>ACCESS HERE</button></a></b>
-  </div>
-  <br><br>
-  <hr style="width:100%;text-align:left;margin-left:0">
-</div>
-</div>
 
-<div class="container">
-<div id="myDIV8">
-<h1> July </h1>
-<h2> 2023 </h2>
-<hr>
-<br>
-<h1>Applications on the Blockchain (Part 5)</h1>
-<h2> Date Written: July 4th, 2023 </h2>
-<div class="container">
-  <div class="vertical-center">
-    <button><a href="Applications on the Blockchain (Part 5)(Article).html"><b>ACCESS HERE</button></a></b>
+  <div id="July" class="article-list">
+    <ul>
+      <li>
+        <span>2023</span>
+      </li>
+      <li>
+        <span>Applications on the Blockchain (Part 5) (Date Written: July 4th, 2023)</span>
+        <button onclick="accessArticle()"><a href="Applications on the Blockchain (Part 5)(Article).html">Access</button></a>
+      </li>
+      <li>
+        <span>How TO Run A Business w Crypto (Date Written: July 11th, 2023)</span>
+        <button onclick="accessArticle()"><a href="How TO Run a Business w Crypto(Article).html">Access</button></a>
+      </li> 
+    </ul>
   </div>
-  <br><br>
-  <hr style="width:100%;text-align:left;margin-left:0">
-</div>
-<h1>How TO Run A Business w Crypto</h1>
-<h2> Date Written: July 11th, 2023 </h2>
-<div class="container">
-  <div class="vertical-center">
-    <button><a href="How TO Run a Business w Crypto(Article).html"><b>ACCESS HERE</button></a></b>
-  </div>
-  <br><br>
-  <hr style="width:100%;text-align:left;margin-left:0">
-</div>
-</div>
 
-<div class="container">
-<div id="myDIV9">
-  Nothing here just yet.
-</div>
+  <div id="August" class="article-list">
+    <ul>
+      <li>
+        <span>2023</span>
+      </li>
+      <li>
+        <span>Nothing here, yet.</span>
+      </li> 
+    </ul>
+  </div>
 
-<div class="container">
-<div id="myDIV10">
-<h1> September </h1>
-<h2> 2023 </h2>
-<hr>
-<br>
-<h1>Who Is Satoshi Nakamoto?</h1>
-<h2> Date Written: September 16th, 2023 </h2>
-<div class="container">
-  <div class="vertical-center">
-    <button><a href="Who Is Satoshi Nakamoto(Article).html"><b>ACCESS HERE</button></a></b>
+  <div id="September" class="article-list">
+    <ul>
+      <li>
+        <span>2023</span>
+      </li>
+      <li>
+        <span>Who Is Satoshi Nakamoto? (Date Written: September 16th, 2023)</span>
+        <button onclick="accessArticle()"><a href="Who Is Satoshi Nakamoto(Article).html">Access</button></a>
+      </li>
+      <li>
+        <span>The History of ETH (Date Written: September 29th, 2023)</span>
+        <button onclick="accessArticle()"><a href="The Historical Token of ETH(Article).html">Access</button></a>
+      </li>
+    </ul>
   </div>
-  <br><br>
-  <hr style="width:100%;text-align:left;margin-left:0">
-</div>
-<h1>The History of ETH</h1>
-<h2> Date Written: September 29th, 2023 </h2>
-<div class="container">
-  <div class="vertical-center">
-    <button><a href="The Historical Token of ETH(Article).html"><b>ACCESS HERE</button></a></b>
-  </div>
-  <br><br>
-  <hr style="width:100%;text-align:left;margin-left:0">
-</div>
-</div>
 
-<div class="container">
-<div id="myDIV11">
-  <h1> October </h1>
-  <h2> 2023 </h2>
-  <hr>
-  <br>
-  <h1>The Incredible Technology of Crypto Mining</h1>
-  <h2> Date Written: October 4th, 2023 </h2>
-  <div class="container">
-    <div class="vertical-center">
-      <button><a href="The Incredible Technology of Crypto Mining (Article).html"><b>ACCESS HERE</button></a></b>
-    </div>
-    <br><br>
-    <hr style="width:100%;text-align:left;margin-left:0">
-  <hr>
-  <br>
-  <h1>Cyber Crimes, That Were Solved</h1>
-  <h2> Date Written: October 17th, 2023 </h2>
-  <div class="container">
-    <div class="vertical-center">
-      <button><a href="Cyber Crimes, Solved (Article).html"><b>ACCESS HERE</button></a></b>
-    </div>
-    <br><br>
-    <hr style="width:100%;text-align:left;margin-left:0">
-  <hr>
-  <br>
-  <h1>The History of Binance</h1>
-  <h2> Date Written: October 24th, 2023 </h2>
-  <div class="container">
-    <div class="vertical-center">
-      <button><a href="The History of Binance.html"><b>ACCESS HERE</button></a></b>
-    </div>
-    <br><br>
-    <hr style="width:100%;text-align:left;margin-left:0">
-    <hr>
-    <br>
-    <h1>Video Games On The Blockchain: The GameFi Scene, Explained.</h1>
-    <h2> Date Written: October 31st, 2023 </h2>
-    <div class="container">
-      <div class="vertical-center">
-        <button><a href="The GameFi Scene, Explained (Article).html"><b>ACCESS HERE</button></a></b>
-      </div>
-      <br><br>
-      <hr style="width:100%;text-align:left;margin-left:0">
-    <hr>
-    <br>
+  <div id="October" class="article-list">
+    <ul>
+      <li>
+        <span>2023</span>
+      </li>
+      <li>
+        <span>The Incredible Technology of Crypto Mining (Date Written: October 4th, 2023)</span>
+        <button onclick="accessArticle()"><a href="Who Is Satoshi Nakamoto(Article).html">Access</button></a>
+      </li>
+      <li>
+        <span>Cyber Crimes, That Were Solved (Date Written: October 17th, 2023)</span>
+        <button onclick="accessArticle()"><a href="The Historical Token of ETH(Article).html">Access</button></a>
+      </li>
+      <li>
+        <span>The History of Binance (Date Written: October 24th, 2023)</span>
+        <button onclick="accessArticle()"><a href="The Historical Token of ETH(Article).html">Access</button></a>
+      </li>
+      <li>
+        <span>Video Games On The Blockchain: The GameFi Scene, Explained. (Date Written: October 31st, 2023)</span>
+        <button onclick="accessArticle()"><a href="The Historical Token of ETH(Article).html">Access</button></a>
+      </li>
+    </ul>
   </div>
+
+  <div id="November" class="article-list">
+    <!-- Articles for January -->
+    <ul>
+      <li>
+        <span>2023</span>
+      </li>
+      <li>
+        <span>DogeCoin's Unintentional Success (Date Written: November 9th, 2023)</span>
+        <button onclick="accessArticle()"><a href="The Unintentional Success of DogeCoin (Article).html">Access</button></a>
+      </li> 
+    </ul>
+  </div>
+
+  <div id="December" class="article-list">
+    <!-- Articles for January -->
+    <ul>
+      <li>
+        <span>2024</span>
+      </li>
+      <li>
+        <span>Coming soon.</span>
+      </li> 
+    </ul>
   </div>
 
 <script>
+  function toggleButton(month) {
+    var button = document.getElementById(month + 'Btn');
+    var articleList = document.getElementById(month);
 
-function myFunction() {
-  var div = document.getElementById("myDIV");
-  var div1 = document.getElementById("myDIV2");
-  if (div.style.display === "none") {
-    div.style.display = "block";
-  } else {
-    div.style.display = "none";
-  }
-  if (div1.style.display === "none") {
-    div1.style.display = "none";
-  } else {
-    div1.style.display = "none";
-  }
-}
+    // Reset styles for all buttons
+    var buttons = document.querySelectorAll('#months button');
+    buttons.forEach(function(btn) {
+      btn.classList.remove('clicked');
+      btn.style.backgroundColor = 'white';
+      btn.style.color = 'black';
+    });
 
-function myFunction1() {
-  var div = document.getElementById("myDIV");
-  var div1 = document.getElementById("myDIV2");
-  if (div.style.display === "none") {
-    div.style.display = "none";
-  } else {
-    div.style.display = "none";
-  }
-  if (div1.style.display === "none") {
-    div1.style.display = "block";
-  } else {
-    div1.style.display = "none";
-  }
-}
+    // Apply clicked styles
+    button.classList.add('clicked');
+    button.style.backgroundColor = 'black';
+    button.style.color = 'white';
 
-function myFunction2() {
-  var x = document.getElementById("myDIV3");
-  if (x.style.display === "none") {
-    x.style.display = "block";
-  } else {
-    x.style.display = "none";
-  }
-}
+    // Hide all other article lists
+    var articleLists = document.getElementsByClassName('article-list');
+    for (var i = 0; i < articleLists.length; i++) {
+      articleLists[i].style.display = 'none';
+    }
 
-function myFunction3() {
-  var x = document.getElementById("myDIV4");
-  if (x.style.display === "none") {
-    x.style.display = "block";
-  } else {
-    x.style.display = "none";
+    // Show the selected month's articles
+    if (articleList) {
+      articleList.style.display = 'block';
+    }
   }
-}
 
-function myFunction4() {
-  var x = document.getElementById("myDIV5");
-  if (x.style.display === "none") {
-    x.style.display = "block";
-  } else {
-    x.style.display = "none";
+  function accessArticle() {
+    // Add functionality to access the article
+    // This function can be expanded to handle article access
+    alert("Directing you to the article, press OK.");
   }
-}
 
-function myFunction5() {
-  var x = document.getElementById("myDIV6");
-  if (x.style.display === "none") {
-    x.style.display = "block";
-  } else {
-    x.style.display = "none";
-  }
-}
+  let prevScrollPos = window.pageYOffset;
 
-function myFunction6() {
-  var x = document.getElementById("myDIV7");
-  if (x.style.display === "none") {
-    x.style.display = "block";
-  } else {
-    x.style.display = "none";
-  }
-}
+    window.onscroll = function() {
+      let currentScrollPos = window.pageYOffset;
 
-function myFunction7() {
-  var x = document.getElementById("myDIV8");
-  if (x.style.display === "none") {
-    x.style.display = "block";
-  } else {
-    x.style.display = "none";
-  }
-}
+      if (prevScrollPos > currentScrollPos) {
+        document.getElementById("navbar").classList.remove("hidden");
+      } else {
+        document.getElementById("navbar").classList.add("hidden");
+      }
 
-function myFunction8() {
-  var x = document.getElementById("myDIV9");
-  if (x.style.display === "none") {
-    x.style.display = "block";
-  } else {
-    x.style.display = "none";
-  }
-}
+      prevScrollPos = currentScrollPos;
+    };
 
-function myFunction9() {
-  var x = document.getElementById("myDIV10");
-  if (x.style.display === "none") {
-    x.style.display = "block";
-  } else {
-    x.style.display = "none";
-  }
-}
+    // JavaScript to bring back solidity on hover
+    const navbar = document.getElementById('navbar');
 
-function myFunction10() {
-  var x = document.getElementById("myDIV11");
-  if (x.style.display === "none") {
-    x.style.display = "block";
-  } else {
-    x.style.display = "none";
-  }
-}
+    navbar.addEventListener('mouseenter', function() {
+      navbar.classList.remove('hidden');
+    });
 
-function myFunction11() {
-  var x = document.getElementById("myDIV12");
-  if (x.style.display === "none") {
-    x.style.display = "block";
-  } else {
-    x.style.display = "none";
-  }
-}
-
-function myFunction12() {
-  var x = document.getElementById("myDIV13");
-  if (x.style.display === "none") {
-    x.style.display = "block";
-  } else {
-    x.style.display = "none";
-  }
-}
-
+    navbar.addEventListener('mouseleave', function() {
+      if (window.scrollY === 0) {
+        navbar.classList.add('hidden');
+      }
+    });
 </script>
 
 </body>
 </html>
-

@@ -88,8 +88,13 @@ header {
   transition: 0.6s;
   padding: 40px 100px;
   z-index: 100000;
-  border-bottom: 2px solid rgb(255, 51, 0); /* White border at the bottom of the header */
-  background-color: #ff0000; /* Light gray background for the header */
+  border-bottom: 2px solid rgb(0, 0, 0); /* White border at the bottom of the header */
+  opacity: 1;
+  transition: opacity 0.6s;
+}
+
+header.hidden {
+  opacity: 0;
 }
 
 header ul {
@@ -143,7 +148,7 @@ h2 {
 h3 {
   text-align: center;
   font-family: 'Poppins'; 
-  color: rgb(252, 252, 252);
+  color: rgb(0, 89, 255);
   min-height: 10vh;
 }
 
@@ -299,3 +304,33 @@ div.center {
     cursor: pointer;
 }
 
+#mySidenav a {
+  position: absolute;
+  left: -80px;
+  transition: 0.3s;
+  padding: 15px;
+  width: 150px;
+  text-decoration: none;
+  font-size: 20px;
+  color: white;
+  border-radius: 0 5px 5px 0;
+}
+
+#mySidenav a:hover {
+  left: 0;
+}
+
+#about {
+  top: 700px;
+  background-color: #000000;
+}
+
+#bonus {
+  top: 600px;
+  background-color: #000000;
+}
+
+#video {
+  top: 500px;
+  background-color: #000000;
+}

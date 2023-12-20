@@ -10,6 +10,7 @@
  	 	gtag('js', new Date());
  	 	gtag('config', 'G-9J1B2MTYSV');
 	</script>
+    <title> Workshop #16 - Article </title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <style>
 
@@ -17,7 +18,7 @@
 </head>
 <body>
 
-  <header>
+  <header id="navbar">
     <a href="index.html"><img src="blockchaintmu (normal logo - no background).png" alt="Welcome!" style="float:left;width:400px;height:220px;"></a>
           <div class="dropdown">
               <div class="dropdown-content">
@@ -27,21 +28,16 @@
           <li><a href="FirstAccess.html"><b>FIRST/ACCESS</a></li></b>
           <li><a href="Columns.html"><b>ARTICLES</a></li></b>
                   </ul>
-              </div>        
+              </div>
+              <div id="mySidenav" class="sidenav">
+                <a href="How Crypto Mining Works (Video Workshop).html" id="video">WATCH VIDEO</a>
+            </div>
+            <div id="mySidenav" class="sidenav">
+                <a href="How Crypto Mining Works (Bonus Comicbook).html" id="bonus">BONUS CONTENT</a>
+            </div>        
       </header>
 
 <br><br><br><br><br><br><br><br><br><br><br><br><br>
-
-<p>
-  Welcome to the <i>'Articles'</i> page learner! Here, carefully ordered by months,
-  you will find all of the articles we've posted linked to their corresponding
-  workshops. 
-  <br><br>
-  To help you better navigate the most options, all catalogs will appear by order 
-  of your selection, at which each of them will include the date of the articles
-  published, as well a button to access them. Have fun learner!
-  <br><br>
-</p>
 
 <div class="button">
   <center><button class="paragraph-button" onclick="myFunction(); this.onclick=myFunction">Paragraph Mode</button></center>
@@ -52,10 +48,10 @@
 
 <div class="container">
 <div id="myDIV">
-    <br><br><br><br><br><br><br><br><br><br><br><br>
+    <br>
     <h1> The Incredible History Of: </h1>
     <h3> Cryptocurrency Mining </h3>
-    </center>
+    <br>
       <p>
         <br><br><br>
         The meticulous insertion of cryptocurrency mining had already evolved into something 
@@ -203,9 +199,10 @@
 <div class="container">
 <div id="myDIV1">
     <div class="article" id="article">
-        <!-- Add organized text about DogeCoin to paragraphs -->
+        <br>
         <h1> The Incredible History Of: </h1>
 		<h3> Cryptocurrency Mining </h3>
+        <br>
         <p>
             The meticulous insertion of <span class="tooltip" data-definition="Cryptocurrency mining: The process of validating transactions and adding them to the blockchain." data-videos="Video1, Video2, Video3">cryptocurrency mining</span> had already evolved into something revolutionary by the time Satoshi Nakamoto had developed the network under a sophisticated combination of mathematical algorithms, therefore creating an economy on not just only owners in a stake of cryptocurrency, but also gaining an influence of people who were willing to go above and beyond that.
         </p>
@@ -427,7 +424,32 @@ document.addEventListener('DOMContentLoaded', function() {
     displayParagraph(currentSlide);
 });
 
+let prevScrollPos = window.pageYOffset;
 
+    window.onscroll = function() {
+      let currentScrollPos = window.pageYOffset;
+
+      if (prevScrollPos > currentScrollPos) {
+        document.getElementById("navbar").classList.remove("hidden");
+      } else {
+        document.getElementById("navbar").classList.add("hidden");
+      }
+
+      prevScrollPos = currentScrollPos;
+    };
+
+    // JavaScript to bring back solidity on hover
+    const navbar = document.getElementById('navbar');
+
+    navbar.addEventListener('mouseenter', function() {
+      navbar.classList.remove('hidden');
+    });
+
+    navbar.addEventListener('mouseleave', function() {
+      if (window.scrollY === 0) {
+        navbar.classList.add('hidden');
+      }
+    });
 
 
 </script>

@@ -10,6 +10,7 @@
  	 	gtag('js', new Date());
  	 	gtag('config', 'G-9J1B2MTYSV');
 	</script>
+  		<title> Workshop #10 - Article </title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <style>
 
@@ -17,7 +18,7 @@
 </head>
 <body>
 
-  <header>
+  <header id="navbar">
     <a href="index.html"><img src="blockchaintmu (normal logo - no background).png" alt="Welcome!" style="float:left;width:400px;height:220px;"></a>
           <div class="dropdown">
               <div class="dropdown-content">
@@ -27,21 +28,13 @@
           <li><a href="FirstAccess.html"><b>FIRST/ACCESS</a></li></b>
           <li><a href="Columns.html"><b>ARTICLES</a></li></b>
                   </ul>
+              </div>
+              <div id="mySidenav" class="sidenav">
+                <a href="How NOT to Run a Business w Crypto (Part 3).html" id="video">WATCH VIDEO</a>
               </div>        
       </header>
 
 <br><br><br><br><br><br><br><br><br><br><br><br><br>
-
-<p>
-  Welcome to the <i>'Articles'</i> page learner! Here, carefully ordered by months,
-  you will find all of the articles we've posted linked to their corresponding
-  workshops. 
-  <br><br>
-  To help you better navigate the most options, all catalogs will appear by order 
-  of your selection, at which each of them will include the date of the articles
-  published, as well a button to access them. Have fun learner!
-  <br><br>
-</p>
 
 <div class="button">
   <center><button class="paragraph-button" onclick="myFunction(); this.onclick=myFunction">Paragraph Mode</button></center>
@@ -49,10 +42,9 @@
 </div>
 <br>
 
-
 <div class="container">
 <div id="myDIV">
-    <br><br><br><br><br><br><br><br><br><br><br><br>
+    <br>
 				<h1> How NOT to Run a Business w/ Crypto (Part 3) </h1>
 				<h3> The FTX Incident </h3>
 				<br>
@@ -185,7 +177,10 @@
 <div class="container">
 <div id="myDIV1">
     <div class="article" id="article">
-        <!-- Add organized text about DogeCoin to paragraphs -->
+      <br>
+      <h1> How NOT to Run a Business w/ Crypto (Part 3) </h1>
+      <h3> The FTX Incident </h3>
+      <br>
         <p>
             Although this topic is not new, it remains to reach the <span class="tooltip" data-definition="pinnacle: Highest point or peak." data-videos="Video1, Video2, Video3">pinnacle</span> of <span class="tooltip" data-definition="Blockchain technologies: Decentralized digital ledger systems." data-videos="Video1, Video2, Video3">blockchain technologies</span> granular media attention, especially regarding the coverage of how companies react to each other and to the <span class="tooltip" data-definition="Digital economy: Economic activities based on digital technologies." data-videos="Video1, Video2, Video3">digital economy</span> they relied on. As we have gone over the subject of <span class="tooltip" data-definition="FTX: Cryptocurrency exchange platform." data-videos="Video1, Video2, Video3">FTX</span> in previous workshops, for today's article the main focus solely relies on the specific cycle as to how <span class="tooltip" data-definition="Fake companies: Fictitious or deceptive business entities." data-videos="Video1, Video2, Video3">fake companies</span> disguising as hedge funds are capable of acquiring billions of dollars worth of personal assets on behalf of people ranging from working-class citizens to wealthy families, and the message it gives for how we must regulate ‘trust’ within the <span class="tooltip" data-definition="Blockchain system: Decentralized ledger technology." data-videos="Video1, Video2, Video3">blockchain system</span>.
         </p>
@@ -374,6 +369,32 @@ document.addEventListener('DOMContentLoaded', function() {
     displayParagraph(currentSlide);
 });
 
+let prevScrollPos = window.pageYOffset;
+
+    window.onscroll = function() {
+      let currentScrollPos = window.pageYOffset;
+
+      if (prevScrollPos > currentScrollPos) {
+        document.getElementById("navbar").classList.remove("hidden");
+      } else {
+        document.getElementById("navbar").classList.add("hidden");
+      }
+
+      prevScrollPos = currentScrollPos;
+    };
+
+    // JavaScript to bring back solidity on hover
+    const navbar = document.getElementById('navbar');
+
+    navbar.addEventListener('mouseenter', function() {
+      navbar.classList.remove('hidden');
+    });
+
+    navbar.addEventListener('mouseleave', function() {
+      if (window.scrollY === 0) {
+        navbar.classList.add('hidden');
+      }
+    });
 
 
 
