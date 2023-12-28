@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <!-- Google tag (gtag.js) -->
+	<script async src="https://www.googletagmanager.com/gtag/js?id=G-9J1B2MTYSV"></script>
+	<script>
+ 	 	window.dataLayer = window.dataLayer || [];
+  	 	function gtag(){dataLayer.push(arguments);}
+ 	 	gtag('js', new Date());
+ 	 	gtag('config', 'G-9J1B2MTYSV');
+	</script>
+  		<title> Log #001 </title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+
+
+body {
+    text-align: center;
+    max-width: 800px;
+    margin: 0 auto;
+    font-family: Arial, Helvetica, sans-serif;
+  }
+
+  h1 {
+    margin-top: 30px;
+  }
+
+  p {
+    text-align: left;
+    margin-bottom: 20px;
+  }
+
+  .centered-image {
+    text-align: center;
+    margin-bottom: 20px;
+  }
+
+  .centered-image img {
+    max-width: 100%; /* Ensures images fit within the container */
+    height: auto; /* Maintains aspect ratio */
+  }
+
+  .image-label {
+    font-size: 14px;
+    margin-top: 5px; /* Adjust space between image and label */
+  }
+
+  .arrow-container {
+  position: fixed;
+  top: 20px;
+  right: 50px;
+  display: flex;
+  align-items: center;
+}
+
+/* Styles for the text */
+.arrow-text {
+  font-family: 'Roboto', sans-serif; /* Use your preferred font */
+  font-size: 18px; /* Enlarge the text */
+  color: #333; /* Text color */
+  text-decoration: none; /* Remove default link underline */
+  margin-top: 10px;
+  position: relative; /* Set position for arrow */
+  right: 10px;
+  top: 10px;
+}
+
+/* Styles for the arrow */
+.arrow-text::after {
+  content: '';
+  width: 0;
+  height: 0;
+  border-top: 15px solid transparent;
+  border-bottom: 15px solid transparent;
+  border-left: 30px solid #333; /* Arrow color */
+  position: absolute;
+  right: -35px; /* Adjust distance from text */
+  top: -8%;
+  transform: translateY(-50%);
+  animation: moveArrow 2s ease-in-out infinite alternate; /* Animation */
+}
+
+/* Animation to move the arrow slightly left and right */
+@keyframes moveArrow {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(5px); /* Move slightly to the right */
+  }
+}
+
+/* Style link on hover */
+.arrow-text:hover {
+  text-decoration: underline; /* Add underline on hover */
+  color: #555; /* Change color on hover */
+}
+</style>
+<body>
+
+    <div class="arrow-container">
+        <a href="https://blockchainuniversityedu.github.io/Workshops.html" class="arrow-text">Continue Learning</a>
+      </div>
+    
+    <br><br><br><br><br><br>
+    <h1><b>End of Year Message</b></h1>
+    <p>
+        Welcome to the official update log page for the BlockchainUniversity website! The core purpose of this page is to update our community about recent updates to our website, which are solely meant to better optimize your learning experience. To start off, on behalf of myself, we would like to say thank you to anyone who took the time to take a look at any of our workshop topics relating to blockchain technology, ranging from the art to finance subjects that we’ve covered.
+        <br><br>
+        In the past year, many of our lives have been shifted by the advancing technology that we have access to. Whether it’s the ever growing world of artificial intelligence, and or we interact with each other on digital platforms, needless to say many transformations have taken place that will only open more opportunities for blockchain technology to become a part of the innovation.
+        <br><br>
+        This year, the topics we’ve covered were the general rise and fall of the topic behind cryptocurrency schemes and non-fungible tokens, how currently existing tools within Web 2.0 are shifting to a decentralized format at the support of applications that lend us the power to manage our identity, personal finances, real estate expenses, and even how we interact with our modern healthcare system. During this process, we have also changed our brand name from ‘BlockchainTMU’ to ‘BlockchainUniversity’, in favor of better representing how we aim to be an overall educational organization for all university communities in Ontario that we hope to reach to throughout next year. Although we’ve covered the general grounds of this technology that by comparison to other technologies, is still a newly discussed topic, the thriving community behind the decentralized communities will only create a rise in more developments that will catch the interest of general people.
+    </p>
+
+    <h1> Added Features (& Snapshots) </h1>
+    <p>
+        Now that we’ve given you a general summary of what this year has been about, whether you’re new or have stuck around for a while, we have updates to give you regarding our official website for BlockchainUniversity. The website for BlockchainUniversity is meant to be the central ‘operating system’ of this organization, as we are granting you access to all of our content ranging from video workshops to digestible articles, and hopefully other content formats that we’ll be adding and changing as the next year looms. As our interest is to help you better learn the complex world of blockchain technology at your own pace, we’ve started by adding a new feature to our articles, which is the ‘Reader Mode’ and the ‘Paragraph Mode’.
+        <div class="centered-image">
+            <img src="Buttons.png">
+            <div class="image-label">Buttons for 'Reading Mode' and 'Paragraph Mode'</div>
+        </div>
+        <br><br>
+        The incentive behind this feature, is to give you the options of either reading our articles in full, or by each paragraph. Our ‘Reader Mode’ feature is just like reading a normal article, whereas the ‘Paragraph Mode’ is meant to isolate each paragraph. 
+        <br><br><br><br>
+        <div class="centered-image">
+            <img src="Reader Mode.png">
+            <div class="image-label">'Reader Mode' Format</div>  
+        </div>
+        <br>
+        <div class="centered-image">
+            <img src="Paragraph Mode.png">
+            <div class="image-label">'Paragraph Mode' Format</div>  
+        </div>
+        <br><br>
+        This mode allows navigation 
+        through paragraphs using a slider, displaying an indicator of the total available paragraphs 
+        and the one you're current reading as you navigate upwards or downwards.
+        
+        <br><br><br>
+        <div class="centered-image">
+            <img src="Slider.png">
+            <div class="image-label">Paragraph Navigator</div>  
+        </div>
+        <br>
+        <br>
+        Exclusive to the ‘Paragraph Mode’, since every one of our users may have a different understanding of the terms that are mentioned in each paragraph, we have also implemented a keyword highlighter, which helps to highlight and showcase definitions of each word with their own video recommendationsm, which can help to further expand your knowledge of this terminology with our readily available content, also accessible through our <b><a href="https://www.youtube.com/channel/UCkRoglkmTZsmN0M_a_ORodg">YouTube channel.</b></a>
+        <br><br><br><br>
+        <div class="centered-image">
+            <img src="Keyword Definition.png">
+            <div class="image-label">Keyword Highlighter</div>  
+        </div>
+    </p>
+    
+    <h1><b>Future Updates</b></h1>
+    <p>
+        Since this is the very first new feature we added since the launch of our website, we will of course continue to add more elements that will allow you to better navigate our content as we continue to release workshops in the future. One of the features we’ll be adding is a search engine to the landing page of our website. As of right now, we have a very basic version that simply navigates you to our ‘Workshops’ page, regardless of what you search, but this will change in near time as every word that you’ll search will showcase a query of suggestions leading to our full workshops, or parts of them that may deem important to you, depending on what was searched.
+        <br><br>
+        With this being said, we will of course add improvements to our existing features as well. As the video recommendations to all of our keyword definitions are not readily available, this will be updated in short time, with each video including a segment that directly references and explains the keyword you have clicked on. This way, you will have quick access to our workshops as you’re reading, regardless of whether or not you’ve watched the videos from the past, or are simply new to the platform altogether.
+    </p>
+
+    <h1><b>Plans for 2024</b></h1>
+    <p>
+        Before we end this article, we would like to let you know of what our future workshops will generally entail. For Winter 2024, we will cover the grounds of how economics applies to blockchain technology, especially when discussing topics such as elasticity. Apart from this, we’ll also be covering an even wider range of applications on the blockchain as part of our series ‘Applications on the Blockchain’. Since we’ve briefly touched on what kind of hardware is available on the blockchain, we will dive deeper into how the technologies behind these tools work, as well as introducing newer existing technologies that mirror the kind of devices we use today. Since there are important cryptocurrencies out there in the DeFi world that we haven’t touched, these will be covered as well with important detail to how they serve a purpose beyond just the financing they’re known for. As the discussion about our current environment and energy is being increasingly talked about in awareness of climate change, we will be covering the math and science behind how the blockchain impacts this siuation with its ongoing processes.
+        <br><br>
+        Overall, we have a lot to cover, and plenty of features to add to our platform that will help you better grasp the concepts and theories at hand. Once again, if you’ve watched any of our previous workshops, we would like to thank you for your time, and hope that you learned something regardless of how long you stuck around for this year. We are very excited to see how blockchain technology will develop expansively in 2024, and hope that you are as well. Have a happy holiday, and a good new years eve!
+        <br><br>
+        Regards,
+        <br>
+        Tolga Acan
+        <br>
+        Director@BlockchainUniversity
+    </p>
+    <br><br><br><br><br><br>
+</body>
+</html>
