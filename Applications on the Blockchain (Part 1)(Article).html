@@ -50,40 +50,10 @@
 				<h1> The Fundamentals Within </h1>
 				<h3> A Digital World of Blockchain </h3>
 				<br>
-                <p>
-                Within the Web 3.0 space, next to the cryptocurrencies set in place that is discussed in 
-                the media, more opportunistic directions of the platform are showcased through the 
-                use of tokens. Specifically to this, they are called "non-fungible" tokens, which are assets
-                in the form of various digital or real-world assets, including artworks, GIFs, videos, 
-                virtual avatars, in-game currencies, music, ownership certificates, legal contracts, and 
-                more that cannot be copied, substituted, or subdivided. As they've gained popularity 
-                within the space, this new format of digital art creation has provided opportunities for 
-                artists to showcase their work without having to undergo the struggles of having to so-
-                to speak, create your own art show or video game in order to showcase them.
-				<br><br><br>
-				In order to ensure that the movement of these non-fungible tokens do not spur traffic
-                that may disrupt the creative process of these artists, the process of 'Token Standards' is 
-                set in place which involves the procedure of encoding metadata that can help to verify a 
-                particular asset to its appropriate owner. The setstone of these Token Standards largely 
-                rely on the mint function of an NFT, which is meant to check the specifications of an 
-                assets metadata which can involve hex values which can involve color codes, titles and 
-                descriptions stored into a particular storage system called 'off-chain storage'. A lot of 
-                these processes which are focused on ensuring the uniformities of the assets in a 
-                fashion that can be freely shared within the peer-to-peer network of the blockchain, 
-                depend largely on working within a 'decentralized' fashion, where unlike having your 
-                work looked over by a potential organization within a central server, is focused on 
-                making sure everything is shared across owners within the platform. With decentralized 
-                servers, an IPFS which stands for 'Interplanetary File System', are meant to assure that 
-                the assets are not interchangeable by transferring them from one system to another by 
-                combining metadata with links upon the Token Standards mentioned earlier, in order to 
-                establish an automatic encoding process which stores the information in an off-chain 
-                storage system at ease. These standards, specific to NFTs in common, go by the name 
-                ERC1155 and ERC721. To avoid complicating either of the two standards, we'll focus on 
-                explaining what the ERC1155 standard is meant to represent. As 'hex' values have been 
-                mentioned from before, this standard is essential in making use of fundamental 
-                functions such as a uint256 variable_id, which helps in defining fungible tokens by the 
-                ID of the owner for which it will be transferred from. Below is an algorithm that defines 
-                this standard, as well as the metadata that gets stored into an off-chain storage.
+        <p>
+        Within the Web 3.0 space, apart from cryptocurrencies that are commonly discussed in the media, individual tokens are more or less considered opportunistic, separate from the financial value that the media deems to be important for. Specific to this, the kind of tokens in discussion are called "non-fungible" tokens, which are assets in the form of various digital or real-world assets, which typically include artwork, GIFs, videos, virtual avatars, in-game currencies, music, and more that cannot be substituted or subdivided. As they've gained popularity within the scene, this new format of digital art creation has provided opportunities for artists to showcase their work without having to undergo the struggles of having to so- to speak, create your own art show or video game in order to showcase them.				
+        <br><br><br>
+        In order to ensure that the movement of these non-fungible tokens do not spur traffic that may disrupt the creative process of these artists, there is a general process to how tokens of this kind are regulated, at which they are operated on behalf of something called 'tokenized standards'. These are set in place to encode metadata that can help to verify a particular asset to its appropriate owner. The setstone of these tokenized standards are largely reliant on the mint function of an NFT, which is meant to check the specifications of an assets metadata. Metadata is simply just data that make up of a file of some sort, which can involve hex values that generally involves color codes, titles and descriptions stored into a particular storage system called 'off-chain storage'. A lot of these processes which are focused on ensuring the uniformities of the assets, are dealt with a system at which they can be freely shared within a peer-to-peer network of the blockchain. Peer-to-peer networks depend largely on working within a 'decentralized' format, where unlike usual circumstances where your work is looked over by a potential organization within a central server (ex. Google), the focus of such networks are dealt within a situation where your work is managed privately under your own rules.  With decentralized servers, there is usually a file system that takes place, called an IPFS which stands for 'Interplanetary File System'. This file system is meant to assure that the assets are not interchangeable by transferring them from one system to another, which happens by combining metadata linked to earlier mentioned tokenized standards, in order to establish an automatic encoding process that stores information in an off-chain storage system at ease. These standards, specific to NFTs in common, go by the name ERC1155 and ERC721. To avoid complicating either of the two standards, we'll focus on explaining what the ERC1155 standard is meant to represent. As 'hex' values have been mentioned from before, this standard is essential in making use of fundamental functions such as a uint256 variable_id, which helps in defining fungible tokens by the ID of the owner for which it will be transferred from. Below is an algorithm that defines this standard, as well as the metadata that gets stored into an off-chain storage. As the person reading this might have different degrees of knowledge regarding what is seen below, I will only be showcasing the code and defining its simple elements.
 				<br><br><br><i>
 					// Algorithm 2: NFT Standard 1155
 					interface IERC1155 
@@ -92,80 +62,23 @@
 					function transferFrom(address _from, address _to, uint256 _id, uint256 quantity) external payable
 					}
 				<br><br><br></i>
-				This particular algorithm ensures that through functions such as 'transferFrom' and 
-				'balanceOf', assets are externally traded between systems through an unsigned integer
-				(uinit256) which is able to store non-negative integers. Second to this secure algorithm, 
-				ERC721 is notable as well but consists of scalability issues as processes such as 
-				compressing data in order to save off-chain file storage and uncompressing it to spare 
-				higher resolution of the particular asset struggles to be distinguished, hence why it is 
-				commonly replaced with the Flow-standard, a protocol developed by Dapper labs which 
-				is implemented in order to make this process as smooth as possible. Referring back to 
-				the sole structure of metadata, the hex values are commonly to be set in place through 
-				the algorithm seen below.
-				<br><br><br>
-					// Algorithm 3: Metadata file
+        This particular algorithm ensures that through functions such as 'transferFrom' and 'balanceOf', assets are externally traded between systems through an unsigned integer seen above as uint256, which is able to store non-negative integers. The number ‘256’ is a signifier of the SHA-256 algorithm, which is an algorithm responsible for currency exchanges done with Bitcoin. Non-negative integers are typically defined as numbers that can only be between zero or a positive value. In addition to this secure hash algorithm, which is what SHA stands for, ERC721 as mentioned before has similar qualities, but consists of scalability issues that belong to processes that usually involves compressing data that can save off-chain file storage in order to uncompress digital assets that spare a higher resolution for a particular asset which struggles to be distinguished. Generally speaking, these processes are what allow data to be stored and exchanged in certain ways, and will be further explained in future workshop content. Since the idea of standards is a relatively complex concept, further workshops will better explain the core concepts as they'll be broken down in explanations that fit the context of the standards usage. Regardless, the next important aspect of tokenized standards, are called flow standards, which is a protocol developed by Dapper Labs, created to be later implemented into processes that are otherwise deemed tedious when it comes to managing large sets of digital assets in a compressed data environment. Referring back to explaining the the sole structure of metadata, hex values are a commonly important element that is set to be in place for this algorithm seen below.
+        <br><br><br>
+				// Algorithm 3: Metadata file
 					{
 					"name": "Color",
 					"hex": "#F08080",
 					"link": "https://bit.ly/3mdRahT",
 					"owner": "0x6902702BB5678D7361C94441c71F600C255dd833"
-					}
+          }
 				<br><br><br>
-				Using the "name", "hex", "link", and "owner" ID, this ensures to verify the ownership of a 
-				particular asset to its rightful owner. Second to the standards mentioned, ERC721 is also 
-				built into a special type of blockchain set by the major cryptocurrency exchange 
-				company by the name of Binance, which goes by Binance Smart Chain (BSC). Similar in 
-				many ways, BRC721 allows content creators to tokenize the ownership of their assets 
-				and the data contained within it through a unique identifier, or DID (decentralized 
-				identifier) which applies a private key to a particular owner that can use it to prove or 
-				control their own identity. Similar to the algorithmic code behind ERC721, this one 
-				implements the code of totalSupply, which is defined by the 'total amount of coins or 
-				tokens of a specific cryptocurrency that have been created or mined, that are in 
-				circulation, including those that are locked or reserved.'
+				The code above for the third showcased algorithm may come off as complex, but can be broken down into basic elements which are "name", "hex", "link", and "owner" ID, which are pieces of code that ensures to verify the ownership of a particular asset to its rightful owner. Mentioning the ERC721 protocol once more, this special standard behind is generally utilized by a major cryptocurrency exchange company by the name of Binance, which applies ERC721 to the Binance Smart Chain (BSC) therefore making it, BRC721. Similar in many ways, BRC721 allows content creators to tokenize the ownership of their assets and the data contained within it through a unique identifier, or DID (decentralized identifier), which applies a private key to a particular owner that can use it to prove or control their own identity. Similar to the algorithmic code behind ERC721, this one implements the code of totalSupply, which is defined by the 'total amount of coins or tokens of a specific cryptocurrency that have been created or mined, that are in circulation, including those that are locked or reserved.' Without unique identifiers, containing and preserving specific data can be difficult since the algorithms used to arrange the stored information cannot set data points to digital assets that are made up of different components, take it being a image for example.
 				<br><br><br>
-				As the tokenization of digital assets within the web 3.0 space ensures that there is 
-				regulated circulation of transactions in order to manage the economy under a 
-				regulatory fashion, issues may arise regarding profits behind these rightful ownerships 
-				as verifying them through the process of minting may create major hikes or dips in its 
-				value, since the value behind the transactions apart from metadata are largely reliant on 
-				the general nature of the cryptocurrency it works behind. Though second to this, 
-				another opportunity to combine these digital works within a collaborative space are 
-				done so through the Metaverse, a decenetralized space where content creators or 
-				explorers may make use of virtual or augmented reality headsets in interacting with a 
-				three-dimensional streamline of world creations not limited by the space and time of 
-				physical reality.
-				<br><br><br>
-				With this world consisting of seven layers, the ones that should be kept in mind 
-				with understanding it are the human interface, infrastructure, and Internet of Things (IoT). 
-				Regarding the human interface, this layer is focused on sharing experiences between 
-				users of the world by helping to receive information useful in understanding the world 
-				through spatial computing, where the VR or AR headset can be used in visually 
-				understanding the digital space by associating it with the physical world. Adding onto 
-				human interface, other layers such as the infrastructure are essential in improving 
-				network connection technologies by using 5G and 6G, which can help with reducing the 
-				congestion of network bandwidth. In finality, the Internet of Things is identified as a 
-				layer in combining and constructing a 3D user interface that can help to associate the 
-				physical world with the digital one by providing minimal effort for the user in making 
-				data-driven judgements that can assist organizations in understanding utilizing the 
-				platform, with specific mentions being virtual offices within the Metaverse where 
-				companies may hold meetings. As these instances also require an actual environment 
-				that can be worked within using augmented reality technology, the Metaverse may 
-				collect important data such as biometric psychography in order to measure user data 
-				emotions that are key in identifying concerns for privacy and data security, especially 
-				when it's within an algorithmic bias that functions outside of the physical world and is 
-				capable of identifying unintentional behavioral assumptions.
-				<br><br><br>
-				When it comes to improvements that the Metaverse can make, especially when it makes 
-				use of NFTs, is to be able to provide an open-source space where users within a global 
-				community have an opportunity to suggest solutions that may allow others to move 
-				smoothly between various three-dimensional spaces in order to embody anything that 
-				involves an avatar that is capable of sharing intercommunication experiences with 
-				others. Though this is yet to be an improvement by large organizations, especially that 
-				of Facebook which has mentioned the name at a multitude of times on social media, 
-				industry partners and experts agree that such an ambitious concept requires a 
-				significant amount of work to be done in order to help with contemplating a future 
-				where numerous issues that make up for strongly establishing this new generation after 
-				the Web 2.0 era of the internet must be resolved.
+				As the tokenization of digital assets within the web 3.0 space ensures that there is regulated circulation of transactions in order to manage the economy under a regulatory system, past all of the implementations discussed so far, there are still issues that may arise regarding profits behind these rightful ownerships, as verifying them through the process of minting may create major hikes or dips in its value. Generally speaking, in the world of cryptocurrency, it is common for cryptographic tokens to have hikes and dips in value since it's not only based on the process of minting but also how much people talk about the currency. As opportunities do exist in digital spaces built in a decentralized environment, they are popularly hard to find considering that NFTs are an early project that was exposed too early to the masses. But despite all of this, another opportunity to combine these digital works within a collaborative space are done so through the metaverse, an online space set by Meta (known previously as Facebook), where content creators or explorers may make use of virtual or augmented reality headsets when given access to interacting with a three-dimensional streamline of world creations.
+        <br><br><br>
+        In every digital world that in its slightest is connected to the internet, there comes a set of layers like an onion, that helps to set the structure of the network-based infrastructure. As it would be a lengthy discussion to discuss all of them into depth, the base layers in the ideal context of blockchain technology are the human interface, infrastructure, and Internet of Things (IoT). Regarding the human interface, this layer is focused on sharing experiences between users of the world by helping to receive information useful in understanding the world through spatial computing, where the VR or AR headset can be used in visually understanding the digital space by associating it with the physical world. Adding onto human interface, other layers such as the infrastructure are essential in improving network connection technologies by using 5G and 6G, which can help with reducing the congestion of network bandwidth. In finality, the Internet of Things is identified as a layer in combining and constructing a 3D user interface that can help to associate the physical world with the digital one, by providing minimal effort for the user in making data-driven judgements that can assist organizations in understanding and utilizing the platforms that are built on the technology. Platforms that make use of IoT within the metaverse usually set up spaces such as virtual offices, where companies may hold meetings and such with selected avatars. Speaking of avatars, since users are required to create these as a digital identity, other AR or VR related processes are usually built into this technology on the blockchain, which takes user data based on their avatars to measure biometric psychography. As scientific as the term might be, it's a process that's used in the metaverse to measure user data emotions that are key in identifying concerns for privacy and data security, especially when it's within an algorithmic bias that functions outside of the physical world and is capable of identifying unintentional behavior. In other words, the metaverse is making use of AR technology to moderate virtual spaces to void any potential disruptions from taking place between virtual communications.
+        <br><br><br>
+        As every new piece of technology always has room for improvement, digital assets and spaces in particular can provide yet insist on building up environments that are open-source. Open-source, a widely popular term used to define something that's widely both accessible and shareable in a net space of programmable applications, is applicable to users within a global community that have the opportunity to suggest solutions that may allow others to move smoothly between various three-dimensional spaces in order to embody anything that involves an avatar and a virtual office with endless intercommunication. Though this is yet to be an improvement by large organizations, especially that of Facebook which has practically coined the word metaverse under a web 3.0 definition long after it was done in literature, industry partners and experts agree that such an ambitious concept requires a significant amount of work to be done. All of these implications and explanations come down to one question which involves the masses, how will we allow these transitions for a future generation that goes way past Web 3.0?
 				<br><br><br><br><br><br>
 				</p>
 </div>
@@ -174,112 +87,16 @@
 <div id="myDIV1">
     <div class="article" id="article">
       <br>
-      <h1> The Fundamentals Within </h1>
-      <h3> A Digital World of Blockchain </h3>
+      <h1> </h1>
+      <h3> </h3>
       <br>
+      <!-- 
+      When you're adding a definition to a keyword, add this in front of the word
+      <span class="tooltip" data-definition="">
+      -->
       <p>
-        Within the Web 3.0 space, next to the <span class="tooltip" data-definition="Digital or virtual currencies that use cryptography for security and operate on decentralized networks, often used as a medium of exchange.">cryptocurrencies</span> set in place that is discussed in the media, more opportunistic directions of the platform are showcased through the use of <span class="tooltip" data-definition="A unit of value issued by a project or organization on the blockchain, representing a digital asset or utility.">tokens</span>. Specifically to this, they are called "non-fungible" <span class="tooltip" data-definition="A type of digital asset that represents ownership or proof of authenticity of a unique item or piece of content and cannot be replicated or exchanged on a like-for-like basis.">tokens</span>, which are assets in the form of various digital or real-world assets, including <span class="tooltip" data-definition="Creative or visual works, such as paintings, drawings, or sculptures, produced by an artist.">artworks</span>, <span class="tooltip" data-definition="Graphics Interchange Format, a bitmap image format widely used for animations and simple graphics on the internet.">GIFs</span>, <span class="tooltip" data-definition="Moving images or recorded programs displayed electronically, often referred to as short movies.">videos</span>, virtual <span class="tooltip" data-definition="A computer-generated character or representation of a person, often used in virtual reality or online platforms.">avatars</span>, in-game <span class="tooltip" data-definition="Digital currency or items used within video games for purchasing virtual goods or services.">currencies</span>, <span class="tooltip" data-definition="Sounds, melodies, or compositions produced by musicians or artists.">music</span>, ownership <span class="tooltip" data-definition="Document or record confirming ownership or rights to a particular asset or property.">certificates</span>, <span class="tooltip" data-definition="Legally binding agreements or documents between parties detailing terms and conditions.">legal contracts</span>, and more that cannot be copied, substituted, or subdivided. As they've gained <span class="tooltip" data-definition="The state or condition of being well-liked, accepted, or recognized by a large number of people.">popularity</span> within the space, this new format of digital <span class="tooltip" data-definition="The creation or production of visual or artistic content using digital tools or technologies.">art creation</span> has provided opportunities for <span class="tooltip" data-definition="Individuals who produce creative, visual, or performance-based works.">artists</span> to showcase their work without having to undergo the struggles of having to so-to-speak, create your own <span class="tooltip" data-definition="An organized event where artworks are displayed or presented to an audience.">art show</span> or <span class="tooltip" data-definition="A computerized or electronic game played by manipulating images on a video screen, often for entertainment purposes.">video game</span> in order to showcase them.
-      </p>
-
-      <p>
-        In order to ensure that the movement of these <span class="tooltip" data-definition="Unique digital assets that cannot be replicated or exchanged on a like-for-like basis, requiring specific standards and processes for their management and verification.">non-fungible tokens</span> do not spur traffic that may disrupt the creative process of these <span class="tooltip" data-definition="Individuals who produce creative, visual, or performance-based works.">artists</span>, the process of 'Token Standards' is set in place which involves the procedure of encoding metadata that can help to verify a particular asset to its appropriate owner. The setstone of these <span class="tooltip" data-definition="Standardized protocols or rules defining the characteristics and behaviors of tokens, ensuring their interoperability and functionality within a specific ecosystem.">Token Standards</span> largely rely on the <span class="tooltip" data-definition="A function used to create or generate a new instance of an NFT (Non-Fungible Token) with specific attributes and properties.">mint function</span> of an NFT, which is meant to check the specifications of an asset's metadata which can involve <span class="tooltip" data-definition="A numerical representation in the hexadecimal number system, commonly used in computing to encode colors, identifiers, or other data.">hex values</span> which can involve <span class="tooltip" data-definition="Codes used to represent colors, titles, or descriptions associated with digital assets.">color codes</span>, titles, and descriptions stored into a particular storage system called '<span class="tooltip" data-definition="A data storage system located outside the blockchain, used to store additional information associated with tokens or assets.">off-chain storage</span>'. A lot of these processes which are focused on ensuring the uniformities of the assets in a fashion that can be freely shared within the <span class="tooltip" data-definition="A network where each computer or node participates in the transaction verification and data distribution process.">peer-to-peer network</span> of the <span class="tooltip" data-definition="A decentralized, distributed digital ledger used to record transactions across multiple computers so that the record cannot be altered retroactively without the alteration of all subsequent blocks and the consensus of the network.">blockchain</span>, depend largely on working within a '<span class="tooltip" data-definition="A system where the control or power is distributed across multiple points rather than being concentrated in a single entity or server.">decentralized</span>' fashion, where unlike having your work looked over by a potential organization within a <span class="tooltip" data-definition="A central data storage system often controlled by a single entity or organization.">central server</span>, is focused on making sure everything is shared across owners within the platform. With decentralized servers, an <span class="tooltip" data-definition="A protocol and network designed to create a content-addressable, peer-to-peer method of storing and sharing hypermedia in a distributed file system.">IPFS</span> which stands for 'Interplanetary File System', are meant to assure that the assets are not interchangeable by transferring them from one system to another by combining metadata with links upon the <span class="tooltip" data-definition="Standardized protocols or rules defining the characteristics and behaviors of tokens, ensuring their interoperability and functionality within a specific ecosystem.">Token Standards</span> mentioned earlier, in order to establish an automatic encoding process which stores the information in an <span class="tooltip" data-definition="A data storage system located outside the blockchain, used to store additional information associated with tokens or assets.">off-chain storage</span> system at ease. These standards, specific to NFTs in common, go by the name <span class="tooltip" data-definition="Ethereum Request for Comments (ERC) standards that define how tokens, particularly NFTs, should behave and operate on the Ethereum blockchain.">ERC1155</span> and <span class="tooltip" data-definition="Ethereum Request for Comments (ERC) standards that define how tokens, particularly NFTs, should behave and operate on the Ethereum blockchain.">ERC721</span>. To avoid complicating either of the two standards, we'll focus on explaining what the <span class="tooltip" data-definition="Ethereum Request for Comments (ERC) standard specifically designed for managing multiple types of tokens, including both fungible and non-fungible tokens, on the Ethereum blockchain.">ERC1155</span> standard is meant to represent. As '<span class="tooltip" data-definition="A numerical representation in the hexadecimal number system, commonly used in computing to encode colors, identifiers, or other data.">hex</span>' values have been mentioned from before, this standard is essential in making use of fundamental functions such as a <span class="tooltip" data-definition="A 256-bit unsigned integer variable used in coding to store numerical values.">uint256 variable_id</span>, which helps in defining fungible tokens by the ID of the owner for which it will be transferred from. Below is an algorithm that defines this standard, as well as the metadata that gets stored into an <span class="tooltip" data-definition="A data storage system located outside the blockchain, used to store additional information associated with tokens or assets.">off-chain storage</span>.
-        </p>
-
-        <p>
-          // Algorithm 2: NFT Standard 1155
-                    interface <span class="tooltip" data-definition="A programming construct that defines the methods an object should have.">IERC1155</span> 
-                    {
-                    function <span class="tooltip" data-definition="A function that retrieves the balance of a particular token owned by a specific address.">balanceOf</span>(address _owner, <span class="tooltip" data-definition="An identifier representing a particular token.">uint256</span> _id) <span class="tooltip" data-definition="A function that does not modify the contract's state and retrieves data from the blockchain.">external view</span> <span class="tooltip" data-definition="A function that retrieves data but does not modify the contract's state or consume any gas.">returns</span> (address);
-                    function <span class="tooltip" data-definition="A function that transfers tokens from one address to another.">transferFrom</span>(address _from, address _to, <span class="tooltip" data-definition="An identifier representing a particular token.">uint256</span> _id, <span class="tooltip" data-definition="The quantity of tokens to be transferred.">uint256</span> quantity) <span class="tooltip" data-definition="A function that modifies the contract's state and requires gas to execute.">external</span> <span class="tooltip" data-definition="A function that allows transactions involving Ether to be executed.">payable</span>
-                    }
-          </p>
-
-          <p>
-            This particular algorithm ensures that through functions such as '<span class="tooltip" data-definition="A function that transfers tokens or assets from one address to another.">transferFrom</span>' and 
-                    '<span class="tooltip" data-definition="A function that retrieves the balance of a particular token owned by a specific address.">balanceOf</span>', assets are externally traded between systems through an <span class="tooltip" data-definition="An unsigned 256-bit integer variable in coding used to store non-negative integers.">unsigned integer
-                    (uint256)</span> which is able to store non-negative integers. Second to this secure algorithm, 
-                    <span class="tooltip" data-definition="Ethereum Request for Comments (ERC) standards that define how tokens, particularly NFTs, should behave and operate on the Ethereum blockchain.">ERC721</span> is notable as well but consists of scalability issues as processes such as 
-                    compressing data in order to save off-chain file storage and uncompressing it to spare 
-                    higher resolution of the particular asset struggles to be distinguished, hence why it is 
-                    commonly replaced with the <span class="tooltip" data-definition="A protocol developed by Dapper Labs used to handle the transfer and management of digital assets, particularly NFTs, on the Flow blockchain.">Flow-standard</span>, a protocol developed by Dapper labs which 
-                    is implemented in order to make this process as smooth as possible. Referring back to 
-                    the sole structure of metadata, the <span class="tooltip" data-definition="A numerical representation in the hexadecimal number system, commonly used in computing to encode colors, identifiers, or other data.">hex values</span> are commonly to be set in place through 
-                    the algorithm seen below.
-            </p>
-
-            <p>
-              // Algorithm 3: Metadata file
-                        {
-                        "name": "<span class="tooltip" data-definition="A descriptive label or identifier given to an item or asset.">Color</span>",
-                        "<span class="tooltip" data-definition="A numerical representation in the hexadecimal number system, commonly used in computing to encode colors, identifiers, or other data.">hex</span>": "<span class="tooltip" data-definition="A hexadecimal color code representing a specific color.">#F08080</span>",
-                        "<span class="tooltip" data-definition="A reference or URL pointing to a resource, often used to provide additional information or access to external content.">link</span>": "<span class="tooltip" data-definition="A web address or URL directing to a specific location on the internet.">https://bit.ly/3mdRahT</span>",
-                        "<span class="tooltip" data-definition="The individual or entity that possesses or has ownership rights to a particular asset or item.">owner</span>": "<span class="tooltip" data-definition="A unique identifier representing the ownership of a digital asset on the blockchain.">0x6902702BB5678D7361C94441c71F600C255dd833</span>"
-                        }
-              </p>
-
-              <p>
-                Using the "<span class="tooltip" data-definition="A descriptive label or identifier given to an item or asset.">name</span>", "<span class="tooltip" data-definition="A numerical representation in the hexadecimal number system, commonly used in computing to encode colors, identifiers, or other data.">hex</span>", "<span class="tooltip" data-definition="A reference or URL pointing to a resource, often used to provide additional information or access to external content.">link</span>", and "<span class="tooltip" data-definition="The individual or entity that possesses or has ownership rights to a particular asset or item.">owner</span>" ID, this ensures to verify the ownership of a 
-                        particular asset to its rightful owner. Second to the standards mentioned, <span class="tooltip" data-definition="Ethereum Request for Comments (ERC) standards that define how tokens, particularly NFTs, should behave and operate on the Ethereum blockchain.">ERC721</span> is also 
-                        built into a special type of blockchain set by the major cryptocurrency exchange 
-                        company by the name of Binance, which goes by <span class="tooltip" data-definition="A blockchain network developed by Binance that enables smart contract functionality and compatibility with the Ethereum Virtual Machine (EVM).">Binance Smart Chain (BSC)</span>. Similar in 
-                        many ways, <span class="tooltip" data-definition="A token standard similar to ERC721, specifically designed for use on the Binance Smart Chain, enabling the creation and management of non-fungible tokens (NFTs).">BRC721</span> allows content creators to tokenize the ownership of their assets 
-                        and the data contained within it through a unique identifier, or <span class="tooltip" data-definition="A method of providing verifiable digital identities for individuals, entities, or assets in a decentralized manner.">DID (decentralized 
-                        identifier)</span> which applies a private key to a particular owner that can use it to prove or 
-                        control their own identity. Similar to the algorithmic code behind <span class="tooltip" data-definition="Ethereum Request for Comments (ERC) standards that define how tokens, particularly NFTs, should behave and operate on the Ethereum blockchain.">ERC721</span>, this one 
-                        implements the code of <span class="tooltip" data-definition="A function that retrieves the total supply of a specific cryptocurrency, including the amount that is in circulation, locked, or reserved.">totalSupply</span>, which is defined by the 'total amount of coins or 
-                        tokens of a specific cryptocurrency that have been created or mined, that are in 
-                        circulation, including those that are locked or reserved.'
-                </p>
-
-                <p>
-                  As the tokenization of digital assets within the web 3.0 space ensures that there is 
-                          regulated circulation of transactions in order to manage the economy under a 
-                          regulatory fashion, issues may arise regarding profits behind these rightful ownerships 
-                          as verifying them through the process of <span class="tooltip" data-definition="A function used to create or generate a new instance of an NFT (Non-Fungible Token) with specific attributes and properties.">minting</span> may create major hikes or dips in its 
-                          value, since the value behind the transactions apart from metadata are largely reliant on 
-                          the general nature of the cryptocurrency it works behind. Though second to this, 
-                          another opportunity to combine these digital works within a collaborative space are 
-                          done so through the <span class="tooltip" data-definition="A collective virtual shared space created by the convergence of virtually enhanced physical reality and physically persistent virtual reality.">Metaverse</span>, a decentralized space where content creators or 
-                          explorers may make use of virtual or augmented reality headsets in interacting with a 
-                          three-dimensional streamline of world creations not limited by the space and time of 
-                          physical reality.
-                  </p>
-
-                  <p>
-                    With this world consisting of seven layers, the ones that should be kept in mind 
-                            with understanding it are the <span class="tooltip" data-definition="The point of interaction between humans and a computer system.">human interface</span>, <span class="tooltip" data-definition="The basic physical and organizational structures and facilities needed for the operation of a society or enterprise.">infrastructure</span>, and <span class="tooltip" data-definition="A network of physical devices, vehicles, appliances, and other items embedded with sensors, software, and connectivity that enables them to connect and exchange data.">Internet of Things (IoT)</span>. 
-                            Regarding the <span class="tooltip" data-definition="The point of interaction between humans and a computer system.">human interface</span>, this layer is focused on sharing experiences between 
-                            users of the world by helping to receive information useful in understanding the world 
-                            through spatial computing, where the VR or AR headset can be used in visually 
-                            understanding the digital space by associating it with the physical world. Adding onto 
-                            <span class="tooltip" data-definition="The point of interaction between humans and a computer system.">human interface</span>, other layers such as the <span class="tooltip" data-definition="The basic physical and organizational structures and facilities needed for the operation of a society or enterprise.">infrastructure</span> are essential in improving 
-                            network connection technologies by using <span class="tooltip" data-definition="The fifth generation of cellular networks, providing faster speeds and more reliable connections than previous generations.">5G</span> and <span class="tooltip" data-definition="The anticipated sixth generation of cellular networks, expected to provide even faster speeds and greater capacity than 5G.">6G</span>, which can help with reducing the 
-                            congestion of network bandwidth. In finality, the <span class="tooltip" data-definition="A network of physical devices, vehicles, appliances, and other items embedded with sensors, software, and connectivity that enables them to connect and exchange data.">Internet of Things</span> is identified as a 
-                            layer in combining and constructing a 3D user interface that can help to associate the 
-                            physical world with the digital one by providing minimal effort for the user in making 
-                            data-driven judgments that can assist organizations in understanding utilizing the 
-                            platform, with specific mentions being virtual offices within the <span class="tooltip" data-definition="A collective virtual shared space created by the convergence of virtually enhanced physical reality and physically persistent virtual reality.">Metaverse</span> where 
-                            companies may hold meetings. As these instances also require an actual environment 
-                            that can be worked within using augmented reality technology, the <span class="tooltip" data-definition="A collective virtual shared space created by the convergence of virtually enhanced physical reality and physically persistent virtual reality.">Metaverse</span> may 
-                            collect important data such as biometric psychography in order to measure user data 
-                            emotions that are key in identifying concerns for privacy and data security, especially 
-                            when it's within an algorithmic bias that functions outside of the physical world and is 
-                            capable of identifying unintentional behavioral assumptions.
-                    </p>
-
-                    <p>
-                      When it comes to improvements that the <span class="tooltip" data-definition="A collective virtual shared space created by the convergence of virtually enhanced physical reality and physically persistent virtual reality.">Metaverse</span> can make, especially when it makes 
-                              use of <span class="tooltip" data-definition="Unique digital assets that cannot be replicated or exchanged on a like-for-like basis, requiring specific standards and processes for their management and verification.">NFTs</span>, is to be able to provide an open-source space where users within a global 
-                              community have an opportunity to suggest solutions that may allow others to move 
-                              smoothly between various three-dimensional spaces in order to embody anything that 
-                              involves an <span class="tooltip" data-definition="A graphical representation of a user in a virtual environment or cyberspace.">avatar</span> that is capable of sharing intercommunication experiences with 
-                              others. Though this is yet to be an improvement by large organizations, especially that 
-                              of Facebook which has mentioned the name at a multitude of times on social media, 
-                              industry partners and experts agree that such an ambitious concept requires a 
-                              significant amount of work to be done in order to help with contemplating a future 
-                              where numerous issues that make up for strongly establishing this new generation after 
-                              the Web 2.0 era of the internet must be resolved.
-                      </p>                      
+         This section is under construction.
+      </p>                 
 
       <div class="tooltip-box" id="tooltipBox">
           <span id="tooltipContent"></span>
