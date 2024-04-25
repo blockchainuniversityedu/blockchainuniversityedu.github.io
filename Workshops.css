@@ -140,7 +140,7 @@ header.sticky ul li a
     left: 0;
     width: 100%;
     height: 100%;
-    background-image: url('webcard24.png');
+    background-image: url('webcard25.png');
     background-size: cover;
     transition: opacity 0.5s ease;
   }
@@ -197,7 +197,7 @@ header.sticky ul li a
       left: 0;
       width: 100%;
       height: 100%;
-      background-image: url('webcard23.png');
+      background-image: url('webcard24.png');
       background-size: cover;
       transition: opacity 0.5s ease;
     }
@@ -253,7 +253,7 @@ header.sticky ul li a
         left: 0;
         width: 100%;
         height: 100%;
-        background-image: url('webcard22.png');
+        background-image: url('webcard23.png');
         background-size: cover;
         transition: opacity 0.5s ease;
       }
@@ -309,7 +309,7 @@ header.sticky ul li a
           left: 0;
           width: 100%;
           height: 100%;
-          background-image: url('webcard21.png');
+          background-image: url('webcard22.png');
           background-size: cover;
           transition: opacity 0.5s ease;
         }
