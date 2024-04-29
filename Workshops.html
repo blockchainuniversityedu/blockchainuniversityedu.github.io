@@ -1,0 +1,163 @@
+<!doctype html>
+<html>
+    <head>
+        <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-9J1B2MTYSV"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-9J1B2MTYSV');
+</script>
+        <style>
+            
+        </style>
+        <meta charset="utf-8">
+        <title>Videos</title>
+        <link rel="stylesheet" href="Workshops.css">
+    </head>
+    <body>
+        <header id="navbar">
+        </div> 
+        <div class="logo">
+            <a href="index.html"><img src="blockchaintmu (normal logo - no background).png" alt="Welcome!" style="float:right;width:400px;height:220px;"></a>
+        </div>
+            <div class="dropdown">
+                <div class="dropdown-content">
+                    <ul>
+                        <li><a href="index.html"><b>HOME</a></li></b>
+                        <li><a href="Workshops.html"><b>WORKSHOPS</a></li></b>
+                        <li><a href="FirstAccess.html"><b>FIRST/ACCESS</a></li></b>
+						<li><a href="Columns.html"><b>ARTICLES</a></li></b>
+                    </ul>
+        </header>
+        <div class="rows">
+            <div class="h1">
+                <br><br><br><br><br><br>
+                <h1 style="text-align:center">MOST RECENT WORKSHOP</h1>
+            </div>
+            <div class="h1">
+                <h2 style="text-align:center">THIS WEEK</h2>
+            </div>
+                <div class="container">
+                    <div class="card">
+                        <div class="background-image"></div>
+                        <div class="content">
+                            <h1>25</h1>
+                            <h3>Energy and Crypto Mining (Part 1)</h3>
+                            <p>
+                            This two-part article series 
+                            is largely focused on generalizing 
+                            the mathematics behind the costs 
+                            of energy behind mining 
+                            cryptocurrency. Video coming
+                            soon.
+                            <br>
+                            <a href="The Costly Alternative to Crypto Mining (Article).html" class="common-button">ACCESS WORKSHOP</a>  
+                        </div>
+                    </div>
+            </div>
+            <div class="rows">
+                <div class="h1">
+                    <h2 style="text-align:center">PAST WORKSHOPS</h2>
+                </div>
+                <div class="container1">
+                    <div class="card">
+                        <div class="background-image"></div>
+                        <div class="content">
+                            <h1>24</h1>
+                            <h3>Hardware Wallets (Part 1)</h3>
+                            <p>
+                            This is article-only series, split
+                            into 6 parts, covers what goes
+                            on behind the internal parts of
+                            an average hardware wallet 
+                            responsible for decentralized
+                            financial transactions.
+                            <br>
+                            <a href="The Hardware Wallet - Dissected (Part 1 - Connecting Parts)(Article).html" class="common-button">ACCESS WORKSHOP</a>  
+                    </div>
+                    </div>
+                    <div class="container2">
+                        <div class="card">
+                            <div class="background-image"></div>
+                            <div class="content">
+                                <h1>23</h1>
+                                <h3>Forgotten Exchanges</h3>
+                                <p>
+                                This retrospective workshop 
+                                series delves into the long
+                                history of tZERO's promise
+                                for minimal crypto trading
+                                to grow exponentially.
+                                <br>
+                                <a href="Applications on the Blockchain (Part 6).html" class="common-button">ACCESS WORKSHOP</a> 
+                        </div>
+                        </div>
+                        <div class="container3">
+                            <div class="card">
+                                <div class="background-image"></div>
+                                <div class="content">
+                                    <h1>22</h1>
+                                    <h3>Blockchain Elasticity</h3>
+                                    <p>
+                                    This workshop series is
+                                    a generalized summary of
+                                    how elasticity in economics
+                                    relates to and encompasses
+                                    decentralized finance.
+                                    <br>
+                                    <a href="Elasticity In Blockchain Technology.html" class="common-button">ACCESS WORKSHOP</a> 
+                            </div>
+                            </div>
+                            <div class="containeraccess">
+                                <div class="card">
+                                    <div class="content">
+                                        <a href="itemslot.html" class="common-button">MORE WORKSHOPS</a>
+                                    </div>
+                                </div>
+            </div>
+    </div>
+    
+
+        <script type="text/javascript" src="vanilla-tilt.js">
+            window.addEventListener("scroll", function(){
+                var header = document.querySelector("header");
+                header.classList.toggle("sticky", window.scrollY > 0);
+            })
+        </script>
+        <script>
+            VanillaTilt.init(document.querySelector(".card"),{
+		max: 25,
+		speed: 400
+	});
+
+    let prevScrollPos = window.pageYOffset;
+
+    window.onscroll = function() {
+      let currentScrollPos = window.pageYOffset;
+
+      if (prevScrollPos > currentScrollPos) {
+        document.getElementById("navbar").classList.remove("hidden");
+      } else {
+        document.getElementById("navbar").classList.add("hidden");
+      }
+
+      prevScrollPos = currentScrollPos;
+    };
+
+    // JavaScript to bring back solidity on hover
+    const navbar = document.getElementById('navbar');
+
+    navbar.addEventListener('mouseenter', function() {
+      navbar.classList.remove('hidden');
+    });
+
+    navbar.addEventListener('mouseleave', function() {
+      if (window.scrollY === 0) {
+        navbar.classList.add('hidden');
+      }
+    });
+        </script>
+    </body>
+</html>

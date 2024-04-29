@@ -1,0 +1,911 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- Google tag (gtag.js) -->
+	<script async src="https://www.googletagmanager.com/gtag/js?id=G-9J1B2MTYSV"></script>
+	<script>
+ 	 	window.dataLayer = window.dataLayer || [];
+  	 	function gtag(){dataLayer.push(arguments);}
+ 	 	gtag('js', new Date());
+ 	 	gtag('config', 'G-9J1B2MTYSV');
+	</script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title> Workshop #26 - Article </title>
+<style>
+
+.locked {
+        background-color: darkorange;
+        border: 1px solid;
+        border-radius: 10px;
+        border-color: black;
+    }
+
+.button-container {
+        position: relative;
+        width: 300px; /* Adjust width as needed */
+    }
+
+    .expand-button {
+        width: 10px; /* Initial width of the button */
+        height: 10px; /* Height of the button */
+        padding: 10px;
+        background-color: #ff0000;
+        color: rgb(255, 255, 255);
+        border: none;
+        cursor: pointer;
+        position: relative; /* Enable positioning of the tooltip */
+        transition: width 0.3s; /* Smooth transition effect */
+        border-radius: 5px; /* Make the edges rounder */
+        margin-top: 20px;
+    }
+
+    .expand-button .initial-text,
+    .expand-button .tooltip {
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        opacity: 0;
+        transition: opacity 0.3s; /* Smooth transition effect */
+        
+    }
+
+    .expand-button .initial-text {
+        opacity: 1; /* Show "+" sign text by default */
+    }
+
+    .expand-button:hover {
+        width: 100px; /* Expanded width on hover */
+    }
+
+    .expand-button:hover .initial-text {
+        opacity: 0; /* Hide "+" sign text on hover */
+    }
+
+    .expand-button:hover .tooltip {
+        opacity: 1; /* Show "Hello" text on hover */
+        right: 100px; /* Position "Hello" text beside "+" sign */
+    }
+
+.paragraph-container {
+        padding: 10px;
+        margin: 10px;
+        position: relative; /* Relative positioning for absolute positioning of the lock button */
+    }
+    
+    .lock-button {
+        padding: 5px;
+        background-color: #000000;
+        color: white;
+        border: none;
+        border-radius: 50%;
+        cursor: pointer;
+        position: absolute; /* Absolute positioning */
+        top: 50%; /* Vertically center the button */
+        right: -100px; /* Position the button outside the box */
+        transform: translateY(-50%); /* Adjust position to center vertically */
+    }
+
+
+.scroll-to-top {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    cursor: pointer;
+    background-color: #000000;
+    color: #fff;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.scroll-to-top i {
+    font-size: 20px;
+}
+
+.navbar {
+  color: white;
+  padding: 25px; /* Increase padding to give more space */
+  width: 95%; /* Make the navbar fully wide */
+  position: fixed; /* Fix the navbar to the top */
+  top: 0; /* Position the navbar at the top of the viewport */
+  z-index: 1000; /* Ensure the navbar is above other content */
+  display: flex; /* Use flexbox to align items */
+  justify-content: space-between; /* Align items to the start and end */
+}
+
+.navbar-logo {
+  width: 50px;
+  height: auto;
+  margin-right: auto; /* Push the logo to the left */
+}
+
+.nav-links {
+  display: flex; /* Use flexbox to align items */
+}
+
+.nav-link {
+  margin-left: 10px; /* Add margin to separate links */
+  text-decoration: none;
+  color: white;
+}
+
+.nav-link:not(:last-child)::after {
+  content: '|'; /* Add a vertical line */
+  margin-left: 10px; /* Add space between the line and the link */
+  color: white; /* Set the color of the line */
+}
+
+
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    overflow: hidden;
+    height: 100vh;
+    padding: 200px;
+}
+
+.button-container {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20px;
+  }
+
+  .button {
+    padding: 10px 20px;
+    background-color: #f0f0f0;
+    color: #333;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+    margin: 5px;
+  }
+
+  .button.active {
+    background-color: black;
+    color: white;
+  }
+
+  .content {
+    display: none;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    margin-top: 20px;
+  }
+
+  .content.active {
+    display: block;
+  }
+
+body {
+  font-family: Arial, sans-serif;
+  font-size: 15px;
+  height: 400vh;
+}
+
+.box {
+  border: 1px solid transparent;
+  border-radius: 10px;
+  background-color: white; /* Set the background color of the boxes to white */
+  color: black; /* Set text color to black */
+  padding: 10px 60px 10px 20px; /* Adjust padding to move the text a little more to the left */
+  margin: 10px auto;
+  width: 80%;
+  max-width: 600px;
+  box-sizing: border-box;
+  position: relative;
+  transition: transform 0.5s ease;
+  text-align: left;
+  font-family: Arial, sans-serif; /* Set the font family to Arial */
+}
+
+  .box.active {
+    transform: translateX(0%) scale(1.5); /* Center the active box more to the right and keep it enlarged */
+    z-index: 1;
+    background-color: black;
+    color: white;
+  }
+
+
+  .box.active .arrow {
+    transform: rotate(90deg); /* Rotate the arrow button by 90 degrees */
+  }
+
+  .box.blur {
+    filter: blur(5px); /* Apply blur effect to all boxes except the active one */
+    transform: scale(1);
+    z-index: 0;
+  }
+
+  .blur {
+  filter: blur(2px); /* Apply blur effect */
+  pointer-events: none; /* Disable pointer events */
+  user-select: none; /* Disable text selection */
+}
+
+
+  .arrow {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  right: 0;
+  top: 50%;
+}
+
+.up-arrow button,
+.down-arrow button {
+  background-color: #ccc;
+  border-radius: none;
+  padding: 5px 10px; /* Reduce padding */
+  cursor: pointer;
+  font-size: 14px; /* Reduce font size */
+  border-radius: 50%; /* Make the button round */
+}
+
+
+  .paragraph-indicator {
+  color: gray;
+  font-size: 12px;
+  display: block;
+  margin-bottom: 5px;
+  font-weight: bold; /* Add this line to make the paragraph indicator bold */
+}
+
+.banner {
+  position: relative;
+  width: 100%;
+  height: 30vh; /* Adjusted height for the banner */
+  background-size: cover;
+  background-color: #ffffff; /* Dark gray background for the banner */
+}
+
+header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 90%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  transition: 0.6s;
+  padding: 40px 100px;
+  z-index: 100000;
+  border-bottom: 2px solid rgb(0, 0, 0); /* White border at the bottom of the header */
+  opacity: 1;
+  transition: opacity 0.6s;
+}
+
+header.hidden {
+  opacity: 0;
+}
+
+header ul {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 10px 0;
+  border-top: 2px solid rgb(255, 255, 255); /* White border at the top of the ul */
+  border-bottom: 2px solid white; /* White border at the bottom of the ul */
+}
+
+header ul li {
+  position: relative;
+  list-style: none;
+  border-left: 2px solid white; /* White border on the left of each list item */
+}
+
+header ul li:first-child {
+  border-left: none; /* Remove left border for the first list item */
+}
+
+header ul li a {
+  position: relative;
+  margin: 0 15px;
+  text-decoration: none;
+  color: hsl(0, 0%, 100%);
+  letter-spacing: 2px;
+  font-weight: 500;
+  transition: 0.6s;
+}
+
+/* Add hover effect to header buttons */
+header ul li a:hover {
+  color: #000000; /* Change to the desired highlight color */
+}
+
+body {
+  background-color: orange;
+  padding-top: 60px; /* Increase padding to make more room for the navigation bar */
+  font-family: Arial, sans-serif;
+}
+
+.container {
+  position: absolute; /* Set the container to absolute positioning */
+  top: 80px; /* Adjust the top offset to position the container below the navigation bar */
+  left: 0; /* Ensure the container starts from the left edge of the viewport */
+  right: 0; /* Ensure the container ends at the right edge of the viewport */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 7000px; /* Adjust the container's height to fill the remaining viewport */
+}
+
+.box {
+  border: 1px solid transparent;
+  border-radius: 10px;
+  background-color: white; /* Set the background color of the boxes to white */
+  color: black; /* Set text color to black */
+  padding: 10px 60px 10px 20px; /* Adjust padding to move the text a little more to the left */
+  margin: 10px auto;
+  width: 80%;
+  max-width: 600px;
+  box-sizing: border-box;
+  position: relative;
+  transition: transform 0.5s ease;
+  text-align: left; /* Align text to the left */
+  font-family: Arial, sans-serif; /* Set the font family to Arial */
+}
+
+.view-full-article-box {
+    border-radius: 10px; /* Make the edges rounder */
+    padding: 10px;
+    margin-top: 20px;
+    width: fit-content;
+}
+
+.view-full-article {
+    text-decoration: none;
+    color: black;
+    border: none; /* Remove the border */
+    background-color: #f0f0f0; /* Set the initial background color */
+    padding: 8px 16px; /* Adjust padding */
+    border-radius: 8px; /* Make the button rounder */
+}
+
+.view-full-article:hover {
+    background-color: #e0e0e0; /* Darken the background color on hover */
+}
+
+.view-full-article:active {
+    background-color: black; /* Change background color when button is clicked */
+    color: white; /* Change text color when button is clicked */
+}
+
+
+.box.active {
+  transform: translateX(0%) scale(1.5); /* Center the active box more to the right and keep it enlarged */
+}
+
+.box.blur {
+  filter: blur(5px); /* Apply blur effect to all boxes except the active one */
+  transform: scale(1);
+}
+
+.arrow {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  right: 0;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.arrow button {
+  background-color: #ccc;
+  border: none;
+  padding: 2px 6px; /* Reduce padding */
+  cursor: pointer;
+  font-size: 14px; /* Reduce font size */
+}
+
+@keyframes moveDown {
+  from {
+    transform: translateY(0);
+  }
+  to {
+    transform: translateY(20%);
+  }
+}
+
+@keyframes moveUp {
+  from {
+    transform: translateY(0);
+  }
+  to {
+    transform: translateY(-20%);
+  }
+}
+
+.move-down {
+  animation: moveDown 0.3s forwards;
+}
+
+.move-up {
+  animation: moveUp 0.3s forwards;
+}
+
+
+  @keyframes moveDown {
+    from {
+      transform: translateY(0);
+    }
+    to {
+      transform: translateY(20%);
+    }
+  }
+
+  @keyframes moveUp {
+    from {
+      transform: translateY(0);
+    }
+    to {
+      transform: translateY(-20%);
+    }
+  }
+
+  .move-down {
+    animation: moveDown 0.3s forwards;
+  }
+
+  .move-up {
+    animation: moveUp 0.3s forwards;
+  }
+</style>
+</head>
+<body>
+
+  <center>
+    <header id="navbar">
+      <a href="index.html"><img src="blockchainuni (official logo).png" alt="Welcome!" style="float:left;width:265px;height:90px;"></a>
+      <div class="dropdown">
+                  <div class="dropdown-content">
+                      <ul>
+              <li><a href="index.html"><b>HOME</a></li></b>
+              <li><a href="Workshops.html"><b>WORKSHOPS</a></li></b>
+              <li><a href="FirstAccess.html"><b>FIRST/ACCESS</a></li></b>
+              <li><a href="Columns.html"><b>ARTICLES</a></li></b>
+                      </ul>
+                  </div>
+</center>
+  <br><br><br><br><br><br>
+  <div class="container">
+    <br><br><br>
+    <div class="view-full-article-box" id="view-full-article-box">
+        <button class="view-full-article">View Full Article</button>
+    </div>
+    <div class="button-container">
+      <a href="" target="_blank">
+      <button class="expand-button">
+          <span class="initial-text">📺</span>
+          <span class="tooltip">📺<b>/WatchVideo</b><br></span>
+      </button>
+    </a>
+  </div>
+    <br><br><br><br><br><br>
+    <div class="box active" id="box1">
+      <div class="arrow">
+        <button class="up-arrow" onclick="scrollToTop()" disabled> 👈 </button>
+        <button class="down-arrow" onclick="scrollToBottom()"> 👉 </button>
+      </div>
+      <span class="paragraph-indicator">Paragraph 1 of 18</span>
+      <div class="paragraph-container">
+        <button class="lock-button" onclick="toggleLock(this)">🖍️</button>
+        <h1> The Historical Token of</h1>
+        <h3> USD Coin: How We Measure Decentralized Finance</h3>
+      <p>
+        Throughout the history of cryptography, its linkage with other network systems is entirely reliant on one thing, code. But, what makes up of the code relies on the application, and in this workshop, we’ll be going over once again another token, something that allows for trading to take place on the blockchain. In the cases of blockchain technology, it can mean taking code for a certain token, and translating that into a close-sourced format of information that allows storage of other data. In its essence, cryptocurrencies are really just a fork of another token, or a combination of collaborated data, hence why the market traffic of these tokens are so high.
+      </p>
+    </div>
+  </div>
+    <div class="box blur" id="box2">
+      <div class="arrow">
+        <button class="up-arrow" onclick="scrollToTop()" disabled> 👈 </button>
+        <button class="down-arrow" onclick="scrollToBottom()"> 👉 </button>
+      </div>
+      <span class="paragraph-indicator">Paragraph 2 of 18</span>
+      <div class="paragraph-container">
+        <button class="lock-button" onclick="toggleLock(this)">🖍️</button>  
+      <p>
+        The token in discussion for this article goes by the name of USD Coin, and unlike other coins discussed before, this one is particularly merged with the recognized government currency of the US dollar. That’s right, cryptocurrency has already evolved to the point at wbich, there is a deep connection between the day-to-day exchanges of a dollar versus how it reflects onto the blockchain. Now, in this case, you’re likely wondering how this is possible.
+      </p>
+    </div>
+    </div>
+    <div class="box blur" id="box3">
+      <div class="arrow">
+        <button class="up-arrow" onclick="scrollToTop()" disabled> 👈 </button>
+        <button class="down-arrow" onclick="scrollToBottom()"> 👉 </button>
+      </div>
+      <span class="paragraph-indicator">Paragraph 3 of 18</span>
+      <div class="paragraph-container">
+        <button class="lock-button" onclick="toggleLock(this)">🖍️</button>  
+      <p>
+        Ever since the introduction of Ethereum came to fruition, creating a token under the estabished protocols of ETH has unlocked a special abilitty for owners to be able to include all sorts of methods into faster trading, such as staking, use of tokens in mobile applications (otherwise known as dApps), and various other uses of tools connected to their well known protocol, which goes by the name ERC-20. In this case, the most important aspect of USD Coin that makes use of the Ethereum blockchain, is its different identification, and most tokens today are generated at ease and called ‘altcoins’. This one, is not so particularly generated at ease, and it’s labelled under the category of stablecoins.
+      </p>
+    </div>
+    </div>
+    <div class="box blur" id="box4">
+      <div class="arrow">
+        <button class="up-arrow" onclick="scrollToTop()" disabled> 👈 </button>
+        <button class="down-arrow" onclick="scrollToBottom()"> 👉 </button>
+      </div>
+      <span class="paragraph-indicator">Paragraph 4 of 18</span>
+      <div class="paragraph-container">
+        <button class="lock-button" onclick="toggleLock(this)">🖍️</button>
+      <p>
+        Although mentioned before, the ‘stablecoin’ is a lesser known phenomenon under the blockchain at which the token does not necessarily have the form factor of demand behind it, but more so, the actual resemblance of a real currency in a digitally independent world. What this means is, the stablecoin itself can be supported or backed up by a particular asset in use, and because USD coin is based on the American dollar, it is supported by the movements of fiat currency. Fiat currency, for those who don’t have a background in finance knowledge, is specifically identified as a type of currency that is not directly related to a physical commodity, which in this economic era could be identified mostly with gold. USD Coin therefore is a digital replica of the same dollar, though it cannot be physically traded on the NASDAQ, but is more so indirectly related to its predecessors movements in the markt when it comes to stocks and bonds.
+      </p>
+    </div>
+    </div>
+    <div class="box blur" id="box5">
+      <div class="arrow">
+        <button class="up-arrow" onclick="scrollToTop()" disabled> 👈 </button>
+        <button class="down-arrow" onclick="scrollToBottom()"> 👉 </button>
+      </div>
+      <span class="paragraph-indicator">Paragraph 5 of 18</span>
+      <div class="paragraph-container">
+        <button class="lock-button" onclick="toggleLock(this)">🖍️</button>
+      <p>
+        Since this currency in of itself is connect to the government, this also brings other benefits along the way, such as the fact that cybersecurity is brought to a new level with how the token can be particularly monitored. To expand on this existing process, we should mention the Financial Crimes Enforcement Network (FinCEN), a specific organization that is almost similar to the Financial Action Task Force or the newly developed Blockchain Task Force, at which illegal activities are to be monitored by a larger group of individuals that have expertise and knowledge in how tokens could be prioritized by hacker for malicious activities on the same network. Short for FinCEN, USD Coin is at its core registered under this system, but not directly though through community built applications instead, one of these being Circle. Circle, at its core, is a FinCEN based application that can help tokens become more secure, preventing financial fraud that is common in the economy and alotgether stengthening regulatory policies that you wouldn’t otherwise find in say, DogeCoin.
+      </p>
+    </div>
+    </div>
+    <div class="box blur" id="box6">
+      <div class="arrow">
+        <button class="up-arrow" onclick="scrollToTop()" disabled> 👈 </button>
+        <button class="down-arrow" onclick="scrollToBottom()"> 👉 </button>
+      </div>
+      <span class="paragraph-indicator">Paragraph 6 of 18</span>
+      <div class="paragraph-container">
+        <button class="lock-button" onclick="toggleLock(this)">🖍️</button>
+      <p>
+        Now of course, cryptocurrencies cannot be mentioned without the process of mining them, though, USD Coin comes as an exception. Be cause the token is directly linked to the American dollar in a network, unlike Bitcoin or Ethereum which can be mined, USD coin typically cannot be done so in the same way. Therefore, it works on the other side of token exchanging, at which it can be taken ownership by anyone, but traded on a volume at which it serves particularly well when it comes to converting the token instead. The point of interest here is, not all token necessarily have to be valued at just their identification, but can be converted into something else, and that’s where then relatibility between cyrpotcurrency mining and USD coin comes in. For example, if you are mining for Bitcoin or Ethereum, you can take your earnings and convert it solely to USD coin, therefore in some way securing what all of your computing power at that stage has yearned for.
+      </p>
+    </div>
+    </div>    
+    <div class="box blur" id="box7">
+      <div class="arrow">
+        <button class="up-arrow" onclick="scrollToTop()" disabled> 👈 </button>
+        <button class="down-arrow" onclick="scrollToBottom()"> 👉 </button>
+      </div>
+      <span class="paragraph-indicator">Paragraph 7 of 18</span>
+      <div class="paragraph-container">
+        <button class="lock-button" onclick="toggleLock(this)">🖍️</button>
+      <p>
+        Returning back to the connection this token has to the Ethereum blockchain, it is important to mention that it is a far more efficient token as well. On the record, because USD Coin is under the ERC-20 protocol, it also functions under the activity of staking, where an average transaction in relation to USD coin takes around 5 minutes, which equates to the volume of 20 stakeholders of a similar coin verifying this token all in that same time period. To numerically expand on this idea, there is also a supply of this coin, at which it comes down to about 44 million of them, or roughly 5% of the total existing capital of coins. As we’ve mentioned in the past that the rise of tokens vary based on how they’re applied to a particular purpose built within an application, USD coin functions under a similar fashion in the sense that, trading in USD coin is far more convenient and efficient than it would be via doing a bank transfer with the normal American dollar. Faster bank transfers, and by the minute transactions, is what ultimately proves it more stable and cost-efficient on top of its connection to the US dollar altogether.
+      </p>
+    </div>
+    </div>
+    <div class="box blur" id="box8">
+      <div class="arrow">
+        <button class="up-arrow" onclick="scrollToTop()" disabled> 👈 </button>
+        <button class="down-arrow" onclick="scrollToBottom()"> 👉 </button>
+      </div>
+      <span class="paragraph-indicator">Paragraph 8 of 18</span>
+      <div class="paragraph-container">
+        <button class="lock-button" onclick="toggleLock(this)">🖍️</button>
+      <p>
+        This is not to say, that there isn’t the process of receiving rewards over USDC as well. For example, unlike other tokens that favor airdrops, at which you complete a particular task on behalf of a larger platform in return for the token you are promised, here it’s more or less the idea of actually turning in your ownership of the stablecoin for something else. In existing finance, there is something called ‘yields’, at which there is a certain profit that is generated from an initial investment that is made. In this case, USDC is more or less the risk-free version of that, at which borrowers can trade their USDC tokens for crowdfunding investments for startups under a domestic or international level.
+      </p>
+    </div>
+    </div>
+    <div class="box blur" id="box9">
+      <div class="arrow">
+        <button class="up-arrow" onclick="scrollToTop()" disabled> 👈 </button>
+        <button class="down-arrow" onclick="scrollToBottom()"> 👉 </button>
+      </div>
+      <span class="paragraph-indicator">Paragraph 9 of 18</span>
+      <div class="paragraph-container">
+        <button class="lock-button" onclick="toggleLock(this)">🖍️</button>
+      <p>
+        With crowdfunding, thanks to the formation of the DAO (Decentralized Autonomous Organization), this is entirely possible at the hands of any Ethereum token. Despite previous instances of hacks that were held in place, the use of cross-chain (or parallel) networks helps to enhance the strength of this security, by also balancing the share of power that is required to make sure the Ethereum network is actually functioning in favor of transactions that take place with USD Coin. Referring back to the app that’s responsible for making this functioning security organized under government affiliations such as FinCEN, Circle, is connected to other transactional branches that trade the dollar within high-risk portfolios, one of them being Goldman Sachs. With this relation, Circle is able to also add the mixture of other financial resources into the processes of the token, this mainly being short-term treasury bonds, and assets involved with diversifying a pool of investments.
+      </p>
+    </div>
+    </div>
+    <div class="box blur" id="box10">
+      <div class="arrow">
+        <button class="up-arrow" onclick="scrollToTop()" disabled> 👈 </button>
+        <button class="down-arrow" onclick="scrollToBottom()"> 👉 </button>
+      </div>
+      <span class="paragraph-indicator">Paragraph 10 of 18</span>
+      <div class="paragraph-container">
+        <button class="lock-button" onclick="toggleLock(this)">🖍️</button>
+      <p>
+        For those that don’t know what treasury bonds are, they are simply government provided bonds to support public spending, at which those who invest in them usually pay it back with periodic interest. In simpler terms, treasury bonds are also known as coupon payments, where a particular bond must be paid after a certain maturity rate, this usually lasting about a decade(s). We can find out how this coincides with USDC’s operations via another exchange platform known well to the community, called Coinbase. Coinbase, similar to Binance, is the American exchange that represents volume in trading tokens for everyone that is able to invest into them. But exclusively for USDC, when owning a stake in the same token, Coinbase rewards the person for the number of days they’re able to uphold the value of their stake at the same rate regardless of market volatilities over the American dollar. In general, what this implies for those aiming to build tokenized portfolios, is that at its core, if you can hold onto something long enough, you can reap its financial benefits to the point at which other platforms may leverage what you have as well.
+      </p>
+    </div>
+    </div>
+    <div class="box blur" id="box11">
+      <div class="arrow">
+        <button class="up-arrow" onclick="scrollToTop()" disabled> 👈 </button>
+        <button class="down-arrow" onclick="scrollToBottom()"> 👉 </button>
+      </div>
+      <span class="paragraph-indicator">Paragraph 11 of 18</span>
+      <div class="paragraph-container">
+        <button class="lock-button" onclick="toggleLock(this)">🖍️</button>
+      <p>
+        Although various benefits of this token have been mentioned, it is important to note that, the word ‘stable’ in ‘stablecoins’ doesn’t always mean that there can’t be slight declines, as the American economy is made up of its volatile counterparts. Such an example could be found in June 2022, when USDC had experienced a decline in market capitalization, at which it had average to about 56 billion $ until it declined to an estimate of 34 billion$ until August 2023. Although this can happen, the reasons for it aren’t exactly what you might think, as we can’t forget that this is a stablecoin. Meaning, there are parts of the USDC that are branched out into various investments, that can be divided between the following which are: 60% of total payments are invested through third-party dApps, 15% towards direct payments in transactions, and the remaining 15% of the token being deposited through money transfers and correspondoing currency conversions via the euro, pounds,and of course dollars. 
+      </p>
+    </div>
+    </div>
+    <div class="box blur" id="box12">
+      <div class="arrow">
+        <button class="up-arrow" onclick="scrollToTop()" disabled> 👈 </button>
+        <button class="down-arrow" onclick="scrollToBottom()"> 👉 </button>
+      </div>
+      <span class="paragraph-indicator">Paragraph 12 of 18</span>
+      <div class="paragraph-container">
+        <button class="lock-button" onclick="toggleLock(this)">🖍️</button>
+      <p>
+        The decline here is that, sometimes the supply of the token due its reliance on the Ethereum blockchain, can significantly go down to the large weight on traffic and earlier mentioned conversions with other currencies. But, on a bigger scope of things, their is always the golden ratio of USDC, which is that since it’s a near replica of the American dollar, it keeps up a positive elastic ratio of 1:1, meaning that measuring by volatility, almost 80% of the time there is going to be a balanced flow between how the value of USD corrsponds with USDC, which ultimately makes the investments people plan to make with it just about risk-free or stable.
+      </p>
+    </div>
+    </div>
+    <div class="box blur" id="box13">
+      <div class="arrow">
+        <button class="up-arrow" onclick="scrollToTop()" disabled> 👈 </button>
+        <button class="down-arrow" onclick="scrollToBottom()"> 👉 </button>
+      </div>
+      <span class="paragraph-indicator">Paragraph 13 of 18</span>
+      <div class="paragraph-container">
+        <button class="lock-button" onclick="toggleLock(this)">🖍️</button>
+      <p>
+        With all this discussion around how something becomes risk-free, the logistical background of this plausability comes from the notion that the pricing between USD and USDC should always come to about 1$. Notice that, unlike BTC, it is kept at this rate to strongly correlate with its fiat currency, hence making it combat against market volatility and negative price elasticities. Mentioning once again how declines are possible, just tpo pain the picture of the coins stability, we can mention that between June 2022 and August 2023, the coins value had only fallen down to 0.9998$. This decline was made possible despite other heavy investments revolved around the currency, which can be treasury bonds for example. 
+      </p>
+    </div>
+    </div>
+    <div class="box blur" id="box14">
+      <div class="arrow">
+        <button class="up-arrow" onclick="scrollToTop()" disabled> 👈 </button>
+        <button class="down-arrow" onclick="scrollToBottom()"> 👉 </button>
+      </div>
+      <span class="paragraph-indicator">Paragraph 14 of 18</span>
+      <div class="paragraph-container">
+        <button class="lock-button" onclick="toggleLock(this)">🖍️</button>
+      <p>
+        Speaking of price increases and decreases, it cannot be forgotten that volume is a big part of why these actions take place. For example, with Circle, the app that primarily secures USDC, they own an equivalent amount of cash in USD as they do in short-term treasury bonds, which maintains overall balance and protection against market volatility. If we were to put two tokens side by side, one being an altcoin such as Bitcoin for example, and the other being USDC of course, the measure of statistics would yield that the initial currency that creates the blockchain has a yearly return of -35%, which has a signifiantly higher ATL (All-Time-Low) than would apply to USDC.
+      </p>
+    </div>
+    </div>
+    <div class="box blur" id="box15">
+      <div class="arrow">
+        <button class="up-arrow" onclick="scrollToTop()" disabled> 👈 </button>
+        <button class="down-arrow" onclick="scrollToBottom()"> 👉 </button>
+      </div>
+      <span class="paragraph-indicator">Paragraph 15 of 18</span>
+      <div class="paragraph-container">
+        <button class="lock-button" onclick="toggleLock(this)">🖍️</button>
+      <p>
+        Of course, since exchanges are the ultimate platforms that facilitate tokens such as USDC into the community all at once, it is important to mention that Coinbase is not the only exchange that holds this stablecoin at large, as so does the same apply to other exchanges such as Binance, Poloniex and so on. On these other exchanges, the tokens that people incentivized to convert to USDC are usually USDT, BTC (Bitcoin), ETH (Ethereum), ZEC (Zcash Network), BAT (Basic Attention), and LET (Liberia token). These trades are all made under their appropriate networks, as mentioned before, due to the ongoing improvements in the transferral of tokens with parallel blockchains.
+      </p>
+    </div>
+    </div>
+    <div class="box blur" id="box16">
+      <div class="arrow">
+        <button class="up-arrow" onclick="scrollToTop()" disabled> 👈 </button>
+        <button class="down-arrow" onclick="scrollToBottom()"> 👉 </button>
+      </div>
+      <span class="paragraph-indicator">Paragraph 16 of 18</span>
+      <div class="paragraph-container">
+        <button class="lock-button" onclick="toggleLock(this)">🖍️</button>
+      <p>
+        In certain countries, access to this level of financial freedom is usually limited, due to government restrictions, hence why USDC thanks to cross-chain technology is more or less another way to make fast transfers without the additional costs or limitations. For example, when you’re making a bank transfer, it could take anywhere from 48 hours to a week as the verification relies on one central institution, whereas USDC is more or less beneficial to someone with a cryptocurrency wallet such as Trezor, which we’ve revealed and reviewed in another article. High fees, slower times, are usually bypassed thanks to this technology, and the allowance of government regulated tokens, making public trading on exchanges far more efficient than it ever was before.
+      </p>
+    </div>
+    </div>
+    <div class="box blur" id="box17">
+      <div class="arrow">
+        <button class="up-arrow" onclick="scrollToTop()" disabled> 👈 </button>
+        <button class="down-arrow" onclick="scrollToBottom()"> 👉 </button>
+      </div>
+      <span class="paragraph-indicator">Paragraph 17 of 18</span>
+      <div class="paragraph-container">
+        <button class="lock-button" onclick="toggleLock(this)">🖍️</button>
+      <p>
+
+      </p>
+    </div>
+  </div>
+    <div class="box blur" id="box18">
+      <div class="arrow">
+        <button class="up-arrow" onclick="scrollToTop()" disabled> 👈 </button>
+        <button class="down-arrow" onclick="scrollToBottom()"> 👉 </button>
+      </div>
+      <span class="paragraph-indicator">Paragraph 18 of 18</span>
+      <div class="paragraph-container">
+        <button class="lock-button" onclick="toggleLock(this)">🖍️</button>
+      <p>
+        Returning back to concept of Bitcoin, it is important to mention that, actions are being taken to help secure the fund as it is being popularly converted to USDC. Due to its hikes and major drops in prices, it has been mentioned that the government is looking to benefit stakeholders in BTC using a Bitcoin futures exchange-traded fund (ETF), which allows Bitcoin to be applied to the buying and selling of shares, stocks, bonds, and much more. The concept has been passed ever since 2021, which makes its valued correspondance with USDC a lot more efficient, though it does come with its own risks which can be mentioned in future workshops.
+      </p>
+    </div>
+    </div>
+    <div id="scrollToTopBtn" class="scroll-to-top" style="display: none;">
+        <i class="fas fa-arrow-up"></i>
+        <span style="vertical-align: middle; font-size: 26px;">👆</span>
+    </div>
+</div>
+
+<script>
+const boxes = document.querySelectorAll('.box');
+const container = document.querySelector('.container');
+const upArrows = document.querySelectorAll('.up-arrow');
+const downArrows = document.querySelectorAll('.down-arrow');
+let currentIndex = 0;
+
+// Initialize the page by hiding arrow buttons for all boxes except the first one
+hideOtherArrows(currentIndex);
+
+upArrows.forEach(function(elem, index) {
+  elem.addEventListener('click', function() {
+    moveBoxUp(index);
+  });
+});
+
+downArrows.forEach(function(elem, index) {
+  elem.addEventListener('click', function() {
+    moveBoxDown(index);
+  });
+});
+
+document.addEventListener('keydown', function(event) {
+  if (event.key === 'ArrowRight') {
+    moveBoxDown(currentIndex);
+  } else if (event.key === 'ArrowLeft') {
+    moveBoxUp(currentIndex);
+  } else if (event.key === 'ArrowUp') {
+    moveBoxUp(currentIndex);
+  } else if (event.key === 'ArrowDown') {
+    moveBoxDown(currentIndex);
+  }
+});
+
+function moveBoxUp(index) {
+  if (index > 0) {
+    const nextIndex = index - 1;
+    moveToIndex(nextIndex);
+  }
+}
+
+function moveBoxDown(index) {
+  if (index < boxes.length - 1) {
+    const nextIndex = index + 1;
+    moveToIndex(nextIndex);
+  }
+}
+
+function moveToIndex(nextIndex) {
+  // Remove active class from current box and add blur class
+  boxes[currentIndex].classList.remove('active');
+  boxes[currentIndex].classList.add('blur');
+
+  // Add active class to next box and remove blur class
+  boxes[nextIndex].classList.remove('blur');
+  boxes[nextIndex].classList.add('active');
+
+  // Calculate the position to align active box with arrow box
+  const arrowRect = boxes[nextIndex].querySelector('.arrow').getBoundingClientRect();
+  const activeBoxRect = boxes[nextIndex].getBoundingClientRect();
+
+  // Calculate the scroll position to align active box with arrow box
+  const scrollLeft = activeBoxRect.left - arrowRect.left - (window.innerWidth / 2 - activeBoxRect.width / 2);
+
+  // Set the scroll position to immediately position the active box beside the arrow box
+  container.scrollLeft = scrollLeft;
+
+  currentIndex = nextIndex;
+
+  // Disable/enable arrows based on current index
+  upArrows.forEach(function(elem) {
+    elem.disabled = currentIndex === 0;
+  });
+
+  downArrows.forEach(function(elem) {
+    elem.disabled = currentIndex === boxes.length - 1;
+  });
+
+  // Hide arrow buttons for other boxes
+  hideOtherArrows(currentIndex);
+}
+
+function hideOtherArrows(index) {
+  boxes.forEach(function(box, i) {
+    const arrows = box.querySelectorAll('.arrow button');
+    arrows.forEach(function(arrow) {
+      arrow.style.visibility = i !== index ? 'hidden' : 'visible';
+    });
+  });
+}
+
+    
+document.getElementById('view-full-article-box').addEventListener('click', function() {
+    // Create the button for entering paragraph mode
+    var refreshButton = document.createElement('button');
+    refreshButton.textContent = 'Enter Paragraph Mode';
+    refreshButton.classList.add('view-full-article'); // Add class for styling
+    refreshButton.style.backgroundColor = 'white'; // Set white background
+    refreshButton.style.color = 'black'; // Set black text color
+    refreshButton.style.border = '2px solid white'; // Add white border
+    refreshButton.style.cursor = 'pointer'; // Set cursor to pointer to indicate clickability
+    refreshButton.addEventListener('click', function() {
+        location.reload(); // Reload the page when clicked
+    });
+
+    // Append the button to the 'view-full-article-box'
+    this.innerHTML = ''; // Clear existing content
+    this.appendChild(refreshButton);
+
+    // Remove active state from all boxes
+    document.querySelectorAll('.box').forEach(function(box) {
+        box.classList.remove('active');
+    });
+
+    // Remove box styling
+    document.querySelectorAll('.box').forEach(function(box) {
+        box.style.border = 'none';
+        box.style.backgroundColor = 'transparent';
+        box.style.fontSize = '15px'; // Set font size back to default
+        box.classList.remove('blur'); // Remove blur class
+    });
+
+    // Remove paragraph indicators
+    document.querySelectorAll('.paragraph-indicator').forEach(function(indicator) {
+        indicator.remove();
+    });
+
+    // Disable lock buttons and hide lock icons
+    document.querySelectorAll('.lock-button').forEach(function(lockButton) {
+        lockButton.disabled = true;
+        lockButton.style.display = 'none';
+    });
+
+    // Remove animations
+    document.querySelectorAll('.move-up, .move-down').forEach(function(animation) {
+        animation.style.animation = 'none';
+    });
+
+    // Hide arrow buttons for all other boxes
+    hideOtherArrows(-1);
+});
+
+let lockedParagraph = null;
+
+function toggleLock(button) {
+  const parent = button.parentNode;
+  const isLocked = parent.classList.toggle('locked');
+  if (isLocked) {
+    lockedParagraph = parent;
+    centerParagraph(lockedParagraph);
+  } else {
+    lockedParagraph = null;
+  }
+}
+
+function centerParagraph(element) {
+  const rect = element.getBoundingClientRect();
+  const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+  const centerY = rect.top + rect.height / 2 - window.innerHeight / 2 + scrollTop;
+  window.scrollTo({
+    top: centerY,
+    behavior: 'smooth'
+  });
+}
+
+// Keep the locked paragraph centered if the window is resized
+window.addEventListener('resize', function() {
+  if (lockedParagraph) {
+    centerParagraph(lockedParagraph);
+  }
+});
+
+
+    </script>  
+</body>
+</html>
