@@ -28,4 +28,4 @@ paginate: 5 # Number of posts per page for pagination
 # SEO settings
 meta_description: "Your site's meta description"
 
-source: docs
+source: _site
