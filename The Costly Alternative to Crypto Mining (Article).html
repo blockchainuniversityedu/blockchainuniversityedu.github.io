@@ -1,6 +1,5 @@
 <!DOCTYPE html>
-<html>
-  <link rel="stylesheet" type="text/css" href="reader.css">
+<html lang="en">
 <head>
   <!-- Google tag (gtag.js) -->
 	<script async src="https://www.googletagmanager.com/gtag/js?id=G-9J1B2MTYSV"></script>
@@ -10,531 +9,1262 @@
  	 	gtag('js', new Date());
  	 	gtag('config', 'G-9J1B2MTYSV');
 	</script>
-    <title> The Costly Alternative to Crypto Mining - Article </title>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title> The Costly Alternative to Crypto Mining - Article </title>
 <style>
 
+.locked {
+        background-color: darkorange;
+        border: 1px solid;
+        border-radius: 10px;
+        border-color: black;
+    }
+
+.button-container {
+        position: relative;
+        width: 300px; /* Adjust width as needed */
+    }
+
+    .expand-button {
+        width: 10px; /* Initial width of the button */
+        height: 10px; /* Height of the button */
+        padding: 10px;
+        background-color: #ff0000;
+        color: rgb(255, 255, 255);
+        border: none;
+        cursor: pointer;
+        position: relative; /* Enable positioning of the tooltip */
+        transition: width 0.3s; /* Smooth transition effect */
+        border-radius: 5px; /* Make the edges rounder */
+        margin-top: 20px;
+    }
+
+    .expand-button .initial-text,
+    .expand-button .tooltip {
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        opacity: 0;
+        transition: opacity 0.3s; /* Smooth transition effect */
+        
+    }
+
+    .expand-button .initial-text {
+        opacity: 1; /* Show "+" sign text by default */
+    }
+
+    .expand-button:hover {
+        width: 100px; /* Expanded width on hover */
+    }
+
+    .expand-button:hover .initial-text {
+        opacity: 0; /* Hide "+" sign text on hover */
+    }
+
+    .expand-button:hover .tooltip {
+        opacity: 1; /* Show "Hello" text on hover */
+        right: 100px; /* Position "Hello" text beside "+" sign */
+    }
+
+.paragraph-container {
+        padding: 10px;
+        margin: 10px;
+        position: relative; /* Relative positioning for absolute positioning of the lock button */
+    }
+    
+    .lock-button {
+        padding: 5px;
+        background-color: #000000;
+        color: white;
+        border: none;
+        border-radius: 50%;
+        cursor: pointer;
+        position: absolute; /* Absolute positioning */
+        top: 50%; /* Vertically center the button */
+        right: -100px; /* Position the button outside the box */
+        transform: translateY(-50%); /* Adjust position to center vertically */
+    }
+
+
+.scroll-to-top {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    cursor: pointer;
+    background-color: #000000;
+    color: #fff;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.scroll-to-top i {
+    font-size: 20px;
+}
+
+.navbar {
+  color: white;
+  padding: 25px; /* Increase padding to give more space */
+  width: 95%; /* Make the navbar fully wide */
+  position: fixed; /* Fix the navbar to the top */
+  top: 0; /* Position the navbar at the top of the viewport */
+  z-index: 1000; /* Ensure the navbar is above other content */
+  display: flex; /* Use flexbox to align items */
+  justify-content: space-between; /* Align items to the start and end */
+}
+
+.navbar-logo {
+  width: 50px;
+  height: auto;
+  margin-right: auto; /* Push the logo to the left */
+}
+
+.nav-links {
+  display: flex; /* Use flexbox to align items */
+}
+
+.nav-link {
+  margin-left: 10px; /* Add margin to separate links */
+  text-decoration: none;
+  color: white;
+}
+
+.nav-link:not(:last-child)::after {
+  content: '|'; /* Add a vertical line */
+  margin-left: 10px; /* Add space between the line and the link */
+  color: white; /* Set the color of the line */
+}
+
+
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    overflow: hidden;
+    height: 100vh;
+    padding: 200px;
+}
+
+.button-container {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20px;
+  }
+
+  .button {
+    padding: 10px 20px;
+    background-color: #f0f0f0;
+    color: #333;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+    margin: 5px;
+  }
+
+  .button.active {
+    background-color: black;
+    color: white;
+  }
+
+  .content {
+    display: none;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    margin-top: 20px;
+  }
+
+  .content.active {
+    display: block;
+  }
+
+body {
+  font-family: Arial, sans-serif;
+  font-size: 15px;
+  height: 400vh;
+}
+
+.box {
+  border: 1px solid transparent;
+  border-radius: 10px;
+  background-color: white; /* Set the background color of the boxes to white */
+  color: black; /* Set text color to black */
+  padding: 10px 60px 10px 20px; /* Adjust padding to move the text a little more to the left */
+  margin: 10px auto;
+  width: 80%;
+  max-width: 600px;
+  box-sizing: border-box;
+  position: relative;
+  transition: transform 0.5s ease;
+  text-align: left;
+  font-family: Arial, sans-serif; /* Set the font family to Arial */
+}
+
+  .box.active {
+    transform: translateX(0%) scale(1.5); /* Center the active box more to the right and keep it enlarged */
+    z-index: 1;
+    background-color: black;
+    color: white;
+  }
+
+
+  .box.active .arrow {
+    transform: rotate(90deg); /* Rotate the arrow button by 90 degrees */
+  }
+
+  .box.blur {
+    filter: blur(5px); /* Apply blur effect to all boxes except the active one */
+    transform: scale(1);
+    z-index: 0;
+  }
+
+  .blur {
+  filter: blur(2px); /* Apply blur effect */
+  pointer-events: none; /* Disable pointer events */
+  user-select: none; /* Disable text selection */
+}
+
+
+  .arrow {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  right: 0;
+  top: 50%;
+}
+
+.up-arrow button,
+.down-arrow button {
+  background-color: #ccc;
+  border-radius: none;
+  padding: 5px 10px; /* Reduce padding */
+  cursor: pointer;
+  font-size: 14px; /* Reduce font size */
+  border-radius: 50%; /* Make the button round */
+}
+
+
+  .paragraph-indicator {
+  color: gray;
+  font-size: 12px;
+  display: block;
+  margin-bottom: 5px;
+  font-weight: bold; /* Add this line to make the paragraph indicator bold */
+}
+
+.banner {
+  position: relative;
+  width: 100%;
+  height: 30vh; /* Adjusted height for the banner */
+  background-size: cover;
+  background-color: #ffffff; /* Dark gray background for the banner */
+}
+
+header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 90%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  transition: 0.6s;
+  padding: 40px 100px;
+  z-index: 100000;
+  border-bottom: 2px solid rgb(0, 0, 0); /* White border at the bottom of the header */
+  opacity: 1;
+  transition: opacity 0.6s;
+}
+
+header.hidden {
+  opacity: 0;
+}
+
+header ul {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 10px 0;
+  border-top: 2px solid rgb(255, 255, 255); /* White border at the top of the ul */
+  border-bottom: 2px solid white; /* White border at the bottom of the ul */
+}
+
+header ul li {
+  position: relative;
+  list-style: none;
+  border-left: 2px solid white; /* White border on the left of each list item */
+}
+
+header ul li:first-child {
+  border-left: none; /* Remove left border for the first list item */
+}
+
+header ul li a {
+  position: relative;
+  margin: 0 15px;
+  text-decoration: none;
+  color: hsl(0, 0%, 100%);
+  letter-spacing: 2px;
+  font-weight: 500;
+  transition: 0.6s;
+}
+
+/* Add hover effect to header buttons */
+header ul li a:hover {
+  color: #000000; /* Change to the desired highlight color */
+}
+
+body {
+  background-color: orange;
+  padding-top: 60px; /* Increase padding to make more room for the navigation bar */
+  font-family: Arial, sans-serif;
+}
+
+.container {
+  position: absolute; /* Set the container to absolute positioning */
+  top: 80px; /* Adjust the top offset to position the container below the navigation bar */
+  left: 0; /* Ensure the container starts from the left edge of the viewport */
+  right: 0; /* Ensure the container ends at the right edge of the viewport */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 7000px; /* Adjust the container's height to fill the remaining viewport */
+}
+
+.box {
+  border: 1px solid transparent;
+  border-radius: 10px;
+  background-color: white; /* Set the background color of the boxes to white */
+  color: black; /* Set text color to black */
+  padding: 10px 60px 10px 20px; /* Adjust padding to move the text a little more to the left */
+  margin: 10px auto;
+  width: 80%;
+  max-width: 600px;
+  box-sizing: border-box;
+  position: relative;
+  transition: transform 0.5s ease;
+  text-align: left; /* Align text to the left */
+  font-family: Arial, sans-serif; /* Set the font family to Arial */
+}
+
+.view-full-article-box {
+    border-radius: 10px; /* Make the edges rounder */
+    padding: 10px;
+    margin-top: 20px;
+    width: fit-content;
+}
+
+.view-full-article {
+    text-decoration: none;
+    color: black;
+    border: none; /* Remove the border */
+    background-color: #f0f0f0; /* Set the initial background color */
+    padding: 8px 16px; /* Adjust padding */
+    border-radius: 8px; /* Make the button rounder */
+}
+
+.view-full-article:hover {
+    background-color: #e0e0e0; /* Darken the background color on hover */
+}
+
+.view-full-article:active {
+    background-color: black; /* Change background color when button is clicked */
+    color: white; /* Change text color when button is clicked */
+}
+
+
+.box.active {
+  transform: translateX(0%) scale(1.5); /* Center the active box more to the right and keep it enlarged */
+}
+
+.box.blur {
+  filter: blur(5px); /* Apply blur effect to all boxes except the active one */
+  transform: scale(1);
+}
+
+.arrow {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  right: 0;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.arrow button {
+  background-color: #ccc;
+  border: none;
+  padding: 2px 6px; /* Reduce padding */
+  cursor: pointer;
+  font-size: 14px; /* Reduce font size */
+}
+
+@keyframes moveDown {
+  from {
+    transform: translateY(0);
+  }
+  to {
+    transform: translateY(20%);
+  }
+}
+
+@keyframes moveUp {
+  from {
+    transform: translateY(0);
+  }
+  to {
+    transform: translateY(-20%);
+  }
+}
+
+.move-down {
+  animation: moveDown 0.3s forwards;
+}
+
+.move-up {
+  animation: moveUp 0.3s forwards;
+}
+
+
+  @keyframes moveDown {
+    from {
+      transform: translateY(0);
+    }
+    to {
+      transform: translateY(20%);
+    }
+  }
+
+  @keyframes moveUp {
+    from {
+      transform: translateY(0);
+    }
+    to {
+      transform: translateY(-20%);
+    }
+  }
+
+  .move-down {
+    animation: moveDown 0.3s forwards;
+  }
+
+  .move-up {
+    animation: moveUp 0.3s forwards;
+  }
 </style>
 </head>
 <body>
 
-  <header id="navbar">
-    <a href="index.html"><img src="blockchaintmu (normal logo - no background).png" alt="Welcome!" style="float:left;width:400px;height:220px;"></a>
-          <div class="dropdown">
-              <div class="dropdown-content">
-                  <ul>
-          <li><a href="index.html"><b>HOME</a></li></b>
-          <li><a href="Workshops.html"><b>WORKSHOPS</a></li></b>
-          <li><a href="FirstAccess.html"><b>FIRST/ACCESS</a></li></b>
-          <li><a href="Columns.html"><b>ARTICLES</a></li></b>
-                  </ul>
-              </div>
-              <div id="mySidenav" class="sidenav">
-                <a href="itemslot.html" id="video">OTHER WORKSHOPS</a>
-              </div>        
-      </header>
-
-<br><br><br><br><br><br><br><br><br><br><br><br><br>
-
-<div class="button">
-  <center><button class="paragraph-button" onclick="myFunction(); this.onclick=myFunction">Paragraph Mode</button></center>
-  <center><button class="reader-button" onclick="myFunction1(); this.onclick=myFunction1">Reader Mode</button></center>
-</div>
-<br>
-
-
-<div class="container">
-<div id="myDIV">
-    <br>
-    <h1> The Costly Alternative to </h1>
+  <center>
+    <header id="navbar">
+      <a href="index.html"><img src="blockchainuni (official logo).png" alt="Welcome!" style="float:left;width:265px;height:90px;"></a>
+      <div class="dropdown">
+                  <div class="dropdown-content">
+                      <ul>
+              <li><a href="index.html"><b>HOME</a></li></b>
+              <li><a href="Workshops.html"><b>WORKSHOPS</a></li></b>
+              <li><a href="FirstAccess.html"><b>FIRST/ACCESS</a></li></b>
+              <li><a href="Columns.html"><b>ARTICLES</a></li></b>
+                      </ul>
+                  </div>
+</center>
+  <br><br><br><br><br><br>
+  <div class="container">
+    <br><br><br>
+    <div class="view-full-article-box" id="view-full-article-box">
+        <button class="view-full-article">View Full Article</button>
+    </div>
+    <div class="button-container">
+      <a href="" target="_blank">
+      <button class="expand-button">
+          <span class="initial-text">📺</span>
+          <span class="tooltip">📺<b>/WatchVideo</b><br></span>
+      </button>
+    </a>
+  </div>
+    <br><br><br><br><br><br>
+    <div class="box active" id="box1">
+      <div class="arrow">
+        <button class="up-arrow" onclick="scrollToTop()" disabled> 👈 </button>
+        <button class="down-arrow" onclick="scrollToBottom()"> 👉 </button>
+      </div>
+      <span class="paragraph-indicator">Paragraph # of #</span>
+      <div class="paragraph-container">
+        <button class="lock-button" onclick="toggleLock(this)">🖍️</button>
+        <h1> The Costly Alternative to </h1>
     <h3> Crypto Mining </h3>
       <p>
-        <br>
         “If we get to a place where ethereum scales 10,000 X, a million X, but it’s using a million X energy ... game over, we’d have to drain the power of the sun to power this blockchain. If we scale ethereum, but we don’t also scale the power consumption, it’s useless.”
         <br>
         <b>Mike Goldin</b>, <i>Software Engineer@ConsenSys</i>
         <br>
         <br><br</br>
         Energy, is a part of everyone’s life. Whether or not you’re someone who likes the idea of keeping the lights on while asleep, or taking longer than usual showers, on a bigger scale it’s a major reason why society largely functions today.
-        <br><br><br>
+      </p>
+    </div>
+  </div>
+    <div class="box blur" id="box2">
+      <div class="arrow">
+        <button class="up-arrow" onclick="scrollToTop()" disabled> 👈 </button>
+        <button class="down-arrow" onclick="scrollToBottom()"> 👉 </button>
+      </div>
+      <span class="paragraph-indicator">Paragraph # of #</span>
+      <div class="paragraph-container">
+        <button class="lock-button" onclick="toggleLock(this)">🖍️</button>  
+      <p>
         Although this isn’t new information, it’s still a relatively new concept to those seeking understanding of the general world of how decentralized networks demand power to run as a system of individual people. For that reason alone, in this article we’ll be discussing how energy is spent within cryptocurrency, especially within the concept of mining cryptocurrency, as such an activity is a reason why the blockchain mostly exists today. 
-        <br><br><br>
+
+      </p>
+    </div>
+    </div>
+    <div class="box blur" id="box3">
+      <div class="arrow">
+        <button class="up-arrow" onclick="scrollToTop()" disabled> 👈 </button>
+        <button class="down-arrow" onclick="scrollToBottom()"> 👉 </button>
+      </div>
+      <span class="paragraph-indicator">Paragraph # of #</span>
+      <div class="paragraph-container">
+        <button class="lock-button" onclick="toggleLock(this)">🖍️</button>  
+      <p>
         To begin, it is first important to contextualize the term ‘mining’, as it means exactly as it intends, to process of taking a resource that would usually take a lot more time and effort to get, but can usually get processed with enough use of power and equipment. That is in essence, what cryptocurrency is, the process of which we take a digital commodity to the definition of a decentralized network, and distribute personal power to get a hold of it. 
-        <br><br><br>
+
+      </p>
+    </div>
+    </div>
+    <div class="box blur" id="box4">
+      <div class="arrow">
+        <button class="up-arrow" onclick="scrollToTop()" disabled> 👈 </button>
+        <button class="down-arrow" onclick="scrollToBottom()"> 👉 </button>
+      </div>
+      <span class="paragraph-indicator">Paragraph # of #</span>
+      <div class="paragraph-container">
+        <button class="lock-button" onclick="toggleLock(this)">🖍️</button>
+      <p>
         Of course, there are mathematical algorithms involved, at which we end up using protocols such as PoW or PoS, to actually mine for blocks on the chain through the algorithm the currency we are mining for is built on. But, all of that, requires exponential power, and beyond that could require even tools that large manufacturers could potentially have. This being, GPUs, CPUs, large amounts of storage that is either local or cloud-based. 
-        <br><br><br>
+
+      </p>
+    </div>
+    </div>
+    <div class="box blur" id="box5">
+      <div class="arrow">
+        <button class="up-arrow" onclick="scrollToTop()" disabled> 👈 </button>
+        <button class="down-arrow" onclick="scrollToBottom()"> 👉 </button>
+      </div>
+      <span class="paragraph-indicator">Paragraph # of #</span>
+      <div class="paragraph-container">
+        <button class="lock-button" onclick="toggleLock(this)">🖍️</button>
+      <p>
         Whatever it might be, we’ll be going over two specific factors of information, one being the equipment needed to get a hold of such an activity, and of course how much energy it consumes altogether. 
-        <br><br><br>
+
+      </p>
+    </div>
+    </div>
+    <div class="box blur" id="box6">
+      <div class="arrow">
+        <button class="up-arrow" onclick="scrollToTop()" disabled> 👈 </button>
+        <button class="down-arrow" onclick="scrollToBottom()"> 👉 </button>
+      </div>
+      <span class="paragraph-indicator">Paragraph # of #</span>
+      <div class="paragraph-container">
+        <button class="lock-button" onclick="toggleLock(this)">🖍️</button>
+      <p>
         To start off on a simpler note, what maintains such power is simply the computer itself, though it doesn’t function like any other device you might be familiar with. The core reason as to why mining equipment requires so much energy to generate new blocks on the chain, is largely because of the seamless flow of traffic taking place on the network, and at the same time the generation of new blocks which usually require hash values that change up new transactions that take place between buyers and sellers. 
-        <br><br><br>
+
+      </p>
+    </div>
+    </div>    
+    <div class="box blur" id="box7">
+      <div class="arrow">
+        <button class="up-arrow" onclick="scrollToTop()" disabled> 👈 </button>
+        <button class="down-arrow" onclick="scrollToBottom()"> 👉 </button>
+      </div>
+      <span class="paragraph-indicator">Paragraph # of #</span>
+      <div class="paragraph-container">
+        <button class="lock-button" onclick="toggleLock(this)">🖍️</button>
+      <p>
         Keep in mind, the general digits for hash values, especially with currencies popularly mined such as Bitcoin or Ethereum, is 64-digits, which means that a lot of the computing power must help to identify unique users on the network, and to also garner a return. 
-        <br><br><br>
+
+      </p>
+    </div>
+    </div>
+    <div class="box blur" id="box8">
+      <div class="arrow">
+        <button class="up-arrow" onclick="scrollToTop()" disabled> 👈 </button>
+        <button class="down-arrow" onclick="scrollToBottom()"> 👉 </button>
+      </div>
+      <span class="paragraph-indicator">Paragraph # of #</span>
+      <div class="paragraph-container">
+        <button class="lock-button" onclick="toggleLock(this)">🖍️</button>
+      <p>
         But, if you want to know more about cryptocurrency mining, please check out our series ‘How Crypto Mining Works’ which can be clicked through the connecting hyperlink. 
-        <br><br><br>
+
+      </p>
+    </div>
+    </div>
+    <div class="box blur" id="box9">
+      <div class="arrow">
+        <button class="up-arrow" onclick="scrollToTop()" disabled> 👈 </button>
+        <button class="down-arrow" onclick="scrollToBottom()"> 👉 </button>
+      </div>
+      <span class="paragraph-indicator">Paragraph # of #</span>
+      <div class="paragraph-container">
+        <button class="lock-button" onclick="toggleLock(this)">🖍️</button>
+      <p>
         The most popular equipment used for cryptocurrency mining, is something called the ASIC machine, which stands for Application-Specific Integrated Circuits. The machine is meant to collect sourced power and allocate it towards a particular unit called terrahashes per second or TH/s, which is the rate at which power is used to mine hashes through a specific algorithm. 
-        <br><br><br>
+
+      </p>
+    </div>
+    </div>
+    <div class="box blur" id="box10">
+      <div class="arrow">
+        <button class="up-arrow" onclick="scrollToTop()" disabled> 👈 </button>
+        <button class="down-arrow" onclick="scrollToBottom()"> 👉 </button>
+      </div>
+      <span class="paragraph-indicator">Paragraph # of #</span>
+      <div class="paragraph-container">
+        <button class="lock-button" onclick="toggleLock(this)">🖍️</button>
+      <p>
         It’s sort of like how internet works, the upmost power is usually capped at 1 gigabytes per second, or exponentially higher if you’re looking at fiber connections. Although one is based on central network usage, and the other being decentralized, with completely separate functions, the process of usage is still there. 
-        <br><br><br>
+
+      </p>
+    </div>
+    </div>
+    <div class="box blur" id="box11">
+      <div class="arrow">
+        <button class="up-arrow" onclick="scrollToTop()" disabled> 👈 </button>
+        <button class="down-arrow" onclick="scrollToBottom()"> 👉 </button>
+      </div>
+      <span class="paragraph-indicator">Paragraph # of #</span>
+      <div class="paragraph-container">
+        <button class="lock-button" onclick="toggleLock(this)">🖍️</button>
+      <p>
         Going back to the ASIC machine altogether, you generally have another power unit involved with the hash rate of mining as mentioned before, which are something called Watts. Watts, in its basic term, is just a small unit of power, which some devices require, but then you have Terawatt hours. 
-        <br><br><br>
+
+      </p>
+    </div>
+    </div>
+    <div class="box blur" id="box12">
+      <div class="arrow">
+        <button class="up-arrow" onclick="scrollToTop()" disabled> 👈 </button>
+        <button class="down-arrow" onclick="scrollToBottom()"> 👉 </button>
+      </div>
+      <span class="paragraph-indicator">Paragraph # of #</span>
+      <div class="paragraph-container">
+        <button class="lock-button" onclick="toggleLock(this)">🖍️</button>
+      <p>
         Now you’re likely wondering, why would time associate with the cost use of energy, especially when mining? It’s actually quite simple, for every hour of electrical power maintained, you can quantify at least 1 trillion watts being used. And that is the mass level of power used within ASIC machines, but, on a world ranking it differs with real statistics so to speak. 
-        <br><br><br>
+
+      </p>
+    </div>
+    </div>
+    <div class="box blur" id="box13">
+      <div class="arrow">
+        <button class="up-arrow" onclick="scrollToTop()" disabled> 👈 </button>
+        <button class="down-arrow" onclick="scrollToBottom()"> 👉 </button>
+      </div>
+      <span class="paragraph-indicator">Paragraph # of #</span>
+      <div class="paragraph-container">
+        <button class="lock-button" onclick="toggleLock(this)">🖍️</button>
+      <p>
         According to major databases such as the US Energy Information Administration, and the Worldometer, there is a world scale to how much currencies use electrical power within their own limits, at which Bitcoin would require about 135.12 TWh of usage, whereas Ethereum requires 55.01 TWh. 
-        <br><br><br>
+
+      </p>
+    </div>
+    </div>
+    <div class="box blur" id="box14">
+      <div class="arrow">
+        <button class="up-arrow" onclick="scrollToTop()" disabled> 👈 </button>
+        <button class="down-arrow" onclick="scrollToBottom()"> 👉 </button>
+      </div>
+      <span class="paragraph-indicator">Paragraph # of #</span>
+      <div class="paragraph-container">
+        <button class="lock-button" onclick="toggleLock(this)">🖍️</button>
+      <p>
         Notice how Ethereum uses less, which is mainly because they were the next currency in 2013 to make use of the Proof of Stake (PoS) protocol, which verifies a cryptocurrency miner based on a specific number of users in a network that own a particular stake in a currency. 
-        <br><br><br>
+
+      </p>
+    </div>
+    </div>
+    <div class="box blur" id="box15">
+      <div class="arrow">
+        <button class="up-arrow" onclick="scrollToTop()" disabled> 👈 </button>
+        <button class="down-arrow" onclick="scrollToBottom()"> 👉 </button>
+      </div>
+      <span class="paragraph-indicator">Paragraph # of #</span>
+      <div class="paragraph-container">
+        <button class="lock-button" onclick="toggleLock(this)">🖍️</button>
+      <p>
         In this case, you can surely tell that, you would need an entire chorus of computers, or maybe 10 times that, to truly mine cryptocurrency at a higher level. Frankly, most people with average PCs cannot do that, especially on a global level. 
-        <br><br><br>
+
+      </p>
+    </div>
+    </div>
+    <div class="box blur" id="box16">
+      <div class="arrow">
+        <button class="up-arrow" onclick="scrollToTop()" disabled> 👈 </button>
+        <button class="down-arrow" onclick="scrollToBottom()"> 👉 </button>
+      </div>
+      <span class="paragraph-indicator">Paragraph # of #</span>
+      <div class="paragraph-container">
+        <button class="lock-button" onclick="toggleLock(this)">🖍️</button>
+      <p>
         But, since we are considering cryptocurrency miners in general, we can consider other statistics as well that don’t just exist within the US for example. In other countries, such as Sweden, the similar amount of power is used, and so is the same case between Ethereum’s power usage and how it corresponds elsewhere such as Thailand. 
-        <br><br><br>
+
+      </p>
+    </div>
+    </div>
+    <div class="box blur" id="box17">
+      <div class="arrow">
+        <button class="up-arrow" onclick="scrollToTop()" disabled> 👈 </button>
+        <button class="down-arrow" onclick="scrollToBottom()"> 👉 </button>
+      </div>
+      <span class="paragraph-indicator">Paragraph # of #</span>
+      <div class="paragraph-container">
+        <button class="lock-button" onclick="toggleLock(this)">🖍️</button>
+      <p>
         After reading these numbers, you’re probably wondering, how is this calculated? The general formula is estimate by taking the certain level of power distributed to the cryptocurrency, so in this case, 135.2 gigawatts (GW) in Bitcoin, multiplying that by the amount of hours that is used to mine the currency which is 1 hour, and then ultimately multiplying that by 10 to the power of -6 in order to convert the number of gigawatts to terawatts so to speak. 
-        <br><br><br>
+
+      </p>
+    </div>
+  </div>
+    <div class="box blur" id="box18">
+      <div class="arrow">
+        <button class="up-arrow" onclick="scrollToTop()" disabled> 👈 </button>
+        <button class="down-arrow" onclick="scrollToBottom()"> 👉 </button>
+      </div>
+      <span class="paragraph-indicator">Paragraph # of #</span>
+      <div class="paragraph-container">
+        <button class="lock-button" onclick="toggleLock(this)">🖍️</button>
+      <p>
         Now, if you were to take this on a global level, you can compare the final energy cost to the entire world consumption, you could use an equation such as, 
         <br>
         <img src="World Consumption of Crypto Energy.PNG" width="700" height="100">
         <br>
         at which ‘I’ is the specific currency compared to ‘w’, the global usage of power for all units of cryptocurrency. 
-        <br><br><br>
+      </p>
+    </div>
+  </div>
+    <div class="box blur" id="box18">
+      <div class="arrow">
+        <button class="up-arrow" onclick="scrollToTop()" disabled> 👈 </button>
+        <button class="down-arrow" onclick="scrollToBottom()"> 👉 </button>
+      </div>
+      <span class="paragraph-indicator">Paragraph # of #</span>
+      <div class="paragraph-container">
+        <button class="lock-button" onclick="toggleLock(this)">🖍️</button>
+      <p>
         Since numbers always vary annually on how much is consumed, in the general case of Bitcoin, about 110 Terawatt Hours per year are used, or 0.55% of the general power that the BTC mining network uses.
-        <br><br><br>
+
+      </p>
+    </div>
+  </div>
+    <div class="box blur" id="box19">
+      <div class="arrow">
+        <button class="up-arrow" onclick="scrollToTop()" disabled> 👈 </button>
+        <button class="down-arrow" onclick="scrollToBottom()"> 👉 </button>
+      </div>
+      <span class="paragraph-indicator">Paragraph # of #</span>
+      <div class="paragraph-container">
+        <button class="lock-button" onclick="toggleLock(this)">🖍️</button>
+      <p>
         Generally speaking, ASIC machines cost about 3,000$-5,000$, most of which people would rather use to purchase a car, hence why it’s so expensive. It is like an engine, but you’re likely now wondering, if the ASIC machine mines at a specific level of power, but mines currency at a specific unit of which it’s Terahashes per second, how would we equate the two together? 
-        <br><br><br>
+
+      </p>
+    </div>
+  </div>
+    <div class="box blur" id="box20">
+      <div class="arrow">
+        <button class="up-arrow" onclick="scrollToTop()" disabled> 👈 </button>
+        <button class="down-arrow" onclick="scrollToBottom()"> 👉 </button>
+      </div>
+      <span class="paragraph-indicator">Paragraph # of #</span>
+      <div class="paragraph-container">
+        <button class="lock-button" onclick="toggleLock(this)">🖍️</button>
+      <p>
         Well, here is the base equation for converting the numbers so to speak:
         <br>
         <img src="TWh to Terrahashes.PNG" width="750" height="70">
         <br><br><br>
-        To further explain the equation, you have your hashing power, and then the hash rate efficiency, which is the speed and efficiency of mining hardware which comes to Joules / Terrahashes (TH). As always, since we’re measuring in terms of Terrawatts per hour, the unit measurement of time is included, with the final part of the equation being the denominator. 
-        <br><br><br>
-        The fraction 1/3.6 is meant to convert joules to watt-hours, so in this case, 1 Joule * 1 Watts (per hour) / 3.6 Joules if were to break it down even more. The value 3.6 is essentially just 3,600 seconds, or (60 seconds/minute * 60 minutes/hour). 
-        <br><br>
-        Now, for the second part of the denominator equation, you have 10 to the power of 12. The value for why we’re putting 10 to the power of 12 is because, you have essentially 12 digits of zeros, combined altogether when converting watt-hours to kilowatt-hours, kilowatt-hours to megawatt-hours, megawatt-hours to gigawatt hours, and then finally gigawatt hours to terawatt-hours so to speak. 
-        <br><br>
-        To better outline these conversions or metrics, especially for future uses, you have:
+      </p>
+    </div>
+    </div>
+<div class="box blur" id="box2">
+  <div class="arrow">
+    <button class="up-arrow" onclick="scrollToTop()" disabled> 👈 </button>
+    <button class="down-arrow" onclick="scrollToBottom()"> 👉 </button>
+  </div>
+  <span class="paragraph-indicator">Paragraph # of #</span>
+  <div class="paragraph-container">
+    <button class="lock-button" onclick="toggleLock(this)">🖍️</button>  
+  <p>
+    To further explain the equation, you have your hashing power, and then the hash rate efficiency, which is the speed and efficiency of mining hardware which comes to Joules / Terrahashes (TH). As always, since we’re measuring in terms of Terrawatts per hour, the unit measurement of time is included, with the final part of the equation being the denominator. 
+
+  </p>
+</div>
+</div>
+<div class="box blur" id="box2">
+  <div class="arrow">
+    <button class="up-arrow" onclick="scrollToTop()" disabled> 👈 </button>
+    <button class="down-arrow" onclick="scrollToBottom()"> 👉 </button>
+  </div>
+  <span class="paragraph-indicator">Paragraph # of #</span>
+  <div class="paragraph-container">
+    <button class="lock-button" onclick="toggleLock(this)">🖍️</button>  
+  <p>
+    The fraction 1/3.6 is meant to convert joules to watt-hours, so in this case, 1 Joule * 1 Watts (per hour) / 3.6 Joules if were to break it down even more. The value 3.6 is essentially just 3,600 seconds, or (60 seconds/minute * 60 minutes/hour). 
+
+  </p>
+</div>
+</div>
+<div class="box blur" id="box2">
+  <div class="arrow">
+    <button class="up-arrow" onclick="scrollToTop()" disabled> 👈 </button>
+    <button class="down-arrow" onclick="scrollToBottom()"> 👉 </button>
+  </div>
+  <span class="paragraph-indicator">Paragraph # of #</span>
+  <div class="paragraph-container">
+    <button class="lock-button" onclick="toggleLock(this)">🖍️</button>  
+  <p>
+    Now, for the second part of the denominator equation, you have 10 to the power of 12. The value for why we’re putting 10 to the power of 12 is because, you have essentially 12 digits of zeros, combined altogether when converting watt-hours to kilowatt-hours, kilowatt-hours to megawatt-hours, megawatt-hours to gigawatt hours, and then finally gigawatt hours to terawatt-hours so to speak. 
+
+  </p>
+</div>
+</div>
+<div class="box blur" id="box2">
+  <div class="arrow">
+    <button class="up-arrow" onclick="scrollToTop()" disabled> 👈 </button>
+    <button class="down-arrow" onclick="scrollToBottom()"> 👉 </button>
+  </div>
+  <span class="paragraph-indicator">Paragraph # of #</span>
+  <div class="paragraph-container">
+    <button class="lock-button" onclick="toggleLock(this)">🖍️</button>  
+  <p>
+    To better outline these conversions or metrics, especially for future uses, you have:
+    <br>
+        •	1 KWh = 1,000 Wh
         <br>
-            •	1 KWh = 1,000 Wh
-            <br>
-            •	1 MWh = 1,000 kWh
-            <br>
-            •	1 GWh = 1,0000 MWh
-            <br>
-            •	1 TWh = 1,000 GWh
-        <br><br><br>
-        If you ever plan on mining cryptocurrency, and are between budgeting for an ASIC machine and calculating how much power is used, these are the metrics to look at so to speak.
-        <br><br><br>
-        Now that I’ve really covered the math behind how this all works, is it important to understand that this is all still very new. As much as the internet is still evolving, and has been significantly for about 30 years, so much power with limited technical equipment is an issue that’s still being discussed for how it can be improved on. 
-        <br><br><br>
-        Now, you’re likely thinking, ‘Well, despite all of this, what’s the reward that I’ll be getting?’. Well, the reward earnings are based upon receiving the currency that was mined for, but also having to pay a transaction fee. 
-        <br><br><br>
-        So in this case, upon successfully mining a block, the average fee you’d have to pay for is about 0.31 BTC if you’re mining Bitcoin to be exact, or, about 5% of the reward block. Of course, these fees may differ, based on the conditions of network traffic, and how much efficient power is allocated correctly. 
-        <br><br><br>
-        But, as you can tell, this is one additional factor to the way markets move with cryptocurrencies. If you haven’t yet, please be sure to check out our other workshop series ‘Elasticity On The Blockchain’, which beyond transaction fees, get more into detail about what defines the general increases and decrease in price values of cryptocurrencies, especially on behalf of economic situations such as negative or positive elasticity. 
-        <br><br><br>
-        Speaking of markets, the US in particular is the ultimate power center of Bitcoin cryptocurrency mining, as it makes up of about 38% of the global hash rate. 
-        <br><br><br>
-        As there will be future videos explaining this in detail, the hash rate in particular, in the case of Bitcoin, is really broken down into a unit of measurement called exahashes. Exahashes, is a unit of measurement used in mining rigs similar to that of Terahashes per second, at which each second, about one quintillion hash computations are made in total. 
-        <br><br><br>
-        So, on average, a cryptocurrency miner aiming for Bitcoin generally computes about 89 quintillion hash every second, or, if we were to look at other statistics, that’s about 617.87 exahashes per second. 
-        <br><br><br>
-        Since we are covering a lot of math in this series, here is the general way of calculating exahashes per second for a cryptocurrency:
+        •	1 MWh = 1,000 kWh
+        <br>
+        •	1 GWh = 1,0000 MWh
+        <br>
+        •	1 TWh = 1,000 GWh
+    <br><br><br>
+  </p>
+</div>
+</div>
+<div class="box blur" id="box2">
+  <div class="arrow">
+    <button class="up-arrow" onclick="scrollToTop()" disabled> 👈 </button>
+    <button class="down-arrow" onclick="scrollToBottom()"> 👉 </button>
+  </div>
+  <span class="paragraph-indicator">Paragraph # of #</span>
+  <div class="paragraph-container">
+    <button class="lock-button" onclick="toggleLock(this)">🖍️</button>  
+  <p>
+    If you ever plan on mining cryptocurrency, and are between budgeting for an ASIC machine and calculating how much power is used, these are the metrics to look at so to speak.
+
+  </p>
+</div>
+</div>
+<div class="box blur" id="box2">
+  <div class="arrow">
+    <button class="up-arrow" onclick="scrollToTop()" disabled> 👈 </button>
+    <button class="down-arrow" onclick="scrollToBottom()"> 👉 </button>
+  </div>
+  <span class="paragraph-indicator">Paragraph # of #</span>
+  <div class="paragraph-container">
+    <button class="lock-button" onclick="toggleLock(this)">🖍️</button>  
+  <p>
+    Now that I’ve really covered the math behind how this all works, is it important to understand that this is all still very new. As much as the internet is still evolving, and has been significantly for about 30 years, so much power with limited technical equipment is an issue that’s still being discussed for how it can be improved on. 
+
+  </p>
+</div>
+</div>
+<div class="box blur" id="box2">
+  <div class="arrow">
+    <button class="up-arrow" onclick="scrollToTop()" disabled> 👈 </button>
+    <button class="down-arrow" onclick="scrollToBottom()"> 👉 </button>
+  </div>
+  <span class="paragraph-indicator">Paragraph # of #</span>
+  <div class="paragraph-container">
+    <button class="lock-button" onclick="toggleLock(this)">🖍️</button>  
+  <p>
+    Now, you’re likely thinking, ‘Well, despite all of this, what’s the reward that I’ll be getting?’. Well, the reward earnings are based upon receiving the currency that was mined for, but also having to pay a transaction fee. 
+
+  </p>
+</div>
+</div>
+<div class="box blur" id="box2">
+  <div class="arrow">
+    <button class="up-arrow" onclick="scrollToTop()" disabled> 👈 </button>
+    <button class="down-arrow" onclick="scrollToBottom()"> 👉 </button>
+  </div>
+  <span class="paragraph-indicator">Paragraph # of #</span>
+  <div class="paragraph-container">
+    <button class="lock-button" onclick="toggleLock(this)">🖍️</button>  
+  <p>
+    So in this case, upon successfully mining a block, the average fee you’d have to pay for is about 0.31 BTC if you’re mining Bitcoin to be exact, or, about 5% of the reward block. Of course, these fees may differ, based on the conditions of network traffic, and how much efficient power is allocated correctly. 
+
+  </p>
+</div>
+</div>
+<div class="box blur" id="box2">
+  <div class="arrow">
+    <button class="up-arrow" onclick="scrollToTop()" disabled> 👈 </button>
+    <button class="down-arrow" onclick="scrollToBottom()"> 👉 </button>
+  </div>
+  <span class="paragraph-indicator">Paragraph # of #</span>
+  <div class="paragraph-container">
+    <button class="lock-button" onclick="toggleLock(this)">🖍️</button>  
+  <p>
+    But, as you can tell, this is one additional factor to the way markets move with cryptocurrencies. If you haven’t yet, please be sure to check out our other workshop series ‘Elasticity On The Blockchain’, which beyond transaction fees, get more into detail about what defines the general increases and decrease in price values of cryptocurrencies, especially on behalf of economic situations such as negative or positive elasticity. 
+
+  </p>
+</div>
+</div>
+<div class="box blur" id="box2">
+  <div class="arrow">
+    <button class="up-arrow" onclick="scrollToTop()" disabled> 👈 </button>
+    <button class="down-arrow" onclick="scrollToBottom()"> 👉 </button>
+  </div>
+  <span class="paragraph-indicator">Paragraph # of #</span>
+  <div class="paragraph-container">
+    <button class="lock-button" onclick="toggleLock(this)">🖍️</button>  
+  <p>
+    Speaking of markets, the US in particular is the ultimate power center of Bitcoin cryptocurrency mining, as it makes up of about 38% of the global hash rate. 
+
+  </p>
+</div>
+</div>
+<div class="box blur" id="box2">
+  <div class="arrow">
+    <button class="up-arrow" onclick="scrollToTop()" disabled> 👈 </button>
+    <button class="down-arrow" onclick="scrollToBottom()"> 👉 </button>
+  </div>
+  <span class="paragraph-indicator">Paragraph # of #</span>
+  <div class="paragraph-container">
+    <button class="lock-button" onclick="toggleLock(this)">🖍️</button>  
+  <p>
+    As there will be future videos explaining this in detail, the hash rate in particular, in the case of Bitcoin, is really broken down into a unit of measurement called exahashes. Exahashes, is a unit of measurement used in mining rigs similar to that of Terahashes per second, at which each second, about one quintillion hash computations are made in total. 
+
+  </p>
+</div>
+</div>
+<div class="box blur" id="box2">
+  <div class="arrow">
+    <button class="up-arrow" onclick="scrollToTop()" disabled> 👈 </button>
+    <button class="down-arrow" onclick="scrollToBottom()"> 👉 </button>
+  </div>
+  <span class="paragraph-indicator">Paragraph # of #</span>
+  <div class="paragraph-container">
+    <button class="lock-button" onclick="toggleLock(this)">🖍️</button>  
+  <p>
+    So, on average, a cryptocurrency miner aiming for Bitcoin generally computes about 89 quintillion hash every second, or, if we were to look at other statistics, that’s about 617.87 exahashes per second. 
+
+  </p>
+</div>
+</div>
+<div class="box blur" id="box2">
+  <div class="arrow">
+    <button class="up-arrow" onclick="scrollToTop()" disabled> 👈 </button>
+    <button class="down-arrow" onclick="scrollToBottom()"> 👉 </button>
+  </div>
+  <span class="paragraph-indicator">Paragraph # of #</span>
+  <div class="paragraph-container">
+    <button class="lock-button" onclick="toggleLock(this)">🖍️</button>  
+  <p>
+    Since we are covering a lot of math in this series, here is the general way of calculating exahashes per second for a cryptocurrency:
         <br>
         <img src="exahasheseqn.png"  width="700" height="120">
         <br><br><br>
-        To further explain, the denominator 10^18, is actually just the amount of hashes in a terahash which is 10^12, multiplied by 10^6 which is the amount of terahashes in an exahash. 
-        <br><br><br>
-        As you can tell, a lot of measurement units goes into really defining how much power is consumed, measured, and prioritized locally or globally when mining for rewards in return. 
-        <br><br><br>
-        But, what is the reward? Each block that is mined on the chain, in return gives about 6.25 bitcoins per second. Considering the current value of Bitcoin today, at which 1 BTC is 57,610.92$, if you were to use exponential power, each second you’d have earned about 360,000$ worth of BTC which could due to elasticity, go up or down depending on the market day. 
-        <br><br><br>
-        As of right now, there can be up to 21 million blocks to be mined, and as of 2023 there has been 19.5 million which was mined. This only applies to Bitcoin, which by a long shot considering the general token supply of currencies, would make sense considering that it’s existed for 15 years. 
-        <br><br><br>
-        Now, overtime, it is said that the immense level of power require can be lowered when mining cryptocurrency, for the simple reason that protocols such as Poof-of-Stake (PoS) are being used, and that processes such as sharding, at which networks are split into smaller chains to handle heavier traffic with transactions at a higher speed, can be utilized to help make cryptocurrency mining faster. 
-        <br><br><br>
-        Of course, there can be disadvantages involved in this, such as greater risks of security, and a more centralized approach to prioritizing hashed users who can only verify certain crypto miners as long as they own a certain amount of cryptocurrency at a time. 
-        <br><br><br>
-        In conclusion, a lot goes into determining the alternative approach to earning cryptocurrency if you don’t want to pay for it, and beyond this article, many communities involved with such an activity can have expertise in providing a potentially low cost way of expending power and earning such a currency.
-        <br><br><br>
-</p>
-</div>
-
-<div class="container">
-<div id="myDIV1">
-    <div class="article" id="article">
-        <br>
-        <h1> The Costly Alternative to </h1>
-        <h3> Crypto Mining </h3>
-        <br>
-        <p>
-          <br>
-          “If we get to a place where ethereum scales 10,000 X, a million X, but it’s using a million X energy ... game over, we’d have to drain the power of the sun to power this blockchain. If we scale ethereum, but we don’t also scale the power consumption, it’s useless.”
-          <br>
-          <b>Mike Goldin</b>, <i>Software Engineer@ConsenSys</i>
-          <br>
-        </p>
-
-        <p>
-          Energy, is a part of everyone’s life. Whether or not you’re someone who likes the idea of keeping the lights on while asleep, or taking longer than usual showers, on a bigger scale it’s a major reason why society largely functions today.
-        </p>
-
-        <p>
-          Although this isn’t new information, it’s still a relatively new concept to those seeking understanding of the general world of how decentralized networks demand power to run as a system of individual people. For that reason alone, in this article we’ll be discussing how energy is spent within cryptocurrency, especially within the concept of mining cryptocurrency, as such an activity is a reason why the blockchain mostly exists today. 
-        </p>
-
-        <p>
-          To begin, it is first important to contextualize the term ‘mining’, as it means exactly as it intends, to process of taking a resource that would usually take a lot more time and effort to get, but can usually get processed with enough use of power and equipment. That is in essence, what cryptocurrency is, the process of which we take a digital commodity to the definition of a decentralized network, and distribute personal power to get a hold of it. 
-        </p>
-        
-        <p>
-          Of course, there are mathematical algorithms involved, at which we end up using protocols such as PoW or PoS, to actually mine for blocks on the chain through the algorithm the currency we are mining for is built on. But, all of that, requires exponential power, and beyond that could require even tools that large manufacturers could potentially have. This being, GPUs, CPUs, large amounts of storage that is either local or cloud-based. 
-        </p>
-        
-        <p>
-          Whatever it might be, we’ll be going over two specific factors of information, one being the equipment needed to get a hold of such an activity, and of course how much energy it consumes altogether. 
-        </p>
-
-        <p>
-          To start off on a simpler note, what maintains such power is simply the computer itself, though it doesn’t function like any other device you might be familiar with. The core reason as to why mining equipment requires so much energy to generate new blocks on the chain, is largely because of the seamless flow of traffic taking place on the network, and at the same time the generation of new blocks which usually require hash values that change up new transactions that take place between buyers and sellers. 
-        </p>
-
-        <p>
-          Keep in mind, the general digits for hash values, especially with currencies popularly mined such as Bitcoin or Ethereum, is 64-digits, which means that a lot of the computing power must help to identify unique users on the network, and to also garner a return. 
-        </p>
-
-        <p>
-          But, if you want to know more about cryptocurrency mining, please check out our series ‘How Crypto Mining Works’ which can be clicked through the connecting hyperlink. 
-        </p>
-        
-        <p>
-          The most popular equipment used for cryptocurrency mining, is something called the ASIC machine, which stands for Application-Specific Integrated Circuits. The machine is meant to collect sourced power and allocate it towards a particular unit called terrahashes per second or TH/s, which is the rate at which power is used to mine hashes through a specific algorithm. 
-        </p>
-        
-        <p>
-          It’s sort of like how internet works, the upmost power is usually capped at 1 gigabytes per second, or exponentially higher if you’re looking at fiber connections. Although one is based on central network usage, and the other being decentralized, with completely separate functions, the process of usage is still there. 
-        </p>
-
-        <p>
-          Going back to the ASIC machine altogether, you generally have another power unit involved with the hash rate of mining as mentioned before, which are something called Watts. Watts, in its basic term, is just a small unit of power, which some devices require, but then you have Terawatt hours. 
-        </p>
-        
-        <p>
-          Now you’re likely wondering, why would time associate with the cost use of energy, especially when mining? It’s actually quite simple, for every hour of electrical power maintained, you can quantify at least 1 trillion watts being used. And that is the mass level of power used within ASIC machines, but, on a world ranking it differs with real statistics so to speak. 
-        </p>
-
-        <p>
-          According to major databases such as the US Energy Information Administration, and the Worldometer, there is a world scale to how much currencies use electrical power within their own limits, at which Bitcoin would require about 135.12 TWh of usage, whereas Ethereum requires 55.01 TWh. 
-        </p>
-        
-        <p>
-          Notice how Ethereum uses less, which is mainly because they were the next currency in 2013 to make use of the Proof of Stake (PoS) protocol, which verifies a cryptocurrency miner based on a specific number of users in a network that own a particular stake in a currency. 
-        </p>
-        
-        <p>
-          In this case, you can surely tell that, you would need an entire chorus of computers, or maybe 10 times that, to truly mine cryptocurrency at a higher level. Frankly, most people with average PCs cannot do that, especially on a global level. 
-        </p>
-        
-        <p>
-          But, since we are considering cryptocurrency miners in general, we can consider other statistics as well that don’t just exist within the US for example. In other countries, such as Sweden, the similar amount of power is used, and so is the same case between Ethereum’s power usage and how it corresponds elsewhere such as Thailand. 
-        </p>
-        
-        <p>
-          After reading these numbers, you’re probably wondering, how is this calculated? The general formula is estimate by taking the certain level of power distributed to the cryptocurrency, so in this case, 135.2 gigawatts (GW) in Bitcoin, multiplying that by the amount of hours that is used to mine the currency which is 1 hour, and then ultimately multiplying that by 10 to the power of -6 in order to convert the number of gigawatts to terawatts so to speak. 
-        </p>
-
-        <p>
-          Now, if you were to take this on a global level, you can compare the final energy cost to the entire world consumption, you could use an equation such as, 
-          <br>
-          <img src="World Consumption of Crypto Energy.PNG" width="700" height="100">
-          <br>
-          at which ‘I’ is the specific currency compared to ‘w’, the global usage of power for all units of cryptocurrency. 
-        </p>
-        
-        <p>
-          Since numbers always vary annually on how much is consumed, in the general case of Bitcoin, about 110 Terawatt Hours per year are used, or 0.55% of the general power that the BTC mining network uses.
-        </p>
-
-        <p>
-          Generally speaking, ASIC machines cost about 3,000$-5,000$, most of which people would rather use to purchase a car, hence why it’s so expensive. It is like an engine, but you’re likely now wondering, if the ASIC machine mines at a specific level of power, but mines currency at a specific unit of which it’s Terahashes per second, how would we equate the two together? 
-        </p>
-        
-        <p>
-          Well, here is the base equation for converting the numbers so to speak:
-          <br>
-          <img src="TWh to Terrahashes.PNG" width="750" height="70">
-          <br>
-        </p>
-        
-        <p>
-          To further explain the equation, you have your hashing power, and then the hash rate efficiency, which is the speed and efficiency of mining hardware which comes to Joules / Terrahashes (TH). As always, since we’re measuring in terms of Terrawatts per hour, the unit measurement of time is included, with the final part of the equation being the denominator. 
-        </p>
-        
-        <p>
-          The fraction 1/3.6 is meant to convert joules to watt-hours, so in this case, 1 Joule * 1 Watts (per hour) / 3.6 Joules if were to break it down even more. The value 3.6 is essentially just 3,600 seconds, or (60 seconds/minute * 60 minutes/hour). 
-        </p>
-
-        <p>
-          Now, for the second part of the denominator equation, you have 10 to the power of 12. The value for why we’re putting 10 to the power of 12 is because, you have essentially 12 digits of zeros, combined altogether when converting watt-hours to kilowatt-hours, kilowatt-hours to megawatt-hours, megawatt-hours to gigawatt hours, and then finally gigawatt hours to terawatt-hours so to speak. 
-        </p>
-
-        <p>
-          To better outline these conversions or metrics, especially for future uses, you have:
-          <br>
-              •	1 KWh = 1,000 Wh
-              <br>
-              •	1 MWh = 1,000 kWh
-              <br>
-              •	1 GWh = 1,0000 MWh
-              <br>
-              •	1 TWh = 1,000 GWh
-        </p>
-
-        <p>
-          If you ever plan on mining cryptocurrency, and are between budgeting for an ASIC machine and calculating how much power is used, these are the metrics to look at so to speak.
-        </p>
-
-        <p>
-          Now that I’ve really covered the math behind how this all works, is it important to understand that this is all still very new. As much as the internet is still evolving, and has been significantly for about 30 years, so much power with limited technical equipment is an issue that’s still being discussed for how it can be improved on. 
-        </p>
-
-        <p>
-          Now, you’re likely thinking, ‘Well, despite all of this, what’s the reward that I’ll be getting?’. Well, the reward earnings are based upon receiving the currency that was mined for, but also having to pay a transaction fee. 
-        </p>
-
-        <p>
-          So in this case, upon successfully mining a block, the average fee you’d have to pay for is about 0.31 BTC if you’re mining Bitcoin to be exact, or, about 5% of the reward block. Of course, these fees may differ, based on the conditions of network traffic, and how much efficient power is allocated correctly. 
-        </p>
-
-        <p>
-          But, as you can tell, this is one additional factor to the way markets move with cryptocurrencies. If you haven’t yet, please be sure to check out our other workshop series ‘Elasticity On The Blockchain’, which beyond transaction fees, get more into detail about what defines the general increases and decrease in price values of cryptocurrencies, especially on behalf of economic situations such as negative or positive elasticity. 
-        </p>
-
-        <p>
-          Speaking of markets, the US in particular is the ultimate power center of Bitcoin cryptocurrency mining, as it makes up of about 38% of the global hash rate. 
-        </p>
-
-        <p>
-          As there will be future videos explaining this in detail, the hash rate in particular, in the case of Bitcoin, is really broken down into a unit of measurement called exahashes. Exahashes, is a unit of measurement used in mining rigs similar to that of Terahashes per second, at which each second, about one quintillion hash computations are made in total. 
-        </p>
-
-        <p>
-          So, on average, a cryptocurrency miner aiming for Bitcoin generally computes about 89 quintillion hash every second, or, if we were to look at other statistics, that’s about 617.87 exahashes per second. 
-        </p>
-
-        <p>
-          Since we are covering a lot of math in this series, here is the general way of calculating exahashes per second for a cryptocurrency:
-          <br>
-          <img src="exahasheseqn.png"  width="700" height="120">
-        </p>
-
-        <p>
-          To further explain, the denominator 10^18, is actually just the amount of hashes in a terahash which is 10^12, multiplied by 10^6 which is the amount of terahashes in an exahash. 
-        </p>
-
-        <p>
-          As you can tell, a lot of measurement units goes into really defining how much power is consumed, measured, and prioritized locally or globally when mining for rewards in return. 
-        </p>
-
-        <p>
-          But, what is the reward? Each block that is mined on the chain, in return gives about 6.25 bitcoins per second. Considering the current value of Bitcoin today, at which 1 BTC is 57,610.92$, if you were to use exponential power, each second you’d have earned about 360,000$ worth of BTC which could due to elasticity, go up or down depending on the market day. 
-        </p>
-
-        <p>
-          As of right now, there can be up to 21 million blocks to be mined, and as of 2023 there has been 19.5 million which was mined. This only applies to Bitcoin, which by a long shot considering the general token supply of currencies, would make sense considering that it’s existed for 15 years. 
-        </p>
-
-        <p>
-          Now, overtime, it is said that the immense level of power require can be lowered when mining cryptocurrency, for the simple reason that protocols such as Poof-of-Stake (PoS) are being used, and that processes such as sharding, at which networks are split into smaller chains to handle heavier traffic with transactions at a higher speed, can be utilized to help make cryptocurrency mining faster. 
-        </p>
-
-        <p>
-          Of course, there can be disadvantages involved in this, such as greater risks of security, and a more centralized approach to prioritizing hashed users who can only verify certain crypto miners as long as they own a certain amount of cryptocurrency at a time. 
-        </p>
-
-        <p>
-          In conclusion, a lot goes into determining the alternative approach to earning cryptocurrency if you don’t want to pay for it, and beyond this article, many communities involved with such an activity can have expertise in providing a potentially low cost way of expending power and earning such a currency.
-        </p>
-      
-      <div class="tooltip-box" id="tooltipBox">
-          <span id="tooltipContent"></span>
-          <div class="video-container" id="videoContainer">
-              <!-- Video recommendations will appear here -->
-          </div>
-          <span class="close-btn">×</span> <!-- Close button -->
-      </div>
-       
-    </div>
-    <div class="slider-container">
-        <div class="arrow-button" id="prevButton">&#9650;</div>
-        <p>
-          <br><br><br><br>
-          Paragraph <span id="currentParagraph">1</span> of <span id="totalParagraphs">25</span>
-        </p>
-        <div class="arrow-button" id="nextButton">&#9660;</div>
-    </div>
+  </p>
 </div>
 </div>
-
-<div class="tooltip-box" id="tooltipBox">
-  <span id="tooltipContent"></span>
-  <div class="video-container" id="videoContainer">
-      <!-- Video recommendations will appear here -->
+<div class="box blur" id="box2">
+  <div class="arrow">
+    <button class="up-arrow" onclick="scrollToTop()" disabled> 👈 </button>
+    <button class="down-arrow" onclick="scrollToBottom()"> 👉 </button>
   </div>
-  <span class="close-btn">×</span> <!-- Close button -->
+  <span class="paragraph-indicator">Paragraph # of #</span>
+  <div class="paragraph-container">
+    <button class="lock-button" onclick="toggleLock(this)">🖍️</button>  
+  <p>
+    To further explain, the denominator 10^18, is actually just the amount of hashes in a terahash which is 10^12, multiplied by 10^6 which is the amount of terahashes in an exahash. 
+
+  </p>
 </div>
 </div>
+<div class="box blur" id="box2">
+  <div class="arrow">
+    <button class="up-arrow" onclick="scrollToTop()" disabled> 👈 </button>
+    <button class="down-arrow" onclick="scrollToBottom()"> 👉 </button>
+  </div>
+  <span class="paragraph-indicator">Paragraph # of #</span>
+  <div class="paragraph-container">
+    <button class="lock-button" onclick="toggleLock(this)">🖍️</button>  
+  <p>
+    As you can tell, a lot of measurement units goes into really defining how much power is consumed, measured, and prioritized locally or globally when mining for rewards in return. 
+
+  </p>
+</div>
+</div><div class="box blur" id="box2">
+  <div class="arrow">
+    <button class="up-arrow" onclick="scrollToTop()" disabled> 👈 </button>
+    <button class="down-arrow" onclick="scrollToBottom()"> 👉 </button>
+  </div>
+  <span class="paragraph-indicator">Paragraph # of #</span>
+  <div class="paragraph-container">
+    <button class="lock-button" onclick="toggleLock(this)">🖍️</button>  
+  <p>
+    But, what is the reward? Each block that is mined on the chain, in return gives about 6.25 bitcoins per second. Considering the current value of Bitcoin today, at which 1 BTC is 57,610.92$, if you were to use exponential power, each second you’d have earned about 360,000$ worth of BTC which could due to elasticity, go up or down depending on the market day. 
+
+  </p>
+</div>
+</div>
+<div class="box blur" id="box2">
+  <div class="arrow">
+    <button class="up-arrow" onclick="scrollToTop()" disabled> 👈 </button>
+    <button class="down-arrow" onclick="scrollToBottom()"> 👉 </button>
+  </div>
+  <span class="paragraph-indicator">Paragraph # of #</span>
+  <div class="paragraph-container">
+    <button class="lock-button" onclick="toggleLock(this)">🖍️</button>  
+  <p>
+    As of right now, there can be up to 21 million blocks to be mined, and as of 2023 there has been 19.5 million which was mined. This only applies to Bitcoin, which by a long shot considering the general token supply of currencies, would make sense considering that it’s existed for 15 years. 
+
+  </p>
+</div>
+</div>
+<div class="box blur" id="box2">
+  <div class="arrow">
+    <button class="up-arrow" onclick="scrollToTop()" disabled> 👈 </button>
+    <button class="down-arrow" onclick="scrollToBottom()"> 👉 </button>
+  </div>
+  <span class="paragraph-indicator">Paragraph # of #</span>
+  <div class="paragraph-container">
+    <button class="lock-button" onclick="toggleLock(this)">🖍️</button>  
+  <p>
+    Now, overtime, it is said that the immense level of power require can be lowered when mining cryptocurrency, for the simple reason that protocols such as Poof-of-Stake (PoS) are being used, and that processes such as sharding, at which networks are split into smaller chains to handle heavier traffic with transactions at a higher speed, can be utilized to help make cryptocurrency mining faster. 
+
+  </p>
+</div>
+</div>
+<div class="box blur" id="box2">
+  <div class="arrow">
+    <button class="up-arrow" onclick="scrollToTop()" disabled> 👈 </button>
+    <button class="down-arrow" onclick="scrollToBottom()"> 👉 </button>
+  </div>
+  <span class="paragraph-indicator">Paragraph # of #</span>
+  <div class="paragraph-container">
+    <button class="lock-button" onclick="toggleLock(this)">🖍️</button>  
+  <p>
+    Of course, there can be disadvantages involved in this, such as greater risks of security, and a more centralized approach to prioritizing hashed users who can only verify certain crypto miners as long as they own a certain amount of cryptocurrency at a time. 
+
+  </p>
+</div>
+</div>
+<div class="box blur" id="box2">
+  <div class="arrow">
+    <button class="up-arrow" onclick="scrollToTop()" disabled> 👈 </button>
+    <button class="down-arrow" onclick="scrollToBottom()"> 👉 </button>
+  </div>
+  <span class="paragraph-indicator">Paragraph # of #</span>
+  <div class="paragraph-container">
+    <button class="lock-button" onclick="toggleLock(this)">🖍️</button>  
+  <p>
+    In conclusion, a lot goes into determining the alternative approach to earning cryptocurrency if you don’t want to pay for it, and beyond this article, many communities involved with such an activity can have expertise in providing a potentially low cost way of expending power and earning such a currency.
+
+  </p>
+</div>
+</div>
+<div id="scrollToTopBtn" class="scroll-to-top" style="display: none;">
+        <i class="fas fa-arrow-up"></i>
+        <span style="vertical-align: middle; font-size: 26px;">👆</span>
+    </div>
+</div>
+
 
 <script>
+const boxes = document.querySelectorAll('.box');
+const container = document.querySelector('.container');
+const upArrows = document.querySelectorAll('.up-arrow');
+const downArrows = document.querySelectorAll('.down-arrow');
+let currentIndex = 0;
 
-function myFunction() {
-  var x = document.getElementById("myDIV");
-  var y = document.getElementById("myDIV1");
-  if (x.style.display === "none") {
-    x.style.display = "block";
-  } else {
-    x.style.display = "none";
-  }
-  if (y.style.display === "none") {
-    y.style.display = "none";
-  } else {
-    y.style.display = "none";
-  }
-}
+// Initialize the page by hiding arrow buttons for all boxes except the first one
+hideOtherArrows(currentIndex);
 
-function myFunction1() {
-  var x = document.getElementById("myDIV");
-  var y = document.getElementById("myDIV1");
-  if (x.style.display === "none") {
-    x.style.display = "none";
-  } else {
-    x.style.display = "none";
-  }
-  if (y.style.display === "none") {
-    y.style.display = "block";
-  } else {
-    y.style.display = "none";
-  }
-}
-
-document.addEventListener('DOMContentLoaded', function() {
-    const article = document.getElementById('article');
-    const totalParagraphs = article.querySelectorAll('p').length;
-    document.getElementById('totalParagraphs').textContent = totalParagraphs;
-
-    let currentSlide = 1;
-    let isTooltipDisplayed = false;
-
-    function displayParagraph(slide) {
-        const paragraphs = article.querySelectorAll('p');
-        paragraphs.forEach(paragraph => {
-            paragraph.style.opacity = '0';
-        });
-
-        const selectedParagraph = paragraphs[slide - 1];
-        setTimeout(() => {
-            selectedParagraph.style.opacity = '1';
-        }, 100);
-
-        document.getElementById('currentParagraph').textContent = slide;
-
-        // Tooltip Functionality
-        const tooltipSpan = selectedParagraph.querySelectorAll('.tooltip');
-        const tooltipBox = document.createElement('div');
-        tooltipBox.classList.add('tooltip-box');
-        selectedParagraph.appendChild(tooltipBox);
-
-        tooltipSpan.forEach(span => {
-            span.addEventListener('click', (event) => {
-                if (!isTooltipDisplayed) {
-                    const definition = event.target.getAttribute('data-definition');
-                    const videos = event.target.getAttribute('data-videos');
-
-                    const tooltipContent = document.createElement('div');
-                    tooltipContent.classList.add('tooltip-content');
-                    tooltipContent.textContent = definition;
-
-                    const videoContainer = document.createElement('div');
-                    videoContainer.classList.add('video-container');
-                    videoContainer.innerHTML = '';
-
-                    if (videos) {
-                        const videoList = videos.split(', ');
-                        const videoListHTML = videoList.map(video => `<iframe width="100%" height="200" src="${video}" frameborder="0" allowfullscreen></iframe>`).join('');
-                        videoContainer.innerHTML = `<h3>Video Recommendations:</h3>${videoListHTML}`;
-                    }
-
-                    tooltipBox.innerHTML = '';
-                    tooltipBox.appendChild(tooltipContent);
-                    tooltipBox.appendChild(videoContainer);
-
-                    const closeBtn = document.createElement('span');
-                    closeBtn.classList.add('close-btn');
-                    closeBtn.textContent = 'X';
-                    closeBtn.addEventListener('click', () => {
-                        isTooltipDisplayed = false;
-                        tooltipBox.style.display = 'none';
-                    });
-                    tooltipBox.appendChild(closeBtn);
-
-                    tooltipBox.style.display = 'block';
-                    isTooltipDisplayed = true;
-
-
-                }
-            });
-
-            tooltipBox.removeEventListener('mouseleave', () => {
-                isTooltipDisplayed = false;
-                tooltipBox.style.display = 'none';
-            });
-        });
-    }
-
-    document.getElementById('nextButton').addEventListener('click', () => {
-        if (currentSlide < totalParagraphs) {
-            currentSlide++;
-            displayParagraph(currentSlide);
-        }
-    });
-
-    document.getElementById('prevButton').addEventListener('click', () => {
-        if (currentSlide > 1) {
-            currentSlide--;
-            displayParagraph(currentSlide);
-        }
-    });
-
-    displayParagraph(currentSlide);
+upArrows.forEach(function(elem, index) {
+  elem.addEventListener('click', function() {
+    moveBoxUp(index);
+  });
 });
 
-let prevScrollPos = window.pageYOffset;
+downArrows.forEach(function(elem, index) {
+  elem.addEventListener('click', function() {
+    moveBoxDown(index);
+  });
+});
 
-    window.onscroll = function() {
-      let currentScrollPos = window.pageYOffset;
+document.addEventListener('keydown', function(event) {
+  if (event.key === 'ArrowRight') {
+    moveBoxDown(currentIndex);
+  } else if (event.key === 'ArrowLeft') {
+    moveBoxUp(currentIndex);
+  } else if (event.key === 'ArrowUp') {
+    moveBoxUp(currentIndex);
+  } else if (event.key === 'ArrowDown') {
+    moveBoxDown(currentIndex);
+  }
+});
 
-      if (prevScrollPos > currentScrollPos) {
-        document.getElementById("navbar").classList.remove("hidden");
-      } else {
-        document.getElementById("navbar").classList.add("hidden");
-      }
+function moveBoxUp(index) {
+  if (index > 0) {
+    const nextIndex = index - 1;
+    moveToIndex(nextIndex);
+  }
+}
 
-      prevScrollPos = currentScrollPos;
-    };
+function moveBoxDown(index) {
+  if (index < boxes.length - 1) {
+    const nextIndex = index + 1;
+    moveToIndex(nextIndex);
+  }
+}
 
-    // JavaScript to bring back solidity on hover
-    const navbar = document.getElementById('navbar');
+function moveToIndex(nextIndex) {
+  // Remove active class from current box and add blur class
+  boxes[currentIndex].classList.remove('active');
+  boxes[currentIndex].classList.add('blur');
 
-    navbar.addEventListener('mouseenter', function() {
-      navbar.classList.remove('hidden');
+  // Add active class to next box and remove blur class
+  boxes[nextIndex].classList.remove('blur');
+  boxes[nextIndex].classList.add('active');
+
+  // Calculate the position to align active box with arrow box
+  const arrowRect = boxes[nextIndex].querySelector('.arrow').getBoundingClientRect();
+  const activeBoxRect = boxes[nextIndex].getBoundingClientRect();
+
+  // Calculate the scroll position to align active box with arrow box
+  const scrollLeft = activeBoxRect.left - arrowRect.left - (window.innerWidth / 2 - activeBoxRect.width / 2);
+
+  // Set the scroll position to immediately position the active box beside the arrow box
+  container.scrollLeft = scrollLeft;
+
+  currentIndex = nextIndex;
+
+  // Disable/enable arrows based on current index
+  upArrows.forEach(function(elem) {
+    elem.disabled = currentIndex === 0;
+  });
+
+  downArrows.forEach(function(elem) {
+    elem.disabled = currentIndex === boxes.length - 1;
+  });
+
+  // Hide arrow buttons for other boxes
+  hideOtherArrows(currentIndex);
+}
+
+function hideOtherArrows(index) {
+  boxes.forEach(function(box, i) {
+    const arrows = box.querySelectorAll('.arrow button');
+    arrows.forEach(function(arrow) {
+      arrow.style.visibility = i !== index ? 'hidden' : 'visible';
+    });
+  });
+}
+
+    
+document.getElementById('view-full-article-box').addEventListener('click', function() {
+    // Create the button for entering paragraph mode
+    var refreshButton = document.createElement('button');
+    refreshButton.textContent = 'Enter Paragraph Mode';
+    refreshButton.classList.add('view-full-article'); // Add class for styling
+    refreshButton.style.backgroundColor = 'white'; // Set white background
+    refreshButton.style.color = 'black'; // Set black text color
+    refreshButton.style.border = '2px solid white'; // Add white border
+    refreshButton.style.cursor = 'pointer'; // Set cursor to pointer to indicate clickability
+    refreshButton.addEventListener('click', function() {
+        location.reload(); // Reload the page when clicked
     });
 
-    navbar.addEventListener('mouseleave', function() {
-      if (window.scrollY === 0) {
-        navbar.classList.add('hidden');
-      }
+    // Append the button to the 'view-full-article-box'
+    this.innerHTML = ''; // Clear existing content
+    this.appendChild(refreshButton);
+
+    // Remove active state from all boxes
+    document.querySelectorAll('.box').forEach(function(box) {
+        box.classList.remove('active');
     });
 
+    // Remove box styling
+    document.querySelectorAll('.box').forEach(function(box) {
+        box.style.border = 'none';
+        box.style.backgroundColor = 'transparent';
+        box.style.fontSize = '15px'; // Set font size back to default
+        box.classList.remove('blur'); // Remove blur class
+    });
+
+    // Remove paragraph indicators
+    document.querySelectorAll('.paragraph-indicator').forEach(function(indicator) {
+        indicator.remove();
+    });
+
+    // Disable lock buttons and hide lock icons
+    document.querySelectorAll('.lock-button').forEach(function(lockButton) {
+        lockButton.disabled = true;
+        lockButton.style.display = 'none';
+    });
+
+    // Remove animations
+    document.querySelectorAll('.move-up, .move-down').forEach(function(animation) {
+        animation.style.animation = 'none';
+    });
+
+    // Hide arrow buttons for all other boxes
+    hideOtherArrows(-1);
+});
+
+let lockedParagraph = null;
+
+function toggleLock(button) {
+  const parent = button.parentNode;
+  const isLocked = parent.classList.toggle('locked');
+  if (isLocked) {
+    lockedParagraph = parent;
+    centerParagraph(lockedParagraph);
+  } else {
+    lockedParagraph = null;
+  }
+}
+
+function centerParagraph(element) {
+  const rect = element.getBoundingClientRect();
+  const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+  const centerY = rect.top + rect.height / 2 - window.innerHeight / 2 + scrollTop;
+  window.scrollTo({
+    top: centerY,
+    behavior: 'smooth'
+  });
+}
+
+// Keep the locked paragraph centered if the window is resized
+window.addEventListener('resize', function() {
+  if (lockedParagraph) {
+    centerParagraph(lockedParagraph);
+  }
+});
 
 
-</script>
-
+    </script>  
 </body>
 </html>
-

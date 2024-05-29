@@ -1,6 +1,5 @@
 <!DOCTYPE html>
-<html>
-  <link rel="stylesheet" type="text/css" href="reader.css">
+<html lang="en">
 <head>
   <!-- Google tag (gtag.js) -->
 	<script async src="https://www.googletagmanager.com/gtag/js?id=G-9J1B2MTYSV"></script>
@@ -10,61 +9,536 @@
  	 	gtag('js', new Date());
  	 	gtag('config', 'G-9J1B2MTYSV');
 	</script>
-  <title> How NOT to Run a Business w Crypto (Part 1) - Article </title>
-<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title> How NOT to Run a Business w Crypto (Part 1) - Article </title>
 <style>
 
+.locked {
+        background-color: darkorange;
+        border: 1px solid;
+        border-radius: 10px;
+        border-color: black;
+    }
+
+.button-container {
+        position: relative;
+        width: 300px; /* Adjust width as needed */
+    }
+
+    .expand-button {
+        width: 10px; /* Initial width of the button */
+        height: 10px; /* Height of the button */
+        padding: 10px;
+        background-color: #ff0000;
+        color: rgb(255, 255, 255);
+        border: none;
+        cursor: pointer;
+        position: relative; /* Enable positioning of the tooltip */
+        transition: width 0.3s; /* Smooth transition effect */
+        border-radius: 5px; /* Make the edges rounder */
+        margin-top: 20px;
+    }
+
+    .expand-button .initial-text,
+    .expand-button .tooltip {
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        opacity: 0;
+        transition: opacity 0.3s; /* Smooth transition effect */
+        
+    }
+
+    .expand-button .initial-text {
+        opacity: 1; /* Show "+" sign text by default */
+    }
+
+    .expand-button:hover {
+        width: 100px; /* Expanded width on hover */
+    }
+
+    .expand-button:hover .initial-text {
+        opacity: 0; /* Hide "+" sign text on hover */
+    }
+
+    .expand-button:hover .tooltip {
+        opacity: 1; /* Show "Hello" text on hover */
+        right: 100px; /* Position "Hello" text beside "+" sign */
+    }
+
+.paragraph-container {
+        padding: 10px;
+        margin: 10px;
+        position: relative; /* Relative positioning for absolute positioning of the lock button */
+    }
+    
+    .lock-button {
+        padding: 5px;
+        background-color: #000000;
+        color: white;
+        border: none;
+        border-radius: 50%;
+        cursor: pointer;
+        position: absolute; /* Absolute positioning */
+        top: 50%; /* Vertically center the button */
+        right: -100px; /* Position the button outside the box */
+        transform: translateY(-50%); /* Adjust position to center vertically */
+    }
+
+
+.scroll-to-top {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    cursor: pointer;
+    background-color: #000000;
+    color: #fff;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.scroll-to-top i {
+    font-size: 20px;
+}
+
+.navbar {
+  color: white;
+  padding: 25px; /* Increase padding to give more space */
+  width: 95%; /* Make the navbar fully wide */
+  position: fixed; /* Fix the navbar to the top */
+  top: 0; /* Position the navbar at the top of the viewport */
+  z-index: 1000; /* Ensure the navbar is above other content */
+  display: flex; /* Use flexbox to align items */
+  justify-content: space-between; /* Align items to the start and end */
+}
+
+.navbar-logo {
+  width: 50px;
+  height: auto;
+  margin-right: auto; /* Push the logo to the left */
+}
+
+.nav-links {
+  display: flex; /* Use flexbox to align items */
+}
+
+.nav-link {
+  margin-left: 10px; /* Add margin to separate links */
+  text-decoration: none;
+  color: white;
+}
+
+.nav-link:not(:last-child)::after {
+  content: '|'; /* Add a vertical line */
+  margin-left: 10px; /* Add space between the line and the link */
+  color: white; /* Set the color of the line */
+}
+
+
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    overflow: hidden;
+    height: 100vh;
+    padding: 200px;
+}
+
+.button-container {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20px;
+  }
+
+  .button {
+    padding: 10px 20px;
+    background-color: #f0f0f0;
+    color: #333;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+    margin: 5px;
+  }
+
+  .button.active {
+    background-color: black;
+    color: white;
+  }
+
+  .content {
+    display: none;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    margin-top: 20px;
+  }
+
+  .content.active {
+    display: block;
+  }
+
+body {
+  font-family: Arial, sans-serif;
+  font-size: 15px;
+  height: 400vh;
+}
+
+.box {
+  border: 1px solid transparent;
+  border-radius: 10px;
+  background-color: white; /* Set the background color of the boxes to white */
+  color: black; /* Set text color to black */
+  padding: 10px 60px 10px 20px; /* Adjust padding to move the text a little more to the left */
+  margin: 10px auto;
+  width: 80%;
+  max-width: 600px;
+  box-sizing: border-box;
+  position: relative;
+  transition: transform 0.5s ease;
+  text-align: left;
+  font-family: Arial, sans-serif; /* Set the font family to Arial */
+}
+
+  .box.active {
+    transform: translateX(0%) scale(1.5); /* Center the active box more to the right and keep it enlarged */
+    z-index: 1;
+    background-color: black;
+    color: white;
+  }
+
+
+  .box.active .arrow {
+    transform: rotate(90deg); /* Rotate the arrow button by 90 degrees */
+  }
+
+  .box.blur {
+    filter: blur(5px); /* Apply blur effect to all boxes except the active one */
+    transform: scale(1);
+    z-index: 0;
+  }
+
+  .blur {
+  filter: blur(2px); /* Apply blur effect */
+  pointer-events: none; /* Disable pointer events */
+  user-select: none; /* Disable text selection */
+}
+
+
+  .arrow {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  right: 0;
+  top: 50%;
+}
+
+.up-arrow button,
+.down-arrow button {
+  background-color: #ccc;
+  border-radius: none;
+  padding: 5px 10px; /* Reduce padding */
+  cursor: pointer;
+  font-size: 14px; /* Reduce font size */
+  border-radius: 50%; /* Make the button round */
+}
+
+
+  .paragraph-indicator {
+  color: gray;
+  font-size: 12px;
+  display: block;
+  margin-bottom: 5px;
+  font-weight: bold; /* Add this line to make the paragraph indicator bold */
+}
+
+.banner {
+  position: relative;
+  width: 100%;
+  height: 30vh; /* Adjusted height for the banner */
+  background-size: cover;
+  background-color: #ffffff; /* Dark gray background for the banner */
+}
+
+header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 90%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  transition: 0.6s;
+  padding: 40px 100px;
+  z-index: 100000;
+  border-bottom: 2px solid rgb(0, 0, 0); /* White border at the bottom of the header */
+  opacity: 1;
+  transition: opacity 0.6s;
+}
+
+header.hidden {
+  opacity: 0;
+}
+
+header ul {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 10px 0;
+  border-top: 2px solid rgb(255, 255, 255); /* White border at the top of the ul */
+  border-bottom: 2px solid white; /* White border at the bottom of the ul */
+}
+
+header ul li {
+  position: relative;
+  list-style: none;
+  border-left: 2px solid white; /* White border on the left of each list item */
+}
+
+header ul li:first-child {
+  border-left: none; /* Remove left border for the first list item */
+}
+
+header ul li a {
+  position: relative;
+  margin: 0 15px;
+  text-decoration: none;
+  color: hsl(0, 0%, 100%);
+  letter-spacing: 2px;
+  font-weight: 500;
+  transition: 0.6s;
+}
+
+/* Add hover effect to header buttons */
+header ul li a:hover {
+  color: #000000; /* Change to the desired highlight color */
+}
+
+body {
+  background-color: orange;
+  padding-top: 60px; /* Increase padding to make more room for the navigation bar */
+  font-family: Arial, sans-serif;
+}
+
+.container {
+  position: absolute; /* Set the container to absolute positioning */
+  top: 80px; /* Adjust the top offset to position the container below the navigation bar */
+  left: 0; /* Ensure the container starts from the left edge of the viewport */
+  right: 0; /* Ensure the container ends at the right edge of the viewport */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 7000px; /* Adjust the container's height to fill the remaining viewport */
+}
+
+.box {
+  border: 1px solid transparent;
+  border-radius: 10px;
+  background-color: white; /* Set the background color of the boxes to white */
+  color: black; /* Set text color to black */
+  padding: 10px 60px 10px 20px; /* Adjust padding to move the text a little more to the left */
+  margin: 10px auto;
+  width: 80%;
+  max-width: 600px;
+  box-sizing: border-box;
+  position: relative;
+  transition: transform 0.5s ease;
+  text-align: left; /* Align text to the left */
+  font-family: Arial, sans-serif; /* Set the font family to Arial */
+}
+
+.view-full-article-box {
+    border-radius: 10px; /* Make the edges rounder */
+    padding: 10px;
+    margin-top: 20px;
+    width: fit-content;
+}
+
+.view-full-article {
+    text-decoration: none;
+    color: black;
+    border: none; /* Remove the border */
+    background-color: #f0f0f0; /* Set the initial background color */
+    padding: 8px 16px; /* Adjust padding */
+    border-radius: 8px; /* Make the button rounder */
+}
+
+.view-full-article:hover {
+    background-color: #e0e0e0; /* Darken the background color on hover */
+}
+
+.view-full-article:active {
+    background-color: black; /* Change background color when button is clicked */
+    color: white; /* Change text color when button is clicked */
+}
+
+
+.box.active {
+  transform: translateX(0%) scale(1.5); /* Center the active box more to the right and keep it enlarged */
+}
+
+.box.blur {
+  filter: blur(5px); /* Apply blur effect to all boxes except the active one */
+  transform: scale(1);
+}
+
+.arrow {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  right: 0;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.arrow button {
+  background-color: #ccc;
+  border: none;
+  padding: 2px 6px; /* Reduce padding */
+  cursor: pointer;
+  font-size: 14px; /* Reduce font size */
+}
+
+@keyframes moveDown {
+  from {
+    transform: translateY(0);
+  }
+  to {
+    transform: translateY(20%);
+  }
+}
+
+@keyframes moveUp {
+  from {
+    transform: translateY(0);
+  }
+  to {
+    transform: translateY(-20%);
+  }
+}
+
+.move-down {
+  animation: moveDown 0.3s forwards;
+}
+
+.move-up {
+  animation: moveUp 0.3s forwards;
+}
+
+
+  @keyframes moveDown {
+    from {
+      transform: translateY(0);
+    }
+    to {
+      transform: translateY(20%);
+    }
+  }
+
+  @keyframes moveUp {
+    from {
+      transform: translateY(0);
+    }
+    to {
+      transform: translateY(-20%);
+    }
+  }
+
+  .move-down {
+    animation: moveDown 0.3s forwards;
+  }
+
+  .move-up {
+    animation: moveUp 0.3s forwards;
+  }
 </style>
 </head>
 <body>
 
-  <header id="navbar">
-    <a href="index.html"><img src="blockchaintmu (normal logo - no background).png" alt="Welcome!" style="float:left;width:400px;height:220px;"></a>
-          <div class="dropdown">
-              <div class="dropdown-content">
-                  <ul>
-          <li><a href="index.html"><b>HOME</a></li></b>
-          <li><a href="Workshops.html"><b>WORKSHOPS</a></li></b>
-          <li><a href="FirstAccess.html"><b>FIRST/ACCESS</a></li></b>
-          <li><a href="Columns.html"><b>ARTICLES</a></li></b>
-                  </ul>
-              </div>
-              <div id="mySidenav" class="sidenav">
-                <a href="How NOT to Run a Business w Crypto (Part 1).html" id="video">WATCH VIDEO</a>
-              </div>        
-      </header>
-
-<br><br><br><br><br><br><br><br><br><br><br><br><br>
-
-<div class="button">
-  <center><button class="paragraph-button" onclick="myFunction(); this.onclick=myFunction">Paragraph Mode</button></center>
-  <center><button class="reader-button" onclick="myFunction1(); this.onclick=myFunction1">Reader Mode</button></center>
-</div>
-<br>
-
-
-<div class="container">
-<div id="myDIV">
-    <br>
-				<h1> How NOT to Run a Business w/ Crypto (Part 1) </h1>
+  <center>
+    <header id="navbar">
+      <a href="index.html"><img src="blockchainuni (official logo).png" alt="Welcome!" style="float:left;width:265px;height:90px;"></a>
+      <div class="dropdown">
+                  <div class="dropdown-content">
+                      <ul>
+              <li><a href="index.html"><b>HOME</a></li></b>
+              <li><a href="Workshops.html"><b>WORKSHOPS</a></li></b>
+              <li><a href="FirstAccess.html"><b>FIRST/ACCESS</a></li></b>
+              <li><a href="Columns.html"><b>ARTICLES</a></li></b>
+                      </ul>
+                  </div>
+</center>
+  <br><br><br><br><br><br>
+  <div class="container">
+    <br><br><br>
+    <div class="view-full-article-box" id="view-full-article-box">
+        <button class="view-full-article">View Full Article</button>
+    </div>
+    <div class="button-container">
+      <a href="https://www.youtube.com/embed/R3-BDlXC_SE?si=dig0FyvCCWkbQese" target="_blank">
+      <button class="expand-button">
+          <span class="initial-text">📺</span>
+          <span class="tooltip">📺<b>/WatchVideo</b><br></span>
+      </button>
+    </a>
+  </div>
+    <br><br><br><br><br><br>
+    <div class="box active" id="box1">
+      <div class="arrow">
+        <button class="up-arrow" onclick="scrollToTop()" disabled> 👈 </button>
+        <button class="down-arrow" onclick="scrollToBottom()"> 👉 </button>
+      </div>
+      <span class="paragraph-indicator">Paragraph #1 of #11</span>
+      <div class="paragraph-container">
+        <button class="lock-button" onclick="toggleLock(this)">🖍️</button>
+        <h1> How NOT to Run a Business w/ Crypto (Part 1) </h1>
 				<h3> Silicon Valley Bank </h3>
-				<br>
-                  <p>
-                    As topics in further workshops such as asset management within blockchain 
+      <p>
+        As topics in further workshops such as asset management within blockchain 
 					technology will be covered, a major part of this subject revolves around finance 
 					which will be discussed and analyzed within this article. In the past few months, 
 					the interconnection between blockchain applications and the management of financial tools 
 					has been strictly solidified by the media in order to inform audiences about incidents 
 					that involve the mismanagament of personal finances lying between people with the 
 					use of cryptocurrency.
-					<br><br><br>
-                    Up until now, if you are still trying to understand the general concept behind 
-					cryptocurrencies, they are essentially a digital currency “like” the Euro or the dollar that 
-					is strongly affected by demand led by discussions around its general nature through 
-					social media platforms as well as the level of investment an average person makes as a 
-					result from hearing this information.
-                    <br><br><br>
-                    The main incident that took place in this example, is the bankruptcy of Silicon Valley 
+      </p>
+    </div>
+  </div>
+    <div class="box blur" id="box2">
+      <div class="arrow">
+        <button class="up-arrow" onclick="scrollToTop()" disabled> 👈 </button>
+        <button class="down-arrow" onclick="scrollToBottom()"> 👉 </button>
+      </div>
+      <span class="paragraph-indicator">Paragraph #2 of #11</span>
+      <div class="paragraph-container">
+        <button class="lock-button" onclick="toggleLock(this)">🖍️</button>  
+      <p>
+        Up until now, if you are still trying to understand the general concept behind 
+        cryptocurrencies, they are essentially a digital currency “like” the Euro or the dollar that 
+        is strongly affected by demand led by discussions around its general nature through 
+        social media platforms as well as the level of investment an average person makes as a 
+        result from hearing this information.
+      </p>
+    </div>
+    </div>
+    <div class="box blur" id="box3">
+      <div class="arrow">
+        <button class="up-arrow" onclick="scrollToTop()" disabled> 👈 </button>
+        <button class="down-arrow" onclick="scrollToBottom()"> 👉 </button>
+      </div>
+      <span class="paragraph-indicator">Paragraph #3 of #11</span>
+      <div class="paragraph-container">
+        <button class="lock-button" onclick="toggleLock(this)">🖍️</button>  
+      <p>
+        The main incident that took place in this example, is the bankruptcy of Silicon Valley 
 					Bank, that reached its downfall alongside its clients due to an investment into 
 					management firms that organized the finances of people’s money for a potential rate of 
 					return through various cryptocurrencies also managed by them. When it comes 
@@ -72,46 +546,101 @@
 					to a subscription plan for a streaming service, these are supported by an asset called 
 					‘cash’, something that your average bank strongly includes into a balance sheet to 
 					ensure that abnormalities in spending by yourself can be noticed at any given point.
-                    <br><br><br>
-                    Generally speaking, cryptocurrencies are split between two categories, one is the 
-					average coin that is supported by a major increase or decrease in value depending on 
-					its reputation discussed through the media (ex. renowned tech billionaire Elon Musk 
-					promoting Dogecoin through platforms such as Twitter and the Tesla website), and the 
-					second which fits under ‘stablecoins’. Telling by the name, these are ‘stable’ 
-					cryptocurrencies that are supported by a linkage with cash held in a bank elsewhere. 
-					What this means is, you are making an investment into a cryptocurrency with the use of 
-					your own currency of the dollar (CAD or USD), hence the existence of such stablecoins 
-					being popular in Binance USD or Tether USD. An explanation of how Binance works 
-					regarding digital assets can be watched in this remote workshop on our YouTube 
-					channel.
-                    <br><br><br>
-                    If you’ve ever used social media for a prolonged use of time, you would notice almost in 
+      </p>
+    </div>
+    </div>
+    <div class="box blur" id="box4">
+      <div class="arrow">
+        <button class="up-arrow" onclick="scrollToTop()" disabled> 👈 </button>
+        <button class="down-arrow" onclick="scrollToBottom()"> 👉 </button>
+      </div>
+      <span class="paragraph-indicator">Paragraph #4 of #11</span>
+      <div class="paragraph-container">
+        <button class="lock-button" onclick="toggleLock(this)">🖍️</button>
+      <p>
+        Generally speaking, cryptocurrencies are split between two categories, one is the 
+        average coin that is supported by a major increase or decrease in value depending on 
+        its reputation discussed through the media (ex. renowned tech billionaire Elon Musk 
+        promoting Dogecoin through platforms such as Twitter and the Tesla website), and the 
+        second which fits under ‘stablecoins’. Telling by the name, these are ‘stable’ 
+        cryptocurrencies that are supported by a linkage with cash held in a bank elsewhere. 
+        What this means is, you are making an investment into a cryptocurrency with the use of 
+        your own currency of the dollar (CAD or USD), hence the existence of such stablecoins 
+        being popular in Binance USD or Tether USD. An explanation of how Binance works 
+        regarding digital assets can be watched in this remote workshop on our YouTube 
+        channel.
+      </p>
+    </div>
+    </div>
+    <div class="box blur" id="box5">
+      <div class="arrow">
+        <button class="up-arrow" onclick="scrollToTop()" disabled> 👈 </button>
+        <button class="down-arrow" onclick="scrollToBottom()"> 👉 </button>
+      </div>
+      <span class="paragraph-indicator">Paragraph #5 of #11</span>
+      <div class="paragraph-container">
+        <button class="lock-button" onclick="toggleLock(this)">🖍️</button>
+      <p>
+        If you’ve ever used social media for a prolonged use of time, you would notice almost in 
 					every instance that the general spread of word behind a particular person or product 
 					can instantly affect the opinion of each invididual within the sample census being 
 					informed, hence forth making it ‘contagious’. This supports the ‘contagion theory’, 
 					which is the sole culprit of the downfall of these financial institutions as well as their 
 					linked investment with technology startups.
-                    <br><br><br>
-                    Throughout the pandemic, both in Canada as well as the US, a major hike in inflation 
+      </p>
+    </div>
+    </div>
+    <div class="box blur" id="box6">
+      <div class="arrow">
+        <button class="up-arrow" onclick="scrollToTop()" disabled> 👈 </button>
+        <button class="down-arrow" onclick="scrollToBottom()"> 👉 </button>
+      </div>
+      <span class="paragraph-indicator">Paragraph #6 of #11</span>
+      <div class="paragraph-container">
+        <button class="lock-button" onclick="toggleLock(this)">🖍️</button>
+      <p>
+        Throughout the pandemic, both in Canada as well as the US, a major hike in inflation 
 					had taken place making it difficult for citizens to increase their spending. To combat 
 					this, the US Federal Reserve began to print more money, increasing interest rates and 
 					lowering the inflation so that consistent financial transactions became frequented. As 
 					this is typical in economic recessions, one specific element of the system that’s been 
 					outlined by this change is the investment of people’s monetary transactions towards 
 					cryptocurrencies through crypto hedge funds.
-                    <br><br><br>
-                    When you are depositing money into a bank, your personal finances are not precisely 
-					held in one place, it may be partially shared with other companies or placed into 
-					investments for people looking to start one, and firms that promise to manage such 
-					resources such as hedge funds tend to fall into the same category. As ‘trust’ is the word 
-					to keep in mind in this situation, there is a spectrum of the term that ranges between a 
-					solid understanding of knowing that you’ll be able to withdraw and deposit your money 
-					at any time within a bank with limited knowledge of where it goes, versus lending your 
-					personal finances to a startup that gives a “promise” in making a return on your 
-					investment into one of their organized cryptocurrencies with a return relied on word of 
-					mouth.
-                    <br><br><br>
-                    As this spectrum is applied to these tech startups, the financial institutions that bought 
+      </p>
+    </div>
+    </div>    
+    <div class="box blur" id="box7">
+      <div class="arrow">
+        <button class="up-arrow" onclick="scrollToTop()" disabled> 👈 </button>
+        <button class="down-arrow" onclick="scrollToBottom()"> 👉 </button>
+      </div>
+      <span class="paragraph-indicator">Paragraph #7 of #11</span>
+      <div class="paragraph-container">
+        <button class="lock-button" onclick="toggleLock(this)">🖍️</button>
+      <p>
+        When you are depositing money into a bank, your personal finances are not precisely 
+        held in one place, it may be partially shared with other companies or placed into 
+        investments for people looking to start one, and firms that promise to manage such 
+        resources such as hedge funds tend to fall into the same category. As ‘trust’ is the word 
+        to keep in mind in this situation, there is a spectrum of the term that ranges between a 
+        solid understanding of knowing that you’ll be able to withdraw and deposit your money 
+        at any time within a bank with limited knowledge of where it goes, versus lending your 
+        personal finances to a startup that gives a “promise” in making a return on your 
+        investment into one of their organized cryptocurrencies with a return relied on word of 
+        mouth.
+      </p>
+    </div>
+    </div>
+    <div class="box blur" id="box8">
+      <div class="arrow">
+        <button class="up-arrow" onclick="scrollToTop()" disabled> 👈 </button>
+        <button class="down-arrow" onclick="scrollToBottom()"> 👉 </button>
+      </div>
+      <span class="paragraph-indicator">Paragraph #8 of #11</span>
+      <div class="paragraph-container">
+        <button class="lock-button" onclick="toggleLock(this)">🖍️</button>
+      <p>
+        As this spectrum is applied to these tech startups, the financial institutions that bought 
 					and sold bonds from these companies are what were ultimately disrupting the cycle of 
 					asset management. Back to the topic of ‘contagion theory’, due to a sudden rise in 
 					inflation once more by the Federal Reserve to reduce spending and decrease interest 
@@ -122,8 +651,19 @@
 					amongst one of the major financial institutions involved in this bankruptcy, and the 
 					major reason why the economic turmoil had a far more grandiose effect than otherwise 
 					expected.
-                    <br><br><br>
-                    Generally speaking, next to stablecoins, a company that is not able to print money or 
+      </p>
+    </div>
+    </div>
+    <div class="box blur" id="box9">
+      <div class="arrow">
+        <button class="up-arrow" onclick="scrollToTop()" disabled> 👈 </button>
+        <button class="down-arrow" onclick="scrollToBottom()"> 👉 </button>
+      </div>
+      <span class="paragraph-indicator">Paragraph #9 of #11</span>
+      <div class="paragraph-container">
+        <button class="lock-button" onclick="toggleLock(this)">🖍️</button>
+      <p>
+        Generally speaking, next to stablecoins, a company that is not able to print money or 
 					does not have assets to back up its bankruptcy, is generally likely to be held liable for 
 					excessive debts and therefore be unable to last for a longer time period in the economy. 
 					This applies specifically to bond ratings, as buying and sellings bonds from 
@@ -135,8 +675,19 @@
 					inflation and influence spending. Due to the recent bankruptcies, citizens of the US have 
 					been struggling to regain their losses, hence why the Federal Reserve acts on repaying 
 					citizens that have lost significant finances due to their investments in tech startups.
-                    <br><br><br>
-                    Various professionals who continue to speak about this industry, generally tend to 
+      </p>
+    </div>
+    </div>
+    <div class="box blur" id="box10">
+      <div class="arrow">
+        <button class="up-arrow" onclick="scrollToTop()" disabled> 👈 </button>
+        <button class="down-arrow" onclick="scrollToBottom()"> 👉 </button>
+      </div>
+      <span class="paragraph-indicator">Paragraph #10 of #11</span>
+      <div class="paragraph-container">
+        <button class="lock-button" onclick="toggleLock(this)">🖍️</button>
+      <p>
+        Various professionals who continue to speak about this industry, generally tend to 
 					understand the situation with how politicians and financiers understand the system, 
 					with podcast host Brad Nickel from ‘Mission: DeFi’ explaining “A lot of us believe that 
 					cryptocurrency and blockchain are superior technology for running the financial 
@@ -144,281 +695,202 @@
 					between blockchain networks and major financial management is not carefully 
 					interpreted during the age of Web 3.0 and will take a careful streamlining of valid 
 					information and education by the media to be sought into more stable conditions.
-                    <br><br><br>
-                    Altogether, the major derivation to take from these events, is that each individual must 
-					consider staying informed about where their finances are being placed, especially when 
-					it comes to terminology that is evolving to reach people’s ears without a direct 
-					explanation. To see our recent workshop regarding this topic, please visit our 
-					homepage! If you have any questions or concerns, please free to contact us 
-					@blockchaintmu on Instagram, or email us at blockchaintmu@gmail.com
-			</p>
-</div>
-
-<div class="container">
-<div id="myDIV1">
-    <div class="article" id="article">
-      <br>
-      <h1> How NOT to Run a Business w/ Crypto (Part 1) </h1>
-      <h3> Silicon Valley Bank </h3>
-      <br>
-        <p>As topics in further workshops such as <span class="tooltip" data-definition="asset management within blockchain technology: The management and oversight of assets within blockchain networks." data-link="#">asset management within blockchain technology</span> will be covered, a major part of this subject revolves around finance which will be discussed and analyzed within this article. In the past few months, the interconnection between <span class="tooltip" data-definition="blockchain applications: Software applications that utilize blockchain technology for various purposes." data-link="#">blockchain applications</span> and the management of financial tools has been strictly solidified by the media in order to inform audiences about incidents that involve the mismanagement of personal finances lying between people with the use of cryptocurrency.</p>
-        <p>Up until now, if you are still trying to understand the general concept behind <span class="tooltip" data-definition="cryptocurrencies: Digital currencies that rely on cryptography for security and operate on decentralized networks." data-link="#">cryptocurrencies</span>, they are essentially a digital currency “like” the Euro or the dollar that is strongly affected by demand led by discussions around its general nature through social media platforms as well as the level of investment an average person makes as a result from hearing this information.</p>
-        <p>The main incident that took place in this example, is the bankruptcy of <span class="tooltip" data-definition="Silicon Valley Bank: A financial institution in Silicon Valley, which faced bankruptcy due to investments in cryptocurrencies." data-link="#">Silicon Valley Bank</span>, that reached its downfall alongside its clients due to an investment into management firms that organized the finances of people’s money for a potential rate of return through various cryptocurrencies also managed by them. When it comes monetary transactions that take place anywhere from a cup of coffee bought at a mall to a subscription plan for a streaming service, these are supported by an asset called ‘cash’, something that your average bank strongly includes into a balance sheet to ensure that abnormalities in spending by yourself can be noticed at any given point.</p>
-        <p>Generally speaking, cryptocurrencies are split between two categories, one is the 
-            average coin that is supported by a major increase or decrease in value depending on 
-            its reputation discussed through the media (ex. renowned tech billionaire <span class="tooltip" data-definition="Elon Musk: A renowned tech entrepreneur and CEO of companies like Tesla and SpaceX." data-link="#">Elon Musk</span> promoting Dogecoin through platforms such as Twitter and the Tesla website), and the 
-            second which fits under ‘<span class="tooltip" data-definition="Stablecoins: Cryptocurrencies backed by a reserve asset like a fiat currency, aiming for price stability." data-link="#">stablecoins</span>’. Telling by the name, these are ‘stable’ 
-            cryptocurrencies that are supported by a linkage with cash held in a bank elsewhere. 
-            What this means is, you are making an investment into a cryptocurrency with the use of 
-            your own currency of the dollar (CAD or USD), hence the existence of such stablecoins 
-            being popular in <span class="tooltip" data-definition="Binance USD (BUSD): A stablecoin pegged to the value of the US dollar and issued by the Binance exchange." data-link="#">Binance USD</span> or <span class="tooltip" data-definition="Tether USD (USDT): A stablecoin pegged to the value of the US dollar and issued by Tether." data-link="#">Tether USD</span>. An explanation of how Binance works 
-            regarding digital assets can be watched in this remote workshop on our YouTube 
-            channel.</p>
-        <p>If you’ve ever used social media for a prolonged use of time, you would notice almost in 
-                every instance that the general spread of word behind a particular person or product 
-                can instantly affect the opinion of each individual within the sample census being 
-                informed, henceforth making it ‘contagious’. This supports the ‘<span class="tooltip" data-definition="Contagion theory: A concept explaining how behaviors, emotions, or opinions can spread rapidly among individuals or groups." data-link="#">contagion theory</span>’, 
-                which is the sole culprit of the downfall of these financial institutions as well as their 
-                linked investment with technology startups.</p>
-        <p>Throughout the pandemic, both in <span class="tooltip" data-definition="Canada: A country in North America." data-link="https://en.wikipedia.org/wiki/Canada">Canada</span> as well as the <span class="tooltip" data-definition="United States: A country in North America." data-link="https://en.wikipedia.org/wiki/United_States">US</span>, a major hike in <span class="tooltip" data-definition="Inflation: The rate at which the general level of prices for goods and services is rising." data-link="https://www.investopedia.com/terms/i/inflation.asp">inflation</span> 
-					had taken place making it difficult for citizens to increase their spending. To combat 
-					this, the <span class="tooltip" data-definition="US Federal Reserve: The central bank of the United States." data-link="https://www.federalreserve.gov/">US Federal Reserve</span> began to print more money, increasing <span class="tooltip" data-definition="Interest rates: The proportion of a loan that is charged as interest to the borrower." data-link="https://www.investopedia.com/terms/i/interestrate.asp">interest rates</span> and 
-					lowering the inflation so that consistent financial transactions became frequented. As 
-					this is typical in economic recessions, one specific element of the system that’s been 
-					outlined by this change is the investment of people’s monetary transactions towards 
-					<span class="tooltip" data-definition="Cryptocurrencies: Digital or virtual currencies secured by cryptography." data-link="https://www.investopedia.com/terms/c/cryptocurrency.asp">cryptocurrencies</span> through <span class="tooltip" data-definition="Crypto hedge funds: Investment funds that manage cryptocurrency assets." data-link="#">crypto hedge funds</span>.</p>
-        <p>When depositing money into a bank, your <span class="tooltip" data-definition="personal finances held in a bank" data-link="#">personal finances</span> are not precisely held in one place, partially shared with <span class="tooltip" data-definition="companies" data-link="#">other companies</span> or placed into <span class="tooltip" data-definition="investments for startups" data-link="#">investments for people looking to start one</span>, and firms that promise to manage such resources such as <span class="tooltip" data-definition="hedge funds" data-link="#">hedge funds</span> tend to fall into the same category. As ‘<span class="tooltip" data-definition="trust" data-link="#">trust</span>’ is the word to keep in mind in this situation, there is a spectrum of the term that ranges between a solid understanding of knowing that you’ll be able to <span class="tooltip" data-definition="withdraw and deposit money in a bank" data-link="#">withdraw and deposit your money at any time within a bank</span> with limited knowledge of where it goes, versus lending your personal finances to a <span class="tooltip" data-definition="startup" data-link="#">startup</span> that gives a 'promise' in making a return on your investment into one of their <span class="tooltip" data-definition="cryptocurrencies" data-link="#">organized cryptocurrencies</span> with a return relied on <span class="tooltip" data-definition="word of mouth" data-link="#">word of mouth</span>.</p>
-        <p>
-            As this spectrum is applied to these <span class="tooltip" data-definition="Companies focused on technological innovation and development." >tech startups</span>, the <span class="tooltip" data-definition="Institutions involved in monetary transactions, lending, and investments." >financial institutions</span> that bought 
-					and sold <span class="tooltip" data-definition="Debt securities representing loans made by investors to organizations." >bonds</span> from these companies are what were ultimately <span class="tooltip" data-definition="Causing significant changes or interruptions in a process or system." >disrupting</span> the cycle of 
-					<span class="tooltip" data-definition="The process of managing a client's investments and assets." >asset management</span>. Back to the topic of ‘<span class="tooltip" data-definition="The idea that financial crises can spread rapidly through interconnected markets and institutions." >contagion theory</span>’, due to a sudden rise in 
-					<span class="tooltip" data-definition="The rate at which the general level of prices for goods and services is rising." >inflation</span> once more by the <span class="tooltip" data-definition="The central bank of the United States." >Federal Reserve</span> to reduce <span class="tooltip" data-definition="The act of using money for the purchase of goods or services." >spending</span> and decrease <span class="tooltip" data-definition="The cost of borrowing money." >interest 
-					rates</span>, technology startups such as BlockFi, Circle, Avalanche, Ripple, Proof, and Yuga 
-					Labs were the sole proprietors that were affected by the sudden shift in the economy as 
-					well as the value of their managed <span class="tooltip" data-definition="Digital or virtual currencies that use cryptography for security." >cryptocurrencies</span>, since it failed to meet expectations 
-					in making a strong return in <span class="tooltip" data-definition="The action or process of investing money for profit." >investments</span> towards clients. The <span class="tooltip" data-definition="A bank based in Silicon Valley known for its involvement with tech companies." >Silicon Valley Bank</span> was 
-					amongst one of the major financial institutions involved in this <span class="tooltip" data-definition="Legal process involving a person or business that is unable to repay outstanding debts." >bankruptcy</span>, and the 
-					major reason why the <span class="tooltip" data-definition="A state of extreme confusion, uncertainty, or disorder in an economy or society." >economic turmoil</span> had a far more grandiose effect than otherwise 
-					expected.
-        </p>
-
-        <p>
-            Generally speaking, next to <span class="tooltip" data-definition="Cryptocurrencies designed to have a stable value by being pegged to a reserve asset." >stablecoins</span>, a company that is not able to <span class="tooltip" data-definition="The process of creating currency by a central authority, typically a government." >print money</span> or 
-					does not have assets to back up its <span class="tooltip" data-definition="Legal process involving a person or business that is unable to repay outstanding debts." >bankruptcy</span>, is generally likely to be held <span class="tooltip" data-definition="Legally responsible." >liable</span> for 
-					excessive <span class="tooltip" data-definition="Money or goods owed to someone else." >debts</span> and therefore be unable to last for a longer time period in the <span class="tooltip" data-definition="The system of production, distribution, and consumption of goods and services in a particular geographic area." >economy</span>. 
-					This applies specifically to <span class="tooltip" data-definition="An evaluation of the creditworthiness of an issuer of debt." >bond ratings</span>, as buying and selling bonds from 
-					organizations with a (B, BB, BBB) rating are to generally give somewhat promising 
-					<span class="tooltip" data-definition="Profits earned from an investment." >returns</span> on their buyers, whereas as (A, AA, AAA) rated bonds may guarantee an instant 
-					and fully guaranteed <span class="tooltip" data-definition="The action or process of investing money for profit." >return on investment</span>. Amongst organizations that are less likely to 
-					go bankrupt, the major one is the <span class="tooltip" data-definition="The central bank of the United States." >Federal Reserve</span> with a bond rating of AAA, meaning 
-					that any point they can <span class="tooltip" data-definition="The act of using money for the purchase of goods or services." >print money</span> to increase <span class="tooltip" data-definition="The amount of goods and services in an economy, relative to the money supply." >spending</span> and supply of cash to drop 
-					<span class="tooltip" data-definition="The rate at which the general level of prices for goods and services is rising." >inflation</span> and influence <span class="tooltip" data-definition="The total amount of money spent by consumers and businesses in an economy." >spending</span>. Due to the recent <span class="tooltip" data-definition="Legal process involving a person or business that is unable to repay outstanding debts." >bankruptcies</span>, citizens of the US have 
-					been struggling to regain their losses, hence why the <span class="tooltip" data-definition="The central bank of the United States." >Federal Reserve</span> acts on repaying 
-					<span class="tooltip" data-definition="People who legally belong to a particular country." >citizens</span> that have lost significant finances due to their investments in <span class="tooltip" data-definition="Companies focused on technological innovation and development." >tech startups</span>.
-        </p>
-
-        <p>
-            Various <span class="tooltip" data-definition="People who are experts or specialized in a particular field or occupation." >professionals</span> who continue to speak about this <span class="tooltip" data-definition="The collective businesses and activities associated with a particular field or category." >industry</span>, generally tend to 
-					understand the situation with how <span class="tooltip" data-definition="Individuals involved in governing and making policies for a country or region." >politicians</span> and <span class="tooltip" data-definition="Individuals involved in managing large sums of money, especially with regard to investments." >financiers</span> understand the system, 
-					with podcast host Brad Nickel from ‘Mission: DeFi’ explaining “A lot of us believe that 
-					<span class="tooltip" data-definition="A digital or virtual currency that uses cryptography for security and operates on a decentralized network." >cryptocurrency</span> and <span class="tooltip" data-definition="A system in which a record of transactions made in bitcoin or another cryptocurrency is maintained across several computers that are linked in a peer-to-peer network." >blockchain</span> are superior technology for running the financial 
-					<span class="tooltip" data-definition="The system comprising institutions, regulations, and techniques by which financial aspects of a society are managed." >system</span>”, at which the response is that the <span class="tooltip" data-definition="The probability of loss or harm." >risk</span> associated with this <span class="tooltip" data-definition="The state of being connected with one another." >interconnection</span> 
-					between blockchain networks and major financial <span class="tooltip" data-definition="The process of planning, organizing, directing, and controlling an organization's financial activities." >management</span> is not carefully 
-					interpreted during the age of <span class="tooltip" data-definition="The vision of the internet where data is decentralized and users have more control over their data." >Web 3.0</span> and will take a careful streamlining of valid 
-					<span class="tooltip" data-definition="Facts or knowledge communicated or received concerning a particular fact or circumstance." >information</span> and <span class="tooltip" data-definition="The process of facilitating learning or acquiring knowledge, beliefs, values, habits, and skills." >education</span> by the <span class="tooltip" data-definition="The main means of mass communication, regarded collectively." >media</span> to be sought into more <span class="tooltip" data-definition="Conditions that are less likely to change or fluctuate." >stable conditions</span>.
-        </p>
-
-        <p>
-            Altogether, the major derivation to take from these events, is that each <span class="tooltip" data-definition="A single person considered separately from the group." >individual</span> must 
-					consider <span class="tooltip" data-definition="To have knowledge or be aware of current facts or events." >staying informed</span> about where their <span class="tooltip" data-definition="Money or resources owned or controlled by an individual or organization." >finances</span> are being placed, especially when 
-					it comes to <span class="tooltip" data-definition="Terms, phrases, or jargon specific to a particular subject or field." >terminology</span> that is <span class="tooltip" data-definition="Gradually developing and changing." >evolving</span> to reach people’s ears without a direct 
-					<span class="tooltip" data-definition="A statement or account that makes something clear." >explanation</span>. To see our recent <span class="tooltip" data-definition="A seminar or educational program that involves a small number of people engaging in discussion and practical work on a particular subject or project." >workshop</span> regarding this topic, please visit our 
-					<span class="tooltip" data-definition="The main or introductory page of a website." >homepage</span>! If you have any <span class="tooltip" data-definition="Queries or doubts about something." >questions</span> or <span class="tooltip" data-definition="Concerns or worries about something." >concerns</span>, please feel free to <span class="tooltip" data-definition="Get in touch with someone through a communication method." >contact</span> us 
-					<span class="tooltip" data-definition="A social media platform for sharing photos and videos." >@blockchaintmu</span> on Instagram, or email us at blockchaintmu@gmail.com.
-        </p>
-        
-      <div class="tooltip-box" id="tooltipBox">
-          <span id="tooltipContent"></span>
-          <div class="video-container" id="videoContainer">
-              <!-- Video recommendations will appear here -->
-          </div>
-          <span class="close-btn">×</span> <!-- Close button -->
+      </p>
+    </div>
+    </div>
+    <div class="box blur" id="box11">
+      <div class="arrow">
+        <button class="up-arrow" onclick="scrollToTop()" disabled> 👈 </button>
+        <button class="down-arrow" onclick="scrollToBottom()"> 👉 </button>
       </div>
-       
+      <span class="paragraph-indicator">Paragraph #11 of #11</span>
+      <div class="paragraph-container">
+        <button class="lock-button" onclick="toggleLock(this)">🖍️</button>
+      <p>
+        Altogether, the major derivation to take from these events, is that each individual must 
+        consider staying informed about where their finances are being placed, especially when 
+        it comes to terminology that is evolving to reach people’s ears without a direct 
+        explanation. To see our recent workshop regarding this topic, please visit our 
+        homepage! If you have any questions or concerns, please free to contact us 
+        @blockchaintmu on Instagram, or email us at blockchaintmu@gmail.com
+      </p>
     </div>
-    <div class="slider-container">
-        <div class="arrow-button" id="prevButton">&#9650;</div>
-        <p>
-          <br><br><br><br>
-          Paragraph <span id="currentParagraph">1</span> of <span id="totalParagraphs">24</span>
-        </p>
-        <div class="arrow-button" id="nextButton">&#9660;</div>
     </div>
-</div>
-</div>
-
-<div class="tooltip-box" id="tooltipBox">
-  <span id="tooltipContent"></span>
-  <div class="video-container" id="videoContainer">
-      <!-- Video recommendations will appear here -->
-  </div>
-  <span class="close-btn">×</span> <!-- Close button -->
-</div>
-</div>
+  
 
 <script>
+const boxes = document.querySelectorAll('.box');
+const container = document.querySelector('.container');
+const upArrows = document.querySelectorAll('.up-arrow');
+const downArrows = document.querySelectorAll('.down-arrow');
+let currentIndex = 0;
 
-function myFunction() {
-  var x = document.getElementById("myDIV");
-  var y = document.getElementById("myDIV1");
-  if (x.style.display === "none") {
-    x.style.display = "block";
-  } else {
-    x.style.display = "none";
-  }
-  if (y.style.display === "none") {
-    y.style.display = "none";
-  } else {
-    y.style.display = "none";
-  }
-}
+// Initialize the page by hiding arrow buttons for all boxes except the first one
+hideOtherArrows(currentIndex);
 
-function myFunction1() {
-  var x = document.getElementById("myDIV");
-  var y = document.getElementById("myDIV1");
-  if (x.style.display === "none") {
-    x.style.display = "none";
-  } else {
-    x.style.display = "none";
-  }
-  if (y.style.display === "none") {
-    y.style.display = "block";
-  } else {
-    y.style.display = "none";
-  }
-}
-
-document.addEventListener('DOMContentLoaded', function() {
-    const article = document.getElementById('article');
-    const totalParagraphs = article.querySelectorAll('p').length;
-    document.getElementById('totalParagraphs').textContent = totalParagraphs;
-
-    let currentSlide = 1;
-    let isTooltipDisplayed = false;
-
-    function displayParagraph(slide) {
-        const paragraphs = article.querySelectorAll('p');
-        paragraphs.forEach(paragraph => {
-            paragraph.style.opacity = '0';
-        });
-
-        const selectedParagraph = paragraphs[slide - 1];
-        setTimeout(() => {
-            selectedParagraph.style.opacity = '1';
-        }, 100);
-
-        document.getElementById('currentParagraph').textContent = slide;
-
-        // Tooltip Functionality
-        const tooltipSpan = selectedParagraph.querySelectorAll('.tooltip');
-        const tooltipBox = document.createElement('div');
-        tooltipBox.classList.add('tooltip-box');
-        selectedParagraph.appendChild(tooltipBox);
-
-        tooltipSpan.forEach(span => {
-            span.addEventListener('click', (event) => {
-                if (!isTooltipDisplayed) {
-                    const definition = event.target.getAttribute('data-definition');
-                    const videos = event.target.getAttribute('data-videos');
-
-                    const tooltipContent = document.createElement('div');
-                    tooltipContent.classList.add('tooltip-content');
-                    tooltipContent.textContent = definition;
-
-                    const videoContainer = document.createElement('div');
-                    videoContainer.classList.add('video-container');
-                    videoContainer.innerHTML = '';
-
-                    if (videos) {
-                        const videoList = videos.split(', ');
-                        const videoListHTML = videoList.map(video => `<iframe width="100%" height="200" src="${video}" frameborder="0" allowfullscreen></iframe>`).join('');
-                        videoContainer.innerHTML = `<h3>Video Recommendations:</h3>${videoListHTML}`;
-                    }
-
-                    tooltipBox.innerHTML = '';
-                    tooltipBox.appendChild(tooltipContent);
-                    tooltipBox.appendChild(videoContainer);
-
-                    const closeBtn = document.createElement('span');
-                    closeBtn.classList.add('close-btn');
-                    closeBtn.textContent = 'X';
-                    closeBtn.addEventListener('click', () => {
-                        isTooltipDisplayed = false;
-                        tooltipBox.style.display = 'none';
-                    });
-                    tooltipBox.appendChild(closeBtn);
-
-                    tooltipBox.style.display = 'block';
-                    isTooltipDisplayed = true;
-
-
-                }
-            });
-
-            tooltipBox.removeEventListener('mouseleave', () => {
-                isTooltipDisplayed = false;
-                tooltipBox.style.display = 'none';
-            });
-        });
-    }
-
-    document.getElementById('nextButton').addEventListener('click', () => {
-        if (currentSlide < totalParagraphs) {
-            currentSlide++;
-            displayParagraph(currentSlide);
-        }
-    });
-
-    document.getElementById('prevButton').addEventListener('click', () => {
-        if (currentSlide > 1) {
-            currentSlide--;
-            displayParagraph(currentSlide);
-        }
-    });
-
-    displayParagraph(currentSlide);
+upArrows.forEach(function(elem, index) {
+  elem.addEventListener('click', function() {
+    moveBoxUp(index);
+  });
 });
 
-let prevScrollPos = window.pageYOffset;
+downArrows.forEach(function(elem, index) {
+  elem.addEventListener('click', function() {
+    moveBoxDown(index);
+  });
+});
 
-    window.onscroll = function() {
-      let currentScrollPos = window.pageYOffset;
+document.addEventListener('keydown', function(event) {
+  if (event.key === 'ArrowRight') {
+    moveBoxDown(currentIndex);
+  } else if (event.key === 'ArrowLeft') {
+    moveBoxUp(currentIndex);
+  } else if (event.key === 'ArrowUp') {
+    moveBoxUp(currentIndex);
+  } else if (event.key === 'ArrowDown') {
+    moveBoxDown(currentIndex);
+  }
+});
 
-      if (prevScrollPos > currentScrollPos) {
-        document.getElementById("navbar").classList.remove("hidden");
-      } else {
-        document.getElementById("navbar").classList.add("hidden");
-      }
+function moveBoxUp(index) {
+  if (index > 0) {
+    const nextIndex = index - 1;
+    moveToIndex(nextIndex);
+  }
+}
 
-      prevScrollPos = currentScrollPos;
-    };
+function moveBoxDown(index) {
+  if (index < boxes.length - 1) {
+    const nextIndex = index + 1;
+    moveToIndex(nextIndex);
+  }
+}
 
-    // JavaScript to bring back solidity on hover
-    const navbar = document.getElementById('navbar');
+function moveToIndex(nextIndex) {
+  // Remove active class from current box and add blur class
+  boxes[currentIndex].classList.remove('active');
+  boxes[currentIndex].classList.add('blur');
 
-    navbar.addEventListener('mouseenter', function() {
-      navbar.classList.remove('hidden');
+  // Add active class to next box and remove blur class
+  boxes[nextIndex].classList.remove('blur');
+  boxes[nextIndex].classList.add('active');
+
+  // Calculate the position to align active box with arrow box
+  const arrowRect = boxes[nextIndex].querySelector('.arrow').getBoundingClientRect();
+  const activeBoxRect = boxes[nextIndex].getBoundingClientRect();
+
+  // Calculate the scroll position to align active box with arrow box
+  const scrollLeft = activeBoxRect.left - arrowRect.left - (window.innerWidth / 2 - activeBoxRect.width / 2);
+
+  // Set the scroll position to immediately position the active box beside the arrow box
+  container.scrollLeft = scrollLeft;
+
+  currentIndex = nextIndex;
+
+  // Disable/enable arrows based on current index
+  upArrows.forEach(function(elem) {
+    elem.disabled = currentIndex === 0;
+  });
+
+  downArrows.forEach(function(elem) {
+    elem.disabled = currentIndex === boxes.length - 1;
+  });
+
+  // Hide arrow buttons for other boxes
+  hideOtherArrows(currentIndex);
+}
+
+function hideOtherArrows(index) {
+  boxes.forEach(function(box, i) {
+    const arrows = box.querySelectorAll('.arrow button');
+    arrows.forEach(function(arrow) {
+      arrow.style.visibility = i !== index ? 'hidden' : 'visible';
+    });
+  });
+}
+
+    
+document.getElementById('view-full-article-box').addEventListener('click', function() {
+    // Create the button for entering paragraph mode
+    var refreshButton = document.createElement('button');
+    refreshButton.textContent = 'Enter Paragraph Mode';
+    refreshButton.classList.add('view-full-article'); // Add class for styling
+    refreshButton.style.backgroundColor = 'white'; // Set white background
+    refreshButton.style.color = 'black'; // Set black text color
+    refreshButton.style.border = '2px solid white'; // Add white border
+    refreshButton.style.cursor = 'pointer'; // Set cursor to pointer to indicate clickability
+    refreshButton.addEventListener('click', function() {
+        location.reload(); // Reload the page when clicked
     });
 
-    navbar.addEventListener('mouseleave', function() {
-      if (window.scrollY === 0) {
-        navbar.classList.add('hidden');
-      }
+    // Append the button to the 'view-full-article-box'
+    this.innerHTML = ''; // Clear existing content
+    this.appendChild(refreshButton);
+
+    // Remove active state from all boxes
+    document.querySelectorAll('.box').forEach(function(box) {
+        box.classList.remove('active');
     });
 
+    // Remove box styling
+    document.querySelectorAll('.box').forEach(function(box) {
+        box.style.border = 'none';
+        box.style.backgroundColor = 'transparent';
+        box.style.fontSize = '15px'; // Set font size back to default
+        box.classList.remove('blur'); // Remove blur class
+    });
 
-</script>
+    // Remove paragraph indicators
+    document.querySelectorAll('.paragraph-indicator').forEach(function(indicator) {
+        indicator.remove();
+    });
 
+    // Disable lock buttons and hide lock icons
+    document.querySelectorAll('.lock-button').forEach(function(lockButton) {
+        lockButton.disabled = true;
+        lockButton.style.display = 'none';
+    });
+
+    // Remove animations
+    document.querySelectorAll('.move-up, .move-down').forEach(function(animation) {
+        animation.style.animation = 'none';
+    });
+
+    // Hide arrow buttons for all other boxes
+    hideOtherArrows(-1);
+});
+
+let lockedParagraph = null;
+
+function toggleLock(button) {
+  const parent = button.parentNode;
+  const isLocked = parent.classList.toggle('locked');
+  if (isLocked) {
+    lockedParagraph = parent;
+    centerParagraph(lockedParagraph);
+  } else {
+    lockedParagraph = null;
+  }
+}
+
+function centerParagraph(element) {
+  const rect = element.getBoundingClientRect();
+  const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+  const centerY = rect.top + rect.height / 2 - window.innerHeight / 2 + scrollTop;
+  window.scrollTo({
+    top: centerY,
+    behavior: 'smooth'
+  });
+}
+
+// Keep the locked paragraph centered if the window is resized
+window.addEventListener('resize', function() {
+  if (lockedParagraph) {
+    centerParagraph(lockedParagraph);
+  }
+});
+
+
+    </script>  
 </body>
 </html>
-

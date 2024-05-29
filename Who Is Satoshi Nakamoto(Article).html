@@ -1,6 +1,5 @@
 <!DOCTYPE html>
-<html>
-  <link rel="stylesheet" type="text/css" href="reader.css">
+<html lang="en">
 <head>
   <!-- Google tag (gtag.js) -->
 	<script async src="https://www.googletagmanager.com/gtag/js?id=G-9J1B2MTYSV"></script>
@@ -10,437 +9,802 @@
  	 	gtag('js', new Date());
  	 	gtag('config', 'G-9J1B2MTYSV');
 	</script>
-  <title> Who is Satoshi Nakamoto? - Article </title>
-<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title> Workshop #13 - Article </title>
 <style>
 
+.locked {
+        background-color: darkorange;
+        border: 1px solid;
+        border-radius: 10px;
+        border-color: black;
+    }
+
+.button-container {
+        position: relative;
+        width: 300px; /* Adjust width as needed */
+    }
+
+    .expand-button {
+        width: 10px; /* Initial width of the button */
+        height: 10px; /* Height of the button */
+        padding: 10px;
+        background-color: #ff0000;
+        color: rgb(255, 255, 255);
+        border: none;
+        cursor: pointer;
+        position: relative; /* Enable positioning of the tooltip */
+        transition: width 0.3s; /* Smooth transition effect */
+        border-radius: 5px; /* Make the edges rounder */
+        margin-top: 20px;
+    }
+
+    .expand-button .initial-text,
+    .expand-button .tooltip {
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        opacity: 0;
+        transition: opacity 0.3s; /* Smooth transition effect */
+        
+    }
+
+    .expand-button .initial-text {
+        opacity: 1; /* Show "+" sign text by default */
+    }
+
+    .expand-button:hover {
+        width: 100px; /* Expanded width on hover */
+    }
+
+    .expand-button:hover .initial-text {
+        opacity: 0; /* Hide "+" sign text on hover */
+    }
+
+    .expand-button:hover .tooltip {
+        opacity: 1; /* Show "Hello" text on hover */
+        right: 100px; /* Position "Hello" text beside "+" sign */
+    }
+
+.paragraph-container {
+        padding: 10px;
+        margin: 10px;
+        position: relative; /* Relative positioning for absolute positioning of the lock button */
+    }
+    
+    .lock-button {
+        padding: 5px;
+        background-color: #000000;
+        color: white;
+        border: none;
+        border-radius: 50%;
+        cursor: pointer;
+        position: absolute; /* Absolute positioning */
+        top: 50%; /* Vertically center the button */
+        right: -100px; /* Position the button outside the box */
+        transform: translateY(-50%); /* Adjust position to center vertically */
+    }
+
+
+.scroll-to-top {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    cursor: pointer;
+    background-color: #000000;
+    color: #fff;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.scroll-to-top i {
+    font-size: 20px;
+}
+
+.navbar {
+  color: white;
+  padding: 25px; /* Increase padding to give more space */
+  width: 95%; /* Make the navbar fully wide */
+  position: fixed; /* Fix the navbar to the top */
+  top: 0; /* Position the navbar at the top of the viewport */
+  z-index: 1000; /* Ensure the navbar is above other content */
+  display: flex; /* Use flexbox to align items */
+  justify-content: space-between; /* Align items to the start and end */
+}
+
+.navbar-logo {
+  width: 50px;
+  height: auto;
+  margin-right: auto; /* Push the logo to the left */
+}
+
+.nav-links {
+  display: flex; /* Use flexbox to align items */
+}
+
+.nav-link {
+  margin-left: 10px; /* Add margin to separate links */
+  text-decoration: none;
+  color: white;
+}
+
+.nav-link:not(:last-child)::after {
+  content: '|'; /* Add a vertical line */
+  margin-left: 10px; /* Add space between the line and the link */
+  color: white; /* Set the color of the line */
+}
+
+
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    overflow: hidden;
+    height: 100vh;
+    padding: 200px;
+}
+
+.button-container {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20px;
+  }
+
+  .button {
+    padding: 10px 20px;
+    background-color: #f0f0f0;
+    color: #333;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+    margin: 5px;
+  }
+
+  .button.active {
+    background-color: black;
+    color: white;
+  }
+
+  .content {
+    display: none;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    margin-top: 20px;
+  }
+
+  .content.active {
+    display: block;
+  }
+
+body {
+  font-family: Arial, sans-serif;
+  font-size: 15px;
+  height: 400vh;
+}
+
+.box {
+  border: 1px solid transparent;
+  border-radius: 10px;
+  background-color: white; /* Set the background color of the boxes to white */
+  color: black; /* Set text color to black */
+  padding: 10px 60px 10px 20px; /* Adjust padding to move the text a little more to the left */
+  margin: 10px auto;
+  width: 80%;
+  max-width: 600px;
+  box-sizing: border-box;
+  position: relative;
+  transition: transform 0.5s ease;
+  text-align: left;
+  font-family: Arial, sans-serif; /* Set the font family to Arial */
+}
+
+  .box.active {
+    transform: translateX(0%) scale(1.5); /* Center the active box more to the right and keep it enlarged */
+    z-index: 1;
+    background-color: black;
+    color: white;
+  }
+
+
+  .box.active .arrow {
+    transform: rotate(90deg); /* Rotate the arrow button by 90 degrees */
+  }
+
+  .box.blur {
+    filter: blur(5px); /* Apply blur effect to all boxes except the active one */
+    transform: scale(1);
+    z-index: 0;
+  }
+
+  .blur {
+  filter: blur(2px); /* Apply blur effect */
+  pointer-events: none; /* Disable pointer events */
+  user-select: none; /* Disable text selection */
+}
+
+
+  .arrow {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  right: 0;
+  top: 50%;
+}
+
+.up-arrow button,
+.down-arrow button {
+  background-color: #ccc;
+  border-radius: none;
+  padding: 5px 10px; /* Reduce padding */
+  cursor: pointer;
+  font-size: 14px; /* Reduce font size */
+  border-radius: 50%; /* Make the button round */
+}
+
+
+  .paragraph-indicator {
+  color: gray;
+  font-size: 12px;
+  display: block;
+  margin-bottom: 5px;
+  font-weight: bold; /* Add this line to make the paragraph indicator bold */
+}
+
+.banner {
+  position: relative;
+  width: 100%;
+  height: 30vh; /* Adjusted height for the banner */
+  background-size: cover;
+  background-color: #ffffff; /* Dark gray background for the banner */
+}
+
+header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 90%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  transition: 0.6s;
+  padding: 40px 100px;
+  z-index: 100000;
+  border-bottom: 2px solid rgb(0, 0, 0); /* White border at the bottom of the header */
+  opacity: 1;
+  transition: opacity 0.6s;
+}
+
+header.hidden {
+  opacity: 0;
+}
+
+header ul {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 10px 0;
+  border-top: 2px solid rgb(255, 255, 255); /* White border at the top of the ul */
+  border-bottom: 2px solid white; /* White border at the bottom of the ul */
+}
+
+header ul li {
+  position: relative;
+  list-style: none;
+  border-left: 2px solid white; /* White border on the left of each list item */
+}
+
+header ul li:first-child {
+  border-left: none; /* Remove left border for the first list item */
+}
+
+header ul li a {
+  position: relative;
+  margin: 0 15px;
+  text-decoration: none;
+  color: hsl(0, 0%, 100%);
+  letter-spacing: 2px;
+  font-weight: 500;
+  transition: 0.6s;
+}
+
+/* Add hover effect to header buttons */
+header ul li a:hover {
+  color: #000000; /* Change to the desired highlight color */
+}
+
+body {
+  background-color: orange;
+  padding-top: 60px; /* Increase padding to make more room for the navigation bar */
+  font-family: Arial, sans-serif;
+}
+
+.container {
+  position: absolute; /* Set the container to absolute positioning */
+  top: 80px; /* Adjust the top offset to position the container below the navigation bar */
+  left: 0; /* Ensure the container starts from the left edge of the viewport */
+  right: 0; /* Ensure the container ends at the right edge of the viewport */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 7000px; /* Adjust the container's height to fill the remaining viewport */
+}
+
+.box {
+  border: 1px solid transparent;
+  border-radius: 10px;
+  background-color: white; /* Set the background color of the boxes to white */
+  color: black; /* Set text color to black */
+  padding: 10px 60px 10px 20px; /* Adjust padding to move the text a little more to the left */
+  margin: 10px auto;
+  width: 80%;
+  max-width: 600px;
+  box-sizing: border-box;
+  position: relative;
+  transition: transform 0.5s ease;
+  text-align: left; /* Align text to the left */
+  font-family: Arial, sans-serif; /* Set the font family to Arial */
+}
+
+.view-full-article-box {
+    border-radius: 10px; /* Make the edges rounder */
+    padding: 10px;
+    margin-top: 20px;
+    width: fit-content;
+}
+
+.view-full-article {
+    text-decoration: none;
+    color: black;
+    border: none; /* Remove the border */
+    background-color: #f0f0f0; /* Set the initial background color */
+    padding: 8px 16px; /* Adjust padding */
+    border-radius: 8px; /* Make the button rounder */
+}
+
+.view-full-article:hover {
+    background-color: #e0e0e0; /* Darken the background color on hover */
+}
+
+.view-full-article:active {
+    background-color: black; /* Change background color when button is clicked */
+    color: white; /* Change text color when button is clicked */
+}
+
+
+.box.active {
+  transform: translateX(0%) scale(1.5); /* Center the active box more to the right and keep it enlarged */
+}
+
+.box.blur {
+  filter: blur(5px); /* Apply blur effect to all boxes except the active one */
+  transform: scale(1);
+}
+
+.arrow {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  right: 0;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.arrow button {
+  background-color: #ccc;
+  border: none;
+  padding: 2px 6px; /* Reduce padding */
+  cursor: pointer;
+  font-size: 14px; /* Reduce font size */
+}
+
+@keyframes moveDown {
+  from {
+    transform: translateY(0);
+  }
+  to {
+    transform: translateY(20%);
+  }
+}
+
+@keyframes moveUp {
+  from {
+    transform: translateY(0);
+  }
+  to {
+    transform: translateY(-20%);
+  }
+}
+
+.move-down {
+  animation: moveDown 0.3s forwards;
+}
+
+.move-up {
+  animation: moveUp 0.3s forwards;
+}
+
+
+  @keyframes moveDown {
+    from {
+      transform: translateY(0);
+    }
+    to {
+      transform: translateY(20%);
+    }
+  }
+
+  @keyframes moveUp {
+    from {
+      transform: translateY(0);
+    }
+    to {
+      transform: translateY(-20%);
+    }
+  }
+
+  .move-down {
+    animation: moveDown 0.3s forwards;
+  }
+
+  .move-up {
+    animation: moveUp 0.3s forwards;
+  }
 </style>
 </head>
 <body>
 
-  <header id="navbar">
-    <a href="index.html"><img src="blockchaintmu (normal logo - no background).png" alt="Welcome!" style="float:left;width:400px;height:220px;"></a>
-          <div class="dropdown">
-              <div class="dropdown-content">
-                  <ul>
-          <li><a href="index.html"><b>HOME</a></li></b>
-          <li><a href="Workshops.html"><b>WORKSHOPS</a></li></b>
-          <li><a href="FirstAccess.html"><b>FIRST/ACCESS</a></li></b>
-          <li><a href="Columns.html"><b>ARTICLES</a></li></b>
-                  </ul>
-              </div>
-              <div id="mySidenav" class="sidenav">
-                <a href="Who Is Satoshi Nakamoto.html" id="video">WATCH VIDEO</a>
-              </div>        
-      </header>
-
-<br><br><br><br><br><br><br><br><br><br><br><br><br>
-
-<div class="button">
-  <center><button class="paragraph-button" onclick="myFunction(); this.onclick=myFunction">Paragraph Mode</button></center>
-  <center><button class="reader-button" onclick="myFunction1(); this.onclick=myFunction1">Reader Mode</button></center>
-</div>
-<br>
-
-
-<div class="container">
-<div id="myDIV">
-    <br>
-    <h1> Who is Satoshi Nakamoto? </h1>
-    <h3> The Anonymous Prodigy Explained </h3>
-    <br>
+  <center>
+    <header id="navbar">
+      <a href="index.html"><img src="blockchainuni (official logo).png" alt="Welcome!" style="float:left;width:265px;height:90px;"></a>
+      <div class="dropdown">
+                  <div class="dropdown-content">
+                      <ul>
+              <li><a href="index.html"><b>HOME</a></li></b>
+              <li><a href="Workshops.html"><b>WORKSHOPS</a></li></b>
+              <li><a href="FirstAccess.html"><b>FIRST/ACCESS</a></li></b>
+              <li><a href="Columns.html"><b>ARTICLES</a></li></b>
+                      </ul>
+                  </div>
+</center>
+  <br><br><br><br><br><br>
+  <div class="container">
+    <br><br><br>
+    <div class="view-full-article-box" id="view-full-article-box">
+        <button class="view-full-article">View Full Article</button>
+    </div>
+    <div class="button-container">
+      <a href="" target="_blank">
+      <button class="expand-button">
+          <span class="initial-text">📺</span>
+          <span class="tooltip">📺<b>/WatchVideo</b><br></span>
+      </button>
+    </a>
+  </div>
+    <br><br><br><br><br><br>
+    <div class="box active" id="box1">
+      <div class="arrow">
+        <button class="up-arrow" onclick="scrollToTop()" disabled> 👈 </button>
+        <button class="down-arrow" onclick="scrollToBottom()"> 👉 </button>
+      </div>
+      <span class="paragraph-indicator">Paragraph #1 of #8</span>
+      <div class="paragraph-container">
+        <button class="lock-button" onclick="toggleLock(this)">🖍️</button>
+        <h1> Who is Satoshi Nakamoto? </h1>
+        <h3> The Anonymous Prodigy Explained </h3>
       <p>
-        <br><br><br>
         Satoshi Nakamoto, an elusive figure in the world of cryptocurrency, is the pseudonym used by 
         the individual who penned the foundational Bitcoin whitepaper. This anonymous entity is 
         credited with the inception of Bitcoin, a groundbreaking digital currency that has revolutionized 
         the financial landscape. As of 2023, with Bitcoin's soaring value, if Nakamoto indeed holds close 
         to one million BTC, they would be considered a billionaire.
-        <br><br><br>
+      </p>
+    </div>
+  </div>
+    <div class="box blur" id="box2">
+      <div class="arrow">
+        <button class="up-arrow" onclick="scrollToTop()" disabled> 👈 </button>
+        <button class="down-arrow" onclick="scrollToBottom()"> 👉 </button>
+      </div>
+      <span class="paragraph-indicator">Paragraph #2 of #8</span>
+      <div class="paragraph-container">
+        <button class="lock-button" onclick="toggleLock(this)">🖍️</button>  
+      <p>
         The persona of Satoshi Nakamoto played a pivotal role in Bitcoin's early days, contributing to 
         the initial version of the software in 2007. The document titled "Bitcoin: A Peer-to-Peer 
         Electronic Cash System" introduced the concept of using a peer-to-peer network to address the 
         critical issue of double-spending.
-        <br><br><br>
+      </p>
+    </div>
+    </div>
+    <div class="box blur" id="box3">
+      <div class="arrow">
+        <button class="up-arrow" onclick="scrollToTop()" disabled> 👈 </button>
+        <button class="down-arrow" onclick="scrollToBottom()"> 👉 </button>
+      </div>
+      <span class="paragraph-indicator">Paragraph #3 of #8</span>
+      <div class="paragraph-container">
+        <button class="lock-button" onclick="toggleLock(this)">🖍️</button>  
+      <p>
         Bitcoin's innovation was tackling the long-standing challenge of digital currencies - the 
         double-spend problem. Unlike physical currencies, digital tokens can be easily replicated, 
         potentially leading to multiple transactions with the same unit of currency. This raised concerns 
         about the integrity and trustworthiness of any digital currency system.
-        <br><br><br>
+      </p>
+    </div>
+    </div>
+    <div class="box blur" id="box4">
+      <div class="arrow">
+        <button class="up-arrow" onclick="scrollToTop()" disabled> 👈 </button>
+        <button class="down-arrow" onclick="scrollToBottom()"> 👉 </button>
+      </div>
+      <span class="paragraph-indicator">Paragraph #4 of #8</span>
+      <div class="paragraph-container">
+        <button class="lock-button" onclick="toggleLock(this)">🖍️</button>
+      <p>
         Bitcoin and other blockchain-based cryptocurrencies overcame this challenge by employing a 
         decentralized ledger (blockchain) and a consensus mechanism known as proof-of-work. These 
         technologies ensure that once a transaction is recorded, it cannot be altered or spent again, 
         making double-spending extremely difficult in a well-functioning blockchain system.
-        <br><br><br>
+      </p>
+    </div>
+    </div>
+    <div class="box blur" id="box5">
+      <div class="arrow">
+        <button class="up-arrow" onclick="scrollToTop()" disabled> 👈 </button>
+        <button class="down-arrow" onclick="scrollToBottom()"> 👉 </button>
+      </div>
+      <span class="paragraph-indicator">Paragraph #5 of #8</span>
+      <div class="paragraph-container">
+        <button class="lock-button" onclick="toggleLock(this)">🖍️</button>
+      <p>
         Over the years, numerous individuals have been proposed as the true identity behind Satoshi 
         Nakamoto. These include Dorian Nakamoto, an academic based in California, who was initially 
         identified in a 2014 Newsweek article. However, further investigation debunked this claim. Hal 
         Finney, an active member of the Bitcoin community, and Craig Wright, an Australian academic 
         and entrepreneur, have also been suggested as potential Satoshis.
-        <br><br><br>
+      </p>
+    </div>
+    </div>
+    <div class="box blur" id="box6">
+      <div class="arrow">
+        <button class="up-arrow" onclick="scrollToTop()" disabled> 👈 </button>
+        <button class="down-arrow" onclick="scrollToBottom()"> 👉 </button>
+      </div>
+      <span class="paragraph-indicator">Paragraph #6 of #8</span>
+      <div class="paragraph-container">
+        <button class="lock-button" onclick="toggleLock(this)">🖍️</button>
+      <p>
         Craig Wright, in particular, has vigorously asserted himself as Satoshi Nakamoto, even 
         becoming embroiled in legal disputes regarding the ownership of this identity. In December 
         2021, a jury dismissed a civil lawsuit against Wright, filed by the estate of his late former 
         associate, David Kleiman. While the jury ruled in Wright's favor, a $100 million award to the 
         Kleiman estate indicated a belief that both parties played a role in Bitcoin's creation.
-        <br><br><br>
+      </p>
+    </div>
+    </div>    
+    <div class="box blur" id="box7">
+      <div class="arrow">
+        <button class="up-arrow" onclick="scrollToTop()" disabled> 👈 </button>
+        <button class="down-arrow" onclick="scrollToBottom()"> 👉 </button>
+      </div>
+      <span class="paragraph-indicator">Paragraph #7 of #8</span>
+      <div class="paragraph-container">
+        <button class="lock-button" onclick="toggleLock(this)">🖍️</button>
+      <p>
         As of April 24, 2011, Nakamoto's last known communication stated that they had "moved on to 
         other things," leaving the Bitcoin project in "good hands." Since then, Nakamoto's identity 
         remains shrouded in mystery, leading some to question whether they truly exist. Nevertheless, 
         the architect of Bitcoin, whether an individual or a collective, left an indelible mark on the 
         financial world.
-        <br><br><br>
+      </p>
+    </div>
+    </div>
+    <div class="box blur" id="box8">
+      <div class="arrow">
+        <button class="up-arrow" onclick="scrollToTop()" disabled> 👈 </button>
+        <button class="down-arrow" onclick="scrollToBottom()"> 👉 </button>
+      </div>
+      <span class="paragraph-indicator">Paragraph #8 of #8</span>
+      <div class="paragraph-container">
+        <button class="lock-button" onclick="toggleLock(this)">🖍️</button>
+      <p>
         The enigma surrounding Satoshi Nakamoto endures, captivating the curiosity of the 
         cryptocurrency community and beyond. While the true identity remains a mystery, the impact of 
         Nakamoto's creation, Bitcoin, is undeniable. As of 2021, with over a million Bitcoin miners 
         sustaining the blockchain, Bitcoin remains a dominant force in the global financial landscape, a 
         testament to the enduring legacy of its enigmatic creator.
-        <br><br><br>
-</div>
-
-<div class="container">
-<div id="myDIV1">
-    <div class="article" id="article">
-      <br>
-      <h1> Who is Satoshi Nakamoto? </h1>
-      <h3> The Anonymous Prodigy Explained </h3>
-      <br>
-        <p>
-            <span class="tooltip" data-definition="Definition: Insert definition of cryptocurrency here." data-videos="Video1, Video2, Video3">Satoshi Nakamoto</span>, 
-            an elusive figure in the world of cryptocurrency, is the pseudonym used by the individual who penned the foundational 
-            
-            <span class="tooltip" data-definition="Definition: Insert definition of cryptocurrency here." data-videos="Video1, Video2, Video3">Bitcoin whitepaper</span>. 
-            This 
-            
-            <span class="tooltip" data-definition="Definition: Insert definition of cryptocurrency here." data-videos="Video1, Video2, Video3">anonymous entity</span>
-            is credited with the inception of 
-            
-            <span class="tooltip" data-definition="Definition: Insert definition of cryptocurrency here." data-videos="Video1, Video2, Video3">Bitcoin</span>, 
-            a groundbreaking digital currency that has revolutionized the financial landscape. As of 2023, with Bitcoin's soaring value, if Nakamoto indeed holds close 
-            to one million 
-            
-            <span class="tooltip" data-definition="Definition: Insert definition of cryptocurrency here." data-videos="Video1, Video2, Video3">BTC</span>
-            , they would be considered a 
-            
-            <span class="tooltip" data-definition="Definition: Insert definition of cryptocurrency here." data-videos="Video1, Video2, Video3">billionaire</span>.
-        </p>
-
-        <p>
-            The 
-            <span class="tooltip" data-definition="Definition: Insert definition of cryptocurrency here." data-videos="Video1, Video2, Video3">persona of Satoshi Nakamoto</span>
-            played a pivotal role in 
-            
-            <span class="tooltip" data-definition="Definition: Insert definition of cryptocurrency here." data-videos="Video1, Video2, Video3">Bitcoin's early days</span>
-            , contributing to 
-            
-            <span class="tooltip" data-definition="Definition: Insert definition of cryptocurrency here." data-videos="Video1, Video2, Video3">the initial version of the software in 2007</span>
-            . The document titled 
-            
-            <span class="tooltip" data-definition="Definition: Insert definition of cryptocurrency here." data-videos="Video1, Video2, Video3">"Bitcoin: A Peer-to-Peer Electronic Cash System"</span> 
-            introduced the concept of using a 
-            
-            <span class="tooltip" data-definition="Definition: Insert definition of cryptocurrency here." data-videos="Video1, Video2, Video3">peer-to-peer network</span>
-            to address the critical issue of 
-            
-            <span class="tooltip" data-definition="Definition: Insert definition of cryptocurrency here." data-videos="Video1, Video2, Video3">double-spending</span>
-            .
-        </p>
-
-        <p>
-            Bitcoin's innovation was tackling the long-standing challenge of digital currencies - the 
-            <span class="tooltip" data-definition="Definition: Insert definition of cryptocurrency here." data-videos="Video1, Video2, Video3">double-spend problem</span>
-            . Unlike physical currencies, 
-            
-            <span class="tooltip" data-definition="Definition: Insert definition of cryptocurrency here." data-videos="Video1, Video2, Video3">digital tokens</span>
-            can be easily 
-            
-            <span class="tooltip" data-definition="Definition: Insert definition of cryptocurrency here." data-videos="Video1, Video2, Video3">replicated</span>
-            , potentially leading to multiple transactions with the same unit of currency. This raised concerns about the 
-            
-            <span class="tooltip" data-definition="Definition: Insert definition of cryptocurrency here." data-videos="Video1, Video2, Video3">integrity and trustworthiness of any digital currency system</span>
-            .
-        </p>
-
-        <p>
-            Bitcoin and other 
-            <span class="tooltip" data-definition="Definition: Insert definition of cryptocurrency here." data-videos="Video1, Video2, Video3">blockchain-based cryptocurrencies</span>
-            overcame this challenge by employing a 
-            
-            <span class="tooltip" data-definition="Definition: Insert definition of cryptocurrency here." data-videos="Video1, Video2, Video3">decentralized ledger (blockchain)</span>
-            and a 
-            
-            <span class="tooltip" data-definition="Definition: Insert definition of cryptocurrency here." data-videos="Video1, Video2, Video3">consensus mechanism</span>
-            known as 
-            
-            <span class="tooltip" data-definition="Definition: Insert definition of cryptocurrency here." data-videos="Video1, Video2, Video3">proof-of-work</span>
-            . These technologies ensure that once a transaction is recorded, it 
-            
-            <span class="tooltip" data-definition="Definition: Insert definition of cryptocurrency here." data-videos="Video1, Video2, Video3">cannot be altered or spent again</span>
-            ,
-
-            <span class="tooltip" data-definition="Definition: Insert definition of cryptocurrency here." data-videos="Video1, Video2, Video3">making double-spending extremely difficult in a well-functioning blockchain system</span>
-            . 
-        </p>
-
-        <p>
-            Over the years, numerous individuals have been proposed as the 
-            <span class="tooltip" data-definition="Definition: Insert definition of cryptocurrency here." data-videos="Video1, Video2, Video3">true identity behind Satoshi Nakamoto</span>
-            . These include 
-            <span class="tooltip" data-definition="Definition: Insert definition of cryptocurrency here." data-videos="Video1, Video2, Video3">Dorian Nakamoto</span>
-            , an academic based in California, who was initially identified in a 2014 Newsweek article. However, further investigation
-
-            <span class="tooltip" data-definition="Definition: Insert definition of cryptocurrency here." data-videos="Video1, Video2, Video3">debunked this claim</span>
-            . 
-            
-            <span class="tooltip" data-definition="Definition: Insert definition of cryptocurrency here." data-videos="Video1, Video2, Video3">Hal Finney</span>
-            , an active member of the Bitcoin community, and 
-            
-            <span class="tooltip" data-definition="Definition: Insert definition of cryptocurrency here." data-videos="Video1, Video2, Video3">Craig Wright</span>
-            , an Australian academic and entrepreneur, have also been suggested as 
-            
-            <span class="tooltip" data-definition="Definition: Insert definition of cryptocurrency here." data-videos="Video1, Video2, Video3">potential Satoshis</span>
-            .
-        </p>
-
-        <p>
-            
-            <span class="tooltip" data-definition="Definition: Insert definition of cryptocurrency here." data-videos="Video1, Video2, Video3">Craig Wright, in particular, has vigorously asserted himself as Satoshi Nakamoto</span>
-            , even becoming embroiled in 
-            
-            <span class="tooltip" data-definition="Definition: Insert definition of cryptocurrency here." data-videos="Video1, Video2, Video3">legal disputes regarding the ownership of this identity</span>
-            . In December 2021, a jury dismissed 
-            
-            <span class="tooltip" data-definition="Definition: Insert definition of cryptocurrency here." data-videos="Video1, Video2, Video3">a civil lawsuit against Wright, filed by the estate of his late former associate, David Kleiman</span>
-            . While the jury ruled in Wright's favor, a 
-            
-            <span class="tooltip" data-definition="Definition: Insert definition of cryptocurrency here." data-videos="Video1, Video2, Video3">$100 million award to the Kleiman estate</span>
-            indicated 
-            
-            <span class="tooltip" data-definition="Definition: Insert definition of cryptocurrency here." data-videos="Video1, Video2, Video3">a belief that both parties played a role in Bitcoin's creation</span>
-            .
-        </p>
-
-        <p>
-            As of April 24, 2011, 
-            <span class="tooltip" data-definition="Definition: Insert definition of cryptocurrency here." data-videos="Video1, Video2, Video3">Nakamoto's</span>
-            last known communication stated that they had "moved on to 
-			
-            other things," leaving the 
-            <span class="tooltip" data-definition="Definition: Insert definition of cryptocurrency here." data-videos="Video1, Video2, Video3">Bitcoin project</span>
-            in "good hands." Since then, Nakamoto's identity 
-			
-            remains 
-            <span class="tooltip" data-definition="Definition: Insert definition of cryptocurrency here." data-videos="Video1, Video2, Video3">shrouded in mystery</span>
-            , leading some to question whether they truly exist. Nevertheless, 
-			
-            the 
-            <span class="tooltip" data-definition="Definition: Insert definition of cryptocurrency here." data-videos="Video1, Video2, Video3">architect of Bitcoin</span>
-            , whether an individual or a collective, left 
-            
-            an <span class="tooltip" data-definition="Definition: Insert definition of cryptocurrency here." data-videos="Video1, Video2, Video3">indelible mark on the financial world.</span>
-        </p>
-
-        <p>
-            The enigma surrounding 
-            
-            <span class="tooltip" data-definition="Definition: Insert definition of cryptocurrency here." data-videos="Video1, Video2, Video3">Satoshi Nakamoto</span>
-            endures, captivating the curiosity of the
-			
-            <span class="tooltip" data-definition="Definition: Insert definition of cryptocurrency here." data-videos="Video1, Video2, Video3">cryptocurrency community</span>
-            and beyond. While the true identity remains a mystery, the impact of Nakamoto's creation, Bitcoin, is undeniable. As of 2021, with over a million 
-            
-            <span class="tooltip" data-definition="Definition: Insert definition of cryptocurrency here." data-videos="Video1, Video2, Video3">Bitcoin miners</span> 
-			sustaining the 
-            
-            <span class="tooltip" data-definition="Definition: Insert definition of cryptocurrency here." data-videos="Video1, Video2, Video3">blockchain</span>
-            , Bitcoin remains a dominant force in the 
-            
-            <span class="tooltip" data-definition="Definition: Insert definition of cryptocurrency here." data-videos="Video1, Video2, Video3">global financial landscape</span>
-            , a testament to the 
-            
-            <span class="tooltip" data-definition="Definition: Insert definition of cryptocurrency here." data-videos="Video1, Video2, Video3">enduring legacy of its enigmatic creator</span>
-            .
-        </p>
-      
-      <div class="tooltip-box" id="tooltipBox">
-          <span id="tooltipContent"></span>
-          <div class="video-container" id="videoContainer">
-              <!-- Video recommendations will appear here -->
-          </div>
-          <span class="close-btn">×</span> <!-- Close button -->
-      </div>
-       
+      </p>
     </div>
-    <div class="slider-container">
-        <div class="arrow-button" id="prevButton">&#9650;</div>
-        <p>
-          <br><br><br><br>
-          Paragraph <span id="currentParagraph">1</span> of <span id="totalParagraphs">24</span>
-        </p>
-        <div class="arrow-button" id="nextButton">&#9660;</div>
     </div>
-</div>
-</div>
-
-<div class="tooltip-box" id="tooltipBox">
-  <span id="tooltipContent"></span>
-  <div class="video-container" id="videoContainer">
-      <!-- Video recommendations will appear here -->
-  </div>
-  <span class="close-btn">×</span> <!-- Close button -->
-</div>
+    <div id="scrollToTopBtn" class="scroll-to-top" style="display: none;">
+        <i class="fas fa-arrow-up"></i>
+        <span style="vertical-align: middle; font-size: 26px;">👆</span>
+    </div>
 </div>
 
 <script>
+const boxes = document.querySelectorAll('.box');
+const container = document.querySelector('.container');
+const upArrows = document.querySelectorAll('.up-arrow');
+const downArrows = document.querySelectorAll('.down-arrow');
+let currentIndex = 0;
 
-function myFunction() {
-  var x = document.getElementById("myDIV");
-  var y = document.getElementById("myDIV1");
-  if (x.style.display === "none") {
-    x.style.display = "block";
-  } else {
-    x.style.display = "none";
-  }
-  if (y.style.display === "none") {
-    y.style.display = "none";
-  } else {
-    y.style.display = "none";
-  }
-}
+// Initialize the page by hiding arrow buttons for all boxes except the first one
+hideOtherArrows(currentIndex);
 
-function myFunction1() {
-  var x = document.getElementById("myDIV");
-  var y = document.getElementById("myDIV1");
-  if (x.style.display === "none") {
-    x.style.display = "none";
-  } else {
-    x.style.display = "none";
-  }
-  if (y.style.display === "none") {
-    y.style.display = "block";
-  } else {
-    y.style.display = "none";
-  }
-}
-
-document.addEventListener('DOMContentLoaded', function() {
-    const article = document.getElementById('article');
-    const totalParagraphs = article.querySelectorAll('p').length;
-    document.getElementById('totalParagraphs').textContent = totalParagraphs;
-
-    let currentSlide = 1;
-    let isTooltipDisplayed = false;
-
-    function displayParagraph(slide) {
-        const paragraphs = article.querySelectorAll('p');
-        paragraphs.forEach(paragraph => {
-            paragraph.style.opacity = '0';
-        });
-
-        const selectedParagraph = paragraphs[slide - 1];
-        setTimeout(() => {
-            selectedParagraph.style.opacity = '1';
-        }, 100);
-
-        document.getElementById('currentParagraph').textContent = slide;
-
-        // Tooltip Functionality
-        const tooltipSpan = selectedParagraph.querySelectorAll('.tooltip');
-        const tooltipBox = document.createElement('div');
-        tooltipBox.classList.add('tooltip-box');
-        selectedParagraph.appendChild(tooltipBox);
-
-        tooltipSpan.forEach(span => {
-            span.addEventListener('click', (event) => {
-                if (!isTooltipDisplayed) {
-                    const definition = event.target.getAttribute('data-definition');
-                    const videos = event.target.getAttribute('data-videos');
-
-                    const tooltipContent = document.createElement('div');
-                    tooltipContent.classList.add('tooltip-content');
-                    tooltipContent.textContent = definition;
-
-                    const videoContainer = document.createElement('div');
-                    videoContainer.classList.add('video-container');
-                    videoContainer.innerHTML = '';
-
-                    if (videos) {
-                        const videoList = videos.split(', ');
-                        const videoListHTML = videoList.map(video => `<iframe width="100%" height="200" src="${video}" frameborder="0" allowfullscreen></iframe>`).join('');
-                        videoContainer.innerHTML = `<h3>Video Recommendations:</h3>${videoListHTML}`;
-                    }
-
-                    tooltipBox.innerHTML = '';
-                    tooltipBox.appendChild(tooltipContent);
-                    tooltipBox.appendChild(videoContainer);
-
-                    const closeBtn = document.createElement('span');
-                    closeBtn.classList.add('close-btn');
-                    closeBtn.textContent = 'X';
-                    closeBtn.addEventListener('click', () => {
-                        isTooltipDisplayed = false;
-                        tooltipBox.style.display = 'none';
-                    });
-                    tooltipBox.appendChild(closeBtn);
-
-                    tooltipBox.style.display = 'block';
-                    isTooltipDisplayed = true;
-                }
-            });
-
-            tooltipBox.addEventListener('mouseleave', () => {
-                isTooltipDisplayed = false;
-                tooltipBox.style.display = 'none';
-            });
-        });
-    }
-
-    document.getElementById('nextButton').addEventListener('click', () => {
-        if (currentSlide < totalParagraphs) {
-            currentSlide++;
-            displayParagraph(currentSlide);
-        }
-    });
-
-    document.getElementById('prevButton').addEventListener('click', () => {
-        if (currentSlide > 1) {
-            currentSlide--;
-            displayParagraph(currentSlide);
-        }
-    });
-
-    displayParagraph(currentSlide);
+upArrows.forEach(function(elem, index) {
+  elem.addEventListener('click', function() {
+    moveBoxUp(index);
+  });
 });
 
-let prevScrollPos = window.pageYOffset;
+downArrows.forEach(function(elem, index) {
+  elem.addEventListener('click', function() {
+    moveBoxDown(index);
+  });
+});
 
-    window.onscroll = function() {
-      let currentScrollPos = window.pageYOffset;
+document.addEventListener('keydown', function(event) {
+  if (event.key === 'ArrowRight') {
+    moveBoxDown(currentIndex);
+  } else if (event.key === 'ArrowLeft') {
+    moveBoxUp(currentIndex);
+  } else if (event.key === 'ArrowUp') {
+    moveBoxUp(currentIndex);
+  } else if (event.key === 'ArrowDown') {
+    moveBoxDown(currentIndex);
+  }
+});
 
-      if (prevScrollPos > currentScrollPos) {
-        document.getElementById("navbar").classList.remove("hidden");
-      } else {
-        document.getElementById("navbar").classList.add("hidden");
-      }
+function moveBoxUp(index) {
+  if (index > 0) {
+    const nextIndex = index - 1;
+    moveToIndex(nextIndex);
+  }
+}
 
-      prevScrollPos = currentScrollPos;
-    };
+function moveBoxDown(index) {
+  if (index < boxes.length - 1) {
+    const nextIndex = index + 1;
+    moveToIndex(nextIndex);
+  }
+}
 
-    // JavaScript to bring back solidity on hover
-    const navbar = document.getElementById('navbar');
+function moveToIndex(nextIndex) {
+  // Remove active class from current box and add blur class
+  boxes[currentIndex].classList.remove('active');
+  boxes[currentIndex].classList.add('blur');
 
-    navbar.addEventListener('mouseenter', function() {
-      navbar.classList.remove('hidden');
+  // Add active class to next box and remove blur class
+  boxes[nextIndex].classList.remove('blur');
+  boxes[nextIndex].classList.add('active');
+
+  // Calculate the position to align active box with arrow box
+  const arrowRect = boxes[nextIndex].querySelector('.arrow').getBoundingClientRect();
+  const activeBoxRect = boxes[nextIndex].getBoundingClientRect();
+
+  // Calculate the scroll position to align active box with arrow box
+  const scrollLeft = activeBoxRect.left - arrowRect.left - (window.innerWidth / 2 - activeBoxRect.width / 2);
+
+  // Set the scroll position to immediately position the active box beside the arrow box
+  container.scrollLeft = scrollLeft;
+
+  currentIndex = nextIndex;
+
+  // Disable/enable arrows based on current index
+  upArrows.forEach(function(elem) {
+    elem.disabled = currentIndex === 0;
+  });
+
+  downArrows.forEach(function(elem) {
+    elem.disabled = currentIndex === boxes.length - 1;
+  });
+
+  // Hide arrow buttons for other boxes
+  hideOtherArrows(currentIndex);
+}
+
+function hideOtherArrows(index) {
+  boxes.forEach(function(box, i) {
+    const arrows = box.querySelectorAll('.arrow button');
+    arrows.forEach(function(arrow) {
+      arrow.style.visibility = i !== index ? 'hidden' : 'visible';
+    });
+  });
+}
+
+    
+document.getElementById('view-full-article-box').addEventListener('click', function() {
+    // Create the button for entering paragraph mode
+    var refreshButton = document.createElement('button');
+    refreshButton.textContent = 'Enter Paragraph Mode';
+    refreshButton.classList.add('view-full-article'); // Add class for styling
+    refreshButton.style.backgroundColor = 'white'; // Set white background
+    refreshButton.style.color = 'black'; // Set black text color
+    refreshButton.style.border = '2px solid white'; // Add white border
+    refreshButton.style.cursor = 'pointer'; // Set cursor to pointer to indicate clickability
+    refreshButton.addEventListener('click', function() {
+        location.reload(); // Reload the page when clicked
     });
 
-    navbar.addEventListener('mouseleave', function() {
-      if (window.scrollY === 0) {
-        navbar.classList.add('hidden');
-      }
+    // Append the button to the 'view-full-article-box'
+    this.innerHTML = ''; // Clear existing content
+    this.appendChild(refreshButton);
+
+    // Remove active state from all boxes
+    document.querySelectorAll('.box').forEach(function(box) {
+        box.classList.remove('active');
     });
 
-</script>
+    // Remove box styling
+    document.querySelectorAll('.box').forEach(function(box) {
+        box.style.border = 'none';
+        box.style.backgroundColor = 'transparent';
+        box.style.fontSize = '15px'; // Set font size back to default
+        box.classList.remove('blur'); // Remove blur class
+    });
 
+    // Remove paragraph indicators
+    document.querySelectorAll('.paragraph-indicator').forEach(function(indicator) {
+        indicator.remove();
+    });
+
+    // Disable lock buttons and hide lock icons
+    document.querySelectorAll('.lock-button').forEach(function(lockButton) {
+        lockButton.disabled = true;
+        lockButton.style.display = 'none';
+    });
+
+    // Remove animations
+    document.querySelectorAll('.move-up, .move-down').forEach(function(animation) {
+        animation.style.animation = 'none';
+    });
+
+    // Hide arrow buttons for all other boxes
+    hideOtherArrows(-1);
+});
+
+let lockedParagraph = null;
+
+function toggleLock(button) {
+  const parent = button.parentNode;
+  const isLocked = parent.classList.toggle('locked');
+  if (isLocked) {
+    lockedParagraph = parent;
+    centerParagraph(lockedParagraph);
+  } else {
+    lockedParagraph = null;
+  }
+}
+
+function centerParagraph(element) {
+  const rect = element.getBoundingClientRect();
+  const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+  const centerY = rect.top + rect.height / 2 - window.innerHeight / 2 + scrollTop;
+  window.scrollTo({
+    top: centerY,
+    behavior: 'smooth'
+  });
+}
+
+// Keep the locked paragraph centered if the window is resized
+window.addEventListener('resize', function() {
+  if (lockedParagraph) {
+    centerParagraph(lockedParagraph);
+  }
+});
+
+
+    </script>  
 </body>
 </html>
-

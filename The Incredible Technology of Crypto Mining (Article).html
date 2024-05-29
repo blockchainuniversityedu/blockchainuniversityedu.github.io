@@ -1,6 +1,5 @@
 <!DOCTYPE html>
-<html>
-  <link rel="stylesheet" type="text/css" href="reader.css">
+<html lang="en">
 <head>
   <!-- Google tag (gtag.js) -->
 	<script async src="https://www.googletagmanager.com/gtag/js?id=G-9J1B2MTYSV"></script>
@@ -10,119 +9,634 @@
  	 	gtag('js', new Date());
  	 	gtag('config', 'G-9J1B2MTYSV');
 	</script>
-    <title> The Incredible Technology of Crypto Mining - Article </title>
-<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title> The Incredible Technology of Crypto Mining - Article </title>
 <style>
 
+.locked {
+        background-color: darkorange;
+        border: 1px solid;
+        border-radius: 10px;
+        border-color: black;
+    }
+
+.button-container {
+        position: relative;
+        width: 300px; /* Adjust width as needed */
+    }
+
+    .expand-button {
+        width: 10px; /* Initial width of the button */
+        height: 10px; /* Height of the button */
+        padding: 10px;
+        background-color: #ff0000;
+        color: rgb(255, 255, 255);
+        border: none;
+        cursor: pointer;
+        position: relative; /* Enable positioning of the tooltip */
+        transition: width 0.3s; /* Smooth transition effect */
+        border-radius: 5px; /* Make the edges rounder */
+        margin-top: 20px;
+    }
+
+    .expand-button .initial-text,
+    .expand-button .tooltip {
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        opacity: 0;
+        transition: opacity 0.3s; /* Smooth transition effect */
+        
+    }
+
+    .expand-button .initial-text {
+        opacity: 1; /* Show "+" sign text by default */
+    }
+
+    .expand-button:hover {
+        width: 100px; /* Expanded width on hover */
+    }
+
+    .expand-button:hover .initial-text {
+        opacity: 0; /* Hide "+" sign text on hover */
+    }
+
+    .expand-button:hover .tooltip {
+        opacity: 1; /* Show "Hello" text on hover */
+        right: 100px; /* Position "Hello" text beside "+" sign */
+    }
+
+.paragraph-container {
+        padding: 10px;
+        margin: 10px;
+        position: relative; /* Relative positioning for absolute positioning of the lock button */
+    }
+    
+    .lock-button {
+        padding: 5px;
+        background-color: #000000;
+        color: white;
+        border: none;
+        border-radius: 50%;
+        cursor: pointer;
+        position: absolute; /* Absolute positioning */
+        top: 50%; /* Vertically center the button */
+        right: -100px; /* Position the button outside the box */
+        transform: translateY(-50%); /* Adjust position to center vertically */
+    }
+
+
+.scroll-to-top {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    cursor: pointer;
+    background-color: #000000;
+    color: #fff;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.scroll-to-top i {
+    font-size: 20px;
+}
+
+.navbar {
+  color: white;
+  padding: 25px; /* Increase padding to give more space */
+  width: 95%; /* Make the navbar fully wide */
+  position: fixed; /* Fix the navbar to the top */
+  top: 0; /* Position the navbar at the top of the viewport */
+  z-index: 1000; /* Ensure the navbar is above other content */
+  display: flex; /* Use flexbox to align items */
+  justify-content: space-between; /* Align items to the start and end */
+}
+
+.navbar-logo {
+  width: 50px;
+  height: auto;
+  margin-right: auto; /* Push the logo to the left */
+}
+
+.nav-links {
+  display: flex; /* Use flexbox to align items */
+}
+
+.nav-link {
+  margin-left: 10px; /* Add margin to separate links */
+  text-decoration: none;
+  color: white;
+}
+
+.nav-link:not(:last-child)::after {
+  content: '|'; /* Add a vertical line */
+  margin-left: 10px; /* Add space between the line and the link */
+  color: white; /* Set the color of the line */
+}
+
+
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    overflow: hidden;
+    height: 100vh;
+    padding: 200px;
+}
+
+.button-container {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20px;
+  }
+
+  .button {
+    padding: 10px 20px;
+    background-color: #f0f0f0;
+    color: #333;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+    margin: 5px;
+  }
+
+  .button.active {
+    background-color: black;
+    color: white;
+  }
+
+  .content {
+    display: none;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    margin-top: 20px;
+  }
+
+  .content.active {
+    display: block;
+  }
+
+body {
+  font-family: Arial, sans-serif;
+  font-size: 15px;
+  height: 400vh;
+}
+
+.box {
+  border: 1px solid transparent;
+  border-radius: 10px;
+  background-color: white; /* Set the background color of the boxes to white */
+  color: black; /* Set text color to black */
+  padding: 10px 60px 10px 20px; /* Adjust padding to move the text a little more to the left */
+  margin: 10px auto;
+  width: 80%;
+  max-width: 600px;
+  box-sizing: border-box;
+  position: relative;
+  transition: transform 0.5s ease;
+  text-align: left;
+  font-family: Arial, sans-serif; /* Set the font family to Arial */
+}
+
+  .box.active {
+    transform: translateX(0%) scale(1.5); /* Center the active box more to the right and keep it enlarged */
+    z-index: 1;
+    background-color: black;
+    color: white;
+  }
+
+
+  .box.active .arrow {
+    transform: rotate(90deg); /* Rotate the arrow button by 90 degrees */
+  }
+
+  .box.blur {
+    filter: blur(5px); /* Apply blur effect to all boxes except the active one */
+    transform: scale(1);
+    z-index: 0;
+  }
+
+  .blur {
+  filter: blur(2px); /* Apply blur effect */
+  pointer-events: none; /* Disable pointer events */
+  user-select: none; /* Disable text selection */
+}
+
+
+  .arrow {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  right: 0;
+  top: 50%;
+}
+
+.up-arrow button,
+.down-arrow button {
+  background-color: #ccc;
+  border-radius: none;
+  padding: 5px 10px; /* Reduce padding */
+  cursor: pointer;
+  font-size: 14px; /* Reduce font size */
+  border-radius: 50%; /* Make the button round */
+}
+
+
+  .paragraph-indicator {
+  color: gray;
+  font-size: 12px;
+  display: block;
+  margin-bottom: 5px;
+  font-weight: bold; /* Add this line to make the paragraph indicator bold */
+}
+
+.banner {
+  position: relative;
+  width: 100%;
+  height: 30vh; /* Adjusted height for the banner */
+  background-size: cover;
+  background-color: #ffffff; /* Dark gray background for the banner */
+}
+
+header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 90%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  transition: 0.6s;
+  padding: 40px 100px;
+  z-index: 100000;
+  border-bottom: 2px solid rgb(0, 0, 0); /* White border at the bottom of the header */
+  opacity: 1;
+  transition: opacity 0.6s;
+}
+
+header.hidden {
+  opacity: 0;
+}
+
+header ul {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 10px 0;
+  border-top: 2px solid rgb(255, 255, 255); /* White border at the top of the ul */
+  border-bottom: 2px solid white; /* White border at the bottom of the ul */
+}
+
+header ul li {
+  position: relative;
+  list-style: none;
+  border-left: 2px solid white; /* White border on the left of each list item */
+}
+
+header ul li:first-child {
+  border-left: none; /* Remove left border for the first list item */
+}
+
+header ul li a {
+  position: relative;
+  margin: 0 15px;
+  text-decoration: none;
+  color: hsl(0, 0%, 100%);
+  letter-spacing: 2px;
+  font-weight: 500;
+  transition: 0.6s;
+}
+
+/* Add hover effect to header buttons */
+header ul li a:hover {
+  color: #000000; /* Change to the desired highlight color */
+}
+
+body {
+  background-color: orange;
+  padding-top: 60px; /* Increase padding to make more room for the navigation bar */
+  font-family: Arial, sans-serif;
+}
+
+.container {
+  position: absolute; /* Set the container to absolute positioning */
+  top: 80px; /* Adjust the top offset to position the container below the navigation bar */
+  left: 0; /* Ensure the container starts from the left edge of the viewport */
+  right: 0; /* Ensure the container ends at the right edge of the viewport */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 7000px; /* Adjust the container's height to fill the remaining viewport */
+}
+
+.box {
+  border: 1px solid transparent;
+  border-radius: 10px;
+  background-color: white; /* Set the background color of the boxes to white */
+  color: black; /* Set text color to black */
+  padding: 10px 60px 10px 20px; /* Adjust padding to move the text a little more to the left */
+  margin: 10px auto;
+  width: 80%;
+  max-width: 600px;
+  box-sizing: border-box;
+  position: relative;
+  transition: transform 0.5s ease;
+  text-align: left; /* Align text to the left */
+  font-family: Arial, sans-serif; /* Set the font family to Arial */
+}
+
+.view-full-article-box {
+    border-radius: 10px; /* Make the edges rounder */
+    padding: 10px;
+    margin-top: 20px;
+    width: fit-content;
+}
+
+.view-full-article {
+    text-decoration: none;
+    color: black;
+    border: none; /* Remove the border */
+    background-color: #f0f0f0; /* Set the initial background color */
+    padding: 8px 16px; /* Adjust padding */
+    border-radius: 8px; /* Make the button rounder */
+}
+
+.view-full-article:hover {
+    background-color: #e0e0e0; /* Darken the background color on hover */
+}
+
+.view-full-article:active {
+    background-color: black; /* Change background color when button is clicked */
+    color: white; /* Change text color when button is clicked */
+}
+
+
+.box.active {
+  transform: translateX(0%) scale(1.5); /* Center the active box more to the right and keep it enlarged */
+}
+
+.box.blur {
+  filter: blur(5px); /* Apply blur effect to all boxes except the active one */
+  transform: scale(1);
+}
+
+.arrow {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  right: 0;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.arrow button {
+  background-color: #ccc;
+  border: none;
+  padding: 2px 6px; /* Reduce padding */
+  cursor: pointer;
+  font-size: 14px; /* Reduce font size */
+}
+
+@keyframes moveDown {
+  from {
+    transform: translateY(0);
+  }
+  to {
+    transform: translateY(20%);
+  }
+}
+
+@keyframes moveUp {
+  from {
+    transform: translateY(0);
+  }
+  to {
+    transform: translateY(-20%);
+  }
+}
+
+.move-down {
+  animation: moveDown 0.3s forwards;
+}
+
+.move-up {
+  animation: moveUp 0.3s forwards;
+}
+
+
+  @keyframes moveDown {
+    from {
+      transform: translateY(0);
+    }
+    to {
+      transform: translateY(20%);
+    }
+  }
+
+  @keyframes moveUp {
+    from {
+      transform: translateY(0);
+    }
+    to {
+      transform: translateY(-20%);
+    }
+  }
+
+  .move-down {
+    animation: moveDown 0.3s forwards;
+  }
+
+  .move-up {
+    animation: moveUp 0.3s forwards;
+  }
 </style>
 </head>
 <body>
 
-  <header id="navbar">
-    <a href="index.html"><img src="blockchaintmu (normal logo - no background).png" alt="Welcome!" style="float:left;width:400px;height:220px;"></a>
-          <div class="dropdown">
-              <div class="dropdown-content">
-                  <ul>
-          <li><a href="index.html"><b>HOME</a></li></b>
-          <li><a href="Workshops.html"><b>WORKSHOPS</a></li></b>
-          <li><a href="FirstAccess.html"><b>FIRST/ACCESS</a></li></b>
-          <li><a href="Columns.html"><b>ARTICLES</a></li></b>
-                  </ul>
-              </div>
-              <div id="mySidenav" class="sidenav">
-                <a href="How Crypto Mining Works (Video Workshop).html" id="video">WATCH VIDEO</a>
-            </div>
-            <div id="mySidenav" class="sidenav">
-                <a href="How Crypto Mining Works (Bonus Comicbook).html" id="bonus">BONUS CONTENT</a>
-            </div>        
-      </header>
-
-<br><br><br><br><br><br><br><br><br><br><br><br><br>
-
-<div class="button">
-  <center><button class="paragraph-button" onclick="myFunction(); this.onclick=myFunction">Paragraph Mode</button></center>
-  <center><button class="reader-button" onclick="myFunction1(); this.onclick=myFunction1">Reader Mode</button></center>
-</div>
-<br>
-<br><br><br>
-				<p><b>Note: In the content for this workshop series, there is a specific time at which it's mentioned that the number of digits in the hexadecimal value of a block within the chain is 16 digits.
-					<br>
-					I will be correcting the video by saying that, how many digits a particular hash value entirely varies depending on the algorithm it is represented by. Since Bitcoin and
-					<br>
-					Ethereum is the popular topic in this case, for both currencies it is a 64-digit hash value under the SHA-256 hashing algorithm.
-					<br>
-					That comes to around 32 bytes of data in total. I hope this resolves some potential issues along the road when learning these concepts.
-					<br>
-				</b></p>
-				<br>
-
-<div class="container">
-<div id="myDIV">
-    <br>
-    <h1> The Incredible History Of: </h1>
-    <h3> Cryptocurrency Mining </h3>
-    <br>
+  <center>
+    <header id="navbar">
+      <a href="index.html"><img src="blockchainuni (official logo).png" alt="Welcome!" style="float:left;width:265px;height:90px;"></a>
+      <div class="dropdown">
+                  <div class="dropdown-content">
+                      <ul>
+              <li><a href="index.html"><b>HOME</a></li></b>
+              <li><a href="Workshops.html"><b>WORKSHOPS</a></li></b>
+              <li><a href="FirstAccess.html"><b>FIRST/ACCESS</a></li></b>
+              <li><a href="Columns.html"><b>ARTICLES</a></li></b>
+                      </ul>
+                  </div>
+</center>
+  <br><br><br><br><br><br>
+  <div class="container">
+    <br><br><br>
+    <div class="view-full-article-box" id="view-full-article-box">
+        <button class="view-full-article">View Full Article</button>
+    </div>
+    <div class="button-container">
+      <a href="" target="_blank">
+      <button class="expand-button">
+          <span class="initial-text">📺</span>
+          <span class="tooltip">📺<b>/WatchVideo</b><br></span>
+      </button>
+    </a>
+  </div>
+    <br><br><br><br><br><br>
+    <div class="box active" id="box1">
+      <div class="arrow">
+        <button class="up-arrow" onclick="scrollToTop()" disabled> 👈 </button>
+        <button class="down-arrow" onclick="scrollToBottom()"> 👉 </button>
+      </div>
+      <span class="paragraph-indicator">Paragraph #1 of #17</span>
+      <div class="paragraph-container">
+        <button class="lock-button" onclick="toggleLock(this)">🖍️</button>
+        <h1> The Incredible History Of: </h1>
+        <h3> Cryptocurrency Mining </h3>
       <p>
-        <br><br><br>
         The meticulous insertion of cryptocurrency mining had already evolved into something 
         revolutionary by the time Satoshi Nakamoto had developed the network under a sophisticated 
         combination of mathematical algorithms, therefore creating an economy on not just only owners 
         in a stake of cryptocurrency, but also gaining an influence of people who were willing to above 
         and beyond that.
-
-
-        <br><br><br>
+      </p>
+    </div>
+  </div>
+    <div class="box blur" id="box2">
+      <div class="arrow">
+        <button class="up-arrow" onclick="scrollToTop()" disabled> 👈 </button>
+        <button class="down-arrow" onclick="scrollToBottom()"> 👉 </button>
+      </div>
+      <span class="paragraph-indicator">Paragraph #2 of #17</span>
+      <div class="paragraph-container">
+        <button class="lock-button" onclick="toggleLock(this)">🖍️</button>  
+      <p>
         Creating a connection between finances, and asset management of digital property to a 
         decentralized world that wasn’t overlooked by a major organization was the next step, especially 
         for developers who owned an estate in servers and GPUs, to make use of the act of mining 
         something in the scene of cryptocurrency.
-
-
-        <br><br><br>
+      </p>
+    </div>
+    </div>
+    <div class="box blur" id="box3">
+      <div class="arrow">
+        <button class="up-arrow" onclick="scrollToTop()" disabled> 👈 </button>
+        <button class="down-arrow" onclick="scrollToBottom()"> 👉 </button>
+      </div>
+      <span class="paragraph-indicator">Paragraph #3 of #17</span>
+      <div class="paragraph-container">
+        <button class="lock-button" onclick="toggleLock(this)">🖍️</button>  
+      <p>
         In our modern day, it’s safe to say that there are a multitude of applications such as 
         mining software, developed by third-party sources, that drive the momentum of crypto mining. There 
         are a lot of them to mention, but for now, the core focus is on the well known ones such as Hut 
         8, Marathon Digital, or even Riot Blockchain.
-
-
-        <br><br><br>
+      </p>
+    </div>
+    </div>
+    <div class="box blur" id="box4">
+      <div class="arrow">
+        <button class="up-arrow" onclick="scrollToTop()" disabled> 👈 </button>
+        <button class="down-arrow" onclick="scrollToBottom()"> 👉 </button>
+      </div>
+      <span class="paragraph-indicator">Paragraph #4 of #17</span>
+      <div class="paragraph-container">
+        <button class="lock-button" onclick="toggleLock(this)">🖍️</button>
+      <p>
         In order to understand how crypto mining works, it’s essential to get an idea of what is required 
         to make it all take place to begin with. To mine cryptocurrency, you need a sufficient use of 
         energy and power, and in addition to that requirement, a hardware GPU capable of running the 
         interface needed to run the code that will solve the algorithm once a Proof-Of-Work process has 
         taken place, an SSD that will speed up the process of storing and processing the data, and as 
         the key part of the process, something called an ASIC or application-specific integrated circuit.
-
-
-        <br><br><br>
+      </p>
+    </div>
+    </div>
+    <div class="box blur" id="box5">
+      <div class="arrow">
+        <button class="up-arrow" onclick="scrollToTop()" disabled> 👈 </button>
+        <button class="down-arrow" onclick="scrollToBottom()"> 👉 </button>
+      </div>
+      <span class="paragraph-indicator">Paragraph #5 of #17</span>
+      <div class="paragraph-container">
+        <button class="lock-button" onclick="toggleLock(this)">🖍️</button>
+      <p>
         Since the person reading this already fit most of the requirements, I will get into the discussion 
         of what ASIC mining technology is for, but before that will try to emphasize on how transactions 
         are processed to begin with on the network.
-
-
-        <br><br><br>
+      </p>
+    </div>
+    </div>
+    <div class="box blur" id="box6">
+      <div class="arrow">
+        <button class="up-arrow" onclick="scrollToTop()" disabled> 👈 </button>
+        <button class="down-arrow" onclick="scrollToBottom()"> 👉 </button>
+      </div>
+      <span class="paragraph-indicator">Paragraph #6 of #17</span>
+      <div class="paragraph-container">
+        <button class="lock-button" onclick="toggleLock(this)">🖍️</button>
+      <p>
         Like every technology in computing, there is an input and an output, which in this case comes to 
         the transactions and the amount that is transferred between what goes in and out of the 
         machine. Of course, due to a coding defect or mishaps in security, cryptocurrency does not 
         function like traditional currency, it is based on the premise of being fully virtual, at which unless 
         without confirmation there is no reversibility of the finances since an organization like a bank is 
         not overlooking what is happening.
-
-
-        <br><br><br>
+      </p>
+    </div>
+    </div>    
+    <div class="box blur" id="box7">
+      <div class="arrow">
+        <button class="up-arrow" onclick="scrollToTop()" disabled> 👈 </button>
+        <button class="down-arrow" onclick="scrollToBottom()"> 👉 </button>
+      </div>
+      <span class="paragraph-indicator">Paragraph #7 of #17</span>
+      <div class="paragraph-container">
+        <button class="lock-button" onclick="toggleLock(this)">🖍️</button>
+      <p>
         So in this case, you’re working to mine a random supply of coins verified by either a random 
         chain of people through a Proof of Work mechanism, or by the Proof of Stake method. With 
         various technologic elements included, such as the time and speed of the ongoing transaction, 
         the power of this concept relies on the use of internet, the only element of the decentralized 
         network at which an organization has some kind of power. Mining currency unlike putting your 
         money into, acts as the reward system of the technology.
-        <br><br><br>
+      </p>
+    </div>
+    </div>
+    <div class="box blur" id="box8">
+      <div class="arrow">
+        <button class="up-arrow" onclick="scrollToTop()" disabled> 👈 </button>
+        <button class="down-arrow" onclick="scrollToBottom()"> 👉 </button>
+      </div>
+      <span class="paragraph-indicator">Paragraph #8 of #17</span>
+      <div class="paragraph-container">
+        <button class="lock-button" onclick="toggleLock(this)">🖍️</button>
+      <p>
         With the use of a particular algorithm that works under the process, called the SHA-256 hash 
         algorithm, this helps to drive a process at which a 256-bit number generated by the user once a 
         transaction has gone through takes place. Like all verification processes, there is a chain with a 
         genesis block that takes place to help all of the validation of data run through smoothly 
         dependant on the WiFi speeds and so on.
-        <br><br><br>
+      </p>
+    </div>
+    </div>
+    <div class="box blur" id="box9">
+      <div class="arrow">
+        <button class="up-arrow" onclick="scrollToTop()" disabled> 👈 </button>
+        <button class="down-arrow" onclick="scrollToBottom()"> 👉 </button>
+      </div>
+      <span class="paragraph-indicator">Paragraph #9 of #17</span>
+      <div class="paragraph-container">
+        <button class="lock-button" onclick="toggleLock(this)">🖍️</button>
+      <p>
         All of these processes together, help to make sure the crypto miner is able to solve 
         mathematical problems that will in turn help them to retain a certain level of currency ranging 
         anywhere from Bitcoin to Ethereum, which is almost like mining stocks. Whatever you receive 
@@ -135,10 +649,32 @@
         into bytes of information, and then creating a loop of a final values that will ultimately help to 
         secure the string of numbers that will remain fixed in its amount of digits regardless of how 
         many times it changes over the course of the transactions that take place.
-        <br><br><br>
+      </p>
+    </div>
+    </div>
+    <div class="box blur" id="box10">
+      <div class="arrow">
+        <button class="up-arrow" onclick="scrollToTop()" disabled> 👈 </button>
+        <button class="down-arrow" onclick="scrollToBottom()"> 👉 </button>
+      </div>
+      <span class="paragraph-indicator">Paragraph #10 of #17</span>
+      <div class="paragraph-container">
+        <button class="lock-button" onclick="toggleLock(this)">🖍️</button>
+      <p>
         Keep in mind that, I am only speaking of Bitcoin, as other currencies such as Ethereum apply to 
         different hashing algorithms such as Ethash, with various more belonging to different algorithms.
-        <br><br><br>
+      </p>
+    </div>
+    </div>
+    <div class="box blur" id="box11">
+      <div class="arrow">
+        <button class="up-arrow" onclick="scrollToTop()" disabled> 👈 </button>
+        <button class="down-arrow" onclick="scrollToBottom()"> 👉 </button>
+      </div>
+      <span class="paragraph-indicator">Paragraph #11 of #17</span>
+      <div class="paragraph-container">
+        <button class="lock-button" onclick="toggleLock(this)">🖍️</button>
+      <p>
         Altogether, you are finalizing a network of validation to complete towards the search for a hash 
         value that will secure the next block in the algorithm, verifying and opening up new nodes for 
         users to take their currency, and to ultimately reward the user in return. Now that you have a 
@@ -146,14 +682,36 @@
         that costs aside, the reward is designed for expanding a network by contributing your own 
         personal power, the particular machine involved in this case being the ASIC is specifically 
         involved in helping to drive this power.
-        <br><br><br>
+      </p>
+    </div>
+    </div>
+    <div class="box blur" id="box12">
+      <div class="arrow">
+        <button class="up-arrow" onclick="scrollToTop()" disabled> 👈 </button>
+        <button class="down-arrow" onclick="scrollToBottom()"> 👉 </button>
+      </div>
+      <span class="paragraph-indicator">Paragraph #12 of #17</span>
+      <div class="paragraph-container">
+        <button class="lock-button" onclick="toggleLock(this)">🖍️</button>
+      <p>
         Application-specific integrated circuits, are a more expensive technology used in mining 
         cryptocurrency, that differs from the use of GPUs when performing the same task. To simply put, 
         it consumes a lot more energy and is specifically focused towards mining Bitcoin or Litecoin. In 
         case you haven’t heard of Litecoin after watching my previous workshop on the historical 
         timeline of Ethereum, it is specifically a fork of Bitcoin, or an altcoin like its predecessor that has 
         a differing value but works in about the same way in terms of use of power.
-        <br><br><br>
+      </p>
+    </div>
+    </div>
+    <div class="box blur" id="box13">
+      <div class="arrow">
+        <button class="up-arrow" onclick="scrollToTop()" disabled> 👈 </button>
+        <button class="down-arrow" onclick="scrollToBottom()"> 👉 </button>
+      </div>
+      <span class="paragraph-indicator">Paragraph #13 of #17</span>
+      <div class="paragraph-container">
+        <button class="lock-button" onclick="toggleLock(this)">🖍️</button>
+      <p>
         Under today's conditions, you do not need an ASIC machine to mine cryptocurrency, as a GPU 
         is already the cheaper option that comes with your desktop, that can enable such a procedure 
         to exist. But it is important to mention the technology that goes behind this process, as there’s 
@@ -161,7 +719,18 @@
         I went over how there’s risk in cybersecurity behind any blockchain-related process, as the use 
         of ISPs that aren’t on the network immediately open up vulnerabilities, at which the 
         mining-specific issue is something called cryptojacking or timejacking.
-        <br><br><br>
+      </p>
+    </div>
+    </div>
+    <div class="box blur" id="box14">
+      <div class="arrow">
+        <button class="up-arrow" onclick="scrollToTop()" disabled> 👈 </button>
+        <button class="down-arrow" onclick="scrollToBottom()"> 👉 </button>
+      </div>
+      <span class="paragraph-indicator">Paragraph #14 of #17</span>
+      <div class="paragraph-container">
+        <button class="lock-button" onclick="toggleLock(this)">🖍️</button>
+      <p>
         All of the transactions recorded by each separate hash identifier within the algorithm, creates a 
         particular tree of input and output in data facilitated by these varying algorithms called a Merkle tree. 
         Ever wondered why the network itself looks like one big tree without a particular root taking 
@@ -170,14 +739,36 @@
         records within parallel networks, leveraging Bitcoin miners to use software-specific solutions 
         that will help to mine the currency through third-party sources built initially on the platform, to 
         collectively drive integrity and security for those rewarding from the process.
-        <br><br><br>
+      </p>
+    </div>
+    </div>
+    <div class="box blur" id="box15">
+      <div class="arrow">
+        <button class="up-arrow" onclick="scrollToTop()" disabled> 👈 </button>
+        <button class="down-arrow" onclick="scrollToBottom()"> 👉 </button>
+      </div>
+      <span class="paragraph-indicator">Paragraph #15 of #17</span>
+      <div class="paragraph-container">
+        <button class="lock-button" onclick="toggleLock(this)">🖍️</button>
+      <p>
         Now that this has been mentioned, the Merkle tree falls to the risk of cryptojacking, at which the 
         hacker tries to purposely introduce malware such as Trojan viruses into already existing code 
         repositories on the network, implementing packages that target developers that have working 
         programs within the decentralized cloud, ultimately creating a ripple effect in a network that uses 
         unauthorizing crypto mining resources, allowing the hacker to extract any information they can 
         to later use it to for malicious purposes such as power use and of course mined cryptocurrency.
-        <br><br><br>
+      </p>
+    </div>
+    </div>
+    <div class="box blur" id="box16">
+      <div class="arrow">
+        <button class="up-arrow" onclick="scrollToTop()" disabled> 👈 </button>
+        <button class="down-arrow" onclick="scrollToBottom()"> 👉 </button>
+      </div>
+      <span class="paragraph-indicator">Paragraph #16 of #17</span>
+      <div class="paragraph-container">
+        <button class="lock-button" onclick="toggleLock(this)">🖍️</button>
+      <p>
         To simply put, the hacker is disrupting the code within the network, and ultimately demonstrating 
         an attack that causes a wind of pay loads towards their hash numbers once the data is 
         extracted, something powerful that can be exploited as long it’s spotted by the developer. Since 
@@ -191,7 +782,18 @@
         reasons that a hacker would want to disrupt the process of crypto mining for, which is for 
         thieving computing power from companies, and also using their own technology to potentially 
         earn their currency through the use that energy or mining data.
-        <br><br><br>
+      </p>
+    </div>
+    </div>
+    <div class="box blur" id="box17">
+      <div class="arrow">
+        <button class="up-arrow" onclick="scrollToTop()" disabled> 👈 </button>
+        <button class="down-arrow" onclick="scrollToBottom()"> 👉 </button>
+      </div>
+      <span class="paragraph-indicator">Paragraph #17 of #17</span>
+      <div class="paragraph-container">
+        <button class="lock-button" onclick="toggleLock(this)">🖍️</button>
+      <p>
         As you can see, there is a balance between what mining software is used for the SHA-256 
         algorithm, and the kind used to develop malware under those same systems. Altogether, the 
         major conclusion to make here regarding crypto mining is that, there has never been a more 
@@ -202,268 +804,188 @@
         to expand security and power efficiency, but also shows that a reward is given for it for those 
         who allow such consensus mechanisms to take place when generating new blocks for the new 
         set of users that will eventually come along the network.
-        <br><br>
-    </p>
-</div>
-
-<div class="container">
-<div id="myDIV1">
-    <div class="article" id="article">
-        <br>
-        <h1> The Incredible History Of: </h1>
-		<h3> Cryptocurrency Mining </h3>
-        <br>
-        <p>
-            The meticulous insertion of <span class="tooltip" data-definition="Cryptocurrency mining: The process of validating transactions and adding them to the blockchain." data-videos="Video1, Video2, Video3">cryptocurrency mining</span> had already evolved into something revolutionary by the time Satoshi Nakamoto had developed the network under a sophisticated combination of mathematical algorithms, therefore creating an economy on not just only owners in a stake of cryptocurrency, but also gaining an influence of people who were willing to go above and beyond that.
-        </p>
-
-        <p>
-            Creating a connection between finances, and asset management of digital property to a decentralized world that wasn’t overlooked by a major organization was the next step, especially for developers who owned an estate in servers and <span class="tooltip" data-definition="GPUs (Graphics Processing Units): Hardware devices used in mining cryptocurrencies." data-videos="Video1, Video2, Video3">GPUs</span>, to make use of the act of mining something in the scene of cryptocurrency.
-        </p>
-
-        <p>
-            In our modern day, it’s safe to say that there are a multitude of <span class="tooltip" data-definition="Applications: Various programs or software designed for specific tasks or purposes." data-videos="Video1, Video2, Video3">applications</span> such as <span class="tooltip" data-definition="Mining software: Software used to perform cryptocurrency mining operations by validating transactions and securing the blockchain." data-videos="Video1, Video2, Video3">mining software</span>, developed by <span class="tooltip" data-definition="Third-party sources: External entities or individuals not directly involved in the primary activities." data-videos="Video1, Video2, Video3">third-party sources</span>, that drive the momentum of <span class="tooltip" data-definition="Crypto mining: The process of validating transactions and adding them to the blockchain." data-videos="Video1, Video2, Video3">crypto mining</span>. There are a lot of them to mention, but for now, the core focus is on the well-known ones such as <span class="tooltip" data-definition="Hut 8: A prominent company engaged in cryptocurrency mining operations." data-videos="Video1, Video2, Video3">Hut 8</span>, <span class="tooltip" data-definition="Marathon Digital: A recognized entity involved in cryptocurrency mining activities." data-videos="Video1, Video2, Video3">Marathon Digital</span>, or even <span class="tooltip" data-definition="Riot Blockchain: A notable blockchain-focused company participating in cryptocurrency activities." data-videos="Video1, Video2, Video3">Riot Blockchain</span>.
-        </p>
-            
-        <p>
-            In order to understand how <span class="tooltip" data-definition="Crypto mining: The process of validating transactions and adding them to the blockchain." data-videos="Video1, Video2, Video3">crypto mining</span> works, it’s essential to get an idea of what is required to make it all take place to begin with. To mine cryptocurrency, you need a sufficient use of <span class="tooltip" data-definition="Energy and power: The resources required to operate and sustain the process of crypto mining." data-videos="Video1, Video2, Video3">energy and power</span>, and in addition to that requirement, a hardware <span class="tooltip" data-definition="Hardware GPU: Graphics Processing Unit specialized for computational tasks, essential for crypto mining." data-videos="Video1, Video2, Video3">GPU</span> capable of running the interface needed to run the code that will solve the algorithm once a <span class="tooltip" data-definition="Proof-Of-Work process: The method used to validate transactions and produce new blocks in a blockchain through computational work." data-videos="Video1, Video2, Video3">Proof-Of-Work process</span> has taken place, an <span class="tooltip" data-definition="SSD: Solid State Drive used to store and process data quickly, improving crypto mining efficiency." data-videos="Video1, Video2, Video3">SSD</span> that will speed up the process of storing and processing the data, and as the key part of the process, something called an <span class="tooltip" data-definition="ASIC: Application-Specific Integrated Circuit designed specifically for crypto mining tasks, enhancing efficiency." data-videos="Video1, Video2, Video3">ASIC</span> or application-specific integrated circuit.
-        </p>
-
-        <p>
-            Since the person reading this already fit most of the requirements, I will get into the discussion of what <span class="tooltip" data-definition="ASIC mining technology: Application-Specific Integrated Circuit technology designed for crypto mining, improving efficiency and speed." data-videos="Video1, Video2, Video3">ASIC mining technology</span> is for, but before that will try to emphasize on how <span class="tooltip" data-definition="Transactions processed: The handling and validation of data exchanges within a network, especially in the context of cryptocurrency." data-videos="Video1, Video2, Video3">transactions are processed</span> to begin with on the <span class="tooltip" data-definition="Network: A system of interconnected computers or devices sharing information and resources." data-videos="Video1, Video2, Video3">network</span>.
-        </p>
-                
-        <p>
-            Like every technology in computing, there is an <span class="tooltip" data-definition="Input and output: The exchange or flow of information within a system, involving transactions and data movement." data-videos="Video1, Video2, Video3">input and an output</span>, which in this case comes to the <span class="tooltip" data-definition="Transactions: The transfer or exchange of data or value within a system." data-videos="Video1, Video2, Video3">transactions</span> and the <span class="tooltip" data-definition="Amount transferred: The quantity of value moved or exchanged within a transaction." data-videos="Video1, Video2, Video3">amount that is transferred</span> between what goes in and out of the machine. Of course, due to a <span class="tooltip" data-definition="Coding defect or mishaps: Errors or vulnerabilities in the programming code leading to issues in security or functionality." data-videos="Video1, Video2, Video3">coding defect or mishaps</span> in security, <span class="tooltip" data-definition="Cryptocurrency: Digital or virtual currency secured by cryptography, functioning independently of traditional banking systems." data-videos="Video1, Video2, Video3">cryptocurrency</span> does not function like traditional currency, it is based on the premise of being <span class="tooltip" data-definition="Fully virtual: Existing purely in digital form without a physical counterpart." data-videos="Video1, Video2, Video3">fully virtual</span>, at which unless without confirmation there is no <span class="tooltip" data-definition="Reversibility of finances: The inability to reverse transactions or recover funds without confirmation in cryptocurrency due to its decentralized nature." data-videos="Video1, Video2, Video3">reversibility of finances</span> since an <span class="tooltip" data-definition="Organization like a bank: A centralized financial institution overseeing traditional currency transactions, which differs from the decentralized nature of cryptocurrency." data-videos="Video1, Video2, Video3">organization like a bank</span> is not overlooking what is happening.
-        </p>
-        
-        <p>
-            So in this case, you’re working to <span class="tooltip" data-definition="Mine a random supply of coins: The process of generating or acquiring digital coins through cryptographic algorithms or consensus mechanisms." data-videos="Video1, Video2, Video3">mine a random supply of coins</span> verified by either a random chain of people through a <span class="tooltip" data-definition="Proof of Work mechanism: A consensus algorithm used in blockchain networks where miners solve complex mathematical puzzles to validate transactions." data-videos="Video1, Video2, Video3">Proof of Work mechanism</span>, or by the <span class="tooltip" data-definition="Proof of Stake method: A consensus mechanism in which validators are chosen to create and validate new blocks based on the number of coins they hold." data-videos="Video1, Video2, Video3">Proof of Stake method</span>. With various <span class="tooltip" data-definition="Technologic elements: Components or aspects related to technology and its functionalities." data-videos="Video1, Video2, Video3">technologic elements</span> included, such as the time and speed of the ongoing transaction, the power of this concept relies on the use of <span class="tooltip" data-definition="Use of internet: The reliance on internet connectivity as a crucial component of decentralized networks." data-videos="Video1, Video2, Video3">internet</span>, the only element of the <span class="tooltip" data-definition="Decentralized network: A network where data or control is distributed among multiple nodes or participants." data-videos="Video1, Video2, Video3">decentralized network</span> at which an <span class="tooltip" data-definition="Organization's power: Limited influence or control of an organization within a decentralized network." data-videos="Video1, Video2, Video3">organization has some kind of power</span>. <span class="tooltip" data-definition="Mining currency: The process of generating new cryptocurrency coins as a reward for validating transactions and maintaining the network." data-videos="Video1, Video2, Video3">Mining currency</span> unlike putting your money into, acts as the <span class="tooltip" data-definition="Reward system of the technology: The incentivization process in blockchain networks where miners or validators are rewarded for their contributions." data-videos="Video1, Video2, Video3">reward system of the technology</span>.
-        </p>
-        
-        <p>
-            With the use of a particular algorithm that works under the process, called the <span class="tooltip" data-definition="SHA-256 hash algorithm: A cryptographic hash function used in blockchain technology to secure transactions and generate unique identifiers." data-videos="Video1, Video2, Video3">SHA-256 hash algorithm</span>, this helps to drive a process at which a <span class="tooltip" data-definition="256-bit number: A numerical value consisting of 256 binary digits, often used for cryptographic purposes in blockchain technology." data-videos="Video1, Video2, Video3">256-bit number</span> generated by the user once a <span class="tooltip" data-definition="Transaction: The exchange or transfer of data or value within a system." data-videos="Video1, Video2, Video3">transaction</span> has gone through takes place. Like all <span class="tooltip" data-definition="Verification processes: Processes that authenticate and confirm the accuracy or legitimacy of data or transactions." data-videos="Video1, Video2, Video3">verification processes</span>, there is a chain with a <span class="tooltip" data-definition="Chain with a genesis block: The initial block in a blockchain that serves as the foundation for subsequent blocks." data-videos="Video1, Video2, Video3">genesis block</span> that takes place to help all of the <span class="tooltip" data-definition="Validation of data: The process of confirming the integrity and accuracy of information within a system." data-videos="Video1, Video2, Video3">validation of data</span> run through smoothly dependent on the <span class="tooltip" data-definition="WiFi speeds: The speed of wireless internet connectivity affecting the efficiency of data processing and transmission in blockchain networks." data-videos="Video1, Video2, Video3">WiFi speeds</span> and so on.
-        </p>
-
-        <p>
-            All of these processes together help to make sure the <span class="tooltip" data-definition="Crypto miner: A participant in the process of cryptocurrency mining, solving computational problems to earn digital currency rewards." data-videos="Video1, Video2, Video3">crypto miner</span> is able to solve <span class="tooltip" data-definition="Mathematical problems: Computational tasks or puzzles integral to validating transactions in cryptocurrency networks." data-videos="Video1, Video2, Video3">mathematical problems</span> that will in turn help them to retain a certain level of <span class="tooltip" data-definition="Currency (Bitcoin to Ethereum): Digital currencies like Bitcoin and Ethereum acquired through mining operations." data-videos="Video1, Video2, Video3">currency ranging anywhere from Bitcoin to Ethereum</span>, which is almost like mining stocks. Whatever you receive still fluctuates or goes down in value depending on whether or not it’s an <span class="tooltip" data-definition="Altcoin or stable coin: Varieties of cryptocurrencies that differ in stability and value fluctuations." data-videos="Video1, Video2, Video3">altcoin or stable coin</span> that you’re mining, the mathematical problems set in place that will reward you with them are built under the magnitude of the <span class="tooltip" data-definition="SHA-256 algorithm: A cryptographic hash function used in blockchain technology for securing transactions and creating unique identifiers." data-videos="Video1, Video2, Video3">SHA-256 algorithm</span>, at which anyone who is able to find a particular <span class="tooltip" data-definition="Hash value: A unique string of characters generated from input data by a cryptographic hash function." data-videos="Video1, Video2, Video3">hash value</span> within the network is instantly rewarded with <span class="tooltip" data-definition="Cryptocurrency: Digital or virtual currency secured by cryptography, functioning independently of traditional banking systems." data-videos="Video1, Video2, Video3">cryptocurrency</span>. This process of finding a hash value within the algorithm makes it so that once it’s found through rounds of inputting the data of a particular user by converting it to <span class="tooltip" data-definition="Binary: The base-2 numeral system used in computing, represented by 1s and 0s." data-videos="Video1, Video2, Video3">binary (1s and 0s)</span>, chunking the data into <span class="tooltip" data-definition="Bytes of information: Units of digital information typically consisting of 8 bits." data-videos="Video1, Video2, Video3">bytes of information</span>, and then creating a loop of final values that will ultimately help to secure the <span class="tooltip" data-definition="String of numbers: A sequence of numerical characters derived from cryptographic processes, ensuring data integrity." data-videos="Video1, Video2, Video3">string of numbers</span> that will remain fixed in its amount of digits regardless of how many times it changes over the course of the <span class="tooltip" data-definition="Transactions: The exchange or transfer of data or value within a system." data-videos="Video1, Video2, Video3">transactions</span> that take place.
-        </p>
-
-        <p>
-            Keep in mind that, I am only speaking of <span class="tooltip" data-definition="Bitcoin: The first and most well-known cryptocurrency, utilizing the SHA-256 hashing algorithm for mining." data-videos="Video1, Video2, Video3">Bitcoin</span>, as other currencies such as <span class="tooltip" data-definition="Ethereum: A popular cryptocurrency employing the Ethash hashing algorithm for mining." data-videos="Video1, Video2, Video3">Ethereum</span> apply to different <span class="tooltip" data-definition="Hashing algorithms: Mathematical functions used in cryptocurrency mining to secure transactions and create unique identifiers." data-videos="Video1, Video2, Video3">hashing algorithms</span> such as <span class="tooltip" data-definition="Ethash: A hashing algorithm used in Ethereum mining, differing from the SHA-256 algorithm used in Bitcoin mining." data-videos="Video1, Video2, Video3">Ethash</span>, with various more belonging to different algorithms.
-        </p>
-
-        <p>
-            Altogether, you are finalizing a <span class="tooltip" data-definition="Network of validation: A system or process aimed at confirming and validating transactions within a blockchain network." data-videos="Video1, Video2, Video3">network of validation</span> to complete towards the search for a <span class="tooltip" data-definition="Hash value: A unique string of characters generated from input data by a cryptographic hash function." data-videos="Video1, Video2, Video3">hash value</span> that will secure the next block in the algorithm, verifying and opening up new <span class="tooltip" data-definition="Nodes for users: Access points or locations within a network where users can access or interact with the blockchain." data-videos="Video1, Video2, Video3">nodes for users</span> to take their currency, and to ultimately <span class="tooltip" data-definition="Reward for the user: The incentive provided to miners or validators for their contributions in maintaining the blockchain network." data-videos="Video1, Video2, Video3">reward the user</span> in return. Now that you have a basic idea of what the <span class="tooltip" data-definition="Process of crypto mining: The process of validating transactions and adding them to the blockchain." data-videos="Video1, Video2, Video3">process of crypto mining</span> looks like, at which you’ve likely also realized that costs aside, the reward is designed for expanding a network by contributing your own <span class="tooltip" data-definition="Personal power: The computational power or resources contributed by an individual miner to the blockchain network." data-videos="Video1, Video2, Video3">personal power</span>, the particular machine involved in this case being the <span class="tooltip" data-definition="ASIC: Application-Specific Integrated Circuit designed specifically for crypto mining tasks, enhancing efficiency." data-videos="Video1, Video2, Video3">ASIC</span> is specifically involved in helping to drive this <span class="tooltip" data-definition="Driving power: The capability of the ASIC machine to contribute significant computational power to the mining process." data-videos="Video1, Video2, Video3">power</span>.
-        </p>
-
-        <p>
-            <span class="tooltip" data-definition="Application-specific integrated circuits: Specialized hardware designed for specific tasks, particularly used in cryptocurrency mining." data-videos="Video1, Video2, Video3">Application-specific integrated circuits</span>, are a more expensive technology used in <span class="tooltip" data-definition="Mining cryptocurrency: The process of validating transactions and adding them to the blockchain." data-videos="Video1, Video2, Video3">mining cryptocurrency</span>, that differs from the use of <span class="tooltip" data-definition="GPUs: Graphics Processing Units, commonly used in cryptocurrency mining operations." data-videos="Video1, Video2, Video3">GPUs</span> when performing the same task. To simply put, it consumes a lot more energy and is specifically focused towards mining <span class="tooltip" data-definition="Bitcoin: The first and most well-known cryptocurrency, mined using specialized hardware like ASICs." data-videos="Video1, Video2, Video3">Bitcoin</span> or <span class="tooltip" data-definition="Litecoin: A cryptocurrency similar to Bitcoin but with different algorithms and faster block generation times." data-videos="Video1, Video2, Video3">Litecoin</span>. In case you haven’t heard of Litecoin after watching my previous workshop on the historical timeline of Ethereum, it is specifically a fork of Bitcoin, or an <span class="tooltip" data-definition="Altcoin: Alternative cryptocurrencies to Bitcoin." data-videos="Video1, Video2, Video3">altcoin</span> like its predecessor that has a differing value but works in about the same way in terms of <span class="tooltip" data-definition="Use of power: The amount of energy required for mining operations in cryptocurrencies." data-videos="Video1, Video2, Video3">use of power</span>.
-        </p>
-        
-        <p>
-            Under today's conditions, you do not need an <span class="tooltip" data-definition="ASIC machine: Application-Specific Integrated Circuit designed specifically for crypto mining tasks, enhancing efficiency." data-videos="Video1, Video2, Video3">ASIC machine</span> to mine cryptocurrency, as a <span class="tooltip" data-definition="GPU: Graphics Processing Unit, capable of performing computations necessary for cryptocurrency mining." data-videos="Video1, Video2, Video3">GPU</span> is already the cheaper option that comes with your desktop, that can enable such a procedure to exist. But it is important to mention the <span class="tooltip" data-definition="Technology behind the process: The tools, software, and algorithms utilized in cryptocurrency mining operations." data-videos="Video1, Video2, Video3">technology behind this process</span>, as there’s another step to this mining process, which is <span class="tooltip" data-definition="Protecting against security: Implementing measures to safeguard cryptocurrency mining operations from cyber threats and vulnerabilities." data-videos="Video1, Video2, Video3">protecting against security</span>. In a previous workshop, I went over how there’s risk in <span class="tooltip" data-definition="Cybersecurity: The practice of protecting systems, networks, and programs from digital attacks or unauthorized access." data-videos="Video1, Video2, Video3">cybersecurity</span> behind any <span class="tooltip" data-definition="Blockchain-related process: Operations or activities conducted within a blockchain network." data-videos="Video1, Video2, Video3">blockchain-related process</span>, as the use of <span class="tooltip" data-definition="ISPs: Internet Service Providers, entities providing internet access to users." data-videos="Video1, Video2, Video3">ISPs</span> that aren’t on the network immediately open up <span class="tooltip" data-definition="Vulnerabilities: Weaknesses or loopholes in systems that can be exploited by attackers." data-videos="Video1, Video2, Video3">vulnerabilities</span>, at which the mining-specific issue is something called <span class="tooltip" data-definition="Cryptojacking: Unauthorized use of a device's resources to mine cryptocurrencies without the owner's consent." data-videos="Video1, Video2, Video3">cryptojacking</span> or <span class="tooltip" data-definition="Timejacking: Exploiting the timestamping system in a blockchain to manipulate time-related functions." data-videos="Video1, Video2, Video3">timejacking</span>.
-        </p>
-
-        <p>
-            All of the <span class="tooltip" data-definition="Transactions recorded: Process of documenting and storing data related to exchanges or transfers within a blockchain." data-videos="Video1, Video2, Video3">transactions recorded</span> by each separate <span class="tooltip" data-definition="Hash identifier: A unique string of characters generated from input data by a cryptographic hash function." data-videos="Video1, Video2, Video3">hash identifier</span> within the <span class="tooltip" data-definition="Algorithm: A set of rules or instructions used in cryptocurrency systems to perform specific tasks." data-videos="Video1, Video2, Video3">algorithm</span>, creates a particular tree of input and output in data facilitated by these varying algorithms called a <span class="tooltip" data-definition="Merkle tree: A data structure in cryptography used to efficiently verify the integrity of data within a block by creating a hierarchical structure of hashes." data-videos="Video1, Video2, Video3">Merkle tree</span>. Ever wondered why the network itself looks like one big tree without a particular root taking place? That’s exactly what a Merkle tree is, it’s essentially an infrastructure that streamlines the <span class="tooltip" data-definition="Confirmation process: The process of validating and confirming the accuracy of transactions within a blockchain." data-videos="Video1, Video2, Video3">confirmation process</span> of transactions from within each <span class="tooltip" data-definition="Blocks: Segments of data in a blockchain containing multiple transactions." data-videos="Video1, Video2, Video3">block</span>, ultimately creating <span class="tooltip" data-definition="Arrays of records: Collections of data or information organized in a specific structure within a blockchain." data-videos="Video1, Video2, Video3">arrays of records</span> within <span class="tooltip" data-definition="Parallel networks: Multiple interconnected networks running simultaneously." data-videos="Video1, Video2, Video3">parallel networks</span>, leveraging <span class="tooltip" data-definition="Bitcoin miners: Individuals or entities validating transactions and adding them to the Bitcoin blockchain." data-videos="Video1, Video2, Video3">Bitcoin miners</span> to use <span class="tooltip" data-definition="Software-specific solutions: Tailored software applications designed for mining cryptocurrency." data-videos="Video1, Video2, Video3">software-specific solutions</span> that will help to <span class="tooltip" data-definition="Mining the currency: The process of generating new cryptocurrency coins through mining operations." data-videos="Video1, Video2, Video3">mine the currency</span> through third-party sources built initially on the platform, to collectively drive <span class="tooltip" data-definition="Integrity and security: Ensuring the authenticity and safety of data within a blockchain network." data-videos="Video1, Video2, Video3">integrity and security</span> for those rewarding from the process.
-        </p>
-
-        <p>
-            Now that this has been mentioned, the <span class="tooltip" data-definition="Merkle tree: A data structure in cryptography used to efficiently verify the integrity of data within a block by creating a hierarchical structure of hashes." data-videos="Video1, Video2, Video3">Merkle tree</span> falls to the risk of <span class="tooltip" data-definition="Cryptojacking: Unauthorized use of a device's resources to mine cryptocurrencies without the owner's consent." data-videos="Video1, Video2, Video3">cryptojacking</span>, at which the <span class="tooltip" data-definition="Hacker: An individual or group attempting to gain unauthorized access to systems for malicious purposes." data-videos="Video1, Video2, Video3">hacker</span> tries to purposely introduce <span class="tooltip" data-definition="Malware: Software designed to disrupt, damage, or gain unauthorized access to computer systems." data-videos="Video1, Video2, Video3">malware</span> such as <span class="tooltip" data-definition="Trojan viruses: Malicious software that disguises itself as legitimate software, allowing unauthorized access to the user's system." data-videos="Video1, Video2, Video3">Trojan viruses</span> into already existing <span class="tooltip" data-definition="Code repositories: Storage spaces for version control systems containing code and related data." data-videos="Video1, Video2, Video3">code repositories</span> on the <span class="tooltip" data-definition="Network: A system of interconnected computers or devices." data-videos="Video1, Video2, Video3">network</span>, implementing packages that target developers that have working programs within the <span class="tooltip" data-definition="Decentralized cloud: A decentralized network of computing resources and services." data-videos="Video1, Video2, Video3">decentralized cloud</span>, ultimately creating a <span class="tooltip" data-definition="Ripple effect: The spread or repercussion of an event or action throughout a network." data-videos="Video1, Video2, Video3">ripple effect</span> in a network that uses unauthorizing crypto mining resources, allowing the hacker to extract any information they can to later use it for <span class="tooltip" data-definition="Malicious purposes: Harmful or destructive intentions, often related to cybersecurity breaches." data-videos="Video1, Video2, Video3">malicious purposes</span> such as power use and of course mined cryptocurrency.
-        </p>
-
-        <p>
-            To simply put, the <span class="tooltip" data-definition="Hacker: An individual or group attempting to gain unauthorized access to systems for malicious purposes." data-videos="Video1, Video2, Video3">hacker</span> is disrupting the code within the network, and ultimately demonstrating an <span class="tooltip" data-definition="Attack: Malicious actions or attempts to compromise a system or network." data-videos="Video1, Video2, Video3">attack</span> that causes a wind of <span class="tooltip" data-definition="Payloads: Malicious data or instructions within a network payload." data-videos="Video1, Video2, Video3">payloads</span> towards their <span class="tooltip" data-definition="Hash numbers: Unique identifiers generated from data within a cryptographic hash function." data-videos="Video1, Video2, Video3">hash numbers</span> once the data is extracted, something powerful that can be exploited as long it’s spotted by the developer. Since a lot of <span class="tooltip" data-definition="Crimes: Illegal activities or actions violating laws or regulations." data-videos="Video1, Video2, Video3">crimes</span> in this generation of developing <span class="tooltip" data-definition="Web 3.0 activities: Next-generation web-related developments focusing on decentralized technologies." data-videos="Video1, Video2, Video3">Web 3.0 activities</span> go untraced, there are quite some examples out there that have been spotted. Some are companies such as <span class="tooltip" data-definition="Sophos: A company specializing in cybersecurity solutions." data-videos="Video1, Video2, Video3">Sophos</span>, which are responsible for employing a serves called <span class="tooltip" data-definition="VMWare Horizon: A virtual machine product facilitating cloud operations for businesses." data-videos="Video1, Video2, Video3">VMWare Horizon</span>, a virtual machine product that helps one to work between multiple clouds for their own business, found that <span class="tooltip" data-definition="Cryptojackers: Individuals or groups involved in unauthorized cryptocurrency mining activities." data-videos="Video1, Video2, Video3">cryptojackers</span> had infiltrated their databases under their <span class="tooltip" data-definition="Linux-based system infrastructure: Systems or networks operating using the Linux operating system." data-videos="Video1, Video2, Video3">Linux-based system infrastructure</span>, by using a particular software called <span class="tooltip" data-definition="XMRig: Cryptocurrency mining software known for its association with unauthorized mining activities." data-videos="Video1, Video2, Video3">XMRig</span>, notable as being a piece of software unlike the kinds of I’ve mentioned before that is used specifically for <span class="tooltip" data-definition="Security intrusions: Unauthorized access or compromise of system security." data-videos="Video1, Video2, Video3">security intrusions</span>. It was ruled that this was for typical reasons that a hacker would want to disrupt the process of crypto mining for, which is for <span class="tooltip" data-definition="Thieving computing power: Unauthorized use of computational resources for mining without permission." data-videos="Video1, Video2, Video3">thieving computing power</span> from companies, and also using their own technology to potentially earn their <span class="tooltip" data-definition="Currency: Digital or virtual money used in cryptocurrency transactions." data-videos="Video1, Video2, Video3">currency</span> through the use that energy or mining data.
-        </p>
-
-        <p>
-            As you can see, there is a balance between what <span class="tooltip" data-definition="Mining software: Software used to mine cryptocurrencies through various algorithms." data-videos="Video1, Video2, Video3">mining software</span> is used for the <span class="tooltip" data-definition="SHA-256 algorithm: Cryptographic algorithm used in Bitcoin mining." data-videos="Video1, Video2, Video3">SHA-256 algorithm</span>, and the kind used to develop <span class="tooltip" data-definition="Malware development: Creating malicious software designed to disrupt or damage systems." data-videos="Video1, Video2, Video3">malware</span> under those same systems. Altogether, the major conclusion to make here regarding <span class="tooltip" data-definition="Crypto mining: Process of validating transactions and adding them to the blockchain." data-videos="Video1, Video2, Video3">crypto mining</span> is that, there has never been a more collaborative way for people around the world to be rewarded for opening paths that a <span class="tooltip" data-definition="Decentralized network: A network where no single entity or authority has control over the system." data-videos="Video1, Video2, Video3">decentralized network</span> needs. Through contribution, <span class="tooltip" data-definition="Crypto miners: Individuals or entities validating transactions and adding them to the blockchain." data-videos="Video1, Video2, Video3">crypto miners</span> are capable of opening new <span class="tooltip" data-definition="New blocks: Newly created segments of data on a blockchain containing multiple transactions." data-videos="Video1, Video2, Video3">blocks</span> for users to join in on, not only proving that governance exists through <span class="tooltip" data-definition="Proof-of-Stake mechanisms: Consensus algorithms based on participants' stake in a cryptocurrency." data-videos="Video1, Video2, Video3">Proof-of-Stake mechanisms</span> in the network through the ownership of cryptocurrency either purchased or mined to expand security and power efficiency, but also shows that a reward is given for it for those who allow such <span class="tooltip" data-definition="Consensus mechanisms: Processes used to achieve agreement in a decentralized network." data-videos="Video1, Video2, Video3">consensus mechanisms</span> to take place when generating new blocks for the new set of users that will eventually come along the network.
-        </p>
-            
-            
-      <div class="tooltip-box" id="tooltipBox">
-          <span id="tooltipContent"></span>
-          <div class="video-container" id="videoContainer">
-              <!-- Video recommendations will appear here -->
-          </div>
-          <span class="close-btn">×</span> <!-- Close button -->
-      </div>
-       
+      </p>
     </div>
-    <div class="slider-container">
-        <div class="arrow-button" id="prevButton">&#9650;</div>
-        <p>
-          <br><br><br><br>
-          Paragraph <span id="currentParagraph">1</span> of <span id="totalParagraphs">24</span>
-        </p>
-        <div class="arrow-button" id="nextButton">&#9660;</div>
-    </div>
-</div>
-</div>
-
-<div class="tooltip-box" id="tooltipBox">
-  <span id="tooltipContent"></span>
-  <div class="video-container" id="videoContainer">
-      <!-- Video recommendations will appear here -->
   </div>
-  <span class="close-btn">×</span> <!-- Close button -->
-</div>
+    <div id="scrollToTopBtn" class="scroll-to-top" style="display: none;">
+        <i class="fas fa-arrow-up"></i>
+        <span style="vertical-align: middle; font-size: 26px;">👆</span>
+    </div>
 </div>
 
 <script>
+const boxes = document.querySelectorAll('.box');
+const container = document.querySelector('.container');
+const upArrows = document.querySelectorAll('.up-arrow');
+const downArrows = document.querySelectorAll('.down-arrow');
+let currentIndex = 0;
 
-function myFunction() {
-  var x = document.getElementById("myDIV");
-  var y = document.getElementById("myDIV1");
-  if (x.style.display === "none") {
-    x.style.display = "block";
-  } else {
-    x.style.display = "none";
-  }
-  if (y.style.display === "none") {
-    y.style.display = "none";
-  } else {
-    y.style.display = "none";
-  }
-}
+// Initialize the page by hiding arrow buttons for all boxes except the first one
+hideOtherArrows(currentIndex);
 
-function myFunction1() {
-  var x = document.getElementById("myDIV");
-  var y = document.getElementById("myDIV1");
-  if (x.style.display === "none") {
-    x.style.display = "none";
-  } else {
-    x.style.display = "none";
-  }
-  if (y.style.display === "none") {
-    y.style.display = "block";
-  } else {
-    y.style.display = "none";
-  }
-}
-
-document.addEventListener('DOMContentLoaded', function() {
-    const article = document.getElementById('article');
-    const totalParagraphs = article.querySelectorAll('p').length;
-    document.getElementById('totalParagraphs').textContent = totalParagraphs;
-
-    let currentSlide = 1;
-    let isTooltipDisplayed = false;
-
-    function displayParagraph(slide) {
-        const paragraphs = article.querySelectorAll('p');
-        paragraphs.forEach(paragraph => {
-            paragraph.style.opacity = '0';
-        });
-
-        const selectedParagraph = paragraphs[slide - 1];
-        setTimeout(() => {
-            selectedParagraph.style.opacity = '1';
-        }, 100);
-
-        document.getElementById('currentParagraph').textContent = slide;
-
-        // Tooltip Functionality
-        const tooltipSpan = selectedParagraph.querySelectorAll('.tooltip');
-        const tooltipBox = document.createElement('div');
-        tooltipBox.classList.add('tooltip-box');
-        selectedParagraph.appendChild(tooltipBox);
-
-        tooltipSpan.forEach(span => {
-            span.addEventListener('click', (event) => {
-                if (!isTooltipDisplayed) {
-                    const definition = event.target.getAttribute('data-definition');
-                    const videos = event.target.getAttribute('data-videos');
-
-                    const tooltipContent = document.createElement('div');
-                    tooltipContent.classList.add('tooltip-content');
-                    tooltipContent.textContent = definition;
-
-                    const videoContainer = document.createElement('div');
-                    videoContainer.classList.add('video-container');
-                    videoContainer.innerHTML = '';
-
-                    if (videos) {
-                        const videoList = videos.split(', ');
-                        const videoListHTML = videoList.map(video => `<iframe width="100%" height="200" src="${video}" frameborder="0" allowfullscreen></iframe>`).join('');
-                        videoContainer.innerHTML = `<h3>Video Recommendations:</h3>${videoListHTML}`;
-                    }
-
-                    tooltipBox.innerHTML = '';
-                    tooltipBox.appendChild(tooltipContent);
-                    tooltipBox.appendChild(videoContainer);
-
-                    const closeBtn = document.createElement('span');
-                    closeBtn.classList.add('close-btn');
-                    closeBtn.textContent = 'X';
-                    closeBtn.addEventListener('click', () => {
-                        isTooltipDisplayed = false;
-                        tooltipBox.style.display = 'none';
-                    });
-                    tooltipBox.appendChild(closeBtn);
-
-                    tooltipBox.style.display = 'block';
-                    isTooltipDisplayed = true;
-
-
-                }
-            });
-
-            tooltipBox.removeEventListener('mouseleave', () => {
-                isTooltipDisplayed = false;
-                tooltipBox.style.display = 'none';
-            });
-        });
-    }
-
-    document.getElementById('nextButton').addEventListener('click', () => {
-        if (currentSlide < totalParagraphs) {
-            currentSlide++;
-            displayParagraph(currentSlide);
-        }
-    });
-
-    document.getElementById('prevButton').addEventListener('click', () => {
-        if (currentSlide > 1) {
-            currentSlide--;
-            displayParagraph(currentSlide);
-        }
-    });
-
-    displayParagraph(currentSlide);
+upArrows.forEach(function(elem, index) {
+  elem.addEventListener('click', function() {
+    moveBoxUp(index);
+  });
 });
 
-let prevScrollPos = window.pageYOffset;
+downArrows.forEach(function(elem, index) {
+  elem.addEventListener('click', function() {
+    moveBoxDown(index);
+  });
+});
 
-    window.onscroll = function() {
-      let currentScrollPos = window.pageYOffset;
+document.addEventListener('keydown', function(event) {
+  if (event.key === 'ArrowRight') {
+    moveBoxDown(currentIndex);
+  } else if (event.key === 'ArrowLeft') {
+    moveBoxUp(currentIndex);
+  } else if (event.key === 'ArrowUp') {
+    moveBoxUp(currentIndex);
+  } else if (event.key === 'ArrowDown') {
+    moveBoxDown(currentIndex);
+  }
+});
 
-      if (prevScrollPos > currentScrollPos) {
-        document.getElementById("navbar").classList.remove("hidden");
-      } else {
-        document.getElementById("navbar").classList.add("hidden");
-      }
+function moveBoxUp(index) {
+  if (index > 0) {
+    const nextIndex = index - 1;
+    moveToIndex(nextIndex);
+  }
+}
 
-      prevScrollPos = currentScrollPos;
-    };
+function moveBoxDown(index) {
+  if (index < boxes.length - 1) {
+    const nextIndex = index + 1;
+    moveToIndex(nextIndex);
+  }
+}
 
-    // JavaScript to bring back solidity on hover
-    const navbar = document.getElementById('navbar');
+function moveToIndex(nextIndex) {
+  // Remove active class from current box and add blur class
+  boxes[currentIndex].classList.remove('active');
+  boxes[currentIndex].classList.add('blur');
 
-    navbar.addEventListener('mouseenter', function() {
-      navbar.classList.remove('hidden');
+  // Add active class to next box and remove blur class
+  boxes[nextIndex].classList.remove('blur');
+  boxes[nextIndex].classList.add('active');
+
+  // Calculate the position to align active box with arrow box
+  const arrowRect = boxes[nextIndex].querySelector('.arrow').getBoundingClientRect();
+  const activeBoxRect = boxes[nextIndex].getBoundingClientRect();
+
+  // Calculate the scroll position to align active box with arrow box
+  const scrollLeft = activeBoxRect.left - arrowRect.left - (window.innerWidth / 2 - activeBoxRect.width / 2);
+
+  // Set the scroll position to immediately position the active box beside the arrow box
+  container.scrollLeft = scrollLeft;
+
+  currentIndex = nextIndex;
+
+  // Disable/enable arrows based on current index
+  upArrows.forEach(function(elem) {
+    elem.disabled = currentIndex === 0;
+  });
+
+  downArrows.forEach(function(elem) {
+    elem.disabled = currentIndex === boxes.length - 1;
+  });
+
+  // Hide arrow buttons for other boxes
+  hideOtherArrows(currentIndex);
+}
+
+function hideOtherArrows(index) {
+  boxes.forEach(function(box, i) {
+    const arrows = box.querySelectorAll('.arrow button');
+    arrows.forEach(function(arrow) {
+      arrow.style.visibility = i !== index ? 'hidden' : 'visible';
+    });
+  });
+}
+
+    
+document.getElementById('view-full-article-box').addEventListener('click', function() {
+    // Create the button for entering paragraph mode
+    var refreshButton = document.createElement('button');
+    refreshButton.textContent = 'Enter Paragraph Mode';
+    refreshButton.classList.add('view-full-article'); // Add class for styling
+    refreshButton.style.backgroundColor = 'white'; // Set white background
+    refreshButton.style.color = 'black'; // Set black text color
+    refreshButton.style.border = '2px solid white'; // Add white border
+    refreshButton.style.cursor = 'pointer'; // Set cursor to pointer to indicate clickability
+    refreshButton.addEventListener('click', function() {
+        location.reload(); // Reload the page when clicked
     });
 
-    navbar.addEventListener('mouseleave', function() {
-      if (window.scrollY === 0) {
-        navbar.classList.add('hidden');
-      }
+    // Append the button to the 'view-full-article-box'
+    this.innerHTML = ''; // Clear existing content
+    this.appendChild(refreshButton);
+
+    // Remove active state from all boxes
+    document.querySelectorAll('.box').forEach(function(box) {
+        box.classList.remove('active');
     });
 
+    // Remove box styling
+    document.querySelectorAll('.box').forEach(function(box) {
+        box.style.border = 'none';
+        box.style.backgroundColor = 'transparent';
+        box.style.fontSize = '15px'; // Set font size back to default
+        box.classList.remove('blur'); // Remove blur class
+    });
 
-</script>
+    // Remove paragraph indicators
+    document.querySelectorAll('.paragraph-indicator').forEach(function(indicator) {
+        indicator.remove();
+    });
 
+    // Disable lock buttons and hide lock icons
+    document.querySelectorAll('.lock-button').forEach(function(lockButton) {
+        lockButton.disabled = true;
+        lockButton.style.display = 'none';
+    });
+
+    // Remove animations
+    document.querySelectorAll('.move-up, .move-down').forEach(function(animation) {
+        animation.style.animation = 'none';
+    });
+
+    // Hide arrow buttons for all other boxes
+    hideOtherArrows(-1);
+});
+
+let lockedParagraph = null;
+
+function toggleLock(button) {
+  const parent = button.parentNode;
+  const isLocked = parent.classList.toggle('locked');
+  if (isLocked) {
+    lockedParagraph = parent;
+    centerParagraph(lockedParagraph);
+  } else {
+    lockedParagraph = null;
+  }
+}
+
+function centerParagraph(element) {
+  const rect = element.getBoundingClientRect();
+  const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+  const centerY = rect.top + rect.height / 2 - window.innerHeight / 2 + scrollTop;
+  window.scrollTo({
+    top: centerY,
+    behavior: 'smooth'
+  });
+}
+
+// Keep the locked paragraph centered if the window is resized
+window.addEventListener('resize', function() {
+  if (lockedParagraph) {
+    centerParagraph(lockedParagraph);
+  }
+});
+
+
+    </script>  
 </body>
 </html>
-

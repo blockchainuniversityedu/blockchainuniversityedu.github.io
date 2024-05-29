@@ -1,6 +1,5 @@
 <!DOCTYPE html>
-<html>
-  <link rel="stylesheet" type="text/css" href="reader.css">
+<html lang="en">
 <head>
   <!-- Google tag (gtag.js) -->
 	<script async src="https://www.googletagmanager.com/gtag/js?id=G-9J1B2MTYSV"></script>
@@ -10,50 +9,503 @@
  	 	gtag('js', new Date());
  	 	gtag('config', 'G-9J1B2MTYSV');
 	</script>
-  <title> The Power of Collaboration - Article </title>
-<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title> The Power of Collaboration - Article </title>
 <style>
 
+.locked {
+        background-color: darkorange;
+        border: 1px solid;
+        border-radius: 10px;
+        border-color: black;
+    }
+
+.button-container {
+        position: relative;
+        width: 300px; /* Adjust width as needed */
+    }
+
+    .expand-button {
+        width: 10px; /* Initial width of the button */
+        height: 10px; /* Height of the button */
+        padding: 10px;
+        background-color: #ff0000;
+        color: rgb(255, 255, 255);
+        border: none;
+        cursor: pointer;
+        position: relative; /* Enable positioning of the tooltip */
+        transition: width 0.3s; /* Smooth transition effect */
+        border-radius: 5px; /* Make the edges rounder */
+        margin-top: 20px;
+    }
+
+    .expand-button .initial-text,
+    .expand-button .tooltip {
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        opacity: 0;
+        transition: opacity 0.3s; /* Smooth transition effect */
+        
+    }
+
+    .expand-button .initial-text {
+        opacity: 1; /* Show "+" sign text by default */
+    }
+
+    .expand-button:hover {
+        width: 100px; /* Expanded width on hover */
+    }
+
+    .expand-button:hover .initial-text {
+        opacity: 0; /* Hide "+" sign text on hover */
+    }
+
+    .expand-button:hover .tooltip {
+        opacity: 1; /* Show "Hello" text on hover */
+        right: 100px; /* Position "Hello" text beside "+" sign */
+    }
+
+.paragraph-container {
+        padding: 10px;
+        margin: 10px;
+        position: relative; /* Relative positioning for absolute positioning of the lock button */
+    }
+    
+    .lock-button {
+        padding: 5px;
+        background-color: #000000;
+        color: white;
+        border: none;
+        border-radius: 50%;
+        cursor: pointer;
+        position: absolute; /* Absolute positioning */
+        top: 50%; /* Vertically center the button */
+        right: -100px; /* Position the button outside the box */
+        transform: translateY(-50%); /* Adjust position to center vertically */
+    }
+
+
+.scroll-to-top {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    cursor: pointer;
+    background-color: #000000;
+    color: #fff;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.scroll-to-top i {
+    font-size: 20px;
+}
+
+.navbar {
+  color: white;
+  padding: 25px; /* Increase padding to give more space */
+  width: 95%; /* Make the navbar fully wide */
+  position: fixed; /* Fix the navbar to the top */
+  top: 0; /* Position the navbar at the top of the viewport */
+  z-index: 1000; /* Ensure the navbar is above other content */
+  display: flex; /* Use flexbox to align items */
+  justify-content: space-between; /* Align items to the start and end */
+}
+
+.navbar-logo {
+  width: 50px;
+  height: auto;
+  margin-right: auto; /* Push the logo to the left */
+}
+
+.nav-links {
+  display: flex; /* Use flexbox to align items */
+}
+
+.nav-link {
+  margin-left: 10px; /* Add margin to separate links */
+  text-decoration: none;
+  color: white;
+}
+
+.nav-link:not(:last-child)::after {
+  content: '|'; /* Add a vertical line */
+  margin-left: 10px; /* Add space between the line and the link */
+  color: white; /* Set the color of the line */
+}
+
+
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    overflow: hidden;
+    height: 100vh;
+    padding: 200px;
+}
+
+.button-container {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20px;
+  }
+
+  .button {
+    padding: 10px 20px;
+    background-color: #f0f0f0;
+    color: #333;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+    margin: 5px;
+  }
+
+  .button.active {
+    background-color: black;
+    color: white;
+  }
+
+  .content {
+    display: none;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    margin-top: 20px;
+  }
+
+  .content.active {
+    display: block;
+  }
+
+body {
+  font-family: Arial, sans-serif;
+  font-size: 15px;
+  height: 400vh;
+}
+
+.box {
+  border: 1px solid transparent;
+  border-radius: 10px;
+  background-color: white; /* Set the background color of the boxes to white */
+  color: black; /* Set text color to black */
+  padding: 10px 60px 10px 20px; /* Adjust padding to move the text a little more to the left */
+  margin: 10px auto;
+  width: 80%;
+  max-width: 600px;
+  box-sizing: border-box;
+  position: relative;
+  transition: transform 0.5s ease;
+  text-align: left;
+  font-family: Arial, sans-serif; /* Set the font family to Arial */
+}
+
+  .box.active {
+    transform: translateX(0%) scale(1.5); /* Center the active box more to the right and keep it enlarged */
+    z-index: 1;
+    background-color: black;
+    color: white;
+  }
+
+
+  .box.active .arrow {
+    transform: rotate(90deg); /* Rotate the arrow button by 90 degrees */
+  }
+
+  .box.blur {
+    filter: blur(5px); /* Apply blur effect to all boxes except the active one */
+    transform: scale(1);
+    z-index: 0;
+  }
+
+  .blur {
+  filter: blur(2px); /* Apply blur effect */
+  pointer-events: none; /* Disable pointer events */
+  user-select: none; /* Disable text selection */
+}
+
+
+  .arrow {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  right: 0;
+  top: 50%;
+}
+
+.up-arrow button,
+.down-arrow button {
+  background-color: #ccc;
+  border-radius: none;
+  padding: 5px 10px; /* Reduce padding */
+  cursor: pointer;
+  font-size: 14px; /* Reduce font size */
+  border-radius: 50%; /* Make the button round */
+}
+
+
+  .paragraph-indicator {
+  color: gray;
+  font-size: 12px;
+  display: block;
+  margin-bottom: 5px;
+  font-weight: bold; /* Add this line to make the paragraph indicator bold */
+}
+
+.banner {
+  position: relative;
+  width: 100%;
+  height: 30vh; /* Adjusted height for the banner */
+  background-size: cover;
+  background-color: #ffffff; /* Dark gray background for the banner */
+}
+
+header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 90%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  transition: 0.6s;
+  padding: 40px 100px;
+  z-index: 100000;
+  border-bottom: 2px solid rgb(0, 0, 0); /* White border at the bottom of the header */
+  opacity: 1;
+  transition: opacity 0.6s;
+}
+
+header.hidden {
+  opacity: 0;
+}
+
+header ul {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 10px 0;
+  border-top: 2px solid rgb(255, 255, 255); /* White border at the top of the ul */
+  border-bottom: 2px solid white; /* White border at the bottom of the ul */
+}
+
+header ul li {
+  position: relative;
+  list-style: none;
+  border-left: 2px solid white; /* White border on the left of each list item */
+}
+
+header ul li:first-child {
+  border-left: none; /* Remove left border for the first list item */
+}
+
+header ul li a {
+  position: relative;
+  margin: 0 15px;
+  text-decoration: none;
+  color: hsl(0, 0%, 100%);
+  letter-spacing: 2px;
+  font-weight: 500;
+  transition: 0.6s;
+}
+
+/* Add hover effect to header buttons */
+header ul li a:hover {
+  color: #000000; /* Change to the desired highlight color */
+}
+
+body {
+  background-color: orange;
+  padding-top: 60px; /* Increase padding to make more room for the navigation bar */
+  font-family: Arial, sans-serif;
+}
+
+.container {
+  position: absolute; /* Set the container to absolute positioning */
+  top: 80px; /* Adjust the top offset to position the container below the navigation bar */
+  left: 0; /* Ensure the container starts from the left edge of the viewport */
+  right: 0; /* Ensure the container ends at the right edge of the viewport */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 7000px; /* Adjust the container's height to fill the remaining viewport */
+}
+
+.box {
+  border: 1px solid transparent;
+  border-radius: 10px;
+  background-color: white; /* Set the background color of the boxes to white */
+  color: black; /* Set text color to black */
+  padding: 10px 60px 10px 20px; /* Adjust padding to move the text a little more to the left */
+  margin: 10px auto;
+  width: 80%;
+  max-width: 600px;
+  box-sizing: border-box;
+  position: relative;
+  transition: transform 0.5s ease;
+  text-align: left; /* Align text to the left */
+  font-family: Arial, sans-serif; /* Set the font family to Arial */
+}
+
+.view-full-article-box {
+    border-radius: 10px; /* Make the edges rounder */
+    padding: 10px;
+    margin-top: 20px;
+    width: fit-content;
+}
+
+.view-full-article {
+    text-decoration: none;
+    color: black;
+    border: none; /* Remove the border */
+    background-color: #f0f0f0; /* Set the initial background color */
+    padding: 8px 16px; /* Adjust padding */
+    border-radius: 8px; /* Make the button rounder */
+}
+
+.view-full-article:hover {
+    background-color: #e0e0e0; /* Darken the background color on hover */
+}
+
+.view-full-article:active {
+    background-color: black; /* Change background color when button is clicked */
+    color: white; /* Change text color when button is clicked */
+}
+
+
+.box.active {
+  transform: translateX(0%) scale(1.5); /* Center the active box more to the right and keep it enlarged */
+}
+
+.box.blur {
+  filter: blur(5px); /* Apply blur effect to all boxes except the active one */
+  transform: scale(1);
+}
+
+.arrow {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  right: 0;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.arrow button {
+  background-color: #ccc;
+  border: none;
+  padding: 2px 6px; /* Reduce padding */
+  cursor: pointer;
+  font-size: 14px; /* Reduce font size */
+}
+
+@keyframes moveDown {
+  from {
+    transform: translateY(0);
+  }
+  to {
+    transform: translateY(20%);
+  }
+}
+
+@keyframes moveUp {
+  from {
+    transform: translateY(0);
+  }
+  to {
+    transform: translateY(-20%);
+  }
+}
+
+.move-down {
+  animation: moveDown 0.3s forwards;
+}
+
+.move-up {
+  animation: moveUp 0.3s forwards;
+}
+
+
+  @keyframes moveDown {
+    from {
+      transform: translateY(0);
+    }
+    to {
+      transform: translateY(20%);
+    }
+  }
+
+  @keyframes moveUp {
+    from {
+      transform: translateY(0);
+    }
+    to {
+      transform: translateY(-20%);
+    }
+  }
+
+  .move-down {
+    animation: moveDown 0.3s forwards;
+  }
+
+  .move-up {
+    animation: moveUp 0.3s forwards;
+  }
 </style>
 </head>
 <body>
 
-  <header id="navbar">
-    <a href="index.html"><img src="blockchaintmu (normal logo - no background).png" alt="Welcome!" style="float:left;width:400px;height:220px;"></a>
-          <div class="dropdown">
-              <div class="dropdown-content">
-                  <ul>
-          <li><a href="index.html"><b>HOME</a></li></b>
-          <li><a href="Workshops.html"><b>WORKSHOPS</a></li></b>
-          <li><a href="FirstAccess.html"><b>FIRST/ACCESS</a></li></b>
-          <li><a href="Columns.html"><b>ARTICLES</a></li></b>
-                  </ul>
-              </div>
-              <div id="mySidenav" class="sidenav">
-                <a href="Cyber Crimes, Solved (Video Workshop).html" id="about">WATCH VIDEO</a>
-              </div>        
-      </header>
-
-<br><br><br><br><br><br><br><br><br><br><br><br><br>
-
-<div class="button">
-  <center><button class="paragraph-button" onclick="myFunction(); this.onclick=myFunction">Paragraph Mode</button></center>
-  <center><button class="reader-button" onclick="myFunction1(); this.onclick=myFunction1">Reader Mode</button></center>
-</div>
-<br>
-
-
-<div class="container">
-<div id="myDIV">
-  <br>
-    <h1> Collaboration On The Blockchain </h1>
+  <center>
+    <header id="navbar">
+      <a href="index.html"><img src="blockchainuni (official logo).png" alt="Welcome!" style="float:left;width:265px;height:90px;"></a>
+      <div class="dropdown">
+                  <div class="dropdown-content">
+                      <ul>
+              <li><a href="index.html"><b>HOME</a></li></b>
+              <li><a href="Workshops.html"><b>WORKSHOPS</a></li></b>
+              <li><a href="FirstAccess.html"><b>FIRST/ACCESS</a></li></b>
+              <li><a href="Columns.html"><b>ARTICLES</a></li></b>
+                      </ul>
+                  </div>
+</center>
+  <br><br><br><br><br><br>
+  <div class="container">
+    <br><br><br>
+    <div class="view-full-article-box" id="view-full-article-box">
+        <button class="view-full-article">View Full Article</button>
+    </div>
+    <div class="button-container">
+      <a href="" target="_blank">
+      <button class="expand-button">
+          <span class="initial-text">📺</span>
+          <span class="tooltip">📺<b>/WatchVideo</b><br></span>
+      </button>
+    </a>
+  </div>
+    <br><br><br><br><br><br>
+    <div class="box active" id="box1">
+      <div class="arrow">
+        <button class="up-arrow" onclick="scrollToTop()" disabled> 👈 </button>
+        <button class="down-arrow" onclick="scrollToBottom()"> 👉 </button>
+      </div>
+      <span class="paragraph-indicator">Paragraph #1 of #12</span>
+      <div class="paragraph-container">
+        <button class="lock-button" onclick="toggleLock(this)">🖍️</button>
+        <h1> Collaboration On The Blockchain </h1>
 				<h3> When Resilience Meets Innovation </h3>
-				<br>
-                  <p>
-                    <i>“I think the people from the [Ethereum] Foundation were not happy with what was going on at the DAO, even prior to the hack--Because they thought it was too early.”</i>
+      <p>
+        <i>“I think the people from the [Ethereum] Foundation were not happy with what was going on at the DAO, even prior to the hack--Because they thought it was too early.”</i>
 					<br><br><br>
 					<i><b>– Igor Artamonov</b></i>
-					<br><br><br>
+          <br><br><br>
 					Regarding the general sphere of how transactions are traded on the blockchain 
 					network, there is no doubt in saying that cyber crimes are always a major issue that is to 
 					be addressed, especially after the fact that so many roles take place within the 
@@ -62,30 +514,80 @@
 					that have intruded on the safety of these transactions have defined the great lengths 
 					that a collaborative community has gone towards making sure such problems were not 
 					to be repeated again.
-					<br><br><br>
-					In this situation, that one event which completely adjusted the course of blockchain 
-					history was something called the DAO attack. For those who didn't read the past 
-					workshop about the history behind Ethereum, this particular event created a pause in 
-					the development of an application in particular that would expand upon the expansion and financial eligibility of Ethereum to the rest of the world. The term DAO, stands for Decentralized Autonomous Organization, which in 2016, was a method at which governance could be implemented on behalf of owners of a stake in a cryptocurrency, in order to adapt ‘Proof of Stake’ methods on applications such as Ethereum, and to also narrow the maximum security of validation for cryptocurrency miners. But in this article, we won’t be explaining that, but instead focusing on what led to the initial downfall and meticulous rise of the DAO that brings it the power it works under today.
-					<br><br><br>
-					As source code is the most important part of the cycle at which anything related to 
+      </p>
+    </div>
+  </div>
+    <div class="box blur" id="box2">
+      <div class="arrow">
+        <button class="up-arrow" onclick="scrollToTop()" disabled> 👈 </button>
+        <button class="down-arrow" onclick="scrollToBottom()"> 👉 </button>
+      </div>
+      <span class="paragraph-indicator">Paragraph #2 of #12</span>
+      <div class="paragraph-container">
+        <button class="lock-button" onclick="toggleLock(this)">🖍️</button>  
+      <p>
+        In this situation, that one event which completely adjusted the course of blockchain 
+        history was something called the DAO attack. For those who didn't read the past 
+        workshop about the history behind Ethereum, this particular event created a pause in 
+        the development of an application in particular that would expand upon the expansion and 
+        financial eligibility of Ethereum to the rest of the world. The term DAO, stands for Decentralized 
+        Autonomous Organization, which in 2016, was a method at which governance could be implemented 
+        on behalf of owners of a stake in a cryptocurrency, in order to adapt ‘Proof of Stake’ methods 
+        on applications such as Ethereum, and to also narrow the maximum security of validation for 
+        cryptocurrency miners. But in this article, we won’t be explaining that, but instead focusing on 
+        what led to the initial downfall and meticulous rise of the DAO that brings it the power it works under today.
+      </p>
+    </div>
+    </div>
+    <div class="box blur" id="box3">
+      <div class="arrow">
+        <button class="up-arrow" onclick="scrollToTop()" disabled> 👈 </button>
+        <button class="down-arrow" onclick="scrollToBottom()"> 👉 </button>
+      </div>
+      <span class="paragraph-indicator">Paragraph #3 of #12</span>
+      <div class="paragraph-container">
+        <button class="lock-button" onclick="toggleLock(this)">🖍️</button>  
+      <p>
+        As source code is the most important part of the cycle at which anything related to 
 					blockchain technology functions properly, this particular event fell victim to defects in the 
 					programming of the DAO process, ultimately creating a major financial loss that would 
 					test the feasibility of Ethereum as a yet, early cryptocurrency at the time. Justifiably, as 
 					much as the DAO concept was as early as the advantageous structure of Ethereum 
 					itself, this event in particular led to a security flaw that would importantly change the 
 					entire direction of how currencies were to work with applications.
-					<br><br><br>
-					In order to put it into a simple explanation, when it came to Ethereum, the specific 
-					security intrusion came when a hacker decided to take advantage of two important and 
-					relatively basic functions within the code. Since there’s a receiver and sender within an 
-					average transaction, in this particular case, there was the coding functions of receive() 
-					and withdraw(). Since a transaction, without the help of smart contracts of course, 
-					cannot work without this programming logic, it was figured at the time that you could 
-					corrupt the ‘calldata’ of the process in order keep withdrawing money from a currency 
-					without the balance of the users financial account changing.
-					<br><br><br>
-					For clarification, ‘calldata’ is the enacted storage base of the currency, or a collection of 
+      </p>
+    </div>
+    </div>
+    <div class="box blur" id="box4">
+      <div class="arrow">
+        <button class="up-arrow" onclick="scrollToTop()" disabled> 👈 </button>
+        <button class="down-arrow" onclick="scrollToBottom()"> 👉 </button>
+      </div>
+      <span class="paragraph-indicator">Paragraph #4 of #12</span>
+      <div class="paragraph-container">
+        <button class="lock-button" onclick="toggleLock(this)">🖍️</button>
+      <p>
+        In order to put it into a simple explanation, when it came to Ethereum, the specific 
+        security intrusion came when a hacker decided to take advantage of two important and 
+        relatively basic functions within the code. Since there’s a receiver and sender within an 
+        average transaction, in this particular case, there was the coding functions of receive() 
+        and withdraw(). Since a transaction, without the help of smart contracts of course, 
+        cannot work without this programming logic, it was figured at the time that you could 
+        corrupt the ‘calldata’ of the process in order keep withdrawing money from a currency 
+        without the balance of the users financial account changing.
+      </p>
+    </div>
+    </div>
+    <div class="box blur" id="box5">
+      <div class="arrow">
+        <button class="up-arrow" onclick="scrollToTop()" disabled> 👈 </button>
+        <button class="down-arrow" onclick="scrollToBottom()"> 👉 </button>
+      </div>
+      <span class="paragraph-indicator">Paragraph #5 of #12</span>
+      <div class="paragraph-container">
+        <button class="lock-button" onclick="toggleLock(this)">🖍️</button>
+      <p>
+        For clarification, ‘calldata’ is the enacted storage base of the currency, or a collection of 
 					four data deposits  of code that allows two functions within the code to communicate. An 
 					example could be that, I send someone ETH in exchange for a piece of digital property 
 					they agreed to sell to myself as the buyer, at which the calldata allows me to send 
@@ -93,8 +595,19 @@
 					place, at which the code and the financial data passed through a smart contract 
 					produces an error code if all the correct functions do not serve their roles in ensuring 
 					that a secure and validated buying and selling procedure takes place.
-					<br><br><br>
-					Now, the reason as to why there’s two core functions, receive() and withdraw() within 
+      </p>
+    </div>
+    </div>
+    <div class="box blur" id="box6">
+      <div class="arrow">
+        <button class="up-arrow" onclick="scrollToTop()" disabled> 👈 </button>
+        <button class="down-arrow" onclick="scrollToBottom()"> 👉 </button>
+      </div>
+      <span class="paragraph-indicator">Paragraph #6 of #12</span>
+      <div class="paragraph-container">
+        <button class="lock-button" onclick="toggleLock(this)">🖍️</button>
+      <p>
+        Now, the reason as to why there’s two core functions, receive() and withdraw() within 
 					the code is because a particular individual had to have withdrawn finances from their 
 					supposed accounts in order to ensure that the transaction of paying and receiving a 
 					digital commodity took place. The unfortunate circumstance here was that a re-entry 
@@ -104,17 +617,39 @@
 					Essentially, this person or group of people kept withdrawing money without letting the 
 					system know that there wasn’t a receiving end, which usually sparks a fallback function 
 					to take place.
-					<br><br><br>
-					Frankly, due to malicious code or a package that was installed into the network to begin 
-					with, this event had not taken place. All of these activities took place within the DAO 
-					smart contracts that ETH had first adapted at the time, leading to a major repercussion 
-					towards the security of millions of users at the time. As a chain must be formed at which 
-					users interact and validate each other's data, this malicious activity led to an inactive 
-					range of blocks, as thought of like a set of dominos that are falling behind each other 
-					synchronously. Altogether, the consequence of the event led to 5% of the total supply of 
-					ETH to be depleted, or in equivalence, 150$ million worth of the currency itself. 
-					<br><br><br>
-					To remain specific before I discuss what the solution to the issue was, I will mention that 
+      </p>
+    </div>
+    </div>    
+    <div class="box blur" id="box7">
+      <div class="arrow">
+        <button class="up-arrow" onclick="scrollToTop()" disabled> 👈 </button>
+        <button class="down-arrow" onclick="scrollToBottom()"> 👉 </button>
+      </div>
+      <span class="paragraph-indicator">Paragraph #7 of #12</span>
+      <div class="paragraph-container">
+        <button class="lock-button" onclick="toggleLock(this)">🖍️</button>
+      <p>
+        Frankly, due to malicious code or a package that was installed into the network to begin 
+        with, this event had not taken place. All of these activities took place within the DAO 
+        smart contracts that ETH had first adapted at the time, leading to a major repercussion 
+        towards the security of millions of users at the time. As a chain must be formed at which 
+        users interact and validate each other's data, this malicious activity led to an inactive 
+        range of blocks, as thought of like a set of dominos that are falling behind each other 
+        synchronously. Altogether, the consequence of the event led to 5% of the total supply of 
+        ETH to be depleted, or in equivalence, 150$ million worth of the currency itself. 
+      </p>
+    </div>
+    </div>
+    <div class="box blur" id="box8">
+      <div class="arrow">
+        <button class="up-arrow" onclick="scrollToTop()" disabled> 👈 </button>
+        <button class="down-arrow" onclick="scrollToBottom()"> 👉 </button>
+      </div>
+      <span class="paragraph-indicator">Paragraph #8 of #12</span>
+      <div class="paragraph-container">
+        <button class="lock-button" onclick="toggleLock(this)">🖍️</button>
+      <p>
+        To remain specific before I discuss what the solution to the issue was, I will mention that 
 					the functions mentioned for the DAO-controlled smart contracts at the time were written 
 					under a programming language called Solidity. In order to solve the problem, the team 
 					behind Ethereum including that of the founder Vitalik Buterin himself, was to essentially 
@@ -124,8 +659,19 @@
 					withdrawing glitch the hacker would take advantage of, at which the withdraw() function 
 					would repeat itself without any indication of a receiving end existing from a different user 
 					holding a contract that would otherwise complete the transaction itself.
-					<br><br><br>
-					Other thoughts were to offer money to crypto miners within the network up to 100 ETH 
+      </p>
+    </div>
+    </div>
+    <div class="box blur" id="box9">
+      <div class="arrow">
+        <button class="up-arrow" onclick="scrollToTop()" disabled> 👈 </button>
+        <button class="down-arrow" onclick="scrollToBottom()"> 👉 </button>
+      </div>
+      <span class="paragraph-indicator">Paragraph #9 of #12</span>
+      <div class="paragraph-container">
+        <button class="lock-button" onclick="toggleLock(this)">🖍️</button>
+      <p>
+        Other thoughts were to offer money to crypto miners within the network up to 100 ETH 
 					or even BTC, in order to stop them continuing their operations within the network, to 
 					make sure that absence in the network would lead to isolating the hackers unchanging 
 					balance. Since neither of these solutions were to work, one major addition was left to 
@@ -136,284 +682,250 @@
 					versus the users who want to move to a newer version instead. It’s like Microsoft asking 
 					an average PC user to upgrade to Windows 11, whereas some would like to solely 
 					focus on continuing to use Windows 10.
-					<br><br><br>
-					As this was not a valued solution, since the core use of the DAO contract would still 
+      </p>
+    </div>
+    </div>
+    <div class="box blur" id="box10">
+      <div class="arrow">
+        <button class="up-arrow" onclick="scrollToTop()" disabled> 👈 </button>
+        <button class="down-arrow" onclick="scrollToBottom()"> 👉 </button>
+      </div>
+      <span class="paragraph-indicator">Paragraph #10 of #12</span>
+      <div class="paragraph-container">
+        <button class="lock-button" onclick="toggleLock(this)">🖍️</button>
+      <p>
+        As this was not a valued solution, since the core use of the DAO contract would still 
 					exist for the hacker who found the glitch to begin with, the only alternative was to 
 					produce a hard fork, at which all users of the network were to switch to a brand new 
 					network at which the initial smart contract was to be duplicated, hence the birth of 
 					Ethereum Classic. To simply put, all users of the network would have to temporarily 
 					remain within an inactive chain, in order to upgrade to the smart contract method of 
 					Ethereum Classic, to continue mining and trading the core cryptocurrency. 
-					<br><br><br>
-					This adaption to the solution remained highly successful, at which the soft fork method 
-					would only help to censor existing transactions on the network and to remove openness 
-					and visibility for those trading their finances, and to instead embark a hard fork that 
-					would completely remove censorship and introduce a new way at which overarching 
-					control of a central organization wouldn’t exist. Since the adaption of the hard fork 
-					method, the inactive chain which discontinued transactions past the 1,920,000th block 
-					within the network on 2016/07/20, would be continued under the Ethereum Classic 
-					contract format. The real importance of this development was that, one fault in the code 
-					of a major currency gave perspectives to the community that the most urgent events in 
-					the digitalized safety of people’s finances may always lead to the quickly initiated 
-					solutions of a team that proves both collaborative and ambitious towards their project. If 
-					ETC was not introduced at the rush of events, ETH would not exist today as a moving 
-					currency that revitalized what is now a custom path of transactional activity that drives 
-					how people interact with their information on a day-to-day basis, and surely wouldn’t 
-					have been done so without perseverance of the users passionate about the currency.
-					<br><br><br>
-					More details regarding this event will be explained in future workshops, ranging from the 
-					specifics in the behavior of the code itself, with a rundown as to what the program 
-					written by Solidity means, to the overall course of events that followed before, during, 
-					and after the attack.
-					<br><br>
-				</p>
-</div>
-
-<div class="container">
-<div id="myDIV1">
-    <div class="article" id="article">
-      <br>
-      <h1> Collaboration On The Blockchain </h1>
-          <h3> When Resilience Meets Innovation </h3>
-          <br>
-                    <p>
-                      <i>“I think the people from the [Ethereum] Foundation were not happy with what was going on at the DAO, even prior to the hack--Because they thought it was too early.”</i>
-            <br><br><br>
-            <i><b>– Igor Artamonov</b></i>
-        <p>
-            <i>“I think the people from the [Ethereum] Foundation were not happy with what was going on at the DAO, even prior to the hack--Because they thought it was too early.”</i>
-			<br><br><br>
-			<i><b>– Igor Artamonov</b></i>
-            <br><br>
-            Regarding the general sphere of how transactions are traded on the <span class="tooltip" data-definition="Blockchain network: Network supporting transactions in cryptocurrencies." data-videos="Video1, Video2, Video3">blockchain network</span>, there is no doubt in saying that <span class="tooltip" data-definition="Cyber crimes: Criminal activities involving technology and networks." data-videos="Video1, Video2, Video3">cyber crimes</span> are always a major issue that is to be addressed, especially after the fact that so many <span class="tooltip" data-definition="Roles within the technology: Various positions and functions in the tech sphere." data-videos="Video1, Video2, Video3">roles within the technology</span> that aren’t just newcomers on the platform. As I’ve covered <span class="tooltip" data-definition="Flaws in cybersecurity: Vulnerabilities in online security measures." data-videos="Video1, Video2, Video3">flaws in cybersecurity</span> from the past, it is important to emphasize that major events from the past that have intruded on the safety of these transactions have defined the great lengths that a <span class="tooltip" data-definition="Collaborative community: Group working together towards a common goal." data-videos="Video1, Video2, Video3">collaborative community</span> has gone towards making sure such problems were not to be repeated again.
-        </p>
-        
-        <p>
-            In this situation, that one event which completely adjusted the course of blockchain history was something called the <span class="tooltip" data-definition="DAO attack: An event that impacted blockchain history." data-videos="Video1, Video2, Video3">DAO attack</span>. For those who didn't read the past workshop about the history behind <span class="tooltip" data-definition="Ethereum: Blockchain platform affected by the DAO attack." data-videos="Video1, Video2, Video3">Ethereum</span>, this particular event created a pause in the development of an application in particular that would expand upon the expansion and financial eligibility of Ethereum to the rest of the world. The term <span class="tooltip" data-definition="Decentralized Autonomous Organization (DAO): A method of governance in cryptocurrency." data-videos="Video1, Video2, Video3">DAO</span>, stands for Decentralized Autonomous Organization, which in 2016, was a method at which governance could be implemented on behalf of owners of a stake in a cryptocurrency, in order to adapt ‘<span class="tooltip" data-definition="Proof of Stake: A method used in cryptocurrency validation." data-videos="Video1, Video2, Video3">Proof of Stake</span>’ methods on applications such as Ethereum, and to also narrow the maximum security of validation for <span class="tooltip" data-definition="Cryptocurrency miners: Individuals involved in validating cryptocurrency transactions." data-videos="Video1, Video2, Video3">cryptocurrency miners</span>. But in this article, we won’t be explaining that, but instead focusing on what led to the initial downfall and meticulous rise of the DAO that brings it the power it works under today.
-        </p>
-        
-        <p>
-            As <span class="tooltip" data-definition="Source code: Foundational code of blockchain technology." data-videos="Video1, Video2, Video3">source code</span> is the most important part of the cycle at which anything related to blockchain technology functions properly, this particular event fell victim to <span class="tooltip" data-definition="Defects in programming: Issues or problems within the programming of the DAO process." data-videos="Video1, Video2, Video3">defects in the programming</span> of the DAO process, ultimately creating a <span class="tooltip" data-definition="Financial loss: Loss incurred due to the DAO event." data-videos="Video1, Video2, Video3">major financial loss</span> that would test the feasibility of <span class="tooltip" data-definition="Ethereum: Cryptocurrency affected by the DAO incident." data-videos="Video1, Video2, Video3">Ethereum</span> as a yet, early cryptocurrency at the time. Justifiably, as much as the DAO concept was as early as the advantageous structure of Ethereum itself, this event in particular led to a <span class="tooltip" data-definition="Security flaw: Vulnerability that impacted currency functionality." data-videos="Video1, Video2, Video3">security flaw</span> that would importantly change the entire direction of how currencies were to work with applications.
-        </p>
-        
-        <p>
-            In order to put it into a simple explanation, when it came to <span class="tooltip" data-definition="Ethereum: Cryptocurrency affected by the security intrusion." data-videos="Video1, Video2, Video3">Ethereum</span>, the specific security intrusion came when a <span class="tooltip" data-definition="Hacker: Individual who exploited vulnerabilities." data-videos="Video1, Video2, Video3">hacker</span> decided to take advantage of two important and relatively basic functions within the code. Since there’s a receiver and sender within an average transaction, in this particular case, there was the coding functions of <span class="tooltip" data-definition="Receive() and withdraw(): Functions within the code relating to transactions." data-videos="Video1, Video2, Video3">receive()</span> and <span class="tooltip" data-definition="Receive() and withdraw(): Functions within the code relating to transactions." data-videos="Video1, Video2, Video3">withdraw()</span>. Since a transaction, without the help of <span class="tooltip" data-definition="Smart contracts: Programs that execute predefined actions upon meeting certain conditions." data-videos="Video1, Video2, Video3">smart contracts</span> of course, cannot work without this programming logic, it was figured at the time that you could corrupt the ‘<span class="tooltip" data-definition="Calldata: Data sent along with a transaction." data-videos="Video1, Video2, Video3">calldata</span>’ of the process in order to keep withdrawing money from a currency without the balance of the user's financial account changing.
-        </p>
-
-        <p>
-            For clarification, ‘<span class="tooltip" data-definition="Calldata: Describes the storage base of the currency, enabling communication between functions." data-videos="Video1, Video2, Video3">calldata</span>’ is the enacted storage base of the currency, or a collection of four data deposits of code that allows two functions within the code to communicate. An example could be that, I send someone <span class="tooltip" data-definition="ETH: Abbreviation for Ethereum, referring to the cryptocurrency." data-videos="Video1, Video2, Video3">ETH</span> in exchange for a piece of digital property they agreed to sell to myself as the buyer, at which the calldata allows me to send through the currency amount within the conditions that a <span class="tooltip" data-definition="Fallback() function: A function that executes if no other function matches the provided function identifier." data-videos="Video1, Video2, Video3">fallback()</span> function doesn’t take place, at which the code and the financial data passed through a <span class="tooltip" data-definition="Smart contract: Self-executing contracts with the terms directly written into code." data-videos="Video1, Video2, Video3">smart contract</span> produces an error code if all the correct functions do not serve their roles in ensuring that a secure and validated buying and selling procedure takes place.
-        </p>
-
-        <p>
-            Now, the reason as to why there’s two core functions, <span class="tooltip" data-definition="Receive() and withdraw(): Core functions within the code related to transactions." data-videos="Video1, Video2, Video3">receive()</span> and <span class="tooltip" data-definition="Receive() and withdraw(): Core functions within the code related to transactions." data-videos="Video1, Video2, Video3">withdraw()</span> within the code is because a particular individual had to have withdrawn finances from their supposed accounts in order to ensure that the transaction of paying and receiving a digital commodity took place. The unfortunate circumstance here was that a <span class="tooltip" data-definition="Re-entry attack: An attack exploiting vulnerabilities to repeatedly access or manipulate the system." data-videos="Video1, Video2, Video3">re-entry attack</span> took place, at which a <span class="tooltip" data-definition="Hacker: An individual or group exploiting vulnerabilities for unauthorized access." data-videos="Video1, Video2, Video3">hacker</span> disguising themselves as a role within the network such as an <span class="tooltip" data-definition="Investor: Role within the network that was impersonated during the attack." data-videos="Video1, Video2, Video3">investor</span>, made sure that they could consistently withdraw vitalized currency money from multiple accounts at once without a specific <span class="tooltip" data-definition="Fallback function: A function that executes when specific conditions are not met." data-videos="Video1, Video2, Video3">receive()</span> function taking place. Essentially, this person or group of people kept withdrawing money without letting the system know that there wasn’t a receiving end, which usually sparks a fallback function to take place.
-        </p>
-        
-        <p>
-            Frankly, due to <span class="tooltip" data-definition="Malicious code: Code intentionally designed to cause harm or exploit vulnerabilities." data-videos="Video1, Video2, Video3">malicious code</span> or a <span class="tooltip" data-definition="Package installation: Referring to software components installed in the network." data-videos="Video1, Video2, Video3">package that was installed into the network</span> to begin with, this event had not taken place. All of these activities took place within the <span class="tooltip" data-definition="DAO smart contracts: Smart contracts utilized by the DAO system." data-videos="Video1, Video2, Video3">DAO smart contracts</span> that ETH had first adapted at the time, leading to a major repercussion towards the security of millions of users at the time. As a chain must be formed at which users interact and validate each other's data, this malicious activity led to an <span class="tooltip" data-definition="Inactive range of blocks: Blocks within the blockchain that were affected and rendered inactive." data-videos="Video1, Video2, Video3">inactive range of blocks</span>, as thought of like a set of dominos that are falling behind each other synchronously. Altogether, the consequence of the event led to 5% of the <span class="tooltip" data-definition="Total supply of ETH: The overall quantity of Ethereum in existence." data-videos="Video1, Video2, Video3">total supply of ETH</span> to be depleted, or in equivalence, 150$ million worth of the currency itself.
-        </p>
-
-        <p>
-            To remain specific before I discuss what the solution to the issue was, I will mention that the functions mentioned for the DAO-controlled smart contracts at the time were written under a programming language called <span class="tooltip" data-definition="Solidity: The programming language used for writing functions within the DAO-controlled smart contracts." data-videos="Video1, Video2, Video3">Solidity</span>. In order to solve the problem, the team behind Ethereum including that of the founder <span class="tooltip" data-definition="Vitalik Buterin: The founder of Ethereum." data-videos="Video1, Video2, Video3">Vitalik Buterin</span> himself, was to essentially write a <span class="tooltip" data-definition="Fork: Creating a divergence in the blockchain's transaction history to implement changes." data-videos="Video1, Video2, Video3">fork</span> under Ethereum that would completely reset the entire history of the currency itself, setting the value of it back to 0 and restarting all the work and investments put into making it work to begin with. This would essentially solve the initial withdrawing glitch the hacker would take advantage of, at which the <span class="tooltip" data-definition="Withdraw() function glitch: The flaw allowing repeated withdrawals without completion of transactions." data-videos="Video1, Video2, Video3">withdraw()</span> function would repeat itself without any indication of a receiving end existing from a different user holding a contract that would otherwise complete the transaction itself.
-        </p>
-        
-        <p>
-            Other thoughts were to offer money to <span class="tooltip" data-definition="Crypto miners: Individuals or entities using computing power to validate transactions and secure the network." data-videos="Video1, Video2, Video3">crypto miners</span> within the network up to 100 <span class="tooltip" data-definition="ETH or BTC: Abbreviations for Ethereum and Bitcoin, respectively." data-videos="Video1, Video2, Video3">ETH or even BTC</span>, in order to stop them continuing their operations within the network, to make sure that absence in the network would lead to isolating the hackers unchanging balance. Since neither of these solutions were to work, one major addition was left to make ETH progress to the next level, and that was through a method called <span class="tooltip" data-definition="Forking: Creating a divergence in the blockchain's transaction history to implement changes." data-videos="Video1, Video2, Video3">forking</span>. In this case, the hackers were given a choice, at which they must adapt to a <span class="tooltip" data-definition="Soft fork: Modifying code to create a divergence in the user base between older and newer versions." data-videos="Video1, Video2, Video3">soft fork</span> of the currency, which essentially means replicating the code and modifying it to split the complete user base into people who want to stick to an older version of the system, versus the users who want to move to a newer version instead. It’s like Microsoft asking an average PC user to upgrade to <span class="tooltip" data-definition="Windows 11 and Windows 10: Analogy for users choosing between different versions of the operating system." data-videos="Video1, Video2, Video3">Windows 11</span>, whereas some would like to solely focus on continuing to use <span class="tooltip" data-definition="Windows 11 and Windows 10: Analogy for users choosing between different versions of the operating system." data-videos="Video1, Video2, Video3">Windows 10</span>.
-        </p>
-        
-        <p>
-            As this was not a valued solution, since the core use of the <span class="tooltip" data-definition="DAO contract: Refers to the Decentralized Autonomous Organization's contract on the blockchain." data-videos="Video1, Video2, Video3">DAO contract</span> would still exist for the hacker who found the glitch to begin with, the only alternative was to produce a <span class="tooltip" data-definition="Hard fork: Creating a divergence in the blockchain's transaction history to implement changes." data-videos="Video1, Video2, Video3">hard fork</span>, at which all users of the network were to switch to a brand new network at which the initial smart contract was to be duplicated, hence the birth of <span class="tooltip" data-definition="Ethereum Classic: The original Ethereum blockchain following a hard fork." data-videos="Video1, Video2, Video3">Ethereum Classic</span>. To simply put, all users of the network would have to temporarily remain within an <span class="tooltip" data-definition="Inactive chain: Refers to a blockchain that is temporarily inactive or on hold during an upgrade." data-videos="Video1, Video2, Video3">inactive chain</span>, in order to upgrade to the smart contract method of Ethereum Classic, to continue <span class="tooltip" data-definition="Mining and trading: Activities involving validating transactions and exchanging the cryptocurrency." data-videos="Video1, Video2, Video3">mining and trading</span> the core cryptocurrency.
-        </p>
-        
-        <p>
-            This adaption to the solution remained highly successful, at which the <span class="tooltip" data-definition="Soft fork: A method causing censorship in transactions and reducing openness on the network." data-videos="Video1, Video2, Video3">soft fork</span> method would only help to censor existing transactions on the network and to remove openness and visibility for those trading their finances, and to instead embark a <span class="tooltip" data-definition="Hard fork: An update that removes censorship and introduces changes without central control." data-videos="Video1, Video2, Video3">hard fork</span> that would completely remove censorship and introduce a new way at which overarching control of a central organization wouldn’t exist. Since the adaption of the hard fork method, the inactive chain which discontinued transactions past the <span class="tooltip" data-definition="1,920,000th block: Specific block number within the blockchain signaling an event date." data-videos="Video1, Video2, Video3">1,920,000th block</span> within the network on 2016/07/20, would be continued under the <span class="tooltip" data-definition="Ethereum Classic (ETC): The original Ethereum blockchain following a hard fork." data-videos="Video1, Video2, Video3">Ethereum Classic (ETC)</span> contract format. The real importance of this development was that, one fault in the code of a major currency gave perspectives to the community that the most urgent events in the <span class="tooltip" data-definition="Digitalized safety: Refers to security measures in digital financial transactions." data-videos="Video1, Video2, Video3">digitalized safety</span> of people’s finances may always lead to the quickly initiated solutions of a team that proves both collaborative and ambitious towards their project. If ETC was not introduced at the rush of events, ETH would not exist today as a moving currency that revitalized what is now a custom path of transactional activity that drives how people interact with their information on a day-to-day basis, and surely wouldn’t have been done so without perseverance of the users passionate about the currency.
-        </p>
-
-        <p>
-            More details regarding this event will be explained in future workshops, ranging from the specifics in the behavior of the code itself, with a rundown as to what the program written by <span class="tooltip" data-definition="Solidity: The programming language used for writing smart contracts on the Ethereum blockchain." data-videos="Video1, Video2, Video3">Solidity</span> means, to the overall course of events that followed before, during, and after the attack.
-        </p>
-              
-      <div class="tooltip-box" id="tooltipBox">
-          <span id="tooltipContent"></span>
-          <div class="video-container" id="videoContainer">
-              <!-- Video recommendations will appear here -->
-          </div>
-          <span class="close-btn">×</span> <!-- Close button -->
+      </p>
+    </div>
+    </div>
+    <div class="box blur" id="box11">
+      <div class="arrow">
+        <button class="up-arrow" onclick="scrollToTop()" disabled> 👈 </button>
+        <button class="down-arrow" onclick="scrollToBottom()"> 👉 </button>
       </div>
-       
+      <span class="paragraph-indicator">Paragraph #11 of #12</span>
+      <div class="paragraph-container">
+        <button class="lock-button" onclick="toggleLock(this)">🖍️</button>
+      <p>
+        This adaption to the solution remained highly successful, at which the soft fork method 
+        would only help to censor existing transactions on the network and to remove openness 
+        and visibility for those trading their finances, and to instead embark a hard fork that 
+        would completely remove censorship and introduce a new way at which overarching 
+        control of a central organization wouldn’t exist. Since the adaption of the hard fork 
+        method, the inactive chain which discontinued transactions past the 1,920,000th block 
+        within the network on 2016/07/20, would be continued under the Ethereum Classic 
+        contract format. The real importance of this development was that, one fault in the code 
+        of a major currency gave perspectives to the community that the most urgent events in 
+        the digitalized safety of people’s finances may always lead to the quickly initiated 
+        solutions of a team that proves both collaborative and ambitious towards their project. If 
+        ETC was not introduced at the rush of events, ETH would not exist today as a moving 
+        currency that revitalized what is now a custom path of transactional activity that drives 
+        how people interact with their information on a day-to-day basis, and surely wouldn’t 
+        have been done so without perseverance of the users passionate about the currency.
+      </p>
     </div>
-    <div class="slider-container">
-        <div class="arrow-button" id="prevButton">&#9650;</div>
-        <p>
-          <br><br><br><br>
-          Paragraph <span id="currentParagraph">1</span> of <span id="totalParagraphs">24</span>
-        </p>
-        <div class="arrow-button" id="nextButton">&#9660;</div>
     </div>
-</div>
-</div>
-
-<div class="tooltip-box" id="tooltipBox">
-  <span id="tooltipContent"></span>
-  <div class="video-container" id="videoContainer">
-      <!-- Video recommendations will appear here -->
-  </div>
-  <span class="close-btn">×</span> <!-- Close button -->
-</div>
+    <div class="box blur" id="box12">
+      <div class="arrow">
+        <button class="up-arrow" onclick="scrollToTop()" disabled> 👈 </button>
+        <button class="down-arrow" onclick="scrollToBottom()"> 👉 </button>
+      </div>
+      <span class="paragraph-indicator">Paragraph #12 of #12</span>
+      <div class="paragraph-container">
+        <button class="lock-button" onclick="toggleLock(this)">🖍️</button>
+      <p>
+        More details regarding this event will be explained in future workshops, ranging from the 
+        specifics in the behavior of the code itself, with a rundown as to what the program 
+        written by Solidity means, to the overall course of events that followed before, during, 
+        and after the attack.
+      </p>
+    </div>
+    </div>
+    <div id="scrollToTopBtn" class="scroll-to-top" style="display: none;">
+        <i class="fas fa-arrow-up"></i>
+        <span style="vertical-align: middle; font-size: 26px;">👆</span>
+    </div>
 </div>
 
 <script>
+const boxes = document.querySelectorAll('.box');
+const container = document.querySelector('.container');
+const upArrows = document.querySelectorAll('.up-arrow');
+const downArrows = document.querySelectorAll('.down-arrow');
+let currentIndex = 0;
 
-function myFunction() {
-  var x = document.getElementById("myDIV");
-  var y = document.getElementById("myDIV1");
-  if (x.style.display === "none") {
-    x.style.display = "block";
-  } else {
-    x.style.display = "none";
-  }
-  if (y.style.display === "none") {
-    y.style.display = "none";
-  } else {
-    y.style.display = "none";
-  }
-}
+// Initialize the page by hiding arrow buttons for all boxes except the first one
+hideOtherArrows(currentIndex);
 
-function myFunction1() {
-  var x = document.getElementById("myDIV");
-  var y = document.getElementById("myDIV1");
-  if (x.style.display === "none") {
-    x.style.display = "none";
-  } else {
-    x.style.display = "none";
-  }
-  if (y.style.display === "none") {
-    y.style.display = "block";
-  } else {
-    y.style.display = "none";
-  }
-}
-
-document.addEventListener('DOMContentLoaded', function() {
-    const article = document.getElementById('article');
-    const totalParagraphs = article.querySelectorAll('p').length;
-    document.getElementById('totalParagraphs').textContent = totalParagraphs;
-
-    let currentSlide = 1;
-    let isTooltipDisplayed = false;
-
-    function displayParagraph(slide) {
-        const paragraphs = article.querySelectorAll('p');
-        paragraphs.forEach(paragraph => {
-            paragraph.style.opacity = '0';
-        });
-
-        const selectedParagraph = paragraphs[slide - 1];
-        setTimeout(() => {
-            selectedParagraph.style.opacity = '1';
-        }, 100);
-
-        document.getElementById('currentParagraph').textContent = slide;
-
-        // Tooltip Functionality
-        const tooltipSpan = selectedParagraph.querySelectorAll('.tooltip');
-        const tooltipBox = document.createElement('div');
-        tooltipBox.classList.add('tooltip-box');
-        selectedParagraph.appendChild(tooltipBox);
-
-        tooltipSpan.forEach(span => {
-            span.addEventListener('click', (event) => {
-                if (!isTooltipDisplayed) {
-                    const definition = event.target.getAttribute('data-definition');
-                    const videos = event.target.getAttribute('data-videos');
-
-                    const tooltipContent = document.createElement('div');
-                    tooltipContent.classList.add('tooltip-content');
-                    tooltipContent.textContent = definition;
-
-                    const videoContainer = document.createElement('div');
-                    videoContainer.classList.add('video-container');
-                    videoContainer.innerHTML = '';
-
-                    if (videos) {
-                        const videoList = videos.split(', ');
-                        const videoListHTML = videoList.map(video => `<iframe width="100%" height="200" src="${video}" frameborder="0" allowfullscreen></iframe>`).join('');
-                        videoContainer.innerHTML = `<h3>Video Recommendations:</h3>${videoListHTML}`;
-                    }
-
-                    tooltipBox.innerHTML = '';
-                    tooltipBox.appendChild(tooltipContent);
-                    tooltipBox.appendChild(videoContainer);
-
-                    const closeBtn = document.createElement('span');
-                    closeBtn.classList.add('close-btn');
-                    closeBtn.textContent = 'X';
-                    closeBtn.addEventListener('click', () => {
-                        isTooltipDisplayed = false;
-                        tooltipBox.style.display = 'none';
-                    });
-                    tooltipBox.appendChild(closeBtn);
-
-                    tooltipBox.style.display = 'block';
-                    isTooltipDisplayed = true;
-
-
-                }
-            });
-
-            tooltipBox.removeEventListener('mouseleave', () => {
-                isTooltipDisplayed = false;
-                tooltipBox.style.display = 'none';
-            });
-        });
-    }
-
-    document.getElementById('nextButton').addEventListener('click', () => {
-        if (currentSlide < totalParagraphs) {
-            currentSlide++;
-            displayParagraph(currentSlide);
-        }
-    });
-
-    document.getElementById('prevButton').addEventListener('click', () => {
-        if (currentSlide > 1) {
-            currentSlide--;
-            displayParagraph(currentSlide);
-        }
-    });
-
-    displayParagraph(currentSlide);
+upArrows.forEach(function(elem, index) {
+  elem.addEventListener('click', function() {
+    moveBoxUp(index);
+  });
 });
 
-let prevScrollPos = window.pageYOffset;
+downArrows.forEach(function(elem, index) {
+  elem.addEventListener('click', function() {
+    moveBoxDown(index);
+  });
+});
 
-    window.onscroll = function() {
-      let currentScrollPos = window.pageYOffset;
+document.addEventListener('keydown', function(event) {
+  if (event.key === 'ArrowRight') {
+    moveBoxDown(currentIndex);
+  } else if (event.key === 'ArrowLeft') {
+    moveBoxUp(currentIndex);
+  } else if (event.key === 'ArrowUp') {
+    moveBoxUp(currentIndex);
+  } else if (event.key === 'ArrowDown') {
+    moveBoxDown(currentIndex);
+  }
+});
 
-      if (prevScrollPos > currentScrollPos) {
-        document.getElementById("navbar").classList.remove("hidden");
-      } else {
-        document.getElementById("navbar").classList.add("hidden");
-      }
+function moveBoxUp(index) {
+  if (index > 0) {
+    const nextIndex = index - 1;
+    moveToIndex(nextIndex);
+  }
+}
 
-      prevScrollPos = currentScrollPos;
-    };
+function moveBoxDown(index) {
+  if (index < boxes.length - 1) {
+    const nextIndex = index + 1;
+    moveToIndex(nextIndex);
+  }
+}
 
-    // JavaScript to bring back solidity on hover
-    const navbar = document.getElementById('navbar');
+function moveToIndex(nextIndex) {
+  // Remove active class from current box and add blur class
+  boxes[currentIndex].classList.remove('active');
+  boxes[currentIndex].classList.add('blur');
 
-    navbar.addEventListener('mouseenter', function() {
-      navbar.classList.remove('hidden');
+  // Add active class to next box and remove blur class
+  boxes[nextIndex].classList.remove('blur');
+  boxes[nextIndex].classList.add('active');
+
+  // Calculate the position to align active box with arrow box
+  const arrowRect = boxes[nextIndex].querySelector('.arrow').getBoundingClientRect();
+  const activeBoxRect = boxes[nextIndex].getBoundingClientRect();
+
+  // Calculate the scroll position to align active box with arrow box
+  const scrollLeft = activeBoxRect.left - arrowRect.left - (window.innerWidth / 2 - activeBoxRect.width / 2);
+
+  // Set the scroll position to immediately position the active box beside the arrow box
+  container.scrollLeft = scrollLeft;
+
+  currentIndex = nextIndex;
+
+  // Disable/enable arrows based on current index
+  upArrows.forEach(function(elem) {
+    elem.disabled = currentIndex === 0;
+  });
+
+  downArrows.forEach(function(elem) {
+    elem.disabled = currentIndex === boxes.length - 1;
+  });
+
+  // Hide arrow buttons for other boxes
+  hideOtherArrows(currentIndex);
+}
+
+function hideOtherArrows(index) {
+  boxes.forEach(function(box, i) {
+    const arrows = box.querySelectorAll('.arrow button');
+    arrows.forEach(function(arrow) {
+      arrow.style.visibility = i !== index ? 'hidden' : 'visible';
+    });
+  });
+}
+
+    
+document.getElementById('view-full-article-box').addEventListener('click', function() {
+    // Create the button for entering paragraph mode
+    var refreshButton = document.createElement('button');
+    refreshButton.textContent = 'Enter Paragraph Mode';
+    refreshButton.classList.add('view-full-article'); // Add class for styling
+    refreshButton.style.backgroundColor = 'white'; // Set white background
+    refreshButton.style.color = 'black'; // Set black text color
+    refreshButton.style.border = '2px solid white'; // Add white border
+    refreshButton.style.cursor = 'pointer'; // Set cursor to pointer to indicate clickability
+    refreshButton.addEventListener('click', function() {
+        location.reload(); // Reload the page when clicked
     });
 
-    navbar.addEventListener('mouseleave', function() {
-      if (window.scrollY === 0) {
-        navbar.classList.add('hidden');
-      }
+    // Append the button to the 'view-full-article-box'
+    this.innerHTML = ''; // Clear existing content
+    this.appendChild(refreshButton);
+
+    // Remove active state from all boxes
+    document.querySelectorAll('.box').forEach(function(box) {
+        box.classList.remove('active');
     });
 
+    // Remove box styling
+    document.querySelectorAll('.box').forEach(function(box) {
+        box.style.border = 'none';
+        box.style.backgroundColor = 'transparent';
+        box.style.fontSize = '15px'; // Set font size back to default
+        box.classList.remove('blur'); // Remove blur class
+    });
 
-</script>
+    // Remove paragraph indicators
+    document.querySelectorAll('.paragraph-indicator').forEach(function(indicator) {
+        indicator.remove();
+    });
 
+    // Disable lock buttons and hide lock icons
+    document.querySelectorAll('.lock-button').forEach(function(lockButton) {
+        lockButton.disabled = true;
+        lockButton.style.display = 'none';
+    });
+
+    // Remove animations
+    document.querySelectorAll('.move-up, .move-down').forEach(function(animation) {
+        animation.style.animation = 'none';
+    });
+
+    // Hide arrow buttons for all other boxes
+    hideOtherArrows(-1);
+});
+
+let lockedParagraph = null;
+
+function toggleLock(button) {
+  const parent = button.parentNode;
+  const isLocked = parent.classList.toggle('locked');
+  if (isLocked) {
+    lockedParagraph = parent;
+    centerParagraph(lockedParagraph);
+  } else {
+    lockedParagraph = null;
+  }
+}
+
+function centerParagraph(element) {
+  const rect = element.getBoundingClientRect();
+  const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+  const centerY = rect.top + rect.height / 2 - window.innerHeight / 2 + scrollTop;
+  window.scrollTo({
+    top: centerY,
+    behavior: 'smooth'
+  });
+}
+
+// Keep the locked paragraph centered if the window is resized
+window.addEventListener('resize', function() {
+  if (lockedParagraph) {
+    centerParagraph(lockedParagraph);
+  }
+});
+
+
+    </script>  
 </body>
 </html>
-

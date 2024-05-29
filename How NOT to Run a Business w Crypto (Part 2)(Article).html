@@ -1,6 +1,5 @@
 <!DOCTYPE html>
-<html>
-  <link rel="stylesheet" type="text/css" href="reader.css">
+<html lang="en">
 <head>
   <!-- Google tag (gtag.js) -->
 	<script async src="https://www.googletagmanager.com/gtag/js?id=G-9J1B2MTYSV"></script>
@@ -10,47 +9,500 @@
  	 	gtag('js', new Date());
  	 	gtag('config', 'G-9J1B2MTYSV');
 	</script>
-  <title> How NOT to Run a Business w Crypto (Part 2) - Article </title>
-<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title> How NOT to Run a Business w Crypto (Part 2) - Article </title>
 <style>
 
+.locked {
+        background-color: darkorange;
+        border: 1px solid;
+        border-radius: 10px;
+        border-color: black;
+    }
+
+.button-container {
+        position: relative;
+        width: 300px; /* Adjust width as needed */
+    }
+
+    .expand-button {
+        width: 10px; /* Initial width of the button */
+        height: 10px; /* Height of the button */
+        padding: 10px;
+        background-color: #ff0000;
+        color: rgb(255, 255, 255);
+        border: none;
+        cursor: pointer;
+        position: relative; /* Enable positioning of the tooltip */
+        transition: width 0.3s; /* Smooth transition effect */
+        border-radius: 5px; /* Make the edges rounder */
+        margin-top: 20px;
+    }
+
+    .expand-button .initial-text,
+    .expand-button .tooltip {
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        opacity: 0;
+        transition: opacity 0.3s; /* Smooth transition effect */
+        
+    }
+
+    .expand-button .initial-text {
+        opacity: 1; /* Show "+" sign text by default */
+    }
+
+    .expand-button:hover {
+        width: 100px; /* Expanded width on hover */
+    }
+
+    .expand-button:hover .initial-text {
+        opacity: 0; /* Hide "+" sign text on hover */
+    }
+
+    .expand-button:hover .tooltip {
+        opacity: 1; /* Show "Hello" text on hover */
+        right: 100px; /* Position "Hello" text beside "+" sign */
+    }
+
+.paragraph-container {
+        padding: 10px;
+        margin: 10px;
+        position: relative; /* Relative positioning for absolute positioning of the lock button */
+    }
+    
+    .lock-button {
+        padding: 5px;
+        background-color: #000000;
+        color: white;
+        border: none;
+        border-radius: 50%;
+        cursor: pointer;
+        position: absolute; /* Absolute positioning */
+        top: 50%; /* Vertically center the button */
+        right: -100px; /* Position the button outside the box */
+        transform: translateY(-50%); /* Adjust position to center vertically */
+    }
+
+
+.scroll-to-top {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    cursor: pointer;
+    background-color: #000000;
+    color: #fff;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.scroll-to-top i {
+    font-size: 20px;
+}
+
+.navbar {
+  color: white;
+  padding: 25px; /* Increase padding to give more space */
+  width: 95%; /* Make the navbar fully wide */
+  position: fixed; /* Fix the navbar to the top */
+  top: 0; /* Position the navbar at the top of the viewport */
+  z-index: 1000; /* Ensure the navbar is above other content */
+  display: flex; /* Use flexbox to align items */
+  justify-content: space-between; /* Align items to the start and end */
+}
+
+.navbar-logo {
+  width: 50px;
+  height: auto;
+  margin-right: auto; /* Push the logo to the left */
+}
+
+.nav-links {
+  display: flex; /* Use flexbox to align items */
+}
+
+.nav-link {
+  margin-left: 10px; /* Add margin to separate links */
+  text-decoration: none;
+  color: white;
+}
+
+.nav-link:not(:last-child)::after {
+  content: '|'; /* Add a vertical line */
+  margin-left: 10px; /* Add space between the line and the link */
+  color: white; /* Set the color of the line */
+}
+
+
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    overflow: hidden;
+    height: 100vh;
+    padding: 200px;
+}
+
+.button-container {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20px;
+  }
+
+  .button {
+    padding: 10px 20px;
+    background-color: #f0f0f0;
+    color: #333;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+    margin: 5px;
+  }
+
+  .button.active {
+    background-color: black;
+    color: white;
+  }
+
+  .content {
+    display: none;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    margin-top: 20px;
+  }
+
+  .content.active {
+    display: block;
+  }
+
+body {
+  font-family: Arial, sans-serif;
+  font-size: 15px;
+  height: 400vh;
+}
+
+.box {
+  border: 1px solid transparent;
+  border-radius: 10px;
+  background-color: white; /* Set the background color of the boxes to white */
+  color: black; /* Set text color to black */
+  padding: 10px 60px 10px 20px; /* Adjust padding to move the text a little more to the left */
+  margin: 10px auto;
+  width: 80%;
+  max-width: 600px;
+  box-sizing: border-box;
+  position: relative;
+  transition: transform 0.5s ease;
+  text-align: left;
+  font-family: Arial, sans-serif; /* Set the font family to Arial */
+}
+
+  .box.active {
+    transform: translateX(0%) scale(1.5); /* Center the active box more to the right and keep it enlarged */
+    z-index: 1;
+    background-color: black;
+    color: white;
+  }
+
+
+  .box.active .arrow {
+    transform: rotate(90deg); /* Rotate the arrow button by 90 degrees */
+  }
+
+  .box.blur {
+    filter: blur(5px); /* Apply blur effect to all boxes except the active one */
+    transform: scale(1);
+    z-index: 0;
+  }
+
+  .blur {
+  filter: blur(2px); /* Apply blur effect */
+  pointer-events: none; /* Disable pointer events */
+  user-select: none; /* Disable text selection */
+}
+
+
+  .arrow {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  right: 0;
+  top: 50%;
+}
+
+.up-arrow button,
+.down-arrow button {
+  background-color: #ccc;
+  border-radius: none;
+  padding: 5px 10px; /* Reduce padding */
+  cursor: pointer;
+  font-size: 14px; /* Reduce font size */
+  border-radius: 50%; /* Make the button round */
+}
+
+
+  .paragraph-indicator {
+  color: gray;
+  font-size: 12px;
+  display: block;
+  margin-bottom: 5px;
+  font-weight: bold; /* Add this line to make the paragraph indicator bold */
+}
+
+.banner {
+  position: relative;
+  width: 100%;
+  height: 30vh; /* Adjusted height for the banner */
+  background-size: cover;
+  background-color: #ffffff; /* Dark gray background for the banner */
+}
+
+header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 90%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  transition: 0.6s;
+  padding: 40px 100px;
+  z-index: 100000;
+  border-bottom: 2px solid rgb(0, 0, 0); /* White border at the bottom of the header */
+  opacity: 1;
+  transition: opacity 0.6s;
+}
+
+header.hidden {
+  opacity: 0;
+}
+
+header ul {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 10px 0;
+  border-top: 2px solid rgb(255, 255, 255); /* White border at the top of the ul */
+  border-bottom: 2px solid white; /* White border at the bottom of the ul */
+}
+
+header ul li {
+  position: relative;
+  list-style: none;
+  border-left: 2px solid white; /* White border on the left of each list item */
+}
+
+header ul li:first-child {
+  border-left: none; /* Remove left border for the first list item */
+}
+
+header ul li a {
+  position: relative;
+  margin: 0 15px;
+  text-decoration: none;
+  color: hsl(0, 0%, 100%);
+  letter-spacing: 2px;
+  font-weight: 500;
+  transition: 0.6s;
+}
+
+/* Add hover effect to header buttons */
+header ul li a:hover {
+  color: #000000; /* Change to the desired highlight color */
+}
+
+body {
+  background-color: orange;
+  padding-top: 60px; /* Increase padding to make more room for the navigation bar */
+  font-family: Arial, sans-serif;
+}
+
+.container {
+  position: absolute; /* Set the container to absolute positioning */
+  top: 80px; /* Adjust the top offset to position the container below the navigation bar */
+  left: 0; /* Ensure the container starts from the left edge of the viewport */
+  right: 0; /* Ensure the container ends at the right edge of the viewport */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 7000px; /* Adjust the container's height to fill the remaining viewport */
+}
+
+.box {
+  border: 1px solid transparent;
+  border-radius: 10px;
+  background-color: white; /* Set the background color of the boxes to white */
+  color: black; /* Set text color to black */
+  padding: 10px 60px 10px 20px; /* Adjust padding to move the text a little more to the left */
+  margin: 10px auto;
+  width: 80%;
+  max-width: 600px;
+  box-sizing: border-box;
+  position: relative;
+  transition: transform 0.5s ease;
+  text-align: left; /* Align text to the left */
+  font-family: Arial, sans-serif; /* Set the font family to Arial */
+}
+
+.view-full-article-box {
+    border-radius: 10px; /* Make the edges rounder */
+    padding: 10px;
+    margin-top: 20px;
+    width: fit-content;
+}
+
+.view-full-article {
+    text-decoration: none;
+    color: black;
+    border: none; /* Remove the border */
+    background-color: #f0f0f0; /* Set the initial background color */
+    padding: 8px 16px; /* Adjust padding */
+    border-radius: 8px; /* Make the button rounder */
+}
+
+.view-full-article:hover {
+    background-color: #e0e0e0; /* Darken the background color on hover */
+}
+
+.view-full-article:active {
+    background-color: black; /* Change background color when button is clicked */
+    color: white; /* Change text color when button is clicked */
+}
+
+
+.box.active {
+  transform: translateX(0%) scale(1.5); /* Center the active box more to the right and keep it enlarged */
+}
+
+.box.blur {
+  filter: blur(5px); /* Apply blur effect to all boxes except the active one */
+  transform: scale(1);
+}
+
+.arrow {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  right: 0;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.arrow button {
+  background-color: #ccc;
+  border: none;
+  padding: 2px 6px; /* Reduce padding */
+  cursor: pointer;
+  font-size: 14px; /* Reduce font size */
+}
+
+@keyframes moveDown {
+  from {
+    transform: translateY(0);
+  }
+  to {
+    transform: translateY(20%);
+  }
+}
+
+@keyframes moveUp {
+  from {
+    transform: translateY(0);
+  }
+  to {
+    transform: translateY(-20%);
+  }
+}
+
+.move-down {
+  animation: moveDown 0.3s forwards;
+}
+
+.move-up {
+  animation: moveUp 0.3s forwards;
+}
+
+
+  @keyframes moveDown {
+    from {
+      transform: translateY(0);
+    }
+    to {
+      transform: translateY(20%);
+    }
+  }
+
+  @keyframes moveUp {
+    from {
+      transform: translateY(0);
+    }
+    to {
+      transform: translateY(-20%);
+    }
+  }
+
+  .move-down {
+    animation: moveDown 0.3s forwards;
+  }
+
+  .move-up {
+    animation: moveUp 0.3s forwards;
+  }
 </style>
 </head>
 <body>
 
-  <header id="navbar">
-    <a href="index.html"><img src="blockchaintmu (normal logo - no background).png" alt="Welcome!" style="float:left;width:400px;height:220px;"></a>
-          <div class="dropdown">
-              <div class="dropdown-content">
-                  <ul>
-          <li><a href="index.html"><b>HOME</a></li></b>
-          <li><a href="Workshops.html"><b>WORKSHOPS</a></li></b>
-          <li><a href="FirstAccess.html"><b>FIRST/ACCESS</a></li></b>
-          <li><a href="Columns.html"><b>ARTICLES</a></li></b>
-                  </ul>
-              </div>
-              <div id="mySidenav" class="sidenav">
-                <a href="How NOT to Run a Business w Crypto (Part 2).html" id="video">WATCH VIDEO</a>
-              </div>         
-      </header>
-
-<br><br><br><br><br><br><br><br><br><br><br><br><br>
-
-<div class="button">
-  <center><button class="paragraph-button" onclick="myFunction(); this.onclick=myFunction">Paragraph Mode</button></center>
-  <center><button class="reader-button" onclick="myFunction1(); this.onclick=myFunction1">Reader Mode</button></center>
-</div>
-<br>
-
-
-<div class="container">
-<div id="myDIV">
-    <br>
-				<h1> How NOT to Run a Business w/ Crypto (Part 2) </h1>
+  <center>
+    <header id="navbar">
+      <a href="index.html"><img src="blockchainuni (official logo).png" alt="Welcome!" style="float:left;width:265px;height:90px;"></a>
+      <div class="dropdown">
+                  <div class="dropdown-content">
+                      <ul>
+              <li><a href="index.html"><b>HOME</a></li></b>
+              <li><a href="Workshops.html"><b>WORKSHOPS</a></li></b>
+              <li><a href="FirstAccess.html"><b>FIRST/ACCESS</a></li></b>
+              <li><a href="Columns.html"><b>ARTICLES</a></li></b>
+                      </ul>
+                  </div>
+</center>
+  <br><br><br><br><br><br>
+  <div class="container">
+    <br><br><br>
+    <div class="view-full-article-box" id="view-full-article-box">
+        <button class="view-full-article">View Full Article</button>
+    </div>
+    <div class="button-container">
+      <a href="https://www.youtube.com/embed/cDvfT0Y2N00?si=3-tpGaaRkLHqmqRC" target="_blank">
+      <button class="expand-button">
+          <span class="initial-text">📺</span>
+          <span class="tooltip">📺<b>/WatchVideo</b><br></span>
+      </button>
+    </a>
+  </div>
+    <br><br><br><br><br><br>
+    <div class="box active" id="box1">
+      <div class="arrow">
+        <button class="up-arrow" onclick="scrollToTop()" disabled> 👈 </button>
+        <button class="down-arrow" onclick="scrollToBottom()"> 👉 </button>
+      </div>
+      <span class="paragraph-indicator">Paragraph #1 of #10</span>
+      <div class="paragraph-container">
+        <button class="lock-button" onclick="toggleLock(this)">🖍️</button>
+        <h1> How NOT to Run a Business w/ Crypto (Part 2) </h1>
 				<h3> Celebrities & Social Media Influencers </h3>
-				<br>
-                  <p>
-                    “In the past, you had to be the FBI… I think a lot of influencers, banks and governments 
+      <p>
+        “In the past, you had to be the FBI… I think a lot of influencers, banks and governments 
 					don’t realize how much the blockchain is going to change the way we report things.”
 					– Stephen Findeisen (also known as Coffeezilla)
 					<br><br><br>
@@ -60,15 +512,37 @@
 					the kind that does not hold power over loopholes of the network, but so much controls a 
 					simple yet major flaw in the economy consisting of coins which aren’t trustworthy, for 
 					which these are called celebrities and influencers.
-					<br><br><br>
-					If you’ve read our article about the Silicon Valley Bank crisis that took place a while back, 
-					or how to invest using a blockchain wallet, you’d understand that the surface layer of all 
-					major risks to investing personal finances towards cryptocurrency goes by spread of 
-					word. With the general infrastructure and economy behind social media, the influential 
-					people tend to drive the cause and effect of the system, leading to all kinds of 
-					misunderstandings as well as misinformation that may affect millions of peoples lives.
-					<br><br><br>
-					Generally speaking, the level of profit promised by cryptocurrency firms to these 
+      </p>
+    </div>
+  </div>
+    <div class="box blur" id="box2">
+      <div class="arrow">
+        <button class="up-arrow" onclick="scrollToTop()" disabled> 👈 </button>
+        <button class="down-arrow" onclick="scrollToBottom()"> 👉 </button>
+      </div>
+      <span class="paragraph-indicator">Paragraph #2 of #10</span>
+      <div class="paragraph-container">
+        <button class="lock-button" onclick="toggleLock(this)">🖍️</button>  
+      <p>
+        If you’ve read our article about the Silicon Valley Bank crisis that took place a while back, 
+        or how to invest using a blockchain wallet, you’d understand that the surface layer of all 
+        major risks to investing personal finances towards cryptocurrency goes by spread of 
+        word. With the general infrastructure and economy behind social media, the influential 
+        people tend to drive the cause and effect of the system, leading to all kinds of 
+        misunderstandings as well as misinformation that may affect millions of peoples lives.
+      </p>
+    </div>
+    </div>
+    <div class="box blur" id="box3">
+      <div class="arrow">
+        <button class="up-arrow" onclick="scrollToTop()" disabled> 👈 </button>
+        <button class="down-arrow" onclick="scrollToBottom()"> 👉 </button>
+      </div>
+      <span class="paragraph-indicator">Paragraph #3 of #10</span>
+      <div class="paragraph-container">
+        <button class="lock-button" onclick="toggleLock(this)">🖍️</button>  
+      <p>
+        Generally speaking, the level of profit promised by cryptocurrency firms to these 
 					influencers, who fall victim to only knowing the subtle yet limited definition of 
 					cryptocurrency, agree to promote a certain kind of currency of the firm by performing 
 					something called a rug-pull. As it’s imagined, when users are sitting on their personal 
@@ -78,24 +552,46 @@
 					little information about the currency, yet they’re both convinced by each other and of a 
 					greater influence of the firm controlling the cryptocurrency, to call purchase of coins 
 					and enforce a short-term response to the increase of the value of the token.
-					<br><br><br>
-					When it comes to investment, as we’ve covered before, it is important to invest an asset 
-					such as cash into a coin that is supported by it (known in short words by what is called 
-					“stablecoin”), as liquid is the major key to security especially in a volatile market. 
-					Returning to the subject of celebrities, a rug pull takes place when shortly after the 
-					spread of demand towards the cryptocurrency fluctuates, the value instantly falls down 
-					which in turn created significant losses in finances of investors, returning the profits to 
-					the owners and influencers of the currency. This instance has occurred on various 
-					occasions, especially since the start of the pandemic, with the practice of transparency 
-					and verifiability towards information getting bypassed since the era we currently live in 
-					tends to include a downturn in major economic elements (housing affordability crisis, 
-					healthcare, etc.). Examples of celebrities, who claimed to have been unaware of the 
-					repercussions of their investments, can range anywhere from notable investor such as 
-					Shark Tank celebrity Kevin O’Leary, to reality TV star Kim Kardashian, former basketball 
-					player Shaqueill O’Neal, and finally the YouTuber who has fallen most for the 
-					controversy Logan Paul.
-					<br><br><br>
-					It is important to compare the two kinds of celebrities in this case, since a rug pull 
+      </p>
+    </div>
+    </div>
+    <div class="box blur" id="box4">
+      <div class="arrow">
+        <button class="up-arrow" onclick="scrollToTop()" disabled> 👈 </button>
+        <button class="down-arrow" onclick="scrollToBottom()"> 👉 </button>
+      </div>
+      <span class="paragraph-indicator">Paragraph #4 of #10</span>
+      <div class="paragraph-container">
+        <button class="lock-button" onclick="toggleLock(this)">🖍️</button>
+      <p>
+        When it comes to investment, as we’ve covered before, it is important to invest an asset 
+        such as cash into a coin that is supported by it (known in short words by what is called 
+        “stablecoin”), as liquid is the major key to security especially in a volatile market. 
+        Returning to the subject of celebrities, a rug pull takes place when shortly after the 
+        spread of demand towards the cryptocurrency fluctuates, the value instantly falls down 
+        which in turn created significant losses in finances of investors, returning the profits to 
+        the owners and influencers of the currency. This instance has occurred on various 
+        occasions, especially since the start of the pandemic, with the practice of transparency 
+        and verifiability towards information getting bypassed since the era we currently live in 
+        tends to include a downturn in major economic elements (housing affordability crisis, 
+        healthcare, etc.). Examples of celebrities, who claimed to have been unaware of the 
+        repercussions of their investments, can range anywhere from notable investor such as 
+        Shark Tank celebrity Kevin O’Leary, to reality TV star Kim Kardashian, former basketball 
+        player Shaqueill O’Neal, and finally the YouTuber who has fallen most for the 
+        controversy Logan Paul.
+      </p>
+    </div>
+    </div>
+    <div class="box blur" id="box5">
+      <div class="arrow">
+        <button class="up-arrow" onclick="scrollToTop()" disabled> 👈 </button>
+        <button class="down-arrow" onclick="scrollToBottom()"> 👉 </button>
+      </div>
+      <span class="paragraph-indicator">Paragraph #5 of #10</span>
+      <div class="paragraph-container">
+        <button class="lock-button" onclick="toggleLock(this)">🖍️</button>
+      <p>
+        It is important to compare the two kinds of celebrities in this case, since a rug pull 
 					doesn’t necessarily have to mean promoting something in the short-term for long-term 
 					financial effect that benefits only the influencer instead of the audience. Those who 
 					have built a fanbase outside of social media, have participated in commercials on TV 
@@ -105,8 +601,19 @@
 					examples of these projects are not just limited to hedge funds promising to manage 
 					finances for you through the currency such as FTX, which we’ve covered in a previous 
 					article in full is relatable for the observer.
-					<br><br><br>
-					For example, without naming too many of them as there’s enough already, I will give 
+      </p>
+    </div>
+    </div>
+    <div class="box blur" id="box6">
+      <div class="arrow">
+        <button class="up-arrow" onclick="scrollToTop()" disabled> 👈 </button>
+        <button class="down-arrow" onclick="scrollToBottom()"> 👉 </button>
+      </div>
+      <span class="paragraph-indicator">Paragraph #6 of #10</span>
+      <div class="paragraph-container">
+        <button class="lock-button" onclick="toggleLock(this)">🖍️</button>
+      <p>
+        For example, without naming too many of them as there’s enough already, I will give 
 					the real-life scenario of a cryptocurrency investment campaign that had connected well 
 					with a large audience, and that is Save the Kids. Initially operated by popular gaming 
 					community FaZe Clan, the campaign intended to take people’s cryptocurrency 
@@ -127,24 +634,46 @@
 					the value will skyrocket for the short-term, since there are content creators on these 
 					platforms claiming to be expert analysts and insiders of the market that can understand 
 					if something is promised without correct information to back it up.
-					<br><br><br>
-					An interesting question that one may want to ask in this case is, after a large amount of 
-					media turmoil takes place over these ‘pump-and-dump’ schemes (a separate term for 
-					rug pulls), what is the most government authorities could do to make sure this does not 
-					happen again. With what we’ve covered in our previous article, regarding how 
-					decentralized platforms run applications that are closely linked with governmental laws 
-					in the field of cybersecurity, there is no precisely direct way a government can enforce 
-					greater regulations especially when they’re a singular office, apart from following the 
-					mostly visible solution which is creating a lawsuit. This is the situation that the 
-					cryptocurrency organization Ripple was approached by, after the SEC (Securities and 
-					Exchange Commission) filed a lawsuit towards the company after having allegedly sold 
-					a large supply of cryptocurrency by the name of XRP, a token we’ve mentioned in our 
-					previous article that is used most importantly in applications sourcing user identity 
-					protection. Of course, Ripple claimed to have done this under the belief that general 
-					coins should not be held as a security, which is a notion that may apply to altcoins, but 
-					strictly limits the potential of applications on the blockchain network.
-					<br><br><br>
-					Lawsuits, or claims to be specific involved in the security behind cryptocurrency is not 
+      </p>
+    </div>
+    </div>    
+    <div class="box blur" id="box7">
+      <div class="arrow">
+        <button class="up-arrow" onclick="scrollToTop()" disabled> 👈 </button>
+        <button class="down-arrow" onclick="scrollToBottom()"> 👉 </button>
+      </div>
+      <span class="paragraph-indicator">Paragraph #7 of #10</span>
+      <div class="paragraph-container">
+        <button class="lock-button" onclick="toggleLock(this)">🖍️</button>
+      <p>
+        An interesting question that one may want to ask in this case is, after a large amount of 
+        media turmoil takes place over these ‘pump-and-dump’ schemes (a separate term for 
+        rug pulls), what is the most government authorities could do to make sure this does not 
+        happen again. With what we’ve covered in our previous article, regarding how 
+        decentralized platforms run applications that are closely linked with governmental laws 
+        in the field of cybersecurity, there is no precisely direct way a government can enforce 
+        greater regulations especially when they’re a singular office, apart from following the 
+        mostly visible solution which is creating a lawsuit. This is the situation that the 
+        cryptocurrency organization Ripple was approached by, after the SEC (Securities and 
+        Exchange Commission) filed a lawsuit towards the company after having allegedly sold 
+        a large supply of cryptocurrency by the name of XRP, a token we’ve mentioned in our 
+        previous article that is used most importantly in applications sourcing user identity 
+        protection. Of course, Ripple claimed to have done this under the belief that general 
+        coins should not be held as a security, which is a notion that may apply to altcoins, but 
+        strictly limits the potential of applications on the blockchain network.
+      </p>
+    </div>
+    </div>
+    <div class="box blur" id="box8">
+      <div class="arrow">
+        <button class="up-arrow" onclick="scrollToTop()" disabled> 👈 </button>
+        <button class="down-arrow" onclick="scrollToBottom()"> 👉 </button>
+      </div>
+      <span class="paragraph-indicator">Paragraph #8 of #10</span>
+      <div class="paragraph-container">
+        <button class="lock-button" onclick="toggleLock(this)">🖍️</button>
+      <p>
+        Lawsuits, or claims to be specific involved in the security behind cryptocurrency is not 
 					just limited to the government, but between organizations involved in opposite sides of 
 					the spectrum of financial investing and security. For example, the key company that 
 					drives promotion of stablecoins in the trading market, Binance, runs a charity that acts 
@@ -158,8 +687,19 @@
 					to penalize developers who are simultaneously running these pump-and-dump 
 					schemes while they’re overlapping with social media promotions on a consistent basis, 
 					especially when they can also take different forms on these platforms overtime.
-					<br><br><br>
-					Although this barrier applies internationally, states especially in the US have already 
+      </p>
+    </div>
+    </div>
+    <div class="box blur" id="box9">
+      <div class="arrow">
+        <button class="up-arrow" onclick="scrollToTop()" disabled> 👈 </button>
+        <button class="down-arrow" onclick="scrollToBottom()"> 👉 </button>
+      </div>
+      <span class="paragraph-indicator">Paragraph #9 of #10</span>
+      <div class="paragraph-container">
+        <button class="lock-button" onclick="toggleLock(this)">🖍️</button>
+      <p>
+        Although this barrier applies internationally, states especially in the US have already 
 					taken a role in combatting against fraudulent behaviors driven by these altcoins, with 
 					the major example being the state of New York which released a fourth bill that will 
 					enforce strict rules on developers seeking to sell over 10% of their ‘altcoin’ supply, 
@@ -169,8 +709,19 @@
 					with states elaborating on the idea of better combatting solutions, but for now the 
 					responsibility will be largely dependant on how the investor comprehends this speed of 
 					information in the traffic of crypto markets.
-					<br><br><br>
-					Emphasizing on the basic rules that should be followed when ensuring yourself that you 
+      </p>
+    </div>
+    </div>
+    <div class="box blur" id="box10">
+      <div class="arrow">
+        <button class="up-arrow" onclick="scrollToTop()" disabled> 👈 </button>
+        <button class="down-arrow" onclick="scrollToBottom()"> 👉 </button>
+      </div>
+      <span class="paragraph-indicator">Paragraph #10 of #10</span>
+      <div class="paragraph-container">
+        <button class="lock-button" onclick="toggleLock(this)">🖍️</button>
+      <p>
+        Emphasizing on the basic rules that should be followed when ensuring yourself that you 
 					aren’t deceived into a ‘pump-and-dump’ scheme disguised as any form of social media 
 					campaigning, another real-world example will be used to highlight the common 
 					behaviors to take a note of and avoid. In 2021, a scheme was developed by an unofficial 
@@ -195,245 +746,183 @@
 					build a portfolio, as a lot of these organizations assume that the users do not act as a 
 					safeguard over their own assets, hence only following what the company says without 
 					making the right observations.
-					<br><br><br>
-				</p>
-</div>
-
-<div class="container">
-<div id="myDIV1">
-    <div class="article" id="article">
-      <br>
-      <h1> How NOT to Run a Business w/ Crypto (Part 2) </h1>
-      <h3> Celebrities & Social Media Influencers </h3>
-      <br>
-        <p>
-            “In the past, you had to be the FBI… I think a lot of influencers, banks and governments 
-			don’t realize how much the blockchain is going to change the way we report things.”
-			– Stephen Findeisen (also known as Coffeezilla)         
-        </p>
-
-        <p>
-            In previous articles, we discussed several arrays of topics covering that of <span class="tooltip" data-definition="cybersecurity: Measures taken to protect computer systems and networks from unauthorized access or attacks." data-videos="Video1, Video2">cybersecurity</span> and the common intrusions that take place by a consistent set of individuals called “hackers”. Today, branching from the network to the real world, we’ll be discussing the kind that does not hold power over loopholes of the network, but so much controls a simple yet major flaw in the economy consisting of coins which aren’t trustworthy, for which these are called <span class="tooltip" data-definition="celebrities and influencers: Individuals, often in the public eye, who wield significant influence and promote products or ideas, including cryptocurrencies, to their audience." data-link="https://example.com/celebrities-and-influencers">celebrities and influencers</span>.
-        </p>
-        
-        <p>
-            If you’ve read our article about the <span class="tooltip" data-definition="Silicon Valley Bank crisis: A past event involving significant issues or problems faced by the Silicon Valley Bank, impacting its operations or clients." data-link="https://example.com/silicon-valley-bank-crisis">Silicon Valley Bank crisis</span> that took place a while back, or how to invest using a <span class="tooltip" data-definition="blockchain wallet: A digital wallet used to store cryptocurrencies and interact with the blockchain." data-videos="Video1, Video2">blockchain wallet</span>, you’d understand that the surface layer of all major risks to investing personal finances towards cryptocurrency goes by spread of word. With the general infrastructure and economy behind social media, the influential people tend to drive the cause and effect of the system, leading to all kinds of misunderstandings as well as misinformation that may affect millions of people's lives.
-        </p>
-
-        <p>
-            Generally speaking, the level of profit promised by cryptocurrency firms to these influencers, who fall victim to only knowing the subtle yet limited definition of <span class="tooltip" data-definition="cryptocurrency: Digital or virtual currencies secured by cryptography, often decentralized and based on blockchain technology." data-link="https://example.com/cryptocurrency">cryptocurrency</span>, agree to promote a certain kind of currency of the firm by performing something called a <span class="tooltip" data-definition="rug-pull: A fraudulent practice in the cryptocurrency space where the creators or promoters of a project suddenly abandon it, taking investors' money." data-link="https://example.com/rug-pull">rug-pull</span>. As it’s imagined, when users are sitting on their personal finances ready to make an investment, their favorite influencers are subject to convince their fanbase to make the deposit for the currency as they believe it will create a promising portfolio. In full circle, the influencer and the personal investor are both given little information about the currency, yet they’re both convinced by each other and of a greater influence of the firm controlling the cryptocurrency, to call purchase of coins and enforce a short-term response to the increase of the value of the token.
-        </p>
-
-        <p>
-            When it comes to investment, as we’ve covered before, it is important to invest an asset such as <span class="tooltip" data-definition="stablecoin: A type of cryptocurrency designed to have a stable value, often pegged to a fiat currency like the US dollar." data-link="https://example.com/stablecoin">cash into a coin that is supported by it (known in short words by what is called “stablecoin”)</span>, as liquid is the major key to security especially in a volatile market. Returning to the subject of celebrities, a rug pull takes place when shortly after the spread of demand towards the cryptocurrency fluctuates, the value instantly falls down which in turn created significant losses in finances of investors, returning the profits to the owners and influencers of the currency. This instance has occurred on various occasions, especially since the start of the pandemic, with the practice of transparency and verifiability towards information getting bypassed since the era we currently live in tends to include a downturn in major economic elements (<span class="tooltip" data-definition="housing affordability crisis: A situation where a significant proportion of income is spent on housing costs, leading to financial stress for individuals or families." data-link="https://example.com/housing-crisis">housing affordability crisis</span>, healthcare, etc.). Examples of celebrities, who claimed to have been unaware of the repercussions of their investments, can range anywhere from notable investor such as <span class="tooltip" data-definition="Kevin O’Leary: A Canadian businessman, author, and television personality known for his role on the TV show 'Shark Tank'." data-link="https://example.com/Kevin-O'Leary">Shark Tank celebrity Kevin O’Leary</span>, to reality TV star <span class="tooltip" data-definition="Kim Kardashian: An American media personality, socialite, and businesswoman known for her reality TV show 'Keeping Up with the Kardashians'." data-link="https://example.com/Kim-Kardashian">Kim Kardashian</span>, former basketball player <span class="tooltip" data-definition="Shaquille O’Neal: A retired professional basketball player known for his successful NBA career." data-link="https://example.com/Shaquille-O’Neal">Shaquille O’Neal</span>, and finally the YouTuber who has fallen most for the controversy <span class="tooltip" data-definition="Logan Paul: An American YouTuber and social media personality known for his controversial videos and podcasts." data-link="https://example.com/Logan-Paul">Logan Paul</span>.
-        </p>
-
-        <p>
-            It is important to compare the two kinds of celebrities in this case, since a <span class="tooltip" data-definition="rug pull: A fraudulent scheme where the value of an asset suddenly drops, resulting in significant losses for investors while benefiting the orchestrators of the scheme." data-link="https://example.com/rug-pull">rug pull</span> doesn’t necessarily have to mean promoting something in the short-term for long-term financial effect that benefits only the influencer instead of the audience. Those who have built a fanbase outside of social media, have participated in commercials on TV which tends to reach an audience of millennials, whereas newer generations exposed to the constant speed of information released through social media are prone to seeing promotions every now and then not just through short posts but major projects. Key examples of these projects are not just limited to <span class="tooltip" data-definition="hedge funds: Investment funds that pool capital from accredited individuals or institutional investors and invest in a variety of assets." data-link="https://example.com/hedge-funds">hedge funds promising to manage finances for you through the currency such as FTX</span>, which we’ve covered in a previous article in full is relatable for the observer.
-        </p>
-
-        <p>
-            For example, without naming too many of them as there’s enough already, I will give the real-life scenario of a cryptocurrency investment campaign that had connected well with a large audience, and that is <span class="tooltip" data-definition="Save the Kids: A cryptocurrency investment campaign initially operated by popular gaming community FaZe Clan, intending to divert cryptocurrency investments towards providing resources to children in need." data-link="https://example.com/save-the-kids">Save the Kids</span>. Initially operated by popular gaming community FaZe Clan, the campaign intended to take people’s cryptocurrency investments, and divert it towards providing resources to children in need. Promoted through platforms such as Twitter and YouTube, various investors both personal and corporate, put their finances into a pool at which right after the value of the currency declined, making various of these key investments by the users rapidly decrease to the point at which the organization responsible for the scheme was confronted. The key thing to realize and understand here, is that all of these campaigns are not necessarily run by built applications on the blockchain networks, or even cryptocurrencies that serve as stablecoins, but is simply driven by the negative downside of stablecoins called ‘altcoins’. As the word suggests, they are alternative coins which aren’t Bitcoin or Ethereum, and can be randomly generated at any point by one person or a group of people without having to get permission by others for the needs of regulation. As we’ve covered this concept in our workshops, especially one regarding the use of investing with blockchain wallets, it is a major strategy for those who tend to use their influence to not only spread of mouth, but also be paid to create false predictions of how much the value will skyrocket for the short-term, since there are content creators on these platforms claiming to be expert analysts and insiders of the market that can understand if something is promised without correct information to back it up.
-        </p>
-
-        <p>
-            An interesting question that one may want to ask in this case is, after a large amount of media turmoil takes place over these ‘<span class="tooltip" data-definition="pump-and-dump schemes: A type of investment scam where the price of an asset is artificially inflated, then sold off quickly at a profit, causing a sharp decline in its value." data-link="#">pump-and-dump’ schemes</span> (a separate term for <span class="tooltip" data-definition="rug pulls: An abrupt collapse in the value of a cryptocurrency after investors are enticed to invest based on false or misleading information." data-link="#">rug pulls</span>), what is the most government authorities could do to make sure this does not happen again. With what we’ve covered in our previous article, regarding how <span class="tooltip" data-definition="decentralized platforms: Systems or networks that operate without a central authority or control, often associated with blockchain technology." data-link="#">decentralized platforms</span> run applications that are closely linked with governmental laws in the field of <span class="tooltip" data-definition="cybersecurity: Measures taken to protect computer systems and networks from theft or damage to hardware, software, or electronic data." data-link="#">cybersecurity</span>, there is no precisely direct way a government can enforce greater regulations especially when they’re a singular office, apart from following the mostly visible solution which is creating a <span class="tooltip" data-definition="lawsuit: A legal action filed in a court of law to resolve a dispute or claim between parties." data-link="#">lawsuit</span>. This is the situation that the cryptocurrency organization <span class="tooltip" data-definition="Ripple: A company associated with the XRP cryptocurrency, which facilitates fast and low-cost cross-border payments." data-link="#">Ripple</span> was approached by, after the <span class="tooltip" data-definition="SEC: The U.S. Securities and Exchange Commission, a federal agency responsible for enforcing federal securities laws and regulating the securities industry." data-link="#">SEC (Securities and Exchange Commission)</span> filed a lawsuit towards the company after having allegedly sold a large supply of cryptocurrency by the name of <span class="tooltip" data-definition="XRP: A cryptocurrency associated with Ripple, used for fast and low-cost cross-border transactions." data-link="#">XRP</span>, a token we’ve mentioned in our previous article that is used most importantly in applications sourcing <span class="tooltip" data-definition="user identity protection: Measures to safeguard an individual's personal information or digital identity." data-link="#">user identity protection</span>. Of course, Ripple claimed to have done this under the belief that general coins should not be held as a <span class="tooltip" data-definition="security: A financial asset that represents ownership in a company or a claim on the company’s earnings." data-link="#">security</span>, which is a notion that may apply to <span class="tooltip" data-definition="altcoins: Alternative cryptocurrencies to Bitcoin, usually used to refer to any cryptocurrency other than Bitcoin." data-link="#">altcoins</span>, but strictly limits the potential of applications on the <span class="tooltip" data-definition="blockchain network: A decentralized and distributed digital ledger that records transactions across many computers so that the record cannot be altered retroactively." data-link="#">blockchain network</span>.
-        </p>
-
-        <p>
-            Lawsuits, or claims to be specific involved in the <span class="tooltip" data-definition="security: Measures or systems taken to protect something, in this context, related to the safety and regulations concerning cryptocurrency." data-link="#">security</span> behind cryptocurrency is not just limited to the government, but between organizations involved in opposite sides of the spectrum of <span class="tooltip" data-definition="financial investing: The act of allocating funds to various investment vehicles in hopes of earning returns or profits." data-link="#">financial investing</span> and security. For example, the key company that drives promotion of <span class="tooltip" data-definition="stablecoins: Cryptocurrencies that are pegged to the value of a stable asset, often to reduce volatility." data-link="#">stablecoins</span> in the trading market, <span class="tooltip" data-definition="Binance: A cryptocurrency exchange platform that allows users to trade various cryptocurrencies." data-link="#">Binance</span>, runs a charity that acts as receiver of donations towards groups involved in benefitting those in need, at which <span class="tooltip" data-definition="Save The Kids: A crypto token project associated with a controversial fundraising scheme that claimed to donate to charity but faced allegations of misappropriating funds." data-link="#">Save The Kids</span> claimed to have donated 80,000$ of the benefits to from their <span class="tooltip" data-definition="liquidity pool: A reserve of assets maintained by an exchange or protocol for trading purposes." data-link="#">liquidity pool</span>, though like a transaction taking place in a “race attack”, was not confirmed by Binance themselves. At a grand scale, the miscommunication between cryptocurrency token promoters and organizations running on security for individuals finances, as well as how that will be combatted by way global powers in the near future may combat the problem by creating solutions, will require patience due to the pace at which it’s difficult to penalize developers who are simultaneously running these <span class="tooltip" data-definition="pump-and-dump schemes: A type of investment scam where the price of an asset is artificially inflated, then sold off quickly at a profit, causing a sharp decline in its value." data-link="#">pump-and-dump schemes</span> while they’re overlapping with social media promotions on a consistent basis, especially when they can also take different forms on these platforms overtime.
-        </p>
-
-        <p>
-            Although this barrier applies internationally, states especially in the US have already taken a role in combatting against fraudulent behaviors driven by these <span class="tooltip" data-definition="altcoins: Alternative cryptocurrencies other than Bitcoin, often with lower market capitalization." data-link="#">altcoins</span>, with the major example being the state of New York which released a fourth bill that will enforce strict rules on developers seeking to sell over 10% of their ‘altcoin’ supply, especially within a five-year period following a scheme that they could potentially be involved in. Roles in restricting the buying and selling of these ‘altcoins’ nationally are likely to expand and diversify upon various activities that will come up for the future with states elaborating on the idea of better combatting solutions, but for now the responsibility will be largely dependent on how the investor comprehends this speed of information in the traffic of crypto markets.
-        </p>
-
-        <p>
-            Emphasizing on the basic rules that should be followed when ensuring yourself that you aren’t deceived into a ‘pump-and-dump’ scheme disguised as any form of social media campaigning, another real-world example will be used to highlight the common behaviors to take a note of and avoid. In 2021, a scheme was developed by an unofficial company by the name of <span class="tooltip" data-definition="AnubisDAO: An unofficial company run by anonymous developers, associated with a cryptocurrency scheme." data-link="#">AnubisDAO</span> run by anonymous developers, seeking to make use of the method in easing the conversion of tokens to cash, by promoting the ability to combine the concept with the already controversial culture of <span class="tooltip" data-definition="Shiba Inu (SHIB) coins: A cryptocurrency coin named after the Shiba Inu dog breed, often associated with memes and social media campaigns." data-link="#">Shiba Inu (SHIB) coins</span>. As mentioned in our video workshop discussing non-fungible tokens, Shiba Inu is largely reliant on spread of mouth and has notably been controlled under this aspect by various influences such as Tesla stock owner and CEO <span class="tooltip" data-definition="Elon Musk: CEO of Tesla and a prominent figure in cryptocurrency discussions and movements." data-link="#">Elon Musk</span>. On the surface level, this may seem like another social media campaign, but the special deception was received by investors under the circumstances at which no official website appeared to promote the idea or even a potential product behind it. Generally speaking, cryptocurrencies promoting portfolio packages next to websites, also use something a “<span class="tooltip" data-definition="white paper: A document outlining the technology, purpose, and utility of a cryptocurrency project." data-link="#">white paper</span>” which to put it simply, acts as a guide and blueprint of the project at hand. In a matter of 20 hours (less than a day or even a week it usually takes for these pump-and-dump schemes to take effect), 60 million USD in the liquidity pool was immediately depleted from the accounts, creating a major dent in the finances of these investors. Altogether, the main lesson to gain from this event in addition to everything else we’ve discussed thus far, is that as an average user who does not hold the significant level of finances some of the investors involved have suffered the loss of, one must maintain skepticism over certain token-based campaigns that promise to help you build a portfolio, as a lot of these organizations assume that the users do not act as a safeguard over their own assets, hence only following what the company says without making the right observations.
-        </p>
-
-      <div class="tooltip-box" id="tooltipBox">
-          <span id="tooltipContent"></span>
-          <div class="video-container" id="videoContainer">
-              <!-- Video recommendations will appear here -->
-          </div>
-          <span class="close-btn">×</span> <!-- Close button -->
-      </div>
-       
+      </p>
     </div>
-    <div class="slider-container">
-        <div class="arrow-button" id="prevButton">&#9650;</div>
-        <p>
-          <br><br><br><br>
-          Paragraph <span id="currentParagraph">1</span> of <span id="totalParagraphs">24</span>
-        </p>
-        <div class="arrow-button" id="nextButton">&#9660;</div>
-    </div>
-</div>
-</div>
-
-<div class="tooltip-box" id="tooltipBox">
-  <span id="tooltipContent"></span>
-  <div class="video-container" id="videoContainer">
-      <!-- Video recommendations will appear here -->
   </div>
-  <span class="close-btn">×</span> <!-- Close button -->
-</div>
-</div>
 
 <script>
+const boxes = document.querySelectorAll('.box');
+const container = document.querySelector('.container');
+const upArrows = document.querySelectorAll('.up-arrow');
+const downArrows = document.querySelectorAll('.down-arrow');
+let currentIndex = 0;
 
-function myFunction() {
-  var x = document.getElementById("myDIV");
-  var y = document.getElementById("myDIV1");
-  if (x.style.display === "none") {
-    x.style.display = "block";
-  } else {
-    x.style.display = "none";
-  }
-  if (y.style.display === "none") {
-    y.style.display = "none";
-  } else {
-    y.style.display = "none";
-  }
-}
+// Initialize the page by hiding arrow buttons for all boxes except the first one
+hideOtherArrows(currentIndex);
 
-function myFunction1() {
-  var x = document.getElementById("myDIV");
-  var y = document.getElementById("myDIV1");
-  if (x.style.display === "none") {
-    x.style.display = "none";
-  } else {
-    x.style.display = "none";
-  }
-  if (y.style.display === "none") {
-    y.style.display = "block";
-  } else {
-    y.style.display = "none";
-  }
-}
-
-document.addEventListener('DOMContentLoaded', function() {
-    const article = document.getElementById('article');
-    const totalParagraphs = article.querySelectorAll('p').length;
-    document.getElementById('totalParagraphs').textContent = totalParagraphs;
-
-    let currentSlide = 1;
-    let isTooltipDisplayed = false;
-
-    function displayParagraph(slide) {
-        const paragraphs = article.querySelectorAll('p');
-        paragraphs.forEach(paragraph => {
-            paragraph.style.opacity = '0';
-        });
-
-        const selectedParagraph = paragraphs[slide - 1];
-        setTimeout(() => {
-            selectedParagraph.style.opacity = '1';
-        }, 100);
-
-        document.getElementById('currentParagraph').textContent = slide;
-
-        // Tooltip Functionality
-        const tooltipSpan = selectedParagraph.querySelectorAll('.tooltip');
-        const tooltipBox = document.createElement('div');
-        tooltipBox.classList.add('tooltip-box');
-        selectedParagraph.appendChild(tooltipBox);
-
-        tooltipSpan.forEach(span => {
-            span.addEventListener('click', (event) => {
-                if (!isTooltipDisplayed) {
-                    const definition = event.target.getAttribute('data-definition');
-                    const videos = event.target.getAttribute('data-videos');
-
-                    const tooltipContent = document.createElement('div');
-                    tooltipContent.classList.add('tooltip-content');
-                    tooltipContent.textContent = definition;
-
-                    const videoContainer = document.createElement('div');
-                    videoContainer.classList.add('video-container');
-                    videoContainer.innerHTML = '';
-
-                    if (videos) {
-                        const videoList = videos.split(', ');
-                        const videoListHTML = videoList.map(video => `<iframe width="100%" height="200" src="${video}" frameborder="0" allowfullscreen></iframe>`).join('');
-                        videoContainer.innerHTML = `<h3>Video Recommendations:</h3>${videoListHTML}`;
-                    }
-
-                    tooltipBox.innerHTML = '';
-                    tooltipBox.appendChild(tooltipContent);
-                    tooltipBox.appendChild(videoContainer);
-
-                    const closeBtn = document.createElement('span');
-                    closeBtn.classList.add('close-btn');
-                    closeBtn.textContent = 'X';
-                    closeBtn.addEventListener('click', () => {
-                        isTooltipDisplayed = false;
-                        tooltipBox.style.display = 'none';
-                    });
-                    tooltipBox.appendChild(closeBtn);
-
-                    tooltipBox.style.display = 'block';
-                    isTooltipDisplayed = true;
-
-
-                }
-            });
-
-            tooltipBox.removeEventListener('mouseleave', () => {
-                isTooltipDisplayed = false;
-                tooltipBox.style.display = 'none';
-            });
-        });
-    }
-
-    document.getElementById('nextButton').addEventListener('click', () => {
-        if (currentSlide < totalParagraphs) {
-            currentSlide++;
-            displayParagraph(currentSlide);
-        }
-    });
-
-    document.getElementById('prevButton').addEventListener('click', () => {
-        if (currentSlide > 1) {
-            currentSlide--;
-            displayParagraph(currentSlide);
-        }
-    });
-
-    displayParagraph(currentSlide);
+upArrows.forEach(function(elem, index) {
+  elem.addEventListener('click', function() {
+    moveBoxUp(index);
+  });
 });
 
-let prevScrollPos = window.pageYOffset;
+downArrows.forEach(function(elem, index) {
+  elem.addEventListener('click', function() {
+    moveBoxDown(index);
+  });
+});
 
-    window.onscroll = function() {
-      let currentScrollPos = window.pageYOffset;
+document.addEventListener('keydown', function(event) {
+  if (event.key === 'ArrowRight') {
+    moveBoxDown(currentIndex);
+  } else if (event.key === 'ArrowLeft') {
+    moveBoxUp(currentIndex);
+  } else if (event.key === 'ArrowUp') {
+    moveBoxUp(currentIndex);
+  } else if (event.key === 'ArrowDown') {
+    moveBoxDown(currentIndex);
+  }
+});
 
-      if (prevScrollPos > currentScrollPos) {
-        document.getElementById("navbar").classList.remove("hidden");
-      } else {
-        document.getElementById("navbar").classList.add("hidden");
-      }
+function moveBoxUp(index) {
+  if (index > 0) {
+    const nextIndex = index - 1;
+    moveToIndex(nextIndex);
+  }
+}
 
-      prevScrollPos = currentScrollPos;
-    };
+function moveBoxDown(index) {
+  if (index < boxes.length - 1) {
+    const nextIndex = index + 1;
+    moveToIndex(nextIndex);
+  }
+}
 
-    // JavaScript to bring back solidity on hover
-    const navbar = document.getElementById('navbar');
+function moveToIndex(nextIndex) {
+  // Remove active class from current box and add blur class
+  boxes[currentIndex].classList.remove('active');
+  boxes[currentIndex].classList.add('blur');
 
-    navbar.addEventListener('mouseenter', function() {
-      navbar.classList.remove('hidden');
+  // Add active class to next box and remove blur class
+  boxes[nextIndex].classList.remove('blur');
+  boxes[nextIndex].classList.add('active');
+
+  // Calculate the position to align active box with arrow box
+  const arrowRect = boxes[nextIndex].querySelector('.arrow').getBoundingClientRect();
+  const activeBoxRect = boxes[nextIndex].getBoundingClientRect();
+
+  // Calculate the scroll position to align active box with arrow box
+  const scrollLeft = activeBoxRect.left - arrowRect.left - (window.innerWidth / 2 - activeBoxRect.width / 2);
+
+  // Set the scroll position to immediately position the active box beside the arrow box
+  container.scrollLeft = scrollLeft;
+
+  currentIndex = nextIndex;
+
+  // Disable/enable arrows based on current index
+  upArrows.forEach(function(elem) {
+    elem.disabled = currentIndex === 0;
+  });
+
+  downArrows.forEach(function(elem) {
+    elem.disabled = currentIndex === boxes.length - 1;
+  });
+
+  // Hide arrow buttons for other boxes
+  hideOtherArrows(currentIndex);
+}
+
+function hideOtherArrows(index) {
+  boxes.forEach(function(box, i) {
+    const arrows = box.querySelectorAll('.arrow button');
+    arrows.forEach(function(arrow) {
+      arrow.style.visibility = i !== index ? 'hidden' : 'visible';
+    });
+  });
+}
+
+    
+document.getElementById('view-full-article-box').addEventListener('click', function() {
+    // Create the button for entering paragraph mode
+    var refreshButton = document.createElement('button');
+    refreshButton.textContent = 'Enter Paragraph Mode';
+    refreshButton.classList.add('view-full-article'); // Add class for styling
+    refreshButton.style.backgroundColor = 'white'; // Set white background
+    refreshButton.style.color = 'black'; // Set black text color
+    refreshButton.style.border = '2px solid white'; // Add white border
+    refreshButton.style.cursor = 'pointer'; // Set cursor to pointer to indicate clickability
+    refreshButton.addEventListener('click', function() {
+        location.reload(); // Reload the page when clicked
     });
 
-    navbar.addEventListener('mouseleave', function() {
-      if (window.scrollY === 0) {
-        navbar.classList.add('hidden');
-      }
+    // Append the button to the 'view-full-article-box'
+    this.innerHTML = ''; // Clear existing content
+    this.appendChild(refreshButton);
+
+    // Remove active state from all boxes
+    document.querySelectorAll('.box').forEach(function(box) {
+        box.classList.remove('active');
     });
 
+    // Remove box styling
+    document.querySelectorAll('.box').forEach(function(box) {
+        box.style.border = 'none';
+        box.style.backgroundColor = 'transparent';
+        box.style.fontSize = '15px'; // Set font size back to default
+        box.classList.remove('blur'); // Remove blur class
+    });
 
-</script>
+    // Remove paragraph indicators
+    document.querySelectorAll('.paragraph-indicator').forEach(function(indicator) {
+        indicator.remove();
+    });
 
+    // Disable lock buttons and hide lock icons
+    document.querySelectorAll('.lock-button').forEach(function(lockButton) {
+        lockButton.disabled = true;
+        lockButton.style.display = 'none';
+    });
+
+    // Remove animations
+    document.querySelectorAll('.move-up, .move-down').forEach(function(animation) {
+        animation.style.animation = 'none';
+    });
+
+    // Hide arrow buttons for all other boxes
+    hideOtherArrows(-1);
+});
+
+let lockedParagraph = null;
+
+function toggleLock(button) {
+  const parent = button.parentNode;
+  const isLocked = parent.classList.toggle('locked');
+  if (isLocked) {
+    lockedParagraph = parent;
+    centerParagraph(lockedParagraph);
+  } else {
+    lockedParagraph = null;
+  }
+}
+
+function centerParagraph(element) {
+  const rect = element.getBoundingClientRect();
+  const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+  const centerY = rect.top + rect.height / 2 - window.innerHeight / 2 + scrollTop;
+  window.scrollTo({
+    top: centerY,
+    behavior: 'smooth'
+  });
+}
+
+// Keep the locked paragraph centered if the window is resized
+window.addEventListener('resize', function() {
+  if (lockedParagraph) {
+    centerParagraph(lockedParagraph);
+  }
+});
+
+
+    </script>  
 </body>
 </html>
-
