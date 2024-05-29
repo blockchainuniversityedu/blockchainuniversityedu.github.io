@@ -1,6 +1,5 @@
 <!DOCTYPE html>
-<html>
-  <link rel="stylesheet" type="text/css" href="reader.css">
+<html lang="en">
 <head>
   <!-- Google tag (gtag.js) -->
 	<script async src="https://www.googletagmanager.com/gtag/js?id=G-9J1B2MTYSV"></script>
@@ -10,46 +9,500 @@
  	 	gtag('js', new Date());
  	 	gtag('config', 'G-9J1B2MTYSV');
 	</script>
-  		<title> How NOT to Run a Business w Crypto (Part 3) - Article </title>
-<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title> How NOT to Run a Business w Crypto (Part 3) - Article </title>
 <style>
 
+.locked {
+        background-color: darkorange;
+        border: 1px solid;
+        border-radius: 10px;
+        border-color: black;
+    }
+
+.button-container {
+        position: relative;
+        width: 300px; /* Adjust width as needed */
+    }
+
+    .expand-button {
+        width: 10px; /* Initial width of the button */
+        height: 10px; /* Height of the button */
+        padding: 10px;
+        background-color: #ff0000;
+        color: rgb(255, 255, 255);
+        border: none;
+        cursor: pointer;
+        position: relative; /* Enable positioning of the tooltip */
+        transition: width 0.3s; /* Smooth transition effect */
+        border-radius: 5px; /* Make the edges rounder */
+        margin-top: 20px;
+    }
+
+    .expand-button .initial-text,
+    .expand-button .tooltip {
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        opacity: 0;
+        transition: opacity 0.3s; /* Smooth transition effect */
+        
+    }
+
+    .expand-button .initial-text {
+        opacity: 1; /* Show "+" sign text by default */
+    }
+
+    .expand-button:hover {
+        width: 100px; /* Expanded width on hover */
+    }
+
+    .expand-button:hover .initial-text {
+        opacity: 0; /* Hide "+" sign text on hover */
+    }
+
+    .expand-button:hover .tooltip {
+        opacity: 1; /* Show "Hello" text on hover */
+        right: 100px; /* Position "Hello" text beside "+" sign */
+    }
+
+.paragraph-container {
+        padding: 10px;
+        margin: 10px;
+        position: relative; /* Relative positioning for absolute positioning of the lock button */
+    }
+    
+    .lock-button {
+        padding: 5px;
+        background-color: #000000;
+        color: white;
+        border: none;
+        border-radius: 50%;
+        cursor: pointer;
+        position: absolute; /* Absolute positioning */
+        top: 50%; /* Vertically center the button */
+        right: -100px; /* Position the button outside the box */
+        transform: translateY(-50%); /* Adjust position to center vertically */
+    }
+
+
+.scroll-to-top {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    cursor: pointer;
+    background-color: #000000;
+    color: #fff;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.scroll-to-top i {
+    font-size: 20px;
+}
+
+.navbar {
+  color: white;
+  padding: 25px; /* Increase padding to give more space */
+  width: 95%; /* Make the navbar fully wide */
+  position: fixed; /* Fix the navbar to the top */
+  top: 0; /* Position the navbar at the top of the viewport */
+  z-index: 1000; /* Ensure the navbar is above other content */
+  display: flex; /* Use flexbox to align items */
+  justify-content: space-between; /* Align items to the start and end */
+}
+
+.navbar-logo {
+  width: 50px;
+  height: auto;
+  margin-right: auto; /* Push the logo to the left */
+}
+
+.nav-links {
+  display: flex; /* Use flexbox to align items */
+}
+
+.nav-link {
+  margin-left: 10px; /* Add margin to separate links */
+  text-decoration: none;
+  color: white;
+}
+
+.nav-link:not(:last-child)::after {
+  content: '|'; /* Add a vertical line */
+  margin-left: 10px; /* Add space between the line and the link */
+  color: white; /* Set the color of the line */
+}
+
+
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    overflow: hidden;
+    height: 100vh;
+    padding: 200px;
+}
+
+.button-container {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20px;
+  }
+
+  .button {
+    padding: 10px 20px;
+    background-color: #f0f0f0;
+    color: #333;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+    margin: 5px;
+  }
+
+  .button.active {
+    background-color: black;
+    color: white;
+  }
+
+  .content {
+    display: none;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    margin-top: 20px;
+  }
+
+  .content.active {
+    display: block;
+  }
+
+body {
+  font-family: Arial, sans-serif;
+  font-size: 15px;
+  height: 400vh;
+}
+
+.box {
+  border: 1px solid transparent;
+  border-radius: 10px;
+  background-color: white; /* Set the background color of the boxes to white */
+  color: black; /* Set text color to black */
+  padding: 10px 60px 10px 20px; /* Adjust padding to move the text a little more to the left */
+  margin: 10px auto;
+  width: 80%;
+  max-width: 600px;
+  box-sizing: border-box;
+  position: relative;
+  transition: transform 0.5s ease;
+  text-align: left;
+  font-family: Arial, sans-serif; /* Set the font family to Arial */
+}
+
+  .box.active {
+    transform: translateX(0%) scale(1.5); /* Center the active box more to the right and keep it enlarged */
+    z-index: 1;
+    background-color: black;
+    color: white;
+  }
+
+
+  .box.active .arrow {
+    transform: rotate(90deg); /* Rotate the arrow button by 90 degrees */
+  }
+
+  .box.blur {
+    filter: blur(5px); /* Apply blur effect to all boxes except the active one */
+    transform: scale(1);
+    z-index: 0;
+  }
+
+  .blur {
+  filter: blur(2px); /* Apply blur effect */
+  pointer-events: none; /* Disable pointer events */
+  user-select: none; /* Disable text selection */
+}
+
+
+  .arrow {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  right: 0;
+  top: 50%;
+}
+
+.up-arrow button,
+.down-arrow button {
+  background-color: #ccc;
+  border-radius: none;
+  padding: 5px 10px; /* Reduce padding */
+  cursor: pointer;
+  font-size: 14px; /* Reduce font size */
+  border-radius: 50%; /* Make the button round */
+}
+
+
+  .paragraph-indicator {
+  color: gray;
+  font-size: 12px;
+  display: block;
+  margin-bottom: 5px;
+  font-weight: bold; /* Add this line to make the paragraph indicator bold */
+}
+
+.banner {
+  position: relative;
+  width: 100%;
+  height: 30vh; /* Adjusted height for the banner */
+  background-size: cover;
+  background-color: #ffffff; /* Dark gray background for the banner */
+}
+
+header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 90%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  transition: 0.6s;
+  padding: 40px 100px;
+  z-index: 100000;
+  border-bottom: 2px solid rgb(0, 0, 0); /* White border at the bottom of the header */
+  opacity: 1;
+  transition: opacity 0.6s;
+}
+
+header.hidden {
+  opacity: 0;
+}
+
+header ul {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 10px 0;
+  border-top: 2px solid rgb(255, 255, 255); /* White border at the top of the ul */
+  border-bottom: 2px solid white; /* White border at the bottom of the ul */
+}
+
+header ul li {
+  position: relative;
+  list-style: none;
+  border-left: 2px solid white; /* White border on the left of each list item */
+}
+
+header ul li:first-child {
+  border-left: none; /* Remove left border for the first list item */
+}
+
+header ul li a {
+  position: relative;
+  margin: 0 15px;
+  text-decoration: none;
+  color: hsl(0, 0%, 100%);
+  letter-spacing: 2px;
+  font-weight: 500;
+  transition: 0.6s;
+}
+
+/* Add hover effect to header buttons */
+header ul li a:hover {
+  color: #000000; /* Change to the desired highlight color */
+}
+
+body {
+  background-color: orange;
+  padding-top: 60px; /* Increase padding to make more room for the navigation bar */
+  font-family: Arial, sans-serif;
+}
+
+.container {
+  position: absolute; /* Set the container to absolute positioning */
+  top: 80px; /* Adjust the top offset to position the container below the navigation bar */
+  left: 0; /* Ensure the container starts from the left edge of the viewport */
+  right: 0; /* Ensure the container ends at the right edge of the viewport */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 7000px; /* Adjust the container's height to fill the remaining viewport */
+}
+
+.box {
+  border: 1px solid transparent;
+  border-radius: 10px;
+  background-color: white; /* Set the background color of the boxes to white */
+  color: black; /* Set text color to black */
+  padding: 10px 60px 10px 20px; /* Adjust padding to move the text a little more to the left */
+  margin: 10px auto;
+  width: 80%;
+  max-width: 600px;
+  box-sizing: border-box;
+  position: relative;
+  transition: transform 0.5s ease;
+  text-align: left; /* Align text to the left */
+  font-family: Arial, sans-serif; /* Set the font family to Arial */
+}
+
+.view-full-article-box {
+    border-radius: 10px; /* Make the edges rounder */
+    padding: 10px;
+    margin-top: 20px;
+    width: fit-content;
+}
+
+.view-full-article {
+    text-decoration: none;
+    color: black;
+    border: none; /* Remove the border */
+    background-color: #f0f0f0; /* Set the initial background color */
+    padding: 8px 16px; /* Adjust padding */
+    border-radius: 8px; /* Make the button rounder */
+}
+
+.view-full-article:hover {
+    background-color: #e0e0e0; /* Darken the background color on hover */
+}
+
+.view-full-article:active {
+    background-color: black; /* Change background color when button is clicked */
+    color: white; /* Change text color when button is clicked */
+}
+
+
+.box.active {
+  transform: translateX(0%) scale(1.5); /* Center the active box more to the right and keep it enlarged */
+}
+
+.box.blur {
+  filter: blur(5px); /* Apply blur effect to all boxes except the active one */
+  transform: scale(1);
+}
+
+.arrow {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  right: 0;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.arrow button {
+  background-color: #ccc;
+  border: none;
+  padding: 2px 6px; /* Reduce padding */
+  cursor: pointer;
+  font-size: 14px; /* Reduce font size */
+}
+
+@keyframes moveDown {
+  from {
+    transform: translateY(0);
+  }
+  to {
+    transform: translateY(20%);
+  }
+}
+
+@keyframes moveUp {
+  from {
+    transform: translateY(0);
+  }
+  to {
+    transform: translateY(-20%);
+  }
+}
+
+.move-down {
+  animation: moveDown 0.3s forwards;
+}
+
+.move-up {
+  animation: moveUp 0.3s forwards;
+}
+
+
+  @keyframes moveDown {
+    from {
+      transform: translateY(0);
+    }
+    to {
+      transform: translateY(20%);
+    }
+  }
+
+  @keyframes moveUp {
+    from {
+      transform: translateY(0);
+    }
+    to {
+      transform: translateY(-20%);
+    }
+  }
+
+  .move-down {
+    animation: moveDown 0.3s forwards;
+  }
+
+  .move-up {
+    animation: moveUp 0.3s forwards;
+  }
 </style>
 </head>
 <body>
 
-  <header id="navbar">
-    <a href="index.html"><img src="blockchaintmu (normal logo - no background).png" alt="Welcome!" style="float:left;width:400px;height:220px;"></a>
-          <div class="dropdown">
-              <div class="dropdown-content">
-                  <ul>
-          <li><a href="index.html"><b>HOME</a></li></b>
-          <li><a href="Workshops.html"><b>WORKSHOPS</a></li></b>
-          <li><a href="FirstAccess.html"><b>FIRST/ACCESS</a></li></b>
-          <li><a href="Columns.html"><b>ARTICLES</a></li></b>
-                  </ul>
-              </div>
-              <div id="mySidenav" class="sidenav">
-                <a href="How NOT to Run a Business w Crypto (Part 3).html" id="video">WATCH VIDEO</a>
-              </div>        
-      </header>
-
-<br><br><br><br><br><br><br><br><br><br><br><br><br>
-
-<div class="button">
-  <center><button class="paragraph-button" onclick="myFunction(); this.onclick=myFunction">Paragraph Mode</button></center>
-  <center><button class="reader-button" onclick="myFunction1(); this.onclick=myFunction1">Reader Mode</button></center>
-</div>
-<br>
-
-<div class="container">
-<div id="myDIV">
-    <br>
-				<h1> How NOT to Run a Business w/ Crypto (Part 3) </h1>
-				<h3> The FTX Incident </h3>
-				<br>
-                  <p>
-                    Although this topic is not new, it remains to reach the pinnacle of blockchain 
+  <center>
+    <header id="navbar">
+      <a href="index.html"><img src="blockchainuni (official logo).png" alt="Welcome!" style="float:left;width:265px;height:90px;"></a>
+      <div class="dropdown">
+                  <div class="dropdown-content">
+                      <ul>
+              <li><a href="index.html"><b>HOME</a></li></b>
+              <li><a href="Workshops.html"><b>WORKSHOPS</a></li></b>
+              <li><a href="FirstAccess.html"><b>FIRST/ACCESS</a></li></b>
+              <li><a href="Columns.html"><b>ARTICLES</a></li></b>
+                      </ul>
+                  </div>
+</center>
+  <br><br><br><br><br><br>
+  <div class="container">
+    <br><br><br>
+    <div class="view-full-article-box" id="view-full-article-box">
+        <button class="view-full-article">View Full Article</button>
+    </div>
+    <div class="button-container">
+      <a href="" target="_blank">
+      <button class="expand-button">
+          <span class="initial-text">📺</span>
+          <span class="tooltip">📺<b>/WatchVideo</b><br></span>
+      </button>
+    </a>
+  </div>
+    <br><br><br><br><br><br>
+    <div class="box active" id="box1">
+      <div class="arrow">
+        <button class="up-arrow" onclick="scrollToTop()" disabled> 👈 </button>
+        <button class="down-arrow" onclick="scrollToBottom()"> 👉 </button>
+      </div>
+      <span class="paragraph-indicator">Paragraph 1 of 9</span>
+      <div class="paragraph-container">
+        <button class="lock-button" onclick="toggleLock(this)">🖍️</button>
+        <h1> How NOT to Run a Business w/ Crypto (Part 3) </h1>
+		<h3> The FTX Incident </h3>
+      <p>
+        Although this topic is not new, it remains to reach the pinnacle of blockchain 
 					technologies granular media attention, especially regarding the coverage of how 
 					companies react to each other and to the digital economy they relied on. As we have 
 					gone over the subject of FTX in previous workshops, for todays article the main focus 
@@ -57,19 +510,41 @@
 					are capable of acquiring billions of dollars worth of personal assets on behalf of people 
 					ranging from working-class citizens to wealthy families, and the message it gives for 
 					how we must regulate ‘trust’ within the blockchain system.
-					<br><br><br>
-					If you have yet not heard of this subject, between 2021 and 2022, a so-called business 
-					owner by the name of Sam Bankman-Fried was largely notable for running an 
-					organization called FTX which promised to manage funds of various people through 
-					cryptocurrencies promising a substantial return if they were to invest in them through 
-					the company. With the attempt of landing on business acquisitions of companies 
-					notable for managing ‘stable coins’, especially with that of Binance and its branches, the 
-					once known organization was slowly distraught by skepticism of financial 
-					mismanagement and was instead given exposure to its large cycle of distrust on behalf 
-					of the company to its clients, replacing the once assumed business model with a 
-					financial plan with a scheme.
-					<br><br><br>
-					Amongst other events at which the government intervened with blockchain-related 
+      </p>
+    </div>
+  </div>
+    <div class="box blur" id="box2">
+      <div class="arrow">
+        <button class="up-arrow" onclick="scrollToTop()" disabled> 👈 </button>
+        <button class="down-arrow" onclick="scrollToBottom()"> 👉 </button>
+      </div>
+      <span class="paragraph-indicator">Paragraph 2 of 9</span>
+      <div class="paragraph-container">
+        <button class="lock-button" onclick="toggleLock(this)">🖍️</button>  
+      <p>
+		If you have yet not heard of this subject, between 2021 and 2022, a so-called business 
+		owner by the name of Sam Bankman-Fried was largely notable for running an 
+		organization called FTX which promised to manage funds of various people through 
+		cryptocurrencies promising a substantial return if they were to invest in them through 
+		the company. With the attempt of landing on business acquisitions of companies 
+		notable for managing ‘stable coins’, especially with that of Binance and its branches, the 
+		once known organization was slowly distraught by skepticism of financial 
+		mismanagement and was instead given exposure to its large cycle of distrust on behalf 
+		of the company to its clients, replacing the once assumed business model with a 
+		financial plan with a scheme.
+      </p>
+    </div>
+    </div>
+    <div class="box blur" id="box3">
+      <div class="arrow">
+        <button class="up-arrow" onclick="scrollToTop()" disabled> 👈 </button>
+        <button class="down-arrow" onclick="scrollToBottom()"> 👉 </button>
+      </div>
+      <span class="paragraph-indicator">Paragraph 3 of 9</span>
+      <div class="paragraph-container">
+        <button class="lock-button" onclick="toggleLock(this)">🖍️</button>  
+      <p>
+        Amongst other events at which the government intervened with blockchain-related 
 					financial mismanagement, such as the NY state releasing a bill that doesn’t let 
 					developers of token campaigns sell over 10% of their cryptocurrency supply all at once 
 					(covered in the second part to ‘How NOT To Run A Business w/ Crypto’), the major 
@@ -84,22 +559,44 @@
 					crypto lenders such as Celsius Network, that had purchased 13 million$ of tokens by the 
 					name of SRM (Serum Tokens), expecting a return, with the addition of extending their 
 					loans to the supposed ‘trading company’ as well.
-					<br><br><br>
-					As the world economy includes a particular bubble at which companies maintain a 
-					specific amount of market capitalization, where specific assets are measured and 
-					calculated by the accounts of financial managers within Forbes 500 companies, in this 
-					case due to the decentralized nature and a lack of notability with how companies are 
-					built on the blockchain network, Alameda Research only used FTX as a hack (“so to 
-					speak”) into the market, largely prioritizing promises over factual evidence of portfolios 
-					and returns having ever taken place to begin with. At the beginning, the collaboration 
-					between FTX and its supporting celebrity clients was the main driving force behind the 
-					‘trust’ benefactor of the cycle, yet, when certainty takes place especially under the 
-					condition that the company is not working with pre-determined financial knowledge 
-					and a promising risk and return element within the cryptocurrency network, other 
-					companies with notable experience have taken the position of questioning the 
-					companies ethics.
-					<br><br><br>
-					In this case, the company at play was Binance, another cryptocurrency trading company 
+      </p>
+    </div>
+    </div>
+    <div class="box blur" id="box4">
+      <div class="arrow">
+        <button class="up-arrow" onclick="scrollToTop()" disabled> 👈 </button>
+        <button class="down-arrow" onclick="scrollToBottom()"> 👉 </button>
+      </div>
+      <span class="paragraph-indicator">Paragraph 4 of 9</span>
+      <div class="paragraph-container">
+        <button class="lock-button" onclick="toggleLock(this)">🖍️</button>
+      <p>
+		As the world economy includes a particular bubble at which companies maintain a 
+		specific amount of market capitalization, where specific assets are measured and 
+		calculated by the accounts of financial managers within Forbes 500 companies, in this 
+		case due to the decentralized nature and a lack of notability with how companies are 
+		built on the blockchain network, Alameda Research only used FTX as a hack (“so to 
+		speak”) into the market, largely prioritizing promises over factual evidence of portfolios 
+		and returns having ever taken place to begin with. At the beginning, the collaboration 
+		between FTX and its supporting celebrity clients was the main driving force behind the 
+		‘trust’ benefactor of the cycle, yet, when certainty takes place especially under the 
+		condition that the company is not working with pre-determined financial knowledge 
+		and a promising risk and return element within the cryptocurrency network, other 
+		companies with notable experience have taken the position of questioning the 
+		companies ethics.
+      </p>
+    </div>
+    </div>
+    <div class="box blur" id="box5">
+      <div class="arrow">
+        <button class="up-arrow" onclick="scrollToTop()" disabled> 👈 </button>
+        <button class="down-arrow" onclick="scrollToBottom()"> 👉 </button>
+      </div>
+      <span class="paragraph-indicator">Paragraph 5 of 9</span>
+      <div class="paragraph-container">
+        <button class="lock-button" onclick="toggleLock(this)">🖍️</button>
+      <p>
+        In this case, the company at play was Binance, another cryptocurrency trading company 
 					established by Changpeng Zhao in July 2017, was a format for clients to exchange 
 					cryptocurrency tokens at a high volume. As exchanges are focused on specific attention 
 					to analytics and the economies reaction to tumbling capital within the market, Binance 
@@ -107,8 +604,19 @@
 					time of 2019, yet with the use of technical analysis tools the company was able to 
 					suspect of leverages which did not particularly make up to how much of private 
 					financial information FTX was managing at the time.
-					<br><br><br>
-					At first, it was believed that the leverage of FTX was 5 billion$, yet Binance discovered 
+      </p>
+    </div>
+    </div>
+    <div class="box blur" id="box6">
+      <div class="arrow">
+        <button class="up-arrow" onclick="scrollToTop()" disabled> 👈 </button>
+        <button class="down-arrow" onclick="scrollToBottom()"> 👉 </button>
+      </div>
+      <span class="paragraph-indicator">Paragraph 6 of 9</span>
+      <div class="paragraph-container">
+        <button class="lock-button" onclick="toggleLock(this)">🖍️</button>
+      <p>
+        At first, it was believed that the leverage of FTX was 5 billion$, yet Binance discovered 
 					that the amount was instead tripled, questioning whether or not responsible 
 					information was possessively demonstrated by SBF himself within Alameda Research. 
 					With initial apologies haven taken place over errors in calculations over Twitter by Zhao, 
@@ -122,24 +630,46 @@
 					of which is temporarily confirming based on the premise that either of the two or more 
 					companies or both can walk away from an acquisition if specific terms are not agreed 
 					upon due to speculation of illegal activity or mishandling of due diligence.
-					<br><br><br>
-					It is important to be kept in mind that throughout this process, Binance had made a 
-					promise to purchase the company under the conditions with the non-binding LOI that 
-					the terms have been met, at which eventually FTX had largely broken a majority of them 
-					due to their financial mishaps. Now, you may be wondering, like all other companies 
-					mentioned thus far, was FTX not holding their own stable coin like that of Binance? Well, 
-					frankly speaking, a stable coin can be liquidized with given cash behind it as an asset, 
-					whereas FTX only created an altcoin by the name of FTT that would later disguise itself 
-					as a stable coin. As the decentralization of data spread across blocks with their own 
-					identified hash numbers and addresses can strew the way financial information is 
-					interpreted by connecting parties, in this case the CEO of Binance was carefully 
-					mentioning that their exchange with FTX on behalf of their own stable coin currency 
-					BUSD was the equivalent of 2.1 billion$. Although the initial acquisition seemed 
-					promising, the comparison to be made here is that one company knows what 
-					liquidation looks like whereas one that does not necessarily work within the same 
-					mainframe seeks loopholes instead of direct communication with their trusting clients.
-					<br><br><br>
-					If you have looked at any of our content regarding how social media tends to react as 
+      </p>
+    </div>
+    </div>    
+    <div class="box blur" id="box7">
+      <div class="arrow">
+        <button class="up-arrow" onclick="scrollToTop()" disabled> 👈 </button>
+        <button class="down-arrow" onclick="scrollToBottom()"> 👉 </button>
+      </div>
+      <span class="paragraph-indicator">Paragraph 7 of 9</span>
+      <div class="paragraph-container">
+        <button class="lock-button" onclick="toggleLock(this)">🖍️</button>
+      <p>
+		It is important to be kept in mind that throughout this process, Binance had made a 
+		promise to purchase the company under the conditions with the non-binding LOI that 
+		the terms have been met, at which eventually FTX had largely broken a majority of them 
+		due to their financial mishaps. Now, you may be wondering, like all other companies 
+		mentioned thus far, was FTX not holding their own stable coin like that of Binance? Well, 
+		frankly speaking, a stable coin can be liquidized with given cash behind it as an asset, 
+		whereas FTX only created an altcoin by the name of FTT that would later disguise itself 
+		as a stable coin. As the decentralization of data spread across blocks with their own 
+		identified hash numbers and addresses can strew the way financial information is 
+		interpreted by connecting parties, in this case the CEO of Binance was carefully 
+		mentioning that their exchange with FTX on behalf of their own stable coin currency 
+		BUSD was the equivalent of 2.1 billion$. Although the initial acquisition seemed 
+		promising, the comparison to be made here is that one company knows what 
+		liquidation looks like whereas one that does not necessarily work within the same 
+		mainframe seeks loopholes instead of direct communication with their trusting clients.
+      </p>
+    </div>
+    </div>
+    <div class="box blur" id="box8">
+      <div class="arrow">
+        <button class="up-arrow" onclick="scrollToTop()" disabled> 👈 </button>
+        <button class="down-arrow" onclick="scrollToBottom()"> 👉 </button>
+      </div>
+      <span class="paragraph-indicator">Paragraph 8 of 9</span>
+      <div class="paragraph-container">
+        <button class="lock-button" onclick="toggleLock(this)">🖍️</button>
+      <p>
+        If you have looked at any of our content regarding how social media tends to react as 
 					the core loophole to the appraisal of altcoins with invalid promises of financial returns 
 					made by influencers and celebrities, a core amount of the personal finances was largely 
 					invested into marketing campaigns that would try to sustain the demand deriving from 
@@ -151,8 +681,19 @@
 					benefit or risk their reputation at the end, something that various of the celebrities’ such 
 					as Kevin O’Leary and Shaqueille O’Neal have suffered with alongside other major 
 					companies.
-					<br><br><br>
-					As of the bankruptcy, alongside the purchase of FTT on behalf of companies and 
+      </p>
+    </div>
+    </div>
+    <div class="box blur" id="box9">
+      <div class="arrow">
+        <button class="up-arrow" onclick="scrollToTop()" disabled> 👈 </button>
+        <button class="down-arrow" onclick="scrollToBottom()"> 👉 </button>
+      </div>
+      <span class="paragraph-indicator">Paragraph 9 of 9</span>
+      <div class="paragraph-container">
+        <button class="lock-button" onclick="toggleLock(this)">🖍️</button>
+      <p>
+        As of the bankruptcy, alongside the purchase of FTT on behalf of companies and 
 					celebrities, the total loss of finances by FTX has reached anywhere between 900 billion 
 					to 1 trillion $ USD, creating a major dent in the economy at the time of the pandemic. 
 					With SBF recently attempting to dismiss the charges from the court, and facing 115 
@@ -170,236 +711,183 @@
 					provide you a concrete analysis that will help in avoiding scheme-driven altcoins. You 
 					may access the link for more information here: https://help.tryq.ai/en/articles/5211544-
 					what-is-q-ai
-					<br><br><br>
-				</p>
-</div>
-
-<div class="container">
-<div id="myDIV1">
-    <div class="article" id="article">
-      <br>
-      <h1> How NOT to Run a Business w/ Crypto (Part 3) </h1>
-      <h3> The FTX Incident </h3>
-      <br>
-        <p>
-            Although this topic is not new, it remains to reach the <span class="tooltip" data-definition="pinnacle: Highest point or peak." data-videos="Video1, Video2, Video3">pinnacle</span> of <span class="tooltip" data-definition="Blockchain technologies: Decentralized digital ledger systems." data-videos="Video1, Video2, Video3">blockchain technologies</span> granular media attention, especially regarding the coverage of how companies react to each other and to the <span class="tooltip" data-definition="Digital economy: Economic activities based on digital technologies." data-videos="Video1, Video2, Video3">digital economy</span> they relied on. As we have gone over the subject of <span class="tooltip" data-definition="FTX: Cryptocurrency exchange platform." data-videos="Video1, Video2, Video3">FTX</span> in previous workshops, for today's article the main focus solely relies on the specific cycle as to how <span class="tooltip" data-definition="Fake companies: Fictitious or deceptive business entities." data-videos="Video1, Video2, Video3">fake companies</span> disguising as hedge funds are capable of acquiring billions of dollars worth of personal assets on behalf of people ranging from working-class citizens to wealthy families, and the message it gives for how we must regulate ‘trust’ within the <span class="tooltip" data-definition="Blockchain system: Decentralized ledger technology." data-videos="Video1, Video2, Video3">blockchain system</span>.
-        </p>
-
-        <p>
-            If you have yet not heard of this subject, between 2021 and 2022, a so-called business owner by the name of <span class="tooltip" data-definition="Sam Bankman-Fried: Entrepreneur known for FTX and cryptocurrency ventures." data-videos="Video1, Video2, Video3">Sam Bankman-Fried</span> was largely notable for running an organization called <span class="tooltip" data-definition="FTX: Cryptocurrency exchange platform." data-videos="Video1, Video2, Video3">FTX</span> which promised to manage funds of various people through <span class="tooltip" data-definition="Cryptocurrencies: Digital currencies using cryptography for security." data-videos="Video1, Video2, Video3">cryptocurrencies</span> promising a substantial return if they were to invest in them through the company. With the attempt of landing on business acquisitions of companies notable for managing ‘<span class="tooltip" data-definition="Stable coins: Cryptocurrencies pegged to stable assets like fiat currencies." data-videos="Video1, Video2, Video3">stable coins</span>’, especially with that of <span class="tooltip" data-definition="Binance: Major cryptocurrency exchange platform." data-videos="Video1, Video2, Video3">Binance</span> and its branches, the once known organization was slowly distraught by skepticism of financial mismanagement and was instead given exposure to its large cycle of distrust on behalf of the company to its clients, replacing the once assumed business model with a financial plan with a scheme.
-        </p>
-        
-        <p>
-            Amongst other events at which the government intervened with blockchain-related financial mismanagement, such as the <span class="tooltip" data-definition="New York state bill: Legislation limiting token campaign developers' cryptocurrency supply sales." data-videos="Video1, Video2, Video3">NY state releasing a bill</span> that doesn’t let developers of token campaigns sell over 10% of their cryptocurrency supply all at once (covered in the second part to ‘How NOT To Run A Business w/ Crypto’), the major sustenance that caught the media’s attention was not only the suspicious nature of the company exposed overtime by relinquished partnerships but as well as how court justice came into play. A large number of companies had partnered with the ownership of holding tokens within <span class="tooltip" data-definition="FTX: Cryptocurrency exchange platform." data-videos="Video1, Video2, Video3">FTX</span>, at which most of them had suffered the consequences without having looked into the root of an onion that was spoiled. FTX was established by a portfolio trading and research company that <span class="tooltip" data-definition="Sam Bankman-Fried: Entrepreneur known for FTX and cryptocurrency ventures." data-videos="Video1, Video2, Video3">Sam Bankman-Fried</span> had named ‘Alameda Research’, except on the surface level of the iceberg, this was only a title with a promise that would later vanish. The companies associated with FTX were mainly crypto lenders such as <span class="tooltip" data-definition="Celsius Network: Cryptocurrency lending platform." data-videos="Video1, Video2, Video3">Celsius Network</span>, that had purchased 13 million$ of tokens by the name of SRM (Serum Tokens), expecting a return, with the addition of extending their loans to the supposed ‘trading company’ as well.
-        </p>
-
-        <p>
-            As the world economy includes a particular bubble at which companies maintain a specific amount of market capitalization, where specific assets are measured and calculated by the accounts of financial managers within <span class="tooltip" data-definition="Forbes 500 companies: List of top companies by revenue, compiled by Forbes." data-videos="Video1, Video2, Video3">Forbes 500 companies</span>, in this case due to the decentralized nature and a lack of notability with how companies are built on the blockchain network, <span class="tooltip" data-definition="Alameda Research: Cryptocurrency trading and research firm." data-videos="Video1, Video2, Video3">Alameda Research</span> only used <span class="tooltip" data-definition="FTX: Cryptocurrency exchange platform." data-videos="Video1, Video2, Video3">FTX</span> as a hack (“so to speak”) into the market, largely prioritizing promises over factual evidence of portfolios and returns having ever taken place to begin with. At the beginning, the collaboration between FTX and its supporting celebrity clients was the main driving force behind the ‘trust’ benefactor of the cycle, yet, when certainty takes place especially under the condition that the company is not working with pre-determined financial knowledge and a promising risk and return element within the cryptocurrency network, other companies with notable experience have taken the position of questioning the companies ethics.
-        </p>
-        
-        <p>
-            In this case, the company at play was <span class="tooltip" data-definition="Binance: Cryptocurrency exchange platform." data-videos="Video1, Video2, Video3">Binance</span>, another cryptocurrency trading company established by Changpeng Zhao in July 2017, was a format for clients to exchange cryptocurrency tokens at a high volume. As exchanges are focused on specific attention to analytics and the economies reaction to tumbling capital within the market, Binance had owned a significant portion of FTX’s tokens valued up to 530 million$ at around the time of 2019, yet with the use of technical analysis tools the company was able to suspect of leverages which did not particularly make up to how much of private financial information FTX was managing at the time.
-        </p>
-
-        <p>
-            At first, it was believed that the leverage of <span class="tooltip" data-definition="FTX: Cryptocurrency exchange platform." data-videos="Video1, Video2, Video3">FTX</span> was 5 billion$, yet <span class="tooltip" data-definition="Binance: Cryptocurrency exchange platform." data-videos="Video1, Video2, Video3">Binance</span> discovered that the amount was instead tripled, questioning whether or not responsible information was possessively demonstrated by SBF himself within <span class="tooltip" data-definition="Alameda Research: Cryptocurrency trading and research company." data-videos="Video1, Video2, Video3">Alameda Research</span>. With initial apologies haven taken place over errors in calculations over Twitter by Zhao, the specific exchange of messages did in fact create a ripple in questioning instead of accepting the reputation of FTX. Generally speaking, next to flaws in client relations due to flaws in passing information, especially when it’s rooted from a hidden negative quality within a company, what generally tends to take place for the sake of protection on behalf the most conscious corporation is something called a <span class="tooltip" data-definition="Non-binding LOI: Letter of Intent that is not legally binding." data-videos="Video1, Video2, Video3">non-binding LOI (letter of intent)</span>. The meaning behind this term is partially explained by the word ‘non-binding’, at which a permanent deal is not set in place to secure the acquisition but one of which is temporarily confirming based on the premise that either of the two or more companies or both can walk away from an acquisition if specific terms are not agreed upon due to speculation of illegal activity or mishandling of due diligence.
-        </p>
-
-        <p>
-            It is important to be kept in mind that throughout this process, <span class="tooltip" data-definition="Binance: Cryptocurrency exchange platform." data-videos="Video1, Video2, Video3">Binance</span> had made a promise to purchase the company under the conditions with the <span class="tooltip" data-definition="Non-binding LOI: Letter of Intent that is not legally binding." data-videos="Video1, Video2, Video3">non-binding LOI</span> that the terms have been met, at which eventually <span class="tooltip" data-definition="FTX: Cryptocurrency exchange platform." data-videos="Video1, Video2, Video3">FTX</span> had largely broken a majority of them due to their financial mishaps. Now, you may be wondering, like all other companies mentioned thus far, was FTX not holding their own stable coin like that of Binance? Well, frankly speaking, a stable coin can be liquidized with given cash behind it as an asset, whereas FTX only created an altcoin by the name of FTT that would later disguise itself as a stable coin. As the decentralization of data spread across blocks with their own identified hash numbers and addresses can strew the way financial information is interpreted by connecting parties, in this case the CEO of Binance was carefully mentioning that their exchange with FTX on behalf of their own stable coin currency <span class="tooltip" data-definition="BUSD: Binance USD stablecoin." data-videos="Video1, Video2, Video3">BUSD</span> was the equivalent of 2.1 billion$. Although the initial acquisition seemed promising, the comparison to be made here is that one company knows what liquidation looks like whereas one that does not necessarily work within the same mainframe seeks loopholes instead of direct communication with their trusting clients.
-        </p>
-        
-        <p>
-            If you have looked at any of our content regarding how social media tends to react as the core loophole to the appraisal of altcoins with invalid promises of financial returns made by influencers and celebrities, a core amount of the personal finances was largely invested into marketing campaigns that would try to sustain the demand deriving from ‘word of mouth’. A major example of this, is how <span class="tooltip" data-definition="FTX: Cryptocurrency exchange platform." data-videos="Video1, Video2, Video3">FTX</span> managed to land on another acquisition with the intention of building this word of mouth, by purchasing the naming rights to the Miami Heat Arena for a 19-year time period renaming it to the “FTX Arena” for 135 million $ by the time of June 2021. The key indicator behind this action, is the way the trust is built with these major corporations, and how it will ultimately either benefit or risk their reputation at the end, something that various of the celebrities’ such as Kevin O’Leary and Shaqueille O’Neal have suffered with alongside other major companies.
-        </p>
-        
-        <p>
-            As of the bankruptcy, alongside the purchase of <span class="tooltip" data-definition="FTT: Native token of the FTX exchange, used for various purposes including reduced trading fees and loyalty rewards." data-videos="Video1, Video2">FTT</span> on behalf of companies and celebrities, the total loss of finances by FTX has reached anywhere between 900 billion to 1 trillion $ USD, creating a major dent in the economy at the time of the pandemic. With SBF recently attempting to dismiss the charges from the court, and facing 115 years of prison over his actions as a result, the ultimate conclusion to understand and process here is that ‘trust’ can be interpreted many different ways. Whether or not you are an established businessman or someone just seeking to build a portfolio, it is important to maintain patience in order to get the most information possible about any company that supposedly promises something. In this era, marketing is incredibly easy to be done, and with a real or imagined product at hand, you can simply disguise it as much as you can through how you represent yourself to the people you choose to work with in favor of or against what they’d like in return. A great tool that may assist a person with building a beginner portfolio in the cryptocurrency sector is an AI-driven tool called <span class="tooltip" data-definition="Q.ai: An AI-driven tool used for assessing market risks and returns for financial purposes." data-link="https://help.tryq.ai/en/articles/5211544-what-is-q-ai">Q.ai</span>, which is an app used in assessing the spread of risk and return across the entirety of the markets on behalf of financial advisors in addition to this, in order to provide you a concrete analysis that will help in avoiding scheme-driven altcoins.
-        </p>
-              
-      <div class="tooltip-box" id="tooltipBox">
-          <span id="tooltipContent"></span>
-          <div class="video-container" id="videoContainer">
-              <!-- Video recommendations will appear here -->
-          </div>
-          <span class="close-btn">×</span> <!-- Close button -->
-      </div>
-       
+      </p>
     </div>
-    <div class="slider-container">
-        <div class="arrow-button" id="prevButton">&#9650;</div>
-        <p>
-          <br><br><br><br>
-          Paragraph <span id="currentParagraph">1</span> of <span id="totalParagraphs">24</span>
-        </p>
-        <div class="arrow-button" id="nextButton">&#9660;</div>
     </div>
-</div>
-</div>
-
-<div class="tooltip-box" id="tooltipBox">
-  <span id="tooltipContent"></span>
-  <div class="video-container" id="videoContainer">
-      <!-- Video recommendations will appear here -->
-  </div>
-  <span class="close-btn">×</span> <!-- Close button -->
-</div>
-</div>
 
 <script>
+const boxes = document.querySelectorAll('.box');
+const container = document.querySelector('.container');
+const upArrows = document.querySelectorAll('.up-arrow');
+const downArrows = document.querySelectorAll('.down-arrow');
+let currentIndex = 0;
 
-function myFunction() {
-  var x = document.getElementById("myDIV");
-  var y = document.getElementById("myDIV1");
-  if (x.style.display === "none") {
-    x.style.display = "block";
-  } else {
-    x.style.display = "none";
-  }
-  if (y.style.display === "none") {
-    y.style.display = "none";
-  } else {
-    y.style.display = "none";
-  }
-}
+// Initialize the page by hiding arrow buttons for all boxes except the first one
+hideOtherArrows(currentIndex);
 
-function myFunction1() {
-  var x = document.getElementById("myDIV");
-  var y = document.getElementById("myDIV1");
-  if (x.style.display === "none") {
-    x.style.display = "none";
-  } else {
-    x.style.display = "none";
-  }
-  if (y.style.display === "none") {
-    y.style.display = "block";
-  } else {
-    y.style.display = "none";
-  }
-}
-
-document.addEventListener('DOMContentLoaded', function() {
-    const article = document.getElementById('article');
-    const totalParagraphs = article.querySelectorAll('p').length;
-    document.getElementById('totalParagraphs').textContent = totalParagraphs;
-
-    let currentSlide = 1;
-    let isTooltipDisplayed = false;
-
-    function displayParagraph(slide) {
-        const paragraphs = article.querySelectorAll('p');
-        paragraphs.forEach(paragraph => {
-            paragraph.style.opacity = '0';
-        });
-
-        const selectedParagraph = paragraphs[slide - 1];
-        setTimeout(() => {
-            selectedParagraph.style.opacity = '1';
-        }, 100);
-
-        document.getElementById('currentParagraph').textContent = slide;
-
-        // Tooltip Functionality
-        const tooltipSpan = selectedParagraph.querySelectorAll('.tooltip');
-        const tooltipBox = document.createElement('div');
-        tooltipBox.classList.add('tooltip-box');
-        selectedParagraph.appendChild(tooltipBox);
-
-        tooltipSpan.forEach(span => {
-            span.addEventListener('click', (event) => {
-                if (!isTooltipDisplayed) {
-                    const definition = event.target.getAttribute('data-definition');
-                    const videos = event.target.getAttribute('data-videos');
-
-                    const tooltipContent = document.createElement('div');
-                    tooltipContent.classList.add('tooltip-content');
-                    tooltipContent.textContent = definition;
-
-                    const videoContainer = document.createElement('div');
-                    videoContainer.classList.add('video-container');
-                    videoContainer.innerHTML = '';
-
-                    if (videos) {
-                        const videoList = videos.split(', ');
-                        const videoListHTML = videoList.map(video => `<iframe width="100%" height="200" src="${video}" frameborder="0" allowfullscreen></iframe>`).join('');
-                        videoContainer.innerHTML = `<h3>Video Recommendations:</h3>${videoListHTML}`;
-                    }
-
-                    tooltipBox.innerHTML = '';
-                    tooltipBox.appendChild(tooltipContent);
-                    tooltipBox.appendChild(videoContainer);
-
-                    const closeBtn = document.createElement('span');
-                    closeBtn.classList.add('close-btn');
-                    closeBtn.textContent = 'X';
-                    closeBtn.addEventListener('click', () => {
-                        isTooltipDisplayed = false;
-                        tooltipBox.style.display = 'none';
-                    });
-                    tooltipBox.appendChild(closeBtn);
-
-                    tooltipBox.style.display = 'block';
-                    isTooltipDisplayed = true;
-
-
-                }
-            });
-
-            tooltipBox.removeEventListener('mouseleave', () => {
-                isTooltipDisplayed = false;
-                tooltipBox.style.display = 'none';
-            });
-        });
-    }
-
-    document.getElementById('nextButton').addEventListener('click', () => {
-        if (currentSlide < totalParagraphs) {
-            currentSlide++;
-            displayParagraph(currentSlide);
-        }
-    });
-
-    document.getElementById('prevButton').addEventListener('click', () => {
-        if (currentSlide > 1) {
-            currentSlide--;
-            displayParagraph(currentSlide);
-        }
-    });
-
-    displayParagraph(currentSlide);
+upArrows.forEach(function(elem, index) {
+  elem.addEventListener('click', function() {
+    moveBoxUp(index);
+  });
 });
 
-let prevScrollPos = window.pageYOffset;
+downArrows.forEach(function(elem, index) {
+  elem.addEventListener('click', function() {
+    moveBoxDown(index);
+  });
+});
 
-    window.onscroll = function() {
-      let currentScrollPos = window.pageYOffset;
+document.addEventListener('keydown', function(event) {
+  if (event.key === 'ArrowRight') {
+    moveBoxDown(currentIndex);
+  } else if (event.key === 'ArrowLeft') {
+    moveBoxUp(currentIndex);
+  } else if (event.key === 'ArrowUp') {
+    moveBoxUp(currentIndex);
+  } else if (event.key === 'ArrowDown') {
+    moveBoxDown(currentIndex);
+  }
+});
 
-      if (prevScrollPos > currentScrollPos) {
-        document.getElementById("navbar").classList.remove("hidden");
-      } else {
-        document.getElementById("navbar").classList.add("hidden");
-      }
+function moveBoxUp(index) {
+  if (index > 0) {
+    const nextIndex = index - 1;
+    moveToIndex(nextIndex);
+  }
+}
 
-      prevScrollPos = currentScrollPos;
-    };
+function moveBoxDown(index) {
+  if (index < boxes.length - 1) {
+    const nextIndex = index + 1;
+    moveToIndex(nextIndex);
+  }
+}
 
-    // JavaScript to bring back solidity on hover
-    const navbar = document.getElementById('navbar');
+function moveToIndex(nextIndex) {
+  // Remove active class from current box and add blur class
+  boxes[currentIndex].classList.remove('active');
+  boxes[currentIndex].classList.add('blur');
 
-    navbar.addEventListener('mouseenter', function() {
-      navbar.classList.remove('hidden');
+  // Add active class to next box and remove blur class
+  boxes[nextIndex].classList.remove('blur');
+  boxes[nextIndex].classList.add('active');
+
+  // Calculate the position to align active box with arrow box
+  const arrowRect = boxes[nextIndex].querySelector('.arrow').getBoundingClientRect();
+  const activeBoxRect = boxes[nextIndex].getBoundingClientRect();
+
+  // Calculate the scroll position to align active box with arrow box
+  const scrollLeft = activeBoxRect.left - arrowRect.left - (window.innerWidth / 2 - activeBoxRect.width / 2);
+
+  // Set the scroll position to immediately position the active box beside the arrow box
+  container.scrollLeft = scrollLeft;
+
+  currentIndex = nextIndex;
+
+  // Disable/enable arrows based on current index
+  upArrows.forEach(function(elem) {
+    elem.disabled = currentIndex === 0;
+  });
+
+  downArrows.forEach(function(elem) {
+    elem.disabled = currentIndex === boxes.length - 1;
+  });
+
+  // Hide arrow buttons for other boxes
+  hideOtherArrows(currentIndex);
+}
+
+function hideOtherArrows(index) {
+  boxes.forEach(function(box, i) {
+    const arrows = box.querySelectorAll('.arrow button');
+    arrows.forEach(function(arrow) {
+      arrow.style.visibility = i !== index ? 'hidden' : 'visible';
+    });
+  });
+}
+
+    
+document.getElementById('view-full-article-box').addEventListener('click', function() {
+    // Create the button for entering paragraph mode
+    var refreshButton = document.createElement('button');
+    refreshButton.textContent = 'Enter Paragraph Mode';
+    refreshButton.classList.add('view-full-article'); // Add class for styling
+    refreshButton.style.backgroundColor = 'white'; // Set white background
+    refreshButton.style.color = 'black'; // Set black text color
+    refreshButton.style.border = '2px solid white'; // Add white border
+    refreshButton.style.cursor = 'pointer'; // Set cursor to pointer to indicate clickability
+    refreshButton.addEventListener('click', function() {
+        location.reload(); // Reload the page when clicked
     });
 
-    navbar.addEventListener('mouseleave', function() {
-      if (window.scrollY === 0) {
-        navbar.classList.add('hidden');
-      }
+    // Append the button to the 'view-full-article-box'
+    this.innerHTML = ''; // Clear existing content
+    this.appendChild(refreshButton);
+
+    // Remove active state from all boxes
+    document.querySelectorAll('.box').forEach(function(box) {
+        box.classList.remove('active');
     });
 
+    // Remove box styling
+    document.querySelectorAll('.box').forEach(function(box) {
+        box.style.border = 'none';
+        box.style.backgroundColor = 'transparent';
+        box.style.fontSize = '15px'; // Set font size back to default
+        box.classList.remove('blur'); // Remove blur class
+    });
+
+    // Remove paragraph indicators
+    document.querySelectorAll('.paragraph-indicator').forEach(function(indicator) {
+        indicator.remove();
+    });
+
+    // Disable lock buttons and hide lock icons
+    document.querySelectorAll('.lock-button').forEach(function(lockButton) {
+        lockButton.disabled = true;
+        lockButton.style.display = 'none';
+    });
+
+    // Remove animations
+    document.querySelectorAll('.move-up, .move-down').forEach(function(animation) {
+        animation.style.animation = 'none';
+    });
+
+    // Hide arrow buttons for all other boxes
+    hideOtherArrows(-1);
+});
+
+let lockedParagraph = null;
+
+function toggleLock(button) {
+  const parent = button.parentNode;
+  const isLocked = parent.classList.toggle('locked');
+  if (isLocked) {
+    lockedParagraph = parent;
+    centerParagraph(lockedParagraph);
+  } else {
+    lockedParagraph = null;
+  }
+}
+
+function centerParagraph(element) {
+  const rect = element.getBoundingClientRect();
+  const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+  const centerY = rect.top + rect.height / 2 - window.innerHeight / 2 + scrollTop;
+  window.scrollTo({
+    top: centerY,
+    behavior: 'smooth'
+  });
+}
+
+// Keep the locked paragraph centered if the window is resized
+window.addEventListener('resize', function() {
+  if (lockedParagraph) {
+    centerParagraph(lockedParagraph);
+  }
+});
 
 
-</script>
-
+    </script>  
 </body>
 </html>
-
