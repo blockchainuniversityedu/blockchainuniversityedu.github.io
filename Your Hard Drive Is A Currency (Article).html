@@ -1,0 +1,1024 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- Google tag (gtag.js) -->
+	<script async src="https://www.googletagmanager.com/gtag/js?id=G-9J1B2MTYSV"></script>
+	<script>
+ 	 	window.dataLayer = window.dataLayer || [];
+  	 	function gtag(){dataLayer.push(arguments);}
+ 	 	gtag('js', new Date());
+ 	 	gtag('config', 'G-9J1B2MTYSV');
+	</script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title> Your Hard Drive Is Now A Currency - Article </title>
+<style>
+
+.locked {
+        background-color: darkorange;
+        border: 1px solid;
+        border-radius: 10px;
+        border-color: black;
+    }
+
+.button-container {
+        position: relative;
+        width: 300px; /* Adjust width as needed */
+    }
+
+    .expand-button {
+        width: 10px; /* Initial width of the button */
+        height: 10px; /* Height of the button */
+        padding: 10px;
+        background-color: #ff0000;
+        color: rgb(255, 255, 255);
+        border: none;
+        cursor: pointer;
+        position: relative; /* Enable positioning of the tooltip */
+        transition: width 0.3s; /* Smooth transition effect */
+        border-radius: 5px; /* Make the edges rounder */
+        margin-top: 20px;
+    }
+
+    .expand-button .initial-text,
+    .expand-button .tooltip {
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        opacity: 0;
+        transition: opacity 0.3s; /* Smooth transition effect */
+        
+    }
+
+    .expand-button .initial-text {
+        opacity: 1; /* Show "+" sign text by default */
+    }
+
+    .expand-button:hover {
+        width: 100px; /* Expanded width on hover */
+    }
+
+    .expand-button:hover .initial-text {
+        opacity: 0; /* Hide "+" sign text on hover */
+    }
+
+    .expand-button:hover .tooltip {
+        opacity: 1; /* Show "Hello" text on hover */
+        right: 100px; /* Position "Hello" text beside "+" sign */
+    }
+
+.paragraph-container {
+        padding: 10px;
+        margin: 10px;
+        position: relative; /* Relative positioning for absolute positioning of the lock button */
+    }
+    
+    .lock-button {
+        padding: 5px;
+        background-color: #000000;
+        color: white;
+        border: none;
+        border-radius: 50%;
+        cursor: pointer;
+        position: absolute; /* Absolute positioning */
+        top: 50%; /* Vertically center the button */
+        right: -100px; /* Position the button outside the box */
+        transform: translateY(-50%); /* Adjust position to center vertically */
+    }
+
+
+.scroll-to-top {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    cursor: pointer;
+    background-color: #000000;
+    color: #fff;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.scroll-to-top i {
+    font-size: 20px;
+}
+
+.navbar {
+  color: white;
+  padding: 25px; /* Increase padding to give more space */
+  width: 95%; /* Make the navbar fully wide */
+  position: fixed; /* Fix the navbar to the top */
+  top: 0; /* Position the navbar at the top of the viewport */
+  z-index: 1000; /* Ensure the navbar is above other content */
+  display: flex; /* Use flexbox to align items */
+  justify-content: space-between; /* Align items to the start and end */
+}
+
+.navbar-logo {
+  width: 50px;
+  height: auto;
+  margin-right: auto; /* Push the logo to the left */
+}
+
+.nav-links {
+  display: flex; /* Use flexbox to align items */
+}
+
+.nav-link {
+  margin-left: 10px; /* Add margin to separate links */
+  text-decoration: none;
+  color: white;
+}
+
+.nav-link:not(:last-child)::after {
+  content: '|'; /* Add a vertical line */
+  margin-left: 10px; /* Add space between the line and the link */
+  color: white; /* Set the color of the line */
+}
+
+
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    overflow: hidden;
+    height: 100vh;
+    padding: 200px;
+}
+
+.button-container {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20px;
+  }
+
+  .button {
+    padding: 10px 20px;
+    background-color: #f0f0f0;
+    color: #333;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+    margin: 5px;
+  }
+
+  .button.active {
+    background-color: black;
+    color: white;
+  }
+
+  .content {
+    display: none;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    margin-top: 20px;
+  }
+
+  .content.active {
+    display: block;
+  }
+
+body {
+  font-family: Arial, sans-serif;
+  font-size: 15px;
+  height: 400vh;
+}
+
+.box {
+  border: 1px solid transparent;
+  border-radius: 10px;
+  background-color: white; /* Set the background color of the boxes to white */
+  color: black; /* Set text color to black */
+  padding: 10px 60px 10px 20px; /* Adjust padding to move the text a little more to the left */
+  margin: 10px auto;
+  width: 80%;
+  max-width: 600px;
+  box-sizing: border-box;
+  position: relative;
+  transition: transform 0.5s ease;
+  text-align: left;
+  font-family: Arial, sans-serif; /* Set the font family to Arial */
+}
+
+  .box.active {
+    transform: translateX(0%) scale(1.5); /* Center the active box more to the right and keep it enlarged */
+    z-index: 1;
+    background-color: black;
+    color: white;
+  }
+
+
+  .box.active .arrow {
+    transform: rotate(90deg); /* Rotate the arrow button by 90 degrees */
+  }
+
+  .box.blur {
+    filter: blur(5px); /* Apply blur effect to all boxes except the active one */
+    transform: scale(1);
+    z-index: 0;
+  }
+
+  .blur {
+  filter: blur(2px); /* Apply blur effect */
+  pointer-events: none; /* Disable pointer events */
+  user-select: none; /* Disable text selection */
+}
+
+
+  .arrow {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  right: 0;
+  top: 50%;
+}
+
+.up-arrow button,
+.down-arrow button {
+  background-color: #ccc;
+  border-radius: none;
+  padding: 5px 10px; /* Reduce padding */
+  cursor: pointer;
+  font-size: 14px; /* Reduce font size */
+  border-radius: 50%; /* Make the button round */
+}
+
+
+  .paragraph-indicator {
+  color: gray;
+  font-size: 12px;
+  display: block;
+  margin-bottom: 5px;
+  font-weight: bold; /* Add this line to make the paragraph indicator bold */
+}
+
+.banner {
+  position: relative;
+  width: 100%;
+  height: 30vh; /* Adjusted height for the banner */
+  background-size: cover;
+  background-color: #ffffff; /* Dark gray background for the banner */
+}
+
+header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 90%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  transition: 0.6s;
+  padding: 40px 100px;
+  z-index: 100000;
+  border-bottom: 2px solid rgb(0, 0, 0); /* White border at the bottom of the header */
+  opacity: 1;
+  transition: opacity 0.6s;
+}
+
+header.hidden {
+  opacity: 0;
+}
+
+header ul {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 10px 0;
+  border-top: 2px solid rgb(255, 255, 255); /* White border at the top of the ul */
+  border-bottom: 2px solid white; /* White border at the bottom of the ul */
+}
+
+header ul li {
+  position: relative;
+  list-style: none;
+  border-left: 2px solid white; /* White border on the left of each list item */
+}
+
+header ul li:first-child {
+  border-left: none; /* Remove left border for the first list item */
+}
+
+header ul li a {
+  position: relative;
+  margin: 0 15px;
+  text-decoration: none;
+  color: hsl(0, 0%, 100%);
+  letter-spacing: 2px;
+  font-weight: 500;
+  transition: 0.6s;
+}
+
+/* Add hover effect to header buttons */
+header ul li a:hover {
+  color: #000000; /* Change to the desired highlight color */
+}
+
+body {
+  background-color: orange;
+  padding-top: 60px; /* Increase padding to make more room for the navigation bar */
+  font-family: Arial, sans-serif;
+}
+
+.container {
+  position: absolute; /* Set the container to absolute positioning */
+  top: 80px; /* Adjust the top offset to position the container below the navigation bar */
+  left: 0; /* Ensure the container starts from the left edge of the viewport */
+  right: 0; /* Ensure the container ends at the right edge of the viewport */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 7000px; /* Adjust the container's height to fill the remaining viewport */
+}
+
+.box {
+  border: 1px solid transparent;
+  border-radius: 10px;
+  background-color: white; /* Set the background color of the boxes to white */
+  color: black; /* Set text color to black */
+  padding: 10px 60px 10px 20px; /* Adjust padding to move the text a little more to the left */
+  margin: 10px auto;
+  width: 80%;
+  max-width: 600px;
+  box-sizing: border-box;
+  position: relative;
+  transition: transform 0.5s ease;
+  text-align: left; /* Align text to the left */
+  font-family: Arial, sans-serif; /* Set the font family to Arial */
+}
+
+.view-full-article-box {
+    border-radius: 10px; /* Make the edges rounder */
+    padding: 10px;
+    margin-top: 20px;
+    width: fit-content;
+}
+
+.view-full-article {
+    text-decoration: none;
+    color: black;
+    border: none; /* Remove the border */
+    background-color: #f0f0f0; /* Set the initial background color */
+    padding: 8px 16px; /* Adjust padding */
+    border-radius: 8px; /* Make the button rounder */
+}
+
+.view-full-article:hover {
+    background-color: #e0e0e0; /* Darken the background color on hover */
+}
+
+.view-full-article:active {
+    background-color: black; /* Change background color when button is clicked */
+    color: white; /* Change text color when button is clicked */
+}
+
+
+.box.active {
+  transform: translateX(0%) scale(1.5); /* Center the active box more to the right and keep it enlarged */
+}
+
+.box.blur {
+  filter: blur(5px); /* Apply blur effect to all boxes except the active one */
+  transform: scale(1);
+}
+
+.arrow {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  right: 0;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.arrow button {
+  background-color: #ccc;
+  border: none;
+  padding: 2px 6px; /* Reduce padding */
+  cursor: pointer;
+  font-size: 14px; /* Reduce font size */
+}
+
+@keyframes moveDown {
+  from {
+    transform: translateY(0);
+  }
+  to {
+    transform: translateY(20%);
+  }
+}
+
+@keyframes moveUp {
+  from {
+    transform: translateY(0);
+  }
+  to {
+    transform: translateY(-20%);
+  }
+}
+
+.move-down {
+  animation: moveDown 0.3s forwards;
+}
+
+.move-up {
+  animation: moveUp 0.3s forwards;
+}
+
+
+  @keyframes moveDown {
+    from {
+      transform: translateY(0);
+    }
+    to {
+      transform: translateY(20%);
+    }
+  }
+
+  @keyframes moveUp {
+    from {
+      transform: translateY(0);
+    }
+    to {
+      transform: translateY(-20%);
+    }
+  }
+
+  .move-down {
+    animation: moveDown 0.3s forwards;
+  }
+
+  .move-up {
+    animation: moveUp 0.3s forwards;
+  }
+</style>
+</head>
+<body>
+
+  <center>
+    <header id="navbar">
+      <a href="index.html"><img src="blockchainuni (official logo).png" alt="Welcome!" style="float:left;width:265px;height:90px;"></a>
+      <div class="dropdown">
+                  <div class="dropdown-content">
+                      <ul>
+              <li><a href="index.html"><b>HOME</a></li></b>
+              <li><a href="Workshops.html"><b>WORKSHOPS</a></li></b>
+              <li><a href="FirstAccess.html"><b>FIRST/ACCESS</a></li></b>
+              <li><a href="Columns.html"><b>ARTICLES</a></li></b>
+                      </ul>
+                  </div>
+</center>
+  <br><br><br><br><br><br>
+  <div class="container">
+    <br><br><br>
+    <div class="view-full-article-box" id="view-full-article-box">
+        <button class="view-full-article">View Full Article</button>
+    </div>
+    <div class="button-container">
+      <a href="" target="_blank">
+      <button class="expand-button">
+          <span class="initial-text">📺</span>
+          <span class="tooltip">📺<b>/WatchVideo</b><br></span>
+      </button>
+    </a>
+  </div>
+    <br><br><br><br><br><br>
+    <div class="box active" id="box1">
+      <div class="arrow">
+        <button class="up-arrow" onclick="scrollToTop()" disabled> 👈 </button>
+        <button class="down-arrow" onclick="scrollToBottom()"> 👉 </button>
+      </div>
+      <span class="paragraph-indicator">Paragraph #1 of #17</span>
+      <div class="paragraph-container">
+        <button class="lock-button" onclick="toggleLock(this)">🖍️</button>
+        <h1> Your Hard Drive </h1>
+        <h3> Is Now Currency</h3>
+      <p>
+        In the past, various coins that have been covered and were linked to cryptocurrency worked 
+        under the simple rule of thumb that, you connected to something that you were in control. In 
+        such instances, the only involvement of that connection would specifically be some 
+        hardware, or simply developing a minted identity on the blockchain network via 
+        decentralized applications catered towards controlling or managing certain finances. Unless 
+        you were to make use of an ASIC machine (Application Specific Integrated System) for 
+        cryptocurrency mining, normally the process for actually investing into a cryptocurrency, be 
+        it the reliable form of stable coins, or the simple process of getting involved in the risk filled 
+        hemisphere of buying altcoins with false promises on behalf of its creators, it is essential to 
+        get to the base point that, most cryptographic activity does not require much. 
+      </p>
+    </div>
+  </div>
+    <div class="box blur" id="box2">
+      <div class="arrow">
+        <button class="up-arrow" onclick="scrollToTop()" disabled> 👈 </button>
+        <button class="down-arrow" onclick="scrollToBottom()"> 👉 </button>
+      </div>
+      <span class="paragraph-indicator">Paragraph #2 of #17</span>
+      <div class="paragraph-container">
+        <button class="lock-button" onclick="toggleLock(this)">🖍️</button>  
+      <p>
+        The subject in this article tends to challenge that fact, with something called ChiaCoin, a 
+        cryptocurrency that aims to allow the purchasing or selling of your currency to take place 
+        within a hard drive. That’s correct, hard drives are not just used for day-to-day storage, but 
+        to also enable the allowance of data transfers on a decentralized system largely relating to 
+        financial transactions. But, how does this happen? As we’ve covered other topics in the past, 
+        such as the hardware wallet, the system in of itself has parts and components that mainly 
+        relate to the general functionality of simply translating encrypted data into the cyclical format 
+        of buying and selling something. 
+      </p>
+    </div>
+    </div>
+    <div class="box blur" id="box3">
+      <div class="arrow">
+        <button class="up-arrow" onclick="scrollToTop()" disabled> 👈 </button>
+        <button class="down-arrow" onclick="scrollToBottom()"> 👉 </button>
+      </div>
+      <span class="paragraph-indicator">Paragraph #3 of #17</span>
+      <div class="paragraph-container">
+        <button class="lock-button" onclick="toggleLock(this)">🖍️</button>  
+      <p>
+        In this particular instance, the same applies to ChiaCoin, which really aims to use the hard 
+        drive to shift decentralized control to the user in a fashion that the individual and makes 
+        them as if they are their own organization. Large in concept, this is done so through a variety 
+        of processes, one of them being something called the Proof of Capacity protocol. Other 
+        methods of cryptocurrency have of course been mentioned in the past, this being proof of 
+        work of course, and the newer and most efficient way of verifiging users on a network, proof 
+        of stake. But, how does proof of capacity work exactly? 
+      </p>
+    </div>
+    </div>
+    <div class="box blur" id="box4">
+      <div class="arrow">
+        <button class="up-arrow" onclick="scrollToTop()" disabled> 👈 </button>
+        <button class="down-arrow" onclick="scrollToBottom()"> 👉 </button>
+      </div>
+      <span class="paragraph-indicator">Paragraph #4 of #17</span>
+      <div class="paragraph-container">
+        <button class="lock-button" onclick="toggleLock(this)">🖍️</button>
+      <p>
+        Referring back to the ASIC machine earlier, in this particular case, PoC uses the advantage 
+        of connecting a hard drive to any kind of network, in order to decentralize the process of 
+        these data exchanges between other users, similar to how you’d perceive an ADHOC 
+        network, where using any sort of operating software, you could intentionally trade your data 
+        with other computers without having to setup an internet router by any means. But, past this, 
+        there is a certain type of PoC that most are not aware of, and that is called ‘Conditioned 
+        Proof of Capacity’. As the term suggests, compared to lesser eco friendly and more 
+        computer intensive currencies such as Bitcoin, Ethereum, or DogeCoin, using cPoC, a 
+        particular protocol called zk-SNARK, which stands for “Zero-Knowledge Succinct Non-
+        Interactive Argument of Knowledge’. 
+      </p>
+    </div>
+    </div>
+    <div class="box blur" id="box5">
+      <div class="arrow">
+        <button class="up-arrow" onclick="scrollToTop()" disabled> 👈 </button>
+        <button class="down-arrow" onclick="scrollToBottom()"> 👉 </button>
+      </div>
+      <span class="paragraph-indicator">Paragraph #5 of #17</span>
+      <div class="paragraph-container">
+        <button class="lock-button" onclick="toggleLock(this)">🖍️</button>
+      <p>
+        As complex as it sounds, it holds a basic meaning, which is that in a transaction, two users 
+        can exchange information that doesn’t necessarily have to be directly financial, at which 
+        whatever they may exchange as information does not need to be revealed. For example, 
+        the reason why passwords are needed to be registered on a website, is to be able to assign 
+        specific contents of characters with a limit, so that the website could register and identify the 
+        person making use of whatever it is they must do with their account on that website. In this 
+        case, that protocol is used for cPoC, in order to allow safer transactions to take place under 
+        ChiaCoin, at which ecosystem friendliness does not necessarily just limit itself to saving 
+        some computing power, but to optimize it as well. 
+      </p>
+    </div>
+    </div>
+    <div class="box blur" id="box6">
+      <div class="arrow">
+        <button class="up-arrow" onclick="scrollToTop()" disabled> 👈 </button>
+        <button class="down-arrow" onclick="scrollToBottom()"> 👉 </button>
+      </div>
+      <span class="paragraph-indicator">Paragraph #6 of #17</span>
+      <div class="paragraph-container">
+        <button class="lock-button" onclick="toggleLock(this)">🖍️</button>
+      <p>
+        Next to the zk-SNARK protocol being the ultimate leeway for anonymous exchanges to 
+        happen far more faster than it would with reveals of verifiable data under an ETH protocol for 
+        example, another method that used to make a system use a hard drives resources is of that 
+        with proof of space, at which, you are simply making use of Proof of Capacity to simply 
+        resource the storage device towards meeting certain needs that an ASIC machine could do 
+        in balance, without having to require major GPU power. But, the use of a storage device with 
+        proof of space methods does not necessarily imply that significantly more power is saved 
+        than say normal cryptocurrency mining, and if not for that, the ideal process of actually 
+        making transactions under cPoC and avoiding any extra power to be spent. 
+      </p>
+    </div>
+    </div>    
+    <div class="box blur" id="box7">
+      <div class="arrow">
+        <button class="up-arrow" onclick="scrollToTop()" disabled> 👈 </button>
+        <button class="down-arrow" onclick="scrollToBottom()"> 👉 </button>
+      </div>
+      <span class="paragraph-indicator">Paragraph #7 of #17</span>
+      <div class="paragraph-container">
+        <button class="lock-button" onclick="toggleLock(this)">🖍️</button>
+      <p>
+        As mentioned in the previous workshop regarding how energy used in cryptocurrency mining 
+        requires many TwH of power as much as the sun could provide, ChiaCoin does aim to 
+        address this by understanding the distribution of renewable energy. It is essential to 
+        understand that next to general use, the major compounded expenses of cryptocurrency 
+        mining when it comes to energy use applies here to ChiaCoin as well, but its methods for 
+        general transactions differ far more than meets the eye. 
+      </p>
+    </div>
+    </div>
+    <div class="box blur" id="box8">
+      <div class="arrow">
+        <button class="up-arrow" onclick="scrollToTop()" disabled> 👈 </button>
+        <button class="down-arrow" onclick="scrollToBottom()"> 👉 </button>
+      </div>
+      <span class="paragraph-indicator">Paragraph #8 of #17</span>
+      <div class="paragraph-container">
+        <button class="lock-button" onclick="toggleLock(this)">🖍️</button>
+      <p>
+        When it comes to general encryption methods, or more so, the process of ‘hashing’ 
+        something to generate a number, the method of using storage blocks for cryptocurrency can 
+        be utilized via through something called seed phrases. Seed phrases, are simply just 
+        sequential sets of randomly generated words, that act as a major password for encrypted 
+        keys that allow access to allwets and so on. Major cryptocurrency exchanges such as 
+        Coinbase use this, and it is especialy important for ChiaCoin as it allows quicker access to a 
+        wallet without having to reveal or share information, hence linking back to the cPoC protocol 
+        and its zk-SNARK methods. 
+      </p>
+    </div>
+    </div>
+    <div class="box blur" id="box9">
+      <div class="arrow">
+        <button class="up-arrow" onclick="scrollToTop()" disabled> 👈 </button>
+        <button class="down-arrow" onclick="scrollToBottom()"> 👉 </button>
+      </div>
+      <span class="paragraph-indicator">Paragraph #9 of #17</span>
+      <div class="paragraph-container">
+        <button class="lock-button" onclick="toggleLock(this)">🖍️</button>
+      <p>
+        That’s not to say that, ChiaCoin doesn’t enable newer and more advanced ways of mining its 
+        currency, regardless of how much power it requires, which factually speaking could require 
+        all of Poland for an operation to take place. Of course, we are not attempting anyone to 
+        attempt cryptocurrency mining, hence why we are educating on this topic instead. Since 
+        there’s a long range of personalities in the blockchain hemisphere, that being of 
+        cryptocurrency miners split subjectively to be anywhere between investors to real-time and 
+        dedicated farmers, on the farmer spectrum of understanding and obstaining ChiaCoin via 
+        PoC, there are methods to reduce operational costs, such as JBODs, recertified drives, and 
+        plot compression. 
+      </p>
+    </div>
+    </div>
+    <div class="box blur" id="box10">
+      <div class="arrow">
+        <button class="up-arrow" onclick="scrollToTop()" disabled> 👈 </button>
+        <button class="down-arrow" onclick="scrollToBottom()"> 👉 </button>
+      </div>
+      <span class="paragraph-indicator">Paragraph #10 of #17</span>
+      <div class="paragraph-container">
+        <button class="lock-button" onclick="toggleLock(this)">🖍️</button>
+      <p>
+        Starting off with JBODs, which quite legitimately stands for ‘Just A Bunch of Disks’, this 
+        particular method for storage simply involves taking a collection of hard disks and saving 
+        power by combining them into one volume within a system for a better function of saving 
+        operational costs. IN addition, to this, there is recertified drives. To explain this in simple 
+        detail, every product has something called an OEM number, which simply is just a set of 
+        characters that verifies that the manufacturer has labelled and confirmed that the product at 
+        hand is usable, and may not may not be given warranty depending on certain policies. In this 
+        special instance, recertified drives are simply just a way for the OEM number to link back to 
+        the manufacturer, that can largely confirm that the drive has been tested and can be used for 
+        computing processed. 
+      </p>
+    </div>
+    </div>
+    <div class="box blur" id="box11">
+      <div class="arrow">
+        <button class="up-arrow" onclick="scrollToTop()" disabled> 👈 </button>
+        <button class="down-arrow" onclick="scrollToBottom()"> 👉 </button>
+      </div>
+      <span class="paragraph-indicator">Paragraph #11 of #17</span>
+      <div class="paragraph-container">
+        <button class="lock-button" onclick="toggleLock(this)">🖍️</button>
+      <p>
+        And of course, you have something called plot compression for hard disks, which simply 
+        means, taking a lot of file data and compressing it, at which the more data there is to 
+        compress, the more power it will require to do that for the short-term. All of these methods 
+        for mining ChiaCoin are optimal solutions that can be professionally executed depending on 
+        how serious the farmer is about profiting off of the cryptocurrency, but more important 
+        beyond that, it is important to mention that sustainability is increasingly becoming more 
+        important as time moves forward. 
+      </p>
+    </div>
+    </div>
+    <div class="box blur" id="box12">
+      <div class="arrow">
+        <button class="up-arrow" onclick="scrollToTop()" disabled> 👈 </button>
+        <button class="down-arrow" onclick="scrollToBottom()"> 👉 </button>
+      </div>
+      <span class="paragraph-indicator">Paragraph #12 of #17</span>
+      <div class="paragraph-container">
+        <button class="lock-button" onclick="toggleLock(this)">🖍️</button>
+      <p>
+        It is for this reason, that in order to negotiate lesser environmentally damaging methods of 
+        working with cryptocurrency for the general public, developers explore alternative consensus 
+        mechanisms that go far past the original SHA-256 algorithm, this being other protocols such 
+        as Proof of Space and Time or PoST for short. To simply put, unlike exchanging hidden 
+        information between two parties on a blockchain via cPoS, in this case PoST asks that a 
+        person verifies that they have the storage space needed in order to hold certain information 
+        over a period of time for transactional activities under ChiaCoin. 
+      </p>
+    </div>
+    </div>
+    <div class="box blur" id="box13">
+      <div class="arrow">
+        <button class="up-arrow" onclick="scrollToTop()" disabled> 👈 </button>
+        <button class="down-arrow" onclick="scrollToBottom()"> 👉 </button>
+      </div>
+      <span class="paragraph-indicator">Paragraph #13 of #17</span>
+      <div class="paragraph-container">
+        <button class="lock-button" onclick="toggleLock(this)">🖍️</button>
+      <p>
+        Now, bare in mind that, this information split between owners of ChiaCoin is going to make 
+        of major supply increases of tokens on the blockchain market, henceforth, why we have 
+        something called the process of halving. Halving, is the ideal process of taking crypto supply 
+        coins, and to curb long-term inflation. There have been concise explanations regarding how 
+        negative and positive price elasticity has an impact on the cryptocurrency market, so in this 
+        case, when it comes to combatting negative price elasticity with the consequential rise of 
+        inflation common in modern macroeconomics today, the process of halving simply means 
+        that you are cutting the production of the tokens by 50% in order to avoid higher inflation but 
+        to also increase the chances of tokens to be rewarded and valued at higher prices when 
+        rewarded to others, that possibly being done so through air drops that aren’t part of pyramid 
+        schemes. 
+      </p>
+    </div>
+    </div>
+    <div class="box blur" id="box14">
+      <div class="arrow">
+        <button class="up-arrow" onclick="scrollToTop()" disabled> 👈 </button>
+        <button class="down-arrow" onclick="scrollToBottom()"> 👉 </button>
+      </div>
+      <span class="paragraph-indicator">Paragraph #14 of #17</span>
+      <div class="paragraph-container">
+        <button class="lock-button" onclick="toggleLock(this)">🖍️</button>
+      <p>
+        So, you’re probably wondering, how much space on a hard drive is required even to farm or 
+        trade using ChiaCoin? Generally speaking, due to higher trading volume, scarcity, and 
+        halving processes which can even heighten prices of the currency to at least 60% on certain 
+        occassions, around 4TB to 18TB are recommended to meet the demands of the trading
+        as next to investing, farmers have statistically proven that the coin itself easy
+        takes up anywhere between 512GB in an SSD within 40 days of use and 2TB if used for
+        for at least 160 days. This is considering that, for the requirements of Polands entire power usage, which 
+        compared to basic ASIC machine, is about 30 times more energy consumption, mining 
+        ChiaCoin even with the use of plot compressions and using JBODs will still require 
+        significantly more storage cases as a result which of course, depending on how you budget 
+        your storage, costs a lot of money. 
+      </p>
+    </div>
+    </div>
+    <div class="box blur" id="box15">
+      <div class="arrow">
+        <button class="up-arrow" onclick="scrollToTop()" disabled> 👈 </button>
+        <button class="down-arrow" onclick="scrollToBottom()"> 👉 </button>
+      </div>
+      <span class="paragraph-indicator">Paragraph #15 of #17</span>
+      <div class="paragraph-container">
+        <button class="lock-button" onclick="toggleLock(this)">🖍️</button>
+      <p>
+        It’s already enough effort to purchase games today in 2024 that don’t require less than 
+        100GB of storage, henceforth why storage division and optimization would be key in 
+        instances for the future where ChiaCoin is prevalent in the Web 3.0 era. Speaking of the new 
+        era of mining hard drive currencies, it is exceptionally important to note that, there are lots of 
+        newer developments happening in the traditional cryptocurrency sphere that aims to push 
+        the limits opf endeavoring this expensive method of profiting off the blockchain, at which 
+        initiatives such as the BXTB (which stands for ‘Blockchain Exchange Token Bonus), aims to 
+        require a stablecoin infrastructure where halving can be automated in the realm of owning a 
+        stake in a currency and to be reward it simultaneouslhy, hence calling it a two-token system. 
+        The two tokens, are as put, between the stable coin which is named CHIP for something to 
+        be small but valuable, and the reward token which by code goes for YBXTB. 
+      </p>
+    </div>
+    </div>
+    <div class="box blur" id="box16">
+      <div class="arrow">
+        <button class="up-arrow" onclick="scrollToTop()" disabled> 👈 </button>
+        <button class="down-arrow" onclick="scrollToBottom()"> 👉 </button>
+      </div>
+      <span class="paragraph-indicator">Paragraph #16 of #17</span>
+      <div class="paragraph-container">
+        <button class="lock-button" onclick="toggleLock(this)">🖍️</button>
+      <p>
+        After all of this, it is especially important to note that, the basic principles that ranged all the 
+        way from Bitcoin still exist with ChiaCoin, this being that cryptocurrency miners still 
+        necessitate validation on the network regardless of the use of protocols such as cPoC, and 
+        that rewarding for mining a block and expanding networks still exist. Overall, this is one of 
+        those currencies that hold more importance over function than it does with history compared 
+        to other workshops mentioned in the past, and it’s a fact to be known that ANY hard drive 
+        can be used in this instance, especially for something like an Android smartphone or 
+        possible iPhone if the jailbreaking community thrives to make this possible. 
+      </p>
+    </div>
+    </div>
+    <div class="box blur" id="box17">
+      <div class="arrow">
+        <button class="up-arrow" onclick="scrollToTop()" disabled> 👈 </button>
+        <button class="down-arrow" onclick="scrollToBottom()"> 👉 </button>
+      </div>
+      <span class="paragraph-indicator">Paragraph #17 of #17</span>
+      <div class="paragraph-container">
+        <button class="lock-button" onclick="toggleLock(this)">🖍️</button>
+      <p>
+        This is one way of explaining that, in the future, more accessible resources technologically 
+        will inherit allowances that will expense the greater advantages of blockchain technology.
+      </p>
+    </div>
+  </div>
+    <div id="scrollToTopBtn" class="scroll-to-top" style="display: none;">
+        <i class="fas fa-arrow-up"></i>
+        <span style="vertical-align: middle; font-size: 26px;">👆</span>
+    </div>
+</div>
+
+<script>
+const boxes = document.querySelectorAll('.box');
+const container = document.querySelector('.container');
+const upArrows = document.querySelectorAll('.up-arrow');
+const downArrows = document.querySelectorAll('.down-arrow');
+let currentIndex = 0;
+
+// Initialize the page by hiding arrow buttons for all boxes except the first one
+hideOtherArrows(currentIndex);
+
+upArrows.forEach(function(elem, index) {
+  elem.addEventListener('click', function() {
+    moveBoxUp(index);
+  });
+});
+
+downArrows.forEach(function(elem, index) {
+  elem.addEventListener('click', function() {
+    moveBoxDown(index);
+  });
+});
+
+document.addEventListener('keydown', function(event) {
+  if (event.key === 'ArrowRight') {
+    moveBoxDown(currentIndex);
+  } else if (event.key === 'ArrowLeft') {
+    moveBoxUp(currentIndex);
+  } else if (event.key === 'ArrowUp') {
+    moveBoxUp(currentIndex);
+  } else if (event.key === 'ArrowDown') {
+    moveBoxDown(currentIndex);
+  }
+});
+
+function moveBoxUp(index) {
+  if (index > 0) {
+    const nextIndex = index - 1;
+    moveToIndex(nextIndex);
+  }
+}
+
+function moveBoxDown(index) {
+  if (index < boxes.length - 1) {
+    const nextIndex = index + 1;
+    moveToIndex(nextIndex);
+  }
+}
+
+function moveToIndex(nextIndex) {
+  // Remove active class from current box and add blur class
+  boxes[currentIndex].classList.remove('active');
+  boxes[currentIndex].classList.add('blur');
+
+  // Add active class to next box and remove blur class
+  boxes[nextIndex].classList.remove('blur');
+  boxes[nextIndex].classList.add('active');
+
+  // Calculate the position to align active box with arrow box
+  const arrowRect = boxes[nextIndex].querySelector('.arrow').getBoundingClientRect();
+  const activeBoxRect = boxes[nextIndex].getBoundingClientRect();
+
+  // Calculate the scroll position to align active box with arrow box
+  const scrollLeft = activeBoxRect.left - arrowRect.left - (window.innerWidth / 2 - activeBoxRect.width / 2);
+
+  // Set the scroll position to immediately position the active box beside the arrow box
+  container.scrollLeft = scrollLeft;
+
+  currentIndex = nextIndex;
+
+  // Disable/enable arrows based on current index
+  upArrows.forEach(function(elem) {
+    elem.disabled = currentIndex === 0;
+  });
+
+  downArrows.forEach(function(elem) {
+    elem.disabled = currentIndex === boxes.length - 1;
+  });
+
+  // Hide arrow buttons for other boxes
+  hideOtherArrows(currentIndex);
+}
+
+function hideOtherArrows(index) {
+  boxes.forEach(function(box, i) {
+    const arrows = box.querySelectorAll('.arrow button');
+    arrows.forEach(function(arrow) {
+      arrow.style.visibility = i !== index ? 'hidden' : 'visible';
+    });
+  });
+}
+
+    
+document.getElementById('view-full-article-box').addEventListener('click', function() {
+    // Create the button for entering paragraph mode
+    var refreshButton = document.createElement('button');
+    refreshButton.textContent = 'Enter Paragraph Mode';
+    refreshButton.classList.add('view-full-article'); // Add class for styling
+    refreshButton.style.backgroundColor = 'white'; // Set white background
+    refreshButton.style.color = 'black'; // Set black text color
+    refreshButton.style.border = '2px solid white'; // Add white border
+    refreshButton.style.cursor = 'pointer'; // Set cursor to pointer to indicate clickability
+    refreshButton.addEventListener('click', function() {
+        location.reload(); // Reload the page when clicked
+    });
+
+    // Append the button to the 'view-full-article-box'
+    this.innerHTML = ''; // Clear existing content
+    this.appendChild(refreshButton);
+
+    // Remove active state from all boxes
+    document.querySelectorAll('.box').forEach(function(box) {
+        box.classList.remove('active');
+    });
+
+    // Remove box styling
+    document.querySelectorAll('.box').forEach(function(box) {
+        box.style.border = 'none';
+        box.style.backgroundColor = 'transparent';
+        box.style.fontSize = '15px'; // Set font size back to default
+        box.classList.remove('blur'); // Remove blur class
+    });
+
+    // Remove paragraph indicators
+    document.querySelectorAll('.paragraph-indicator').forEach(function(indicator) {
+        indicator.remove();
+    });
+
+    // Disable lock buttons and hide lock icons
+    document.querySelectorAll('.lock-button').forEach(function(lockButton) {
+        lockButton.disabled = true;
+        lockButton.style.display = 'none';
+    });
+
+    // Remove animations
+    document.querySelectorAll('.move-up, .move-down').forEach(function(animation) {
+        animation.style.animation = 'none';
+    });
+
+    // Hide arrow buttons for all other boxes
+    hideOtherArrows(-1);
+});
+
+let lockedParagraph = null;
+
+function toggleLock(button) {
+  const parent = button.parentNode;
+  const isLocked = parent.classList.toggle('locked');
+  if (isLocked) {
+    lockedParagraph = parent;
+    centerParagraph(lockedParagraph);
+  } else {
+    lockedParagraph = null;
+  }
+}
+
+function centerParagraph(element) {
+  const rect = element.getBoundingClientRect();
+  const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+  const centerY = rect.top + rect.height / 2 - window.innerHeight / 2 + scrollTop;
+  window.scrollTo({
+    top: centerY,
+    behavior: 'smooth'
+  });
+}
+
+// Keep the locked paragraph centered if the window is resized
+window.addEventListener('resize', function() {
+  if (lockedParagraph) {
+    centerParagraph(lockedParagraph);
+  }
+});
+
+
+    </script>  
+</body>
+</html>
