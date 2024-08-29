@@ -1,0 +1,347 @@
+@import url('https://fonts.googleapis.com/css?family=Poppins:200,300,400,500,600,700,800,900&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Poppins', sans-serif;
+}
+
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 170vh;
+    background: #ff9900;
+    padding-top: 80px; /* Adjust this value based on the height of your header */
+    /* or alternatively */
+    margin-top: 250px; /* Ensure this margin does not overlap with the header */
+  }
+
+.common-button {
+  position: relative;
+  display: inline-block;
+  padding: 8px 20px;
+  margin-top: 15px;
+  background: #fff;
+  color: #000;
+  border-radius: 20px;
+  text-decoration: none;
+  font-weight: 500;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+  transition: transform 0.3s ease-in-out;
+}
+
+.common-button:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+}
+
+.banner {
+  position: relative;
+  width: 100%;
+  height: 30vh;
+  background-size: cover;
+  background-color: #ffffff;
+}
+
+header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 40px 100px;
+  z-index: 100000;
+  border-bottom: 2px solid rgb(0, 0, 0);
+  transition: opacity 0.6s;
+}
+
+header.hidden {
+  opacity: 0;
+}
+
+header ul {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 10px 0;
+  border-top: 2px solid rgb(255, 255, 255);
+  border-bottom: 2px solid white;
+}
+
+header ul li {
+  list-style: none;
+  border-left: 2px solid white;
+}
+
+header ul li:first-child {
+  border-left: none;
+}
+
+header ul li a {
+  margin: 0 15px;
+  text-decoration: none;
+  color: hsl(0, 0%, 100%);
+  letter-spacing: 2px;
+  font-weight: 500;
+  transition: color 0.6s;
+}
+
+header ul li a:hover {
+  color: #000000;
+}
+
+.container, .container1, .container2, .container3, .containeraccess {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  max-width: 2000px;
+  flex-wrap: wrap;
+  z-index: 1;
+}
+
+.container .card, .container1 .card, .container2 .card, .container3 .card, .containeraccess .card {
+  position: relative;
+  width: 280px;
+  height: 400px;
+  margin: 30px;
+  box-shadow: 20px 20px 50px rgba(0, 0, 0, 0.5);
+  border-radius: 15px;
+  overflow: hidden;
+  perspective: 1000px; /* Adds perspective for 3D effect */
+  transition: transform 0.1s ease; /* Quick transition for smooth effect */
+}
+
+.container .card .background-image, .container1 .card .background-image, .container2 .card .background-image, .container3 .card .background-image, .containeraccess .card .background-image {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-size: cover;
+  transition: opacity 0.5s ease;
+}
+
+.container .card .content, .container1 .card .content, .container2 .card .content, .container3 .card .content, .containeraccess .card .content {
+  position: relative;
+  z-index: 1;
+  padding: 20px;
+  text-align: center;
+  opacity: 0;
+  transition: opacity 0.5s ease;
+}
+
+.container .card:hover .background-image, .container1 .card:hover .background-image, .container2 .card:hover .background-image, .container3 .card:hover .background-image, .containeraccess .card:hover .background-image {
+  opacity: 0;
+}
+
+.container .card:hover .content, .container1 .card:hover .content, .container2 .card:hover .content, .container3 .card:hover .content, .containeraccess .card:hover .content {
+  opacity: 1;
+}
+
+/* Additional styles for .containeraccess */
+.containeraccess .card {
+  background: rgba(255, 255, 255, 0.1);
+  border-top: 1px solid rgba(255, 255, 255, 0.5);
+  border-left: 1px solid rgba(255, 255, 255, 0.5);
+  backdrop-filter: blur(5px);
+}
+
+.containeraccess .card .content {
+  padding: 40px;
+  text-align: center;
+  transform: translate(100px);
+  opacity: 1;
+  transition: 0.5s;
+}
+
+.containeraccess .card:hover .content {
+  transform: translate(0px);
+  opacity: 1;
+  background-image: url('AccessButton.png');
+  background-repeat: no-repeat;
+  background-position: center;
+  width: 400px;
+  height: 400px;
+}
+
+.containeraccess .card .content h2 {
+  position: absolute;
+  top: -80px;
+  right: 30px;
+  font-size: 8em;
+  color: rgba(255, 255, 255, 0.5);
+  pointer-events: none;
+}
+
+.containeraccess .card .content h3 {
+  font-size: 1.8em;
+  color: #fff;
+  z-index: 1;
+}
+
+.containeraccess .card .content p {
+  font-size: 1em;
+  color: #fff;
+  font-weight: 300;
+}
+
+.container .card .content a, .container1 .card .content a, .container2 .card .content a, .container3 .card .content a, .containeraccess .card .content a {
+  position: relative;
+  display: inline-block;
+  padding: 8px 20px;
+  margin-top: 15px;
+  background: #fff;
+  color: #000;
+  border-radius: 20px;
+  text-decoration: none;
+  font-weight: 500;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+  .card-bg-25 {
+    background-image: url('webcard25.png');
+  }
+
+  .card-bg-24 {
+    background-image: url('webcard24.png');
+  }
+
+  .card-bg-23 {
+    background-image: url('webcard23.png');
+  }
+
+  .card-bg-22 {
+    background-image: url('webcard22.png');
+  }
+
+  .card-bg-21 {
+    background-image: url('webcard21.png');
+  }
+
+  .card-bg-20 {
+    background-image: url('webcard20.png');
+  }
+
+  .card-bg-19 {
+    background-image: url('webcard19.png');
+  }
+
+  .card-bg-18 {
+    background-image: url('webcard18.png');
+  }
+
+  .card-bg-17 {
+    background-image: url('webcard17.png');
+  }
+
+  .card-bg-16 {
+    background-image: url('webcard16.png');
+  }
+
+  .card-bg-15 {
+    background-image: url('webcard15.png');
+  }
+
+  .card-bg-14 {
+    background-image: url('webcard14.png');
+  }
+
+  .card-bg-13 {
+    background-image: url('webcard13.png');
+  }
+
+  .card-bg-12 {
+    background-image: url('webcard12.png');
+  }
+
+  .card-bg-11 {
+    background-image: url('webcard11.png');
+  }
+
+  .card-bg-10 {
+    background-image: url('webcard10.png');
+  }
+
+  .card-bg-9 {
+    background-image: url('webcard9.png');
+  }
+
+  .card-bg-8 {
+    background-image: url('webcard8.png');
+  }
+
+  .card-bg-7 {
+    background-image: url('webcard7.png');
+  }
+
+  .card-bg-6 {
+    background-image: url('webcard6.png');
+  }
+
+  .card-bg-5 {
+    background-image: url('webcard5.png');
+  }
+
+  .card-bg-4 {
+    background-image: url('webcard4.png');
+  }
+
+  .card-bg-3 {
+    background-image: url('webcard3.png');
+  }
+  
+  .card-bg-2 {
+    background-image: url('webcard2.png');
+  }
+
+  .card-bg-1 {
+    background-image: url('webcard1.png');
+  }
+
+
+  /* Other CSS rules */
+  .card {
+    position: relative;
+    width: 280px;
+    height: 400px;
+    margin: 30px;
+    box-shadow: 20px 20px 50px rgba(0, 0, 0, 0.5);
+    border-radius: 15px;
+    overflow: hidden;
+    background-size: cover;
+    background-position: center;
+    transition: transform 0.1s ease;
+  }
+  
+  .card .background-image {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    transition: opacity 0.5s ease;
+  }
+  
+  .card .content {
+    position: relative;
+    z-index: 1;
+    padding: 20px;
+    text-align: center;
+    opacity: 0;
+    transition: opacity 0.5s ease;
+  }
+  
+  .card:hover .background-image {
+    opacity: 0;
+  }
+  
+  .card:hover .content {
+    opacity: 1;
+  }
+  
