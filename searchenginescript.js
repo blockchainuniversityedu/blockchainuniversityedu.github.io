@@ -4,6 +4,7 @@ const suggestionsList = document.getElementById('suggestionsList');
 
 // Define an array of objects with suggestion text and associated URLs
 const suggestionsData = [
+    { text: 'Learn About Ethereum', url: 'https://blockchainuniversityedu.github.io/The%20Historical%20Token%20of%20ETH%20(Article).html' },
     { text: 'Blockchain & NFTs', url: 'https://blockchainuniversityedu.github.io/Applications%20on%20the%20Blockchain%20(Part%201)%20(Article).html' },
     { text: 'Cryptocurrency Mining', url: 'https://blockchainuniversityedu.github.io/The%20Incredible%20Technology%20of%20Crypto%20Mining%20(Article).html' },
     { text: 'The Hardware Wallet', url: 'https://blockchainuniversityedu.github.io/The%20Hardware%20Wallet%20-%20Dissected%20(Part%201%20-%20Connecting%20Parts)%20(Article).html' },
