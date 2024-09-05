@@ -203,6 +203,10 @@ header ul li a:hover {
   box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
 }
 
+  .card-bg-26 {
+    background-image: url('webcard26.png');
+  }
+
   .card-bg-25 {
     background-image: url('webcard25.png');
   }
