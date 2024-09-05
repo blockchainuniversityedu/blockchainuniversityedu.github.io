@@ -1,0 +1,176 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+.containerSearchBar {
+    position: relative; /* Ensure that the dropdown is positioned relative to this container */
+    width: 100%;
+    max-width: 700px; /* Ensure the width matches the search bar */
+    margin: 0 auto; /* Center the container */
+}
+
+.container {
+    width: 100%;
+    min-height: 10vh;
+    padding: 5%;
+    display: inline-block;
+    align-items: center;
+    justify-content: center;
+}
+
+.search-bar {
+    width: 100%;
+    max-width: 700px;
+    background: #ffffff; /* Make the search bar white */
+    display: flex;
+    align-items: center;
+    border-radius: 15px; /* Match the rounded corners */
+    padding: 10px 20px;
+    position: relative;
+    z-index: 1;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.search-bar input {
+    background: transparent;
+    flex: 1;
+    border: 0;
+    outline: none;
+    padding: 20px;
+    font-size: 18px;
+    color: #333;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px); /* Optional: Add a slight upward movement */
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.fade-in-text {
+    font-size: 25px; /* Adjust as needed */
+    color: #000000; /* Text color */
+    text-align: center; /* Center the text */
+    animation: fadeIn 2s ease-out; /* Apply the fade-in animation */
+    animation-fill-mode: forwards; /* Ensure the text stays visible after animation */
+}
+
+::placeholder {
+    color: #888;
+}
+
+.search-bar button img {
+    width: 25px;
+}
+
+.search-bar button {
+    border: 0;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    background: #000000;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+body {
+    display: absolute;
+    justify-content: top;
+    align-items: top;
+    min-height: 100vh;
+    background: #ff9900;
+}
+
+.text {
+    display: inline-block;
+    font-size: 25px;
+    letter-spacing: 10px;
+    font-family: monospace;
+    border-right: 5px solid;
+    width: 100%;
+    white-space: nowrap;
+    overflow: hidden;
+    animation:
+        typing 2s steps(73),
+        cursor .4s step-end infinite alternate;
+}
+
+@keyframes cursor {
+    50% { border-color: transparent; }
+}
+
+@keyframes typing {
+    from { width: 0; }
+}
+
+.content-item {
+    padding: 10px;
+    border: 1px solid #ddd;
+    margin-bottom: 5px;
+}
+
+.suggestions-list {
+    position: absolute;
+    top: calc(100% + 5px); /* Positioned directly below the search bar */
+    left: 0;
+    width: 100%; /* Full width of the search bar */
+    max-width: 700px; /* Match the search bar width */
+    background: #ffffff; /* Match the search bar color */
+    border: 1px solid #ddd;
+    border-top: none; /* To make it look connected */
+    border-radius: 0 0 15px 15px; /* Rounded corners at the bottom only */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    z-index: 1000;
+    list-style: none;
+    padding: 0;
+    margin: 0; /* Remove any default margin */
+    display: none; /* Initially hidden */
+}
+
+/* Styling for the dropdown suggestions items */
+.suggestion-item {
+    display: block; /* Block-level element to span full width */
+    padding: 10px 20px; /* Space inside each item */
+    color: #000000; /* Text color */
+    text-decoration: none; /* Remove underline from links */
+    transition: background-color 0.2s; /* Smooth background color transition */
+    width: 100%; /* Full width of the dropdown */
+    box-sizing: border-box; /* Include padding in width calculations */
+    cursor: pointer; /* Pointer cursor to indicate clickability */
+}
+
+/* Hover effect for dropdown items */
+.suggestion-item:hover {
+    background-color: #f0f0f0; /* Light gray background on hover */
+}
+
+/* Optional: Style to ensure no box is shown */
+.suggestion-item a {
+    display: block; /* Ensure the link covers the full item */
+    height: 100%; /* Full height of the item */
+    width: 100%; /* Full width of the item */
+}
+
+#contentList {
+    display: none; /* Completely hides the content from the webpage */
+}
+
+.skip-link {
+    position: fixed; /* Fixed position relative to the viewport */
+    bottom: 10px; /* Distance from the bottom of the viewport */
+    right: 10px;  /* Distance from the right edge of the viewport */
+    color: #000000; /* Text color */
+    text-decoration: none;
+    border-bottom: 1px dotted #000000; /* Dotted underline */
+    font-size: 14px; /* Adjust font size as needed */
+}
