@@ -4,12 +4,12 @@ const suggestionsList = document.getElementById('suggestionsList');
 
 // Define an array of objects with suggestion text and associated URLs
 const suggestionsData = [
-    { text: 'Learn Blockchain Basics', url: 'https://example.com/blockchain-basics' },
-    { text: 'Advanced Smart Contracts', url: 'https://example.com/smart-contracts' },
-    { text: 'Introduction to Cryptography', url: 'https://example.com/cryptography' },
-    { text: 'Decentralized Finance (DeFi) Workshop', url: 'https://example.com/defi-workshop' },
-    { text: 'Blockchain Development Bootcamp', url: 'https://example.com/development-bootcamp' },
-    { text: 'Learn about NFTs', url: 'https://example.com/nfts' }
+    { text: 'Blockchain & NFTs', url: 'https://blockchainuniversityedu.github.io/Applications%20on%20the%20Blockchain%20(Part%201)%20(Article).html' },
+    { text: 'Cryptocurrency Mining', url: 'https://blockchainuniversityedu.github.io/The%20Incredible%20Technology%20of%20Crypto%20Mining%20(Article).html' },
+    { text: 'The Hardware Wallet', url: 'https://blockchainuniversityedu.github.io/The%20Hardware%20Wallet%20-%20Dissected%20(Part%201%20-%20Connecting%20Parts)%20(Article).html' },
+    { text: 'Gaming On The Blockchain', url: 'https://blockchainuniversityedu.github.io/The%20GameFi%20Scene,%20Explained%20(Article).html' },
+    { text: 'Whats DogeCoin?', url: 'https://blockchainuniversityedu.github.io/The%20Unintentional%20Success%20of%20DogeCoin%20(Article).html' },
+    { text: 'Satoshi Nakamoto', url: 'https://blockchainuniversityedu.github.io/Who%20Is%20Satoshi%20Nakamoto%20(Article).html' }
 ];
 
 // Add an event listener to the search box to filter suggestions as the user types
